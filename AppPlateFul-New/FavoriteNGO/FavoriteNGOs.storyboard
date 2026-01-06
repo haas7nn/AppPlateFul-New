@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="navController">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="nav-scene-id">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="navController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nav-bar-id">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="list-vc-id" kind="relationship" relationship="rootViewController" id="root-segue-id"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nav-first-responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--FavoriteNG Os View Controller-->
+        <scene sceneID="list-scene-id">
+            <objects>
+                <viewController storyboardIdentifier="FavoriteNGOsVC" id="list-vc-id" customClass="FavoriteNGOsViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="list-main-view">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="list-nav-bar">
+                                <rect key="frame" x="0.0" y="172" width="393" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="list-back-btn">
+                                        <rect key="frame" x="16" y="-39" width="170" height="128"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title=" Back" image="chevron.left">
+                                            <color key="titleColor" systemColor="systemBlueColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="list-vc-id" eventType="touchUpInside" id="list-back-action"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite NGOs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="list-title-label">
+                                        <rect key="frame" x="138" y="14.999999999999998" width="117" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.9765625" green="0.9609375" blue="0.9428710938" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="list-back-btn" firstAttribute="centerY" secondItem="list-nav-bar" secondAttribute="centerY" id="list-bb-cy"/>
+                                    <constraint firstItem="list-back-btn" firstAttribute="leading" secondItem="list-nav-bar" secondAttribute="leading" constant="16" id="list-bb-l"/>
+                                    <constraint firstAttribute="height" constant="50" id="list-nav-h"/>
+                                    <constraint firstItem="list-title-label" firstAttribute="centerX" secondItem="list-nav-bar" secondAttribute="centerX" id="list-tl-cx"/>
+                                    <constraint firstItem="list-title-label" firstAttribute="centerY" secondItem="list-nav-bar" secondAttribute="centerY" id="list-tl-cy"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="list-collection-view">
+                                <rect key="frame" x="0.0" y="222" width="393" height="562"/>
+                                <color key="backgroundColor" red="0.97999999999999998" green="0.95999999999999996" blue="0.93999999999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="16" id="list-flow-layout">
+                                    <size key="itemSize" width="170" height="300"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="16" maxX="16" maxY="16"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavoriteNGOCell" id="ngo-cell-id" customClass="FavoriteNGOCell" customModule="AppPlateFul" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="16" width="170" height="300"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ngo-cell-content">
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="300"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cell-card-bg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="300"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cell-star-container">
+                                                            <rect key="frame" x="138" y="8" width="24" height="24"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cell-star-img">
+                                                                    <rect key="frame" x="4" y="3.666666666666667" width="16" height="15.666666666666664"/>
+                                                                    <color key="tintColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="16" id="cell-star-h"/>
+                                                                        <constraint firstAttribute="width" constant="16" id="cell-star-w"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.92000000000000004" green="0.92000000000000004" blue="0.92000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="24" id="cell-star-cont-h"/>
+                                                                <constraint firstAttribute="width" constant="24" id="cell-star-cont-w"/>
+                                                                <constraint firstItem="cell-star-img" firstAttribute="centerX" secondItem="cell-star-container" secondAttribute="centerX" id="cell-star-cx"/>
+                                                                <constraint firstItem="cell-star-img" firstAttribute="centerY" secondItem="cell-star-container" secondAttribute="centerY" id="cell-star-cy"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <real key="value" value="12"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cell-logo-container">
+                                                            <rect key="frame" x="25" y="16" width="120" height="100"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cell-logo-img">
+                                                                    <rect key="frame" x="10" y="10" width="100" height="80"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="cell-logo-img" secondAttribute="bottom" constant="10" id="cell-logo-b"/>
+                                                                <constraint firstAttribute="height" constant="100" id="cell-logo-cont-h"/>
+                                                                <constraint firstAttribute="width" constant="120" id="cell-logo-cont-w"/>
+                                                                <constraint firstItem="cell-logo-img" firstAttribute="leading" secondItem="cell-logo-container" secondAttribute="leading" constant="10" id="cell-logo-l"/>
+                                                                <constraint firstAttribute="trailing" secondItem="cell-logo-img" secondAttribute="trailing" constant="10" id="cell-logo-r"/>
+                                                                <constraint firstItem="cell-logo-img" firstAttribute="top" secondItem="cell-logo-container" secondAttribute="top" constant="10" id="cell-logo-t"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <real key="value" value="12"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cell-divider">
+                                                            <rect key="frame" x="12" y="128" width="146" height="1"/>
+                                                            <color key="backgroundColor" red="0.84999999999999998" green="0.82999999999999996" blue="0.81000000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="1" id="cell-div-h"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NGO Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cell-name-label">
+                                                            <rect key="frame" x="12" y="137" width="146" height="18"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                            <color key="textColor" red="0.25" green="0.25" blue="0.25" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cell-desc-label">
+                                                            <rect key="frame" x="12" y="163" width="146" height="14.333333333333343"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" red="0.5" green="0.45000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cell-learn-more-btn">
+                                                            <rect key="frame" x="30" y="253" width="110" height="34"/>
+                                                            <color key="backgroundColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="34" id="cell-btn-h"/>
+                                                                <constraint firstAttribute="width" constant="110" id="cell-btn-w"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                            <state key="normal" title="Learn More">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <real key="value" value="17"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="learnMoreTapped:" destination="ngo-cell-id" eventType="touchUpInside" id="cell-learn-action"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.93000000000000005" green="0.91000000000000003" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="cell-star-container" firstAttribute="top" secondItem="cell-card-bg" secondAttribute="top" constant="8" id="c1"/>
+                                                        <constraint firstAttribute="trailing" secondItem="cell-name-label" secondAttribute="trailing" constant="12" id="c10"/>
+                                                        <constraint firstItem="cell-desc-label" firstAttribute="top" secondItem="cell-name-label" secondAttribute="bottom" constant="8" id="c11"/>
+                                                        <constraint firstItem="cell-desc-label" firstAttribute="leading" secondItem="cell-card-bg" secondAttribute="leading" constant="12" id="c12"/>
+                                                        <constraint firstAttribute="trailing" secondItem="cell-desc-label" secondAttribute="trailing" constant="12" id="c13"/>
+                                                        <constraint firstItem="cell-learn-more-btn" firstAttribute="centerX" secondItem="cell-card-bg" secondAttribute="centerX" id="c14"/>
+                                                        <constraint firstAttribute="bottom" secondItem="cell-learn-more-btn" secondAttribute="bottom" constant="13" id="c15"/>
+                                                        <constraint firstAttribute="trailing" secondItem="cell-star-container" secondAttribute="trailing" constant="8" id="c2"/>
+                                                        <constraint firstItem="cell-logo-container" firstAttribute="top" secondItem="cell-card-bg" secondAttribute="top" constant="16" id="c3"/>
+                                                        <constraint firstItem="cell-logo-container" firstAttribute="centerX" secondItem="cell-card-bg" secondAttribute="centerX" id="c4"/>
+                                                        <constraint firstItem="cell-divider" firstAttribute="top" secondItem="cell-logo-container" secondAttribute="bottom" constant="12" id="c5"/>
+                                                        <constraint firstItem="cell-divider" firstAttribute="leading" secondItem="cell-card-bg" secondAttribute="leading" constant="12" id="c6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="cell-divider" secondAttribute="trailing" constant="12" id="c7"/>
+                                                        <constraint firstItem="cell-name-label" firstAttribute="top" secondItem="cell-divider" secondAttribute="bottom" constant="8" id="c8"/>
+                                                        <constraint firstItem="cell-name-label" firstAttribute="leading" secondItem="cell-card-bg" secondAttribute="leading" constant="12" id="c9"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <real key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cell-card-bg" firstAttribute="top" secondItem="ngo-cell-content" secondAttribute="top" id="cc1"/>
+                                                <constraint firstItem="cell-card-bg" firstAttribute="leading" secondItem="ngo-cell-content" secondAttribute="leading" id="cc2"/>
+                                                <constraint firstAttribute="trailing" secondItem="cell-card-bg" secondAttribute="trailing" id="cc3"/>
+                                                <constraint firstAttribute="bottom" secondItem="cell-card-bg" secondAttribute="bottom" id="cc4"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="cell-desc-label" id="o1"/>
+                                            <outlet property="learnMoreButton" destination="cell-learn-more-btn" id="o2"/>
+                                            <outlet property="logoImageView" destination="cell-logo-img" id="o3"/>
+                                            <outlet property="nameLabel" destination="cell-name-label" id="o4"/>
+                                            <outlet property="starContainerView" destination="cell-star-container" id="o5"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="list-vc-id" id="ds1"/>
+                                    <outlet property="delegate" destination="list-vc-id" id="del1"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="list-safe-area"/>
+                        <color key="backgroundColor" red="0.97999999999999998" green="0.95999999999999996" blue="0.93999999999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="list-nav-bar" firstAttribute="top" secondItem="list-safe-area" secondAttribute="top" id="l1"/>
+                            <constraint firstItem="list-nav-bar" firstAttribute="leading" secondItem="list-main-view" secondAttribute="leading" id="l2"/>
+                            <constraint firstItem="list-nav-bar" firstAttribute="trailing" secondItem="list-main-view" secondAttribute="trailing" id="l3"/>
+                            <constraint firstItem="list-collection-view" firstAttribute="top" secondItem="list-nav-bar" secondAttribute="bottom" id="l4"/>
+                            <constraint firstItem="list-collection-view" firstAttribute="leading" secondItem="list-main-view" secondAttribute="leading" id="l5"/>
+                            <constraint firstItem="list-collection-view" firstAttribute="trailing" secondItem="list-main-view" secondAttribute="trailing" id="l6"/>
+                            <constraint firstItem="list-safe-area" firstAttribute="bottom" secondItem="list-collection-view" secondAttribute="bottom" id="l7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="list-collection-view" id="cv1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="list-first-responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="926" y="0.0"/>
+        </scene>
+        <!--Details-->
+        <scene sceneID="details-scene-id">
+            <objects>
+                <viewController storyboardIdentifier="FavoriteNGODetailsViewController" id="details-vc-id" customClass="FavoriteNGODetailsViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="details-main-view">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="header-container">
+                                <rect key="frame" x="20" y="354" width="353" height="60"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="name-rating-container">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NGO Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="details-name">
+                                                <rect key="frame" x="0.0" y="4.9999999999999982" width="240" height="26.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                <color key="textColor" red="0.10000000000000001" green="0.10000000000000001" blue="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="rating-stack">
+                                                <rect key="frame" x="0.0" y="34.333333333333314" width="80.333333333333329" height="18"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rating-star">
+                                                        <rect key="frame" x="0.0" y="-0.33333333333333215" width="18" height="17.666666666666664"/>
+                                                        <color key="tintColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="18" id="rs-h"/>
+                                                            <constraint firstAttribute="width" constant="18" id="rs-w"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.3 (531)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="details-rating">
+                                                        <rect key="frame" x="22.000000000000004" y="0.66666666666668561" width="58.333333333333343" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="details-name" firstAttribute="top" secondItem="name-rating-container" secondAttribute="top" constant="5" id="n1"/>
+                                            <constraint firstItem="details-name" firstAttribute="leading" secondItem="name-rating-container" secondAttribute="leading" id="n2"/>
+                                            <constraint firstAttribute="trailing" secondItem="details-name" secondAttribute="trailing" id="n3"/>
+                                            <constraint firstItem="rating-stack" firstAttribute="top" secondItem="details-name" secondAttribute="bottom" constant="3" id="n4"/>
+                                            <constraint firstItem="rating-stack" firstAttribute="leading" secondItem="name-rating-container" secondAttribute="leading" id="n5"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="action-buttons-stack">
+                                        <rect key="frame" x="253" y="8" width="100" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="details-phone-btn">
+                                                <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                <color key="backgroundColor" red="0.92000000000000004" green="0.92000000000000004" blue="0.92000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="pb-h"/>
+                                                    <constraint firstAttribute="width" constant="44" id="pb-w"/>
+                                                </constraints>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="phone.fill" catalog="system">
+                                                    <color key="titleColor" systemColor="viewFlipsideBackgroundColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="phoneTapped:" destination="details-vc-id" eventType="touchUpInside" id="phone-action"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="details-message-btn">
+                                                <rect key="frame" x="56" y="0.0" width="44" height="44"/>
+                                                <color key="backgroundColor" red="0.92000000000000004" green="0.92000000000000004" blue="0.92000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="mb-h"/>
+                                                    <constraint firstAttribute="width" constant="44" id="mb-w"/>
+                                                </constraints>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="keyboard.fill" catalog="system">
+                                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="messageTapped:" destination="details-vc-id" eventType="touchUpInside" id="msg-action"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="hc-h"/>
+                                    <constraint firstItem="name-rating-container" firstAttribute="leading" secondItem="header-container" secondAttribute="leading" id="hc1"/>
+                                    <constraint firstItem="name-rating-container" firstAttribute="top" secondItem="header-container" secondAttribute="top" id="hc2"/>
+                                    <constraint firstItem="name-rating-container" firstAttribute="bottom" secondItem="header-container" secondAttribute="bottom" id="hc3"/>
+                                    <constraint firstItem="name-rating-container" firstAttribute="width" constant="240" id="hc4"/>
+                                    <constraint firstItem="action-buttons-stack" firstAttribute="trailing" secondItem="header-container" secondAttribute="trailing" id="hc5"/>
+                                    <constraint firstItem="action-buttons-stack" firstAttribute="centerY" secondItem="header-container" secondAttribute="centerY" id="hc6"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="details-divider">
+                                <rect key="frame" x="20" y="434" width="353" height="1"/>
+                                <color key="backgroundColor" red="0.88" green="0.88" blue="0.88" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="div-h"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="details-desc">
+                                <rect key="frame" x="20" y="455" width="353" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.45000000000000001" green="0.45000000000000001" blue="0.45000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="contact-container">
+                                <rect key="frame" x="20" y="520" width="353" height="120"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="phone-row">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="20"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="phone-icon">
+                                                <rect key="frame" x="0.0" y="1.3333333333333321" width="20" height="17.333333333333336"/>
+                                                <color key="tintColor" red="0.45000000000000001" green="0.45000000000000001" blue="0.45000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="pi-h"/>
+                                                    <constraint firstAttribute="width" constant="20" id="pi-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact us: +973 34948656" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phone-label">
+                                                <rect key="frame" x="30" y="1.6666666666666856" width="323" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.6059570312" green="0.5400390625" blue="0.4304199219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="email-row">
+                                        <rect key="frame" x="0.0" y="35" width="353" height="20"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="email-icon">
+                                                <rect key="frame" x="0.0" y="2.3333333333333321" width="20" height="16.000000000000004"/>
+                                                <color key="tintColor" red="0.45000000000000001" green="0.45000000000000001" blue="0.45000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="ei-h"/>
+                                                    <constraint firstAttribute="width" constant="20" id="ei-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: info@ngo.org" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="email-label">
+                                                <rect key="frame" x="30" y="1.6666666666666288" width="323" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.6059570312" green="0.5400390625" blue="0.4304199219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="address-row">
+                                        <rect key="frame" x="0.0" y="70" width="353" height="20"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="address-icon">
+                                                <rect key="frame" x="0.0" y="0.66666666666666607" width="20" height="18.666666666666671"/>
+                                                <color key="tintColor" red="0.45000000000000001" green="0.45000000000000001" blue="0.45000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="ai-h"/>
+                                                    <constraint firstAttribute="width" constant="20" id="ai-w"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address: Saar, Bahrain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="address-label">
+                                                <rect key="frame" x="30" y="1.6666666666666288" width="323" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.6059570312" green="0.5400390625" blue="0.4304199219" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="phone-row" firstAttribute="top" secondItem="contact-container" secondAttribute="top" id="ct1"/>
+                                    <constraint firstItem="phone-row" firstAttribute="leading" secondItem="contact-container" secondAttribute="leading" id="ct2"/>
+                                    <constraint firstAttribute="trailing" secondItem="phone-row" secondAttribute="trailing" id="ct3"/>
+                                    <constraint firstItem="email-row" firstAttribute="top" secondItem="phone-row" secondAttribute="bottom" constant="15" id="ct4"/>
+                                    <constraint firstItem="email-row" firstAttribute="leading" secondItem="contact-container" secondAttribute="leading" id="ct5"/>
+                                    <constraint firstAttribute="trailing" secondItem="email-row" secondAttribute="trailing" id="ct6"/>
+                                    <constraint firstItem="address-row" firstAttribute="top" secondItem="email-row" secondAttribute="bottom" constant="15" id="ct7"/>
+                                    <constraint firstItem="address-row" firstAttribute="leading" secondItem="contact-container" secondAttribute="leading" id="ct8"/>
+                                    <constraint firstAttribute="trailing" secondItem="address-row" secondAttribute="trailing" id="ct9"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="details-image">
+                                <rect key="frame" x="81" y="137" width="229" height="192"/>
+                                <color key="backgroundColor" red="0.92000000000000004" green="0.92000000000000004" blue="0.92000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="img-h" userLabel="height = 180"/>
+                                    <constraint firstAttribute="width" constant="240" id="img-w" userLabel="width = 220"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="details-safe-area"/>
+                        <color key="backgroundColor" red="0.97999999999999998" green="0.95999999999999996" blue="0.93999999999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="details-image" firstAttribute="top" secondItem="details-safe-area" secondAttribute="top" constant="16" id="d1"/>
+                            <constraint firstItem="details-desc" firstAttribute="leading" secondItem="details-main-view" secondAttribute="leading" constant="20" id="d10"/>
+                            <constraint firstAttribute="trailing" secondItem="details-desc" secondAttribute="trailing" constant="20" id="d11"/>
+                            <constraint firstItem="contact-container" firstAttribute="top" secondItem="details-desc" secondAttribute="bottom" constant="24" id="d12"/>
+                            <constraint firstItem="contact-container" firstAttribute="leading" secondItem="details-main-view" secondAttribute="leading" constant="20" id="d13"/>
+                            <constraint firstAttribute="trailing" secondItem="contact-container" secondAttribute="trailing" constant="20" id="d14"/>
+                            <constraint firstItem="details-image" firstAttribute="centerX" secondItem="details-main-view" secondAttribute="centerX" id="d2"/>
+                            <constraint firstItem="header-container" firstAttribute="top" secondItem="details-image" secondAttribute="bottom" constant="20" id="d3"/>
+                            <constraint firstItem="header-container" firstAttribute="leading" secondItem="details-main-view" secondAttribute="leading" constant="20" id="d4"/>
+                            <constraint firstAttribute="trailing" secondItem="header-container" secondAttribute="trailing" constant="20" id="d5"/>
+                            <constraint firstItem="details-divider" firstAttribute="top" secondItem="header-container" secondAttribute="bottom" constant="20" id="d6"/>
+                            <constraint firstItem="details-divider" firstAttribute="leading" secondItem="details-main-view" secondAttribute="leading" constant="20" id="d7"/>
+                            <constraint firstAttribute="trailing" secondItem="details-divider" secondAttribute="trailing" constant="20" id="d8"/>
+                            <constraint firstItem="details-desc" firstAttribute="top" secondItem="details-divider" secondAttribute="bottom" constant="20" id="d9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Details" id="details-nav-item"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="address-label" id="out-addr"/>
+                        <outlet property="descriptionLabel" destination="details-desc" id="out-desc"/>
+                        <outlet property="emailLabel" destination="email-label" id="out-email"/>
+                        <outlet property="imageView" destination="details-image" id="out-img"/>
+                        <outlet property="messageButton" destination="details-message-btn" id="out-msg"/>
+                        <outlet property="nameLabel" destination="details-name" id="out-name"/>
+                        <outlet property="phoneButton" destination="details-phone-btn" id="out-phone"/>
+                        <outlet property="phoneInfoLabel" destination="phone-label" id="out-phone-info"/>
+                        <outlet property="ratingLabel" destination="details-rating" id="out-rating"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="details-first-responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1851.1450381679388" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.left" width="128" height="128"/>
+        <image name="envelope.fill" catalog="system" width="128" height="85"/>
+        <image name="keyboard.fill" catalog="system" width="128" height="78"/>
+        <image name="mappin.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="phone.fill" catalog="system" width="128" height="114"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.53333333333333333" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
