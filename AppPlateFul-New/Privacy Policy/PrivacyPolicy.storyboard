@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PrivacyPolicyNavController">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="navScene">
+            <objects>
+                <navigationController storyboardIdentifier="PrivacyPolicyNavController" id="PrivacyPolicyNavController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="navBar">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.969" green="0.957" blue="0.937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <navigationBarAppearance key="standardAppearance" backgroundColor="#F7F4EF">
+                            <color key="backgroundColor" red="0.969" green="0.957" blue="0.937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PrivacyPolicyVC" kind="relationship" relationship="rootViewController" id="navToPrivacySegue"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="navFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-800" y="0"/>
+        </scene>
+        
+        <!--Privacy Policy View Controller-->
+        <scene sceneID="privacyScene">
+            <objects>
+                <viewController storyboardIdentifier="PrivacyPolicyViewController" id="PrivacyPolicyVC" customClass="PrivacyPolicyViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mainView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <!--ScrollView-->
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scrollView">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <subviews>
+                                    <!--Content View-->
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="contentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1400"/>
+                                        <subviews>
+                                            <!--Page Title-->
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pageTitleLabel">
+                                                <rect key="frame" x="20" y="24" width="353" height="38"/>
+                                                <fontDescription key="fontDescription" type="system" weight="bold" pointSize="30"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                            
+                                            <!--Main Card Container-->
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cardContainer">
+                                                <rect key="frame" x="16" y="82" width="361" height="1280"/>
+                                                <subviews>
+                                                    <!--Last Updated-->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last updated : November 2025" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lastUpdatedLabel">
+                                                        <rect key="frame" x="20" y="20" width="321" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" red="0.431" green="0.431" blue="0.431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <!--Intro Paragraph-->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="introLabel">
+                                                        <rect key="frame" x="20" y="50" width="321" height="80"/>
+                                                        <string key="text">At Plateful, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our food donation platform.</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <!--Section 1: Information We Collect-->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information We Collect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section1Title">
+                                                        <rect key="frame" x="20" y="150" width="321" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section1Content">
+                                                        <rect key="frame" x="20" y="182" width="321" height="160"/>
+                                                        <string key="text">We collect information that you provide directly to us, including:
+
+• Personal Information: Name, email address, phone number, and profile picture
+
+• Account Information: Login credentials and account preferences
+
+• Location Data: Your location to connect you with nearby food donation opportunities
+
+• Transaction History: Records of your donations and pickups
+
+• Device Information: Device type, operating system, and app usage patterns</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <!--Section 2: How We Use Your Information-->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How We Use Your Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section2Title">
+                                                        <rect key="frame" x="20" y="362" width="321" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section2Content">
+                                                        <rect key="frame" x="20" y="394" width="321" height="140"/>
+                                                        <string key="text">We use the information we collect to:
+
+• Facilitate food donations between donors and recipients
+
+• Provide customer support and respond to inquiries
+
+• Send notifications about donation opportunities
+
+• Improve our services and develop new features
+
+• Ensure the security and integrity of our platform
+
+• Comply with legal obligations</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <!--Section 3: Sharing Your Information-->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sharing Your Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section3Title">
+                                                        <rect key="frame" x="20" y="554" width="321" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section3Content">
+                                                        <rect key="frame" x="20" y="586" width="321" height="120"/>
+                                                        <string key="text">We do not sell your personal information. We may share your information with:
+
+• NGO partners to facilitate donations
+
+• Service providers who assist in operating our platform
+
+• Law enforcement when required by law
+
+• Other users only with your explicit consent</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <!--Section 4: Data Security-->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Security" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section4Title">
+                                                        <rect key="frame" x="20" y="726" width="321" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section4Content">
+                                                        <rect key="frame" x="20" y="758" width="321" height="100"/>
+                                                        <string key="text">We implement industry-standard security measures to protect your personal information, including:
+
+• Encryption of data in transit and at rest
+
+• Regular security audits and assessments
+
+• Access controls and authentication protocols
+
+• Secure data storage practices</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <!--Section 5: Your Rights-->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Rights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section5Title">
+                                                        <rect key="frame" x="20" y="878" width="321" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section5Content">
+                                                        <rect key="frame" x="20" y="910" width="321" height="120"/>
+                                                        <string key="text">You have the right to:
+
+• Access your personal information
+
+• Correct inaccurate data
+
+• Delete your account and associated data
+
+• Opt-out of marketing communications
+
+• Export your data in a portable format
+
+• Withdraw consent at any time</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <!--Section 6: Contact Us-->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section6Title">
+                                                        <rect key="frame" x="20" y="1050" width="321" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section6Content">
+                                                        <rect key="frame" x="20" y="1082" width="321" height="80"/>
+                                                        <string key="text">If you have any questions about this Privacy Policy or our data practices, please contact us at:
+
+Email: privacy@plateful.app
+Address: Manama, Kingdom of Bahrain</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <!--Section 7: Changes to Policy-->
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Changes to This Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section7Title">
+                                                        <rect key="frame" x="20" y="1182" width="321" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section7Content">
+                                                        <rect key="frame" x="20" y="1214" width="321" height="46"/>
+                                                        <string key="text">We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last updated" date.</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.949" green="0.937" blue="0.918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <!--Last Updated-->
+                                                    <constraint firstItem="lastUpdatedLabel" firstAttribute="top" secondItem="cardContainer" secondAttribute="top" constant="20" id="lu1"/>
+                                                    <constraint firstItem="lastUpdatedLabel" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="lu2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="lastUpdatedLabel" secondAttribute="trailing" constant="20" id="lu3"/>
+                                                    
+                                                    <!--Intro-->
+                                                    <constraint firstItem="introLabel" firstAttribute="top" secondItem="lastUpdatedLabel" secondAttribute="bottom" constant="12" id="intro1"/>
+                                                    <constraint firstItem="introLabel" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="intro2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="introLabel" secondAttribute="trailing" constant="20" id="intro3"/>
+                                                    
+                                                    <!--Section 1-->
+                                                    <constraint firstItem="section1Title" firstAttribute="top" secondItem="introLabel" secondAttribute="bottom" constant="24" id="s1t1"/>
+                                                    <constraint firstItem="section1Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s1t2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section1Title" secondAttribute="trailing" constant="20" id="s1t3"/>
+                                                    <constraint firstItem="section1Content" firstAttribute="top" secondItem="section1Title" secondAttribute="bottom" constant="8" id="s1c1"/>
+                                                    <constraint firstItem="section1Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s1c2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section1Content" secondAttribute="trailing" constant="20" id="s1c3"/>
+                                                    
+                                                    <!--Section 2-->
+                                                    <constraint firstItem="section2Title" firstAttribute="top" secondItem="section1Content" secondAttribute="bottom" constant="24" id="s2t1"/>
+                                                    <constraint firstItem="section2Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s2t2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section2Title" secondAttribute="trailing" constant="20" id="s2t3"/>
+                                                    <constraint firstItem="section2Content" firstAttribute="top" secondItem="section2Title" secondAttribute="bottom" constant="8" id="s2c1"/>
+                                                    <constraint firstItem="section2Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s2c2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section2Content" secondAttribute="trailing" constant="20" id="s2c3"/>
+                                                    
+                                                    <!--Section 3-->
+                                                    <constraint firstItem="section3Title" firstAttribute="top" secondItem="section2Content" secondAttribute="bottom" constant="24" id="s3t1"/>
+                                                    <constraint firstItem="section3Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s3t2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section3Title" secondAttribute="trailing" constant="20" id="s3t3"/>
+                                                    <constraint firstItem="section3Content" firstAttribute="top" secondItem="section3Title" secondAttribute="bottom" constant="8" id="s3c1"/>
+                                                    <constraint firstItem="section3Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s3c2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section3Content" secondAttribute="trailing" constant="20" id="s3c3"/>
+                                                    
+                                                    <!--Section 4-->
+                                                    <constraint firstItem="section4Title" firstAttribute="top" secondItem="section3Content" secondAttribute="bottom" constant="24" id="s4t1"/>
+                                                    <constraint firstItem="section4Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s4t2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section4Title" secondAttribute="trailing" constant="20" id="s4t3"/>
+                                                    <constraint firstItem="section4Content" firstAttribute="top" secondItem="section4Title" secondAttribute="bottom" constant="8" id="s4c1"/>
+                                                    <constraint firstItem="section4Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s4c2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section4Content" secondAttribute="trailing" constant="20" id="s4c3"/>
+                                                    
+                                                    <!--Section 5-->
+                                                    <constraint firstItem="section5Title" firstAttribute="top" secondItem="section4Content" secondAttribute="bottom" constant="24" id="s5t1"/>
+                                                    <constraint firstItem="section5Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s5t2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section5Title" secondAttribute="trailing" constant="20" id="s5t3"/>
+                                                    <constraint firstItem="section5Content" firstAttribute="top" secondItem="section5Title" secondAttribute="bottom" constant="8" id="s5c1"/>
+                                                    <constraint firstItem="section5Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s5c2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section5Content" secondAttribute="trailing" constant="20" id="s5c3"/>
+                                                    
+                                                    <!--Section 6-->
+                                                    <constraint firstItem="section6Title" firstAttribute="top" secondItem="section5Content" secondAttribute="bottom" constant="24" id="s6t1"/>
+                                                    <constraint firstItem="section6Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s6t2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section6Title" secondAttribute="trailing" constant="20" id="s6t3"/>
+                                                    <constraint firstItem="section6Content" firstAttribute="top" secondItem="section6Title" secondAttribute="bottom" constant="8" id="s6c1"/>
+                                                    <constraint firstItem="section6Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s6c2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section6Content" secondAttribute="trailing" constant="20" id="s6c3"/>
+                                                    
+                                                    <!--Section 7-->
+                                                    <constraint firstItem="section7Title" firstAttribute="top" secondItem="section6Content" secondAttribute="bottom" constant="24" id="s7t1"/>
+                                                    <constraint firstItem="section7Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s7t2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section7Title" secondAttribute="trailing" constant="20" id="s7t3"/>
+                                                    <constraint firstItem="section7Content" firstAttribute="top" secondItem="section7Title" secondAttribute="bottom" constant="8" id="s7c1"/>
+                                                    <constraint firstItem="section7Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s7c2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="section7Content" secondAttribute="trailing" constant="20" id="s7c3"/>
+                                                    <constraint firstAttribute="bottom" secondItem="section7Content" secondAttribute="bottom" constant="20" id="s7c4"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.969" green="0.957" blue="0.937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <!--Page Title-->
+                                            <constraint firstItem="pageTitleLabel" firstAttribute="top" secondItem="contentView" secondAttribute="top" constant="24" id="pt1"/>
+                                            <constraint firstItem="pageTitleLabel" firstAttribute="leading" secondItem="contentView" secondAttribute="leading" constant="20" id="pt2"/>
+                                            <constraint firstAttribute="trailing" secondItem="pageTitleLabel" secondAttribute="trailing" constant="20" id="pt3"/>
+                                            
+                                            <!--Card Container-->
+                                            <constraint firstItem="cardContainer" firstAttribute="top" secondItem="pageTitleLabel" secondAttribute="bottom" constant="20" id="cc1"/>
+                                            <constraint firstItem="cardContainer" firstAttribute="leading" secondItem="contentView" secondAttribute="leading" constant="16" id="cc2"/>
+                                            <constraint firstAttribute="trailing" secondItem="cardContainer" secondAttribute="trailing" constant="16" id="cc3"/>
+                                            <constraint firstAttribute="bottom" secondItem="cardContainer" secondAttribute="bottom" constant="30" id="cc4"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="contentView" firstAttribute="top" secondItem="scrollView" secondAttribute="top" id="sv1"/>
+                                    <constraint firstItem="contentView" firstAttribute="leading" secondItem="scrollView" secondAttribute="leading" id="sv2"/>
+                                    <constraint firstItem="contentView" firstAttribute="trailing" secondItem="scrollView" secondAttribute="trailing" id="sv3"/>
+                                    <constraint firstItem="contentView" firstAttribute="bottom" secondItem="scrollView" secondAttribute="bottom" id="sv4"/>
+                                    <constraint firstItem="contentView" firstAttribute="width" secondItem="scrollView" secondAttribute="width" id="sv5"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="safeArea"/>
+                        <color key="backgroundColor" red="0.969" green="0.957" blue="0.937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="scrollView" firstAttribute="top" secondItem="safeArea" secondAttribute="top" id="m1"/>
+                            <constraint firstItem="scrollView" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" id="m2"/>
+                            <constraint firstItem="safeArea" firstAttribute="trailing" secondItem="scrollView" secondAttribute="trailing" id="m3"/>
+                            <constraint firstItem="safeArea" firstAttribute="bottom" secondItem="scrollView" secondAttribute="bottom" id="m4"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="navItem">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="backButton">
+                            <connections>
+                                <action selector="backTapped:" destination="PrivacyPolicyVC" id="backAction"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="scrollView" destination="scrollView" id="scrollOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="privacyFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="0"/>
+        </scene>
+    </scenes>
+</document>
