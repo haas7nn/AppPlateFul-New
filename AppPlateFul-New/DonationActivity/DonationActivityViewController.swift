@@ -7,26 +7,39 @@
 
 import UIKit
 
-// Displays donation activity list with filtering and reporting support
 class DonationActivityViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyStateLabel: UILabel?
+    @IBOutlet weak var totalCountLabel: UILabel!
+    @IBOutlet weak var completedCountLabel: UILabel!
+    @IBOutlet weak var pendingCountLabel: UILabel!
+    @IBOutlet weak var filterButton: UIButton!
     
     // MARK: - Properties
     private var donations: [DonationActivityDonation] = []
     private var currentFilter: FilterOption = .all
-    private var filterButton: UIButton!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupNavigationBar()
-        setupFilterButton()
         setupNotifications()
         loadDonations()
+        updateStats()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Hide navigation bar since we have custom header
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Show navigation bar for other screens
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     deinit {
@@ -34,73 +47,15 @@ class DonationActivityViewController: UIViewController {
     }
     
     // MARK: - Setup
-    // Configures table view and base UI
     private func setupUI() {
         view.backgroundColor = DonationTheme.backgroundColor
-        tableView.backgroundColor = DonationTheme.backgroundColor
+        tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 20, right: 0)
-        
-        tableView.register(
-            UITableViewCell.self,
-            forCellReuseIdentifier: "DonationCell"
-        )
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        tableView.separatorStyle = .none
     }
     
-    // Configures navigation bar appearance
-    private func setupNavigationBar() {
-        title = "Donation Activity"
-        
-        let backButton = UIBarButtonItem(
-            image: UIImage(systemName: "chevron.left"),
-            style: .plain,
-            target: self,
-            action: #selector(backButtonTapped)
-        )
-        backButton.tintColor = .black
-        navigationItem.leftBarButtonItem = backButton
-    }
-    
-    // Adds filter button to navigation bar
-    private func setupFilterButton() {
-        filterButton = UIButton(type: .system)
-        filterButton.setTitle("Filter ", for: .normal)
-        filterButton.setImage(
-            UIImage(systemName: "chevron.down"),
-            for: .normal
-        )
-        filterButton.semanticContentAttribute = .forceRightToLeft
-        filterButton.titleLabel?.font = UIFont.systemFont(
-            ofSize: 14,
-            weight: .medium
-        )
-        filterButton.tintColor = DonationTheme.textPrimary
-        filterButton.backgroundColor = .white
-        filterButton.layer.cornerRadius = 16
-        filterButton.layer.borderWidth = 1
-        filterButton.layer.borderColor = UIColor.systemGray4.cgColor
-        
-        var config = UIButton.Configuration.plain()
-        config.contentInsets = NSDirectionalEdgeInsets(
-            top: 8,
-            leading: 16,
-            bottom: 8,
-            trailing: 12
-        )
-        filterButton.configuration = config
-        
-        filterButton.addTarget(
-            self,
-            action: #selector(filterTapped),
-            for: .touchUpInside
-        )
-        
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(customView: filterButton)
-    }
-    
-    // Registers notification listeners for data updates
     private func setupNotifications() {
         NotificationCenter.default.addObserver(
             self,
@@ -118,24 +73,43 @@ class DonationActivityViewController: UIViewController {
     }
     
     // MARK: - Data
-    // Loads donations based on selected filter
     private func loadDonations() {
-        donations =
-            DonationDataProvider.shared.filteredDonations(
-                by: currentFilter
-            )
-        emptyStateLabel?.isHidden = !donations.isEmpty
+        donations = DonationDataProvider.shared.filteredDonations(by: currentFilter)
+        
+        // Update empty state
+        if let emptyStateView = emptyStateLabel?.superview {
+            emptyStateView.isHidden = !donations.isEmpty
+        }
+        
         tableView.reloadData()
     }
     
-    // MARK: - Actions
-    @objc private func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
+    private func updateStats() {
+        let allDonations = DonationDataProvider.shared.donations
+        
+        // Total count
+        totalCountLabel.text = "\(allDonations.count)"
+        
+        // Completed count (completed + picked up)
+        let completedCount = allDonations.filter {
+            $0.status == .completed || $0.status == .pickedUp
+        }.count
+        completedCountLabel.text = "\(completedCount)"
+        
+        // Pending count (pending + ongoing)
+        let pendingCount = allDonations.filter {
+            $0.status == .pending || $0.status == .ongoing
+        }.count
+        pendingCountLabel.text = "\(pendingCount)"
     }
     
-    @objc private func filterTapped() {
-        let filterVC =
-            FilterPopupViewController(currentFilter: currentFilter)
+    // MARK: - Actions
+    @IBAction func filterButtonTapped(_ sender: Any) {
+        showFilterPopup()
+    }
+    
+    private func showFilterPopup() {
+        let filterVC = FilterPopupViewController(currentFilter: currentFilter)
         filterVC.delegate = self
         filterVC.modalPresentationStyle = .overCurrentContext
         filterVC.modalTransitionStyle = .crossDissolve
@@ -144,6 +118,7 @@ class DonationActivityViewController: UIViewController {
     
     @objc private func handleStatusUpdate(_ notification: Notification) {
         loadDonations()
+        updateStats()
     }
     
     @objc private func handleDonationReported(_ notification: Notification) {
@@ -151,37 +126,27 @@ class DonationActivityViewController: UIViewController {
     }
     
     // MARK: - Navigation
-    // Shows confirmation popup for reporting a donation
-    private func showReportConfirmation(
-        for donation: DonationActivityDonation
-    ) {
+    private func showReportConfirmation(for donation: DonationActivityDonation) {
         let popup = ReportConfirmationPopup()
         popup.modalPresentationStyle = .overCurrentContext
         popup.modalTransitionStyle = .crossDissolve
         popup.onConfirm = { [weak self] in
-            DonationDataProvider.shared.reportDonation(
-                donationId: donation.id
-            )
+            DonationDataProvider.shared.reportDonation(donationId: donation.id)
             self?.showReportedAlert()
         }
         present(popup, animated: true)
     }
     
-    // Displays confirmation alert after reporting
     private func showReportedAlert() {
         let alert = StatusUpdatedPopup(
-            icon: UIImage(
-                systemName: "exclamationmark.triangle.fill"
-            ),
+            icon: UIImage(systemName: "exclamationmark.triangle.fill"),
             message: "Donation Reported",
             iconColor: .systemOrange
         )
         alert.modalPresentationStyle = .overCurrentContext
         alert.modalTransitionStyle = .crossDissolve
         present(alert, animated: true) {
-            DispatchQueue.main.asyncAfter(
-                deadline: .now() + 1.5
-            ) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 alert.dismiss(animated: true)
             }
         }
@@ -189,75 +154,43 @@ class DonationActivityViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate & DataSource
-extension DonationActivityViewController:
-    UITableViewDelegate,
-    UITableViewDataSource {
+extension DonationActivityViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         donations.count
     }
     
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
-        let donation = donations[indexPath.row]
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: "DonationCell",
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "DonationActivityCell",
             for: indexPath
-        )
+        ) as? DonationActivityCell else {
+            return UITableViewCell()
+        }
         
-        var content = cell.defaultContentConfiguration()
-        content.text = donation.ngoName
-        content.secondaryText =
-            "\(donation.status.rawValue) • \(donation.formattedCreatedDate)"
-        content.secondaryTextProperties.color =
-            donation.status.color
-        content.image =
-            donation.ngoLogo ??
-            UIImage(systemName: "building.2.fill")
-        content.imageProperties.maximumSize =
-            CGSize(width: 60, height: 60)
-        content.imageProperties.cornerRadius = 10
-        content.imageProperties.tintColor =
-            DonationTheme.primaryBrown
-        
-        cell.contentConfiguration = content
-        cell.accessoryType = .disclosureIndicator
-        cell.backgroundColor = DonationTheme.cardBackground
+        let donation = donations[indexPath.row]
+        cell.configure(with: donation)
+        cell.delegate = self
         
         return cell
     }
     
-    func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath
-    ) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let donation = donations[indexPath.row]
-        guard let detailVC =
-            storyboard?.instantiateViewController(
-                withIdentifier: "DonationDetailViewController"
-            ) as? DonationDetailViewController else {
+        guard let detailVC = storyboard?.instantiateViewController(
+            withIdentifier: "DonationDetailViewController"
+        ) as? DonationDetailViewController else {
             return
         }
         
         detailVC.donation = donation
-        navigationController?.pushViewController(
-            detailVC,
-            animated: true
-        )
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    func tableView(
-        _ tableView: UITableView,
-        heightForRowAt indexPath: IndexPath
-    ) -> CGFloat {
-        100
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        116 // Updated for new compact cell design
     }
 }
 
@@ -265,7 +198,13 @@ extension DonationActivityViewController:
 extension DonationActivityViewController: FilterPopupDelegate {
     func didSelectFilter(_ filter: FilterOption) {
         currentFilter = filter
-        filterButton.setTitle("\(filter.rawValue) ", for: .normal)
         loadDonations()
+    }
+}
+
+// MARK: - DonationActivityCellDelegate
+extension DonationActivityViewController: DonationActivityCellDelegate {
+    func didTapReport(for donation: DonationActivityDonation) {
+        showReportConfirmation(for: donation)
     }
 }

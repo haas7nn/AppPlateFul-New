@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nav">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="sc1">
+            <objects>
+                <navigationController storyboardIdentifier="NGOReviewNavController" id="Nav" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nb1">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="List" kind="relationship" relationship="rootViewController" id="seg1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fr1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-700" y="0.0"/>
+        </scene>
+        <!--NGO Review-->
+        <scene sceneID="sc2">
+            <objects>
+                <viewController storyboardIdentifier="NGOReviewListViewController" id="List" customClass="NGOReviewListViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v1">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tv1">
+                                <rect key="frame" x="0.0" y="172" width="393" height="612"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NGOCell" textLabel="tt1" detailTextLabel="dt1" style="IBUITableViewCellStyleSubtitle" id="cell1">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cell1" id="cv1">
+                                            <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tt1">
+                                                    <rect key="frame" x="20" y="9.9999999999999982" width="33" height="20.333333333333332"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dt1">
+                                                    <rect key="frame" x="19.999999999999996" y="31.333333333333332" width="43.666666666666664" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="empty1">
+                                <rect key="frame" x="154.66666666666666" y="468" width="83.666666666666657" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sa1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tv1" firstAttribute="top" secondItem="sa1" secondAttribute="top" id="c1"/>
+                            <constraint firstItem="tv1" firstAttribute="leading" secondItem="sa1" secondAttribute="leading" id="c2"/>
+                            <constraint firstItem="sa1" firstAttribute="trailing" secondItem="tv1" secondAttribute="trailing" id="c3"/>
+                            <constraint firstItem="sa1" firstAttribute="bottom" secondItem="tv1" secondAttribute="bottom" id="c4"/>
+                            <constraint firstItem="empty1" firstAttribute="centerX" secondItem="sa1" secondAttribute="centerX" id="c5"/>
+                            <constraint firstItem="empty1" firstAttribute="centerY" secondItem="sa1" secondAttribute="centerY" id="c6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="NGO Review" id="ni1"/>
+                    <connections>
+                        <outlet property="emptyStateLabel" destination="empty1" id="o2"/>
+                        <outlet property="tableView" destination="tv1" id="o1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="0.0"/>
+        </scene>
+        <!--NGO Detail-->
+        <scene sceneID="sc3">
+            <objects>
+                <viewController storyboardIdentifier="NGOReviewDetailViewController" id="Detail" customClass="NGOReviewDetailViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v2">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="logo1">
+                                <rect key="frame" x="20" y="128" width="70" height="70"/>
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="lh"/>
+                                    <constraint firstAttribute="width" constant="70" id="lw"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NGO Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="name1">
+                                <rect key="frame" x="100" y="133" width="104" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="status1">
+                                <rect key="frame" x="100" y="163" width="56" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area: Bahrain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="area1">
+                                <rect key="frame" x="20" y="218" width="353" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hours: 9AM - 9PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hours1">
+                                <rect key="frame" x="20" y="248" width="135" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup: 22 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pickup1">
+                                <rect key="frame" x="20" y="278" width="107" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donations: 16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="donations1">
+                                <rect key="frame" x="20" y="308" width="99" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reliability: 100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reliability1">
+                                <rect key="frame" x="20" y="338" width="119" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews: N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reviews1">
+                                <rect key="frame" x="19.999999999999993" y="368" width="94.333333333333314" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="approve1">
+                                <rect key="frame" x="20" y="438" width="353" height="50"/>
+                                <color key="backgroundColor" red="0.6923828125" green="0.75390625" blue="0.5971679688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ah"/>
+                                </constraints>
+                                <state key="normal" title="Approve NGO">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="approveButtonTapped:" destination="Detail" eventType="touchUpInside" id="aa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="reject1">
+                                <rect key="frame" x="20" y="508" width="353" height="50"/>
+                                <color key="backgroundColor" red="0.7192382812" green="0.609375" blue="0.4812011719" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="rh"/>
+                                </constraints>
+                                <state key="normal" title="Reject NGO">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="rejectButtonTapped:" destination="Detail" eventType="touchUpInside" id="ra"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sa2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="logo1" firstAttribute="top" secondItem="sa2" secondAttribute="top" constant="10" id="d1"/>
+                            <constraint firstItem="hours1" firstAttribute="top" secondItem="area1" secondAttribute="bottom" constant="10" id="d10"/>
+                            <constraint firstItem="hours1" firstAttribute="leading" secondItem="area1" secondAttribute="leading" id="d11"/>
+                            <constraint firstItem="pickup1" firstAttribute="top" secondItem="hours1" secondAttribute="bottom" constant="10" id="d12"/>
+                            <constraint firstItem="pickup1" firstAttribute="leading" secondItem="area1" secondAttribute="leading" id="d13"/>
+                            <constraint firstItem="donations1" firstAttribute="top" secondItem="pickup1" secondAttribute="bottom" constant="10" id="d14"/>
+                            <constraint firstItem="donations1" firstAttribute="leading" secondItem="area1" secondAttribute="leading" id="d15"/>
+                            <constraint firstItem="reliability1" firstAttribute="top" secondItem="donations1" secondAttribute="bottom" constant="10" id="d16"/>
+                            <constraint firstItem="reliability1" firstAttribute="leading" secondItem="area1" secondAttribute="leading" id="d17"/>
+                            <constraint firstItem="reviews1" firstAttribute="top" secondItem="reliability1" secondAttribute="bottom" constant="10" id="d18"/>
+                            <constraint firstItem="reviews1" firstAttribute="leading" secondItem="area1" secondAttribute="leading" id="d19"/>
+                            <constraint firstItem="logo1" firstAttribute="leading" secondItem="sa2" secondAttribute="leading" constant="20" id="d2"/>
+                            <constraint firstItem="approve1" firstAttribute="top" secondItem="reviews1" secondAttribute="bottom" constant="50" id="d20"/>
+                            <constraint firstItem="approve1" firstAttribute="leading" secondItem="sa2" secondAttribute="leading" constant="20" id="d21"/>
+                            <constraint firstItem="sa2" firstAttribute="trailing" secondItem="approve1" secondAttribute="trailing" constant="20" id="d22"/>
+                            <constraint firstItem="reject1" firstAttribute="top" secondItem="approve1" secondAttribute="bottom" constant="20" id="d23"/>
+                            <constraint firstItem="reject1" firstAttribute="leading" secondItem="approve1" secondAttribute="leading" id="d24"/>
+                            <constraint firstItem="reject1" firstAttribute="trailing" secondItem="approve1" secondAttribute="trailing" id="d25"/>
+                            <constraint firstItem="name1" firstAttribute="leading" secondItem="logo1" secondAttribute="trailing" constant="10" id="d3"/>
+                            <constraint firstItem="name1" firstAttribute="top" secondItem="sa2" secondAttribute="top" constant="15" id="d4"/>
+                            <constraint firstItem="status1" firstAttribute="leading" secondItem="name1" secondAttribute="leading" id="d5"/>
+                            <constraint firstItem="status1" firstAttribute="top" secondItem="name1" secondAttribute="bottom" constant="6" id="d6"/>
+                            <constraint firstItem="area1" firstAttribute="top" secondItem="logo1" secondAttribute="bottom" constant="20" id="d7"/>
+                            <constraint firstItem="area1" firstAttribute="leading" secondItem="sa2" secondAttribute="leading" constant="20" id="d8"/>
+                            <constraint firstItem="sa2" firstAttribute="trailing" secondItem="area1" secondAttribute="trailing" constant="20" id="d9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="NGO Detail" id="ni2"/>
+                    <connections>
+                        <outlet property="approveButton" destination="approve1" id="o12"/>
+                        <outlet property="areaValueLabel" destination="area1" id="o6"/>
+                        <outlet property="donationsValueLabel" destination="donations1" id="o9"/>
+                        <outlet property="hoursValueLabel" destination="hours1" id="o7"/>
+                        <outlet property="logoImageView" destination="logo1" id="o3"/>
+                        <outlet property="nameLabel" destination="name1" id="o4"/>
+                        <outlet property="pickupTimeValueLabel" destination="pickup1" id="o8"/>
+                        <outlet property="rejectButton" destination="reject1" id="o13"/>
+                        <outlet property="reliabilityValueLabel" destination="reliability1" id="o10"/>
+                        <outlet property="reviewsValueLabel" destination="reviews1" id="o11"/>
+                        <outlet property="statusLabel" destination="status1" id="o5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fr3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
