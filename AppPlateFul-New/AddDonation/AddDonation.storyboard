@@ -1017,7 +1017,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ReceiptFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1700" y="0.0"/>
-        </scene>
+        </scene>        <!--Donation List-->
+<scene sceneID="ListScene">
+    <objects>
+        <viewController storyboardIdentifier="DonationListViewController" id="ListVC" customClass="DonationListViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+            <view key="view" contentMode="scaleToFill" id="ListView">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ListTable">
+                        <rect key="frame" x="0.0" y="88" width="393" height="764"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </tableView>
+                </subviews>
+                <viewLayoutGuide key="safeArea" id="ListSafe"/>
+                <color key="backgroundColor" red="0.96899999999999997" green="0.95699999999999996" blue="0.93300000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="ListTable" firstAttribute="top" secondItem="ListSafe" secondAttribute="top" id="L1"/>
+                    <constraint firstItem="ListTable" firstAttribute="leading" secondItem="ListView" secondAttribute="leading" id="L2"/>
+                    <constraint firstItem="ListView" firstAttribute="trailing" secondItem="ListTable" secondAttribute="trailing" id="L3"/>
+                    <constraint firstItem="ListView" firstAttribute="bottom" secondItem="ListTable" secondAttribute="bottom" id="L4"/>
+                </constraints>
+            </view>
+            <navigationItem key="navigationItem" title="My Donations" largeTitleDisplayMode="always" id="ListNavItem"/>
+            <connections>
+                <outlet property="tableView" destination="ListTable" id="ListTableOut"/>
+            </connections>
+        </viewController>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="ListFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+    </objects>
+    <point key="canvasLocation" x="2500" y="0.0"/>
+</scene>
     </scenes>
     <resources>
         <image name="building.2.fill" catalog="system" width="108" height="128"/>

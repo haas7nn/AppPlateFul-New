@@ -6,10 +6,18 @@ class DonationsListViewController: UIViewController {
     @IBOutlet weak var collectedPopup: UIView!
     @IBOutlet weak var canceledPopup: UIView!
     
+    private var card1StatusLabel: UILabel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupLogos()
+        findCard1StatusLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateCard1Status()
     }
     
     private func setupUI() {
@@ -17,28 +25,72 @@ class DonationsListViewController: UIViewController {
         overlayBackground.addGestureRecognizer(tapGesture)
     }
     
-    private func setupLogos() {
-        // Find logo views by tag or by traversing the view hierarchy
-        // We'll find them by looking for views with specific background colors and sizes
-        
+    private func findCard1StatusLabel() {
         if let scrollView = view.subviews.first(where: { $0 is UIScrollView }) as? UIScrollView,
            let contentView = scrollView.subviews.first {
             
-            // Find all card views (white background, height 140)
             for cardView in contentView.subviews {
-                // Find the logo placeholder view inside each card (80x80 gray view)
+                // Card 1 is at y position < 100
+                if cardView.frame.origin.y < 100 && cardView.frame.height == 140 {
+                    // Find the status label (contains "Status:")
+                    for subview in cardView.subviews {
+                        if let label = subview as? UILabel,
+                           let text = label.text,
+                           text.contains("Status:") {
+                            card1StatusLabel = label
+                            return
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func updateCard1Status() {
+        let savedState = UserDefaults.standard.integer(forKey: "alfreejDonationState")
+        let state = DonationState(rawValue: savedState) ?? .awaitingAcceptance
+        
+        guard let statusLabel = card1StatusLabel else { return }
+        
+        let statusText = state.listStatusText
+        let fullText = "Status: \(statusText)"
+        let attributedString = NSMutableAttributedString(string: fullText)
+        
+        // "Status: " in gray
+        let prefixRange = NSRange(location: 0, length: 8)
+        attributedString.addAttribute(.foregroundColor, value: UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0), range: prefixRange)
+        
+        // Status value color based on state
+        let valueRange = NSRange(location: 8, length: statusText.count)
+        let valueColor: UIColor
+        
+        switch state {
+        case .awaitingAcceptance:
+            valueColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0) // Gray
+        case .orderBeingPrepared:
+            valueColor = UIColor(red: 0.678, green: 0.757, blue: 0.58, alpha: 1.0) // Green
+        case .orderBeingDelivered:
+            valueColor = UIColor(red: 0.678, green: 0.757, blue: 0.58, alpha: 1.0) // Green
+        case .orderCompleted:
+            valueColor = UIColor(red: 0.678, green: 0.757, blue: 0.58, alpha: 1.0) // Green
+        }
+        
+        attributedString.addAttribute(.foregroundColor, value: valueColor, range: valueRange)
+        statusLabel.attributedText = attributedString
+    }
+    
+    private func setupLogos() {
+        if let scrollView = view.subviews.first(where: { $0 is UIScrollView }) as? UIScrollView,
+           let contentView = scrollView.subviews.first {
+            
+            for cardView in contentView.subviews {
                 for subview in cardView.subviews {
                     if subview.frame.width == 80 && subview.frame.height == 80 {
-                        // This is a logo placeholder
-                        // Determine which card based on position
                         if cardView.frame.origin.y < 100 {
-                            // Card 1 - Alfreej Shawarma's
                             addImageToView(subview, imageName: "alfreej_logo")
                         } else if cardView.frame.origin.y < 250 {
-                            // Card 2 - Chocologi Cafe
                             addImageToView(subview, imageName: "chocologi_logo")
                         } else {
-                            // Card 3 - It's Just Wings
                             addImageToView(subview, imageName: "justwings_logo")
                         }
                     }
@@ -65,6 +117,9 @@ class DonationsListViewController: UIViewController {
         let storyboard = UIStoryboard(name: "DonationsList", bundle: nil)
         if let detailsVC = storyboard.instantiateViewController(withIdentifier: "DonationDetailsViewController") as? DonationDetailsViewController {
             detailsVC.modalPresentationStyle = .fullScreen
+            detailsVC.onStatusChanged = { [weak self] state in
+                self?.updateCard1Status()
+            }
             present(detailsVC, animated: true, completion: nil)
         }
     }

@@ -5,6 +5,19 @@ enum DonationState: Int {
     case orderBeingPrepared = 1
     case orderBeingDelivered = 2
     case orderCompleted = 3
+    
+    var listStatusText: String {
+        switch self {
+        case .awaitingAcceptance:
+            return "Awaiting pickup"
+        case .orderBeingPrepared:
+            return "Accepted"
+        case .orderBeingDelivered:
+            return "Collected"
+        case .orderCompleted:
+            return "Delivered"
+        }
+    }
 }
 
 class DonationDetailsViewController: UIViewController {
@@ -18,11 +31,25 @@ class DonationDetailsViewController: UIViewController {
     
     private var currentState: DonationState = .awaitingAcceptance
     
+    // Callback to notify list when status changes
+    var onStatusChanged: ((DonationState) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSavedState()
         setupUI()
         setupMealImage()
         updateUIForCurrentState()
+    }
+    
+    private func loadSavedState() {
+        let savedState = UserDefaults.standard.integer(forKey: "alfreejDonationState")
+        currentState = DonationState(rawValue: savedState) ?? .awaitingAcceptance
+    }
+    
+    private func saveState() {
+        UserDefaults.standard.set(currentState.rawValue, forKey: "alfreejDonationState")
+        UserDefaults.standard.synchronize()
     }
     
     private func setupUI() {
@@ -31,17 +58,11 @@ class DonationDetailsViewController: UIViewController {
     }
     
     private func setupMealImage() {
-        // Find the meal image view by traversing the view hierarchy
-        // Look for the ScrollView -> ContentView -> MealCard -> ImageView
-        
         if let scrollView = view.subviews.first(where: { $0 is UIScrollView }) as? UIScrollView,
            let contentView = scrollView.subviews.first {
             
-            // Find the meal card (first white view with width 300)
             for subview in contentView.subviews {
                 if subview.frame.width == 300 && subview.frame.height == 220 {
-                    // This is the meal card
-                    // Find the image view inside
                     for cardSubview in subview.subviews {
                         if cardSubview is UIImageView {
                             let imageView = cardSubview as! UIImageView
@@ -50,7 +71,6 @@ class DonationDetailsViewController: UIViewController {
                             imageView.clipsToBounds = true
                             return
                         } else if cardSubview.frame.width == 280 && cardSubview.frame.height == 200 {
-                            // This might be a placeholder view, add image to it
                             let imageView = UIImageView(frame: cardSubview.bounds)
                             imageView.image = UIImage(named: "shawarma_image")
                             imageView.contentMode = .scaleAspectFill
@@ -67,6 +87,7 @@ class DonationDetailsViewController: UIViewController {
     }
     
     @IBAction func backTapped(_ sender: Any) {
+        onStatusChanged?(currentState)
         dismiss(animated: true, completion: nil)
     }
     
@@ -75,14 +96,17 @@ class DonationDetailsViewController: UIViewController {
         case .awaitingAcceptance:
             showSuccessPopup(title: "Successfully Accepted", body: "Please head to designated location and collect order")
             currentState = .orderBeingPrepared
+            saveState()
             
         case .orderBeingPrepared:
             showSuccessPopup(title: "Order Picked Up!", body: "Please head to designated location and deliver order")
             currentState = .orderBeingDelivered
+            saveState()
             
         case .orderBeingDelivered:
             showSuccessPopup(title: "Order Delivered!", body: "Thank you for delivering this order!")
             currentState = .orderCompleted
+            saveState()
             
         case .orderCompleted:
             break

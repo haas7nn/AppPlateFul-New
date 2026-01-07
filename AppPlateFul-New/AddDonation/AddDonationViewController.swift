@@ -412,6 +412,18 @@ class AddDonationViewController: UIViewController {
     
     // MARK: - Navigation
     private func navigateToReceipt(itemName: String, quantity: Int, merchantName: String, donatedTo: String, specialNotes: String) {
+        // 1) Save this donation locally
+        let donation = Donation(
+            itemName: itemName,
+            quantity: quantity,
+            donatedTo: donatedTo,
+            merchantName: merchantName,
+            specialNotes: specialNotes,
+            date: Date()
+        )
+        DonationStore.shared.add(donation)
+        
+        // 2) Navigate to the receipt screen (existing behavior)
         guard let receiptVC = storyboard?.instantiateViewController(withIdentifier: "DonationReceiptViewController") as? DonationReceiptViewController else {
             print("Error: Could not find DonationReceiptViewController in storyboard")
             return
