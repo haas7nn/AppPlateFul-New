@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NavID">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="NavScene">
+            <objects>
+                <navigationController id="NavID" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NavBar">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HomeVC" kind="relationship" relationship="rootViewController" id="RootSeg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NavFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-700" y="0.0"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="HomeScene">
+            <objects>
+                <viewController storyboardIdentifier="DonationHomeViewController" id="HomeVC" customClass="DonationHomeViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HomeView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍽️ Donation Center" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TitleLbl">
+                                <rect key="frame" x="24" y="212" width="304" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share food, spread love" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SubLbl">
+                                <rect key="frame" x="24" y="265" width="162" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AddBtn">
+                                <rect key="frame" x="24" y="323" width="345" height="56"/>
+                                <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="AddH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Add Donation">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="AddVC" kind="push" id="AddSeg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViewBtn">
+                                <rect key="frame" x="24" y="403" width="345" height="56"/>
+                                <color key="backgroundColor" red="0.92500000000000004" green="0.89800000000000002" blue="0.85899999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="ViewH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="View My Donations">
+                                    <color key="titleColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="viewDonationsTapped:" destination="HomeVC" eventType="touchUpInside" id="ViewAct"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SafeArea"/>
+                        <color key="backgroundColor" red="0.96899999999999997" green="0.95699999999999996" blue="0.93300000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TitleLbl" firstAttribute="leading" secondItem="SafeArea" secondAttribute="leading" constant="24" id="C1"/>
+                            <constraint firstItem="ViewBtn" firstAttribute="top" secondItem="AddBtn" secondAttribute="bottom" constant="24" id="C10"/>
+                            <constraint firstItem="TitleLbl" firstAttribute="top" secondItem="SafeArea" secondAttribute="top" constant="40" id="C2"/>
+                            <constraint firstItem="SubLbl" firstAttribute="leading" secondItem="TitleLbl" secondAttribute="leading" id="C3"/>
+                            <constraint firstItem="SubLbl" firstAttribute="top" secondItem="TitleLbl" secondAttribute="bottom" constant="12" id="C4"/>
+                            <constraint firstItem="AddBtn" firstAttribute="leading" secondItem="SafeArea" secondAttribute="leading" constant="24" id="C5"/>
+                            <constraint firstItem="SafeArea" firstAttribute="trailing" secondItem="AddBtn" secondAttribute="trailing" constant="24" id="C6"/>
+                            <constraint firstItem="AddBtn" firstAttribute="top" secondItem="SubLbl" secondAttribute="bottom" constant="40" id="C7"/>
+                            <constraint firstItem="ViewBtn" firstAttribute="leading" secondItem="AddBtn" secondAttribute="leading" id="C8"/>
+                            <constraint firstItem="ViewBtn" firstAttribute="trailing" secondItem="AddBtn" secondAttribute="trailing" id="C9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="HomeNavItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HomeFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="0.0"/>
+        </scene>
+        <!--Add Donation-->
+        <scene sceneID="AddScene">
+            <objects>
+                <viewController storyboardIdentifier="AddDonationViewController" id="AddVC" customClass="AddDonationViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AddView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CategorySegment">
+                                <rect key="frame" x="24" y="180" width="345" height="37"/>
+                                <color key="backgroundColor" red="0.92500000000000004" green="0.89800000000000002" blue="0.85899999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="SegH"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Food"/>
+                                    <segment title="Other Items"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="AddVC" eventType="valueChanged" id="SegAct"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoodContainer">
+                                <rect key="frame" x="0.0" y="232" width="393" height="552"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDonationNotesBtn">
+                                        <rect key="frame" x="24" y="8" width="165" height="36"/>
+                                        <color key="backgroundColor" red="0.91400000000000003" green="0.88600000000000001" blue="0.84699999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="FDNH"/>
+                                            <constraint firstAttribute="width" constant="165" id="FDNW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <state key="normal" title="Donation Notes">
+                                            <color key="titleColor" red="0.68999999999999995" green="0.65900000000000003" blue="0.61599999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHealthNotesBtn">
+                                        <rect key="frame" x="204" y="8" width="165" height="36"/>
+                                        <color key="backgroundColor" red="0.91400000000000003" green="0.88600000000000001" blue="0.84699999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="FHNH"/>
+                                            <constraint firstAttribute="width" constant="165" id="FHNW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <state key="normal" title="Health Notes">
+                                            <color key="titleColor" red="0.68999999999999995" green="0.65900000000000003" blue="0.61599999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoodCard">
+                                        <rect key="frame" x="24" y="60" width="345" height="170"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoodImg">
+                                                <rect key="frame" x="16" y="16" width="120" height="138"/>
+                                                <color key="backgroundColor" red="0.94499999999999995" green="0.92200000000000004" blue="0.878" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="FImgW"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Chicken Shawarma" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoodName">
+                                                <rect key="frame" x="152" y="30" width="152" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FoodStepper">
+                                                <rect key="frame" x="152" y="110" width="110" height="36"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoodMinus">
+                                                        <rect key="frame" x="4" y="4" width="28" height="28"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="28" id="FMinH"/>
+                                                            <constraint firstAttribute="width" constant="28" id="FMinW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <state key="normal" title="−">
+                                                            <color key="titleColor" red="0.33300000000000002" green="0.33300000000000002" blue="0.33300000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="14"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="minusTapped:" destination="AddVC" eventType="touchUpInside" id="FMinAct"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoodCount">
+                                                        <rect key="frame" x="49.666666666666657" y="8" width="10.666666666666664" height="20"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FoodPlus">
+                                                        <rect key="frame" x="78" y="4" width="28" height="28"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="28" id="FPlusH"/>
+                                                            <constraint firstAttribute="width" constant="28" id="FPlusW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <state key="normal" title="+">
+                                                            <color key="titleColor" red="0.33300000000000002" green="0.33300000000000002" blue="0.33300000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="14"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="plusTapped:" destination="AddVC" eventType="touchUpInside" id="FPlusAct"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.84999999999999998" green="0.88600000000000001" blue="0.75700000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="FS1"/>
+                                                    <constraint firstAttribute="width" constant="110" id="FS2"/>
+                                                    <constraint firstItem="FoodMinus" firstAttribute="leading" secondItem="FoodStepper" secondAttribute="leading" constant="4" id="FS3"/>
+                                                    <constraint firstItem="FoodMinus" firstAttribute="centerY" secondItem="FoodStepper" secondAttribute="centerY" id="FS4"/>
+                                                    <constraint firstItem="FoodCount" firstAttribute="centerX" secondItem="FoodStepper" secondAttribute="centerX" id="FS5"/>
+                                                    <constraint firstItem="FoodCount" firstAttribute="centerY" secondItem="FoodStepper" secondAttribute="centerY" id="FS6"/>
+                                                    <constraint firstAttribute="trailing" secondItem="FoodPlus" secondAttribute="trailing" constant="4" id="FS7"/>
+                                                    <constraint firstItem="FoodPlus" firstAttribute="centerY" secondItem="FoodStepper" secondAttribute="centerY" id="FS8"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="18"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="FoodImg" firstAttribute="leading" secondItem="FoodCard" secondAttribute="leading" constant="16" id="FC1"/>
+                                            <constraint firstItem="FoodImg" firstAttribute="top" secondItem="FoodCard" secondAttribute="top" constant="16" id="FC2"/>
+                                            <constraint firstAttribute="bottom" secondItem="FoodImg" secondAttribute="bottom" constant="16" id="FC3"/>
+                                            <constraint firstItem="FoodName" firstAttribute="leading" secondItem="FoodImg" secondAttribute="trailing" constant="16" id="FC4"/>
+                                            <constraint firstItem="FoodName" firstAttribute="top" secondItem="FoodCard" secondAttribute="top" constant="30" id="FC5"/>
+                                            <constraint firstItem="FoodStepper" firstAttribute="leading" secondItem="FoodImg" secondAttribute="trailing" constant="16" id="FC6"/>
+                                            <constraint firstItem="FoodStepper" firstAttribute="bottom" secondItem="FoodCard" secondAttribute="bottom" constant="-24" id="FC7"/>
+                                            <constraint firstAttribute="height" constant="170" id="FCH"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Production Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FProdT">
+                                        <rect key="frame" x="24.000000000000007" y="246" width="122.66666666666669" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" red="0.10000000000000001" green="0.10000000000000001" blue="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="21 Dec 2025" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FProdV">
+                                        <rect key="frame" x="219" y="245.66666666666669" width="150" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="FProdVW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Expiry Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FExpT">
+                                        <rect key="frame" x="24" y="274" width="87" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" red="0.10000000000000001" green="0.10000000000000001" blue="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="27 Mar 2026" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FExpV">
+                                        <rect key="frame" x="219" y="273.66666666666669" width="150" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="FExpVW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Your donation will be reviewed and shared with nearby NGOs" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FReview">
+                                        <rect key="frame" x="24" y="306" width="345" height="31.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.45000000000000001" green="0.45000000000000001" blue="0.45000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Status: Pending Approval" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FStatus">
+                                        <rect key="frame" x="24" y="345.33333333333337" width="152.66666666666666" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.45000000000000001" green="0.45000000000000001" blue="0.45000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Expected Pickup: To be scheduled" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPickup">
+                                        <rect key="frame" x="24.000000000000014" y="365.33333333333337" width="208.33333333333337" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.45000000000000001" green="0.45000000000000001" blue="0.45000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBottomPanel">
+                                        <rect key="frame" x="0.0" y="397.33333333333337" width="393" height="154.66666666666663"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Every meal counts." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMotive1">
+                                                <rect key="frame" x="24" y="24" width="345" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Let's make a difference together 👌!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMotive2">
+                                                <rect key="frame" x="24" y="46" width="345" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.34999999999999998" green="0.34999999999999998" blue="0.34999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FSubmit">
+                                                <rect key="frame" x="24" y="79" width="345" height="54"/>
+                                                <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="FSubH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <state key="normal" title="Submit Donation">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="27"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="submitTapped:" destination="AddVC" eventType="touchUpInside" id="FSubAct"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Your donation will be saved as pending." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FPendingNote">
+                                                <rect key="frame" x="24" y="145" width="345" height="14.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="FMotive1" firstAttribute="top" secondItem="FBottomPanel" secondAttribute="top" constant="24" id="FBP1"/>
+                                            <constraint firstItem="FPendingNote" firstAttribute="top" secondItem="FSubmit" secondAttribute="bottom" constant="12" id="FBP10"/>
+                                            <constraint firstItem="FPendingNote" firstAttribute="leading" secondItem="FBottomPanel" secondAttribute="leading" constant="24" id="FBP11"/>
+                                            <constraint firstAttribute="trailing" secondItem="FPendingNote" secondAttribute="trailing" constant="24" id="FBP12"/>
+                                            <constraint firstItem="FMotive1" firstAttribute="leading" secondItem="FBottomPanel" secondAttribute="leading" constant="24" id="FBP2"/>
+                                            <constraint firstAttribute="trailing" secondItem="FMotive1" secondAttribute="trailing" constant="24" id="FBP3"/>
+                                            <constraint firstItem="FMotive2" firstAttribute="top" secondItem="FMotive1" secondAttribute="bottom" constant="4" id="FBP4"/>
+                                            <constraint firstItem="FMotive2" firstAttribute="leading" secondItem="FBottomPanel" secondAttribute="leading" constant="24" id="FBP5"/>
+                                            <constraint firstAttribute="trailing" secondItem="FMotive2" secondAttribute="trailing" constant="24" id="FBP6"/>
+                                            <constraint firstItem="FSubmit" firstAttribute="top" secondItem="FMotive2" secondAttribute="bottom" constant="16" id="FBP7"/>
+                                            <constraint firstItem="FSubmit" firstAttribute="leading" secondItem="FBottomPanel" secondAttribute="leading" constant="24" id="FBP8"/>
+                                            <constraint firstAttribute="trailing" secondItem="FSubmit" secondAttribute="trailing" constant="24" id="FBP9"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="28"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="FBottomPanel" firstAttribute="top" secondItem="FPickup" secondAttribute="bottom" constant="16" id="FB1"/>
+                                    <constraint firstItem="FBottomPanel" firstAttribute="leading" secondItem="FoodContainer" secondAttribute="leading" id="FB2"/>
+                                    <constraint firstAttribute="trailing" secondItem="FBottomPanel" secondAttribute="trailing" id="FB3"/>
+                                    <constraint firstAttribute="bottom" secondItem="FBottomPanel" secondAttribute="bottom" id="FB4"/>
+                                    <constraint firstItem="FoodCard" firstAttribute="top" secondItem="FDonationNotesBtn" secondAttribute="bottom" constant="16" id="FC1a"/>
+                                    <constraint firstItem="FoodCard" firstAttribute="leading" secondItem="FoodContainer" secondAttribute="leading" constant="24" id="FC2a"/>
+                                    <constraint firstAttribute="trailing" secondItem="FoodCard" secondAttribute="trailing" constant="24" id="FC3a"/>
+                                    <constraint firstItem="FProdT" firstAttribute="top" secondItem="FoodCard" secondAttribute="bottom" constant="16" id="FD1"/>
+                                    <constraint firstItem="FProdT" firstAttribute="leading" secondItem="FoodContainer" secondAttribute="leading" constant="24" id="FD2"/>
+                                    <constraint firstAttribute="trailing" secondItem="FProdV" secondAttribute="trailing" constant="24" id="FD3"/>
+                                    <constraint firstItem="FProdV" firstAttribute="centerY" secondItem="FProdT" secondAttribute="centerY" id="FD4"/>
+                                    <constraint firstItem="FExpT" firstAttribute="top" secondItem="FProdT" secondAttribute="bottom" constant="8" id="FD5"/>
+                                    <constraint firstItem="FExpT" firstAttribute="leading" secondItem="FoodContainer" secondAttribute="leading" constant="24" id="FD6"/>
+                                    <constraint firstAttribute="trailing" secondItem="FExpV" secondAttribute="trailing" constant="24" id="FD7"/>
+                                    <constraint firstItem="FExpV" firstAttribute="centerY" secondItem="FExpT" secondAttribute="centerY" id="FD8"/>
+                                    <constraint firstItem="FDonationNotesBtn" firstAttribute="top" secondItem="FoodContainer" secondAttribute="top" constant="8" id="FN1"/>
+                                    <constraint firstItem="FDonationNotesBtn" firstAttribute="leading" secondItem="FoodContainer" secondAttribute="leading" constant="24" id="FN2"/>
+                                    <constraint firstItem="FHealthNotesBtn" firstAttribute="top" secondItem="FoodContainer" secondAttribute="top" constant="8" id="FN3"/>
+                                    <constraint firstAttribute="trailing" secondItem="FHealthNotesBtn" secondAttribute="trailing" constant="24" id="FN4"/>
+                                    <constraint firstItem="FPickup" firstAttribute="top" secondItem="FStatus" secondAttribute="bottom" constant="4" id="FP1"/>
+                                    <constraint firstItem="FPickup" firstAttribute="leading" secondItem="FoodContainer" secondAttribute="leading" constant="24" id="FP2"/>
+                                    <constraint firstItem="FReview" firstAttribute="top" secondItem="FExpT" secondAttribute="bottom" constant="12" id="FR1"/>
+                                    <constraint firstItem="FReview" firstAttribute="leading" secondItem="FoodContainer" secondAttribute="leading" constant="24" id="FR2"/>
+                                    <constraint firstAttribute="trailing" secondItem="FReview" secondAttribute="trailing" constant="24" id="FR4"/>
+                                    <constraint firstItem="FStatus" firstAttribute="top" secondItem="FReview" secondAttribute="bottom" constant="8" id="FS1a"/>
+                                    <constraint firstItem="FStatus" firstAttribute="leading" secondItem="FoodContainer" secondAttribute="leading" constant="24" id="FS2a"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtherContainer">
+                                <rect key="frame" x="0.0" y="232" width="393" height="552"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODonationNotesBtn">
+                                        <rect key="frame" x="24" y="8" width="165" height="36"/>
+                                        <color key="backgroundColor" red="0.91400000000000003" green="0.88600000000000001" blue="0.84699999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="ODNH"/>
+                                            <constraint firstAttribute="width" constant="165" id="ODNW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <state key="normal" title="Donation Notes">
+                                            <color key="titleColor" red="0.68999999999999995" green="0.65900000000000003" blue="0.61599999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHealthNotesBtn">
+                                        <rect key="frame" x="204" y="8" width="165" height="36"/>
+                                        <color key="backgroundColor" red="0.91400000000000003" green="0.88600000000000001" blue="0.84699999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="OHNH"/>
+                                            <constraint firstAttribute="width" constant="165" id="OHNW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <state key="normal" title="Health Notes">
+                                            <color key="titleColor" red="0.68999999999999995" green="0.65900000000000003" blue="0.61599999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtherCard">
+                                        <rect key="frame" x="24" y="60" width="345" height="170"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtherImg">
+                                                <rect key="frame" x="16" y="16" width="120" height="138"/>
+                                                <color key="backgroundColor" red="0.94499999999999995" green="0.92200000000000004" blue="0.878" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="OImgW"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Canned Beans" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtherName">
+                                                <rect key="frame" x="152" y="30" width="114.66666666666669" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtherStepper">
+                                                <rect key="frame" x="152" y="110" width="110" height="36"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OtherMinus">
+                                                        <rect key="frame" x="4" y="4" width="28" height="28"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="28" id="OMinH"/>
+                                                            <constraint firstAttribute="width" constant="28" id="OMinW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <state key="normal" title="−">
+                                                            <color key="titleColor" red="0.33300000000000002" green="0.33300000000000002" blue="0.33300000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="14"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="otherMinusTapped:" destination="AddVC" eventType="touchUpInside" id="OMinAct"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtherCount">
+                                                        <rect key="frame" x="49.666666666666657" y="8" width="10.666666666666664" height="20"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OtherPlus">
+                                                        <rect key="frame" x="78" y="4" width="28" height="28"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="28" id="OPlusH"/>
+                                                            <constraint firstAttribute="width" constant="28" id="OPlusW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <state key="normal" title="+">
+                                                            <color key="titleColor" red="0.33300000000000002" green="0.33300000000000002" blue="0.33300000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="14"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="otherPlusTapped:" destination="AddVC" eventType="touchUpInside" id="OPlusAct"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.84999999999999998" green="0.88600000000000001" blue="0.75700000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="OS1"/>
+                                                    <constraint firstAttribute="width" constant="110" id="OS2"/>
+                                                    <constraint firstItem="OtherMinus" firstAttribute="leading" secondItem="OtherStepper" secondAttribute="leading" constant="4" id="OS3"/>
+                                                    <constraint firstItem="OtherMinus" firstAttribute="centerY" secondItem="OtherStepper" secondAttribute="centerY" id="OS4"/>
+                                                    <constraint firstItem="OtherCount" firstAttribute="centerX" secondItem="OtherStepper" secondAttribute="centerX" id="OS5"/>
+                                                    <constraint firstItem="OtherCount" firstAttribute="centerY" secondItem="OtherStepper" secondAttribute="centerY" id="OS6"/>
+                                                    <constraint firstAttribute="trailing" secondItem="OtherPlus" secondAttribute="trailing" constant="4" id="OS7"/>
+                                                    <constraint firstItem="OtherPlus" firstAttribute="centerY" secondItem="OtherStepper" secondAttribute="centerY" id="OS8"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="18"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="OtherImg" firstAttribute="leading" secondItem="OtherCard" secondAttribute="leading" constant="16" id="OC1"/>
+                                            <constraint firstItem="OtherImg" firstAttribute="top" secondItem="OtherCard" secondAttribute="top" constant="16" id="OC2"/>
+                                            <constraint firstAttribute="bottom" secondItem="OtherImg" secondAttribute="bottom" constant="16" id="OC3"/>
+                                            <constraint firstItem="OtherName" firstAttribute="leading" secondItem="OtherImg" secondAttribute="trailing" constant="16" id="OC4"/>
+                                            <constraint firstItem="OtherName" firstAttribute="top" secondItem="OtherCard" secondAttribute="top" constant="30" id="OC5"/>
+                                            <constraint firstItem="OtherStepper" firstAttribute="leading" secondItem="OtherImg" secondAttribute="trailing" constant="16" id="OC6"/>
+                                            <constraint firstItem="OtherStepper" firstAttribute="bottom" secondItem="OtherCard" secondAttribute="bottom" constant="-24" id="OC7"/>
+                                            <constraint firstAttribute="height" constant="170" id="OCH"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Production Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OProdT">
+                                        <rect key="frame" x="24.000000000000007" y="246" width="122.66666666666669" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" red="0.10000000000000001" green="0.10000000000000001" blue="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="21 Dec 2025" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OProdV">
+                                        <rect key="frame" x="219" y="245.66666666666669" width="150" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="OProdVW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Expiry Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OExpT">
+                                        <rect key="frame" x="24" y="274" width="87" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" red="0.10000000000000001" green="0.10000000000000001" blue="0.10000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="27 Oct 2027" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OExpV">
+                                        <rect key="frame" x="219" y="273.66666666666669" width="150" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="OExpVW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OChk">
+                                        <rect key="frame" x="24" y="306.66666666666669" width="20" height="18.666666666666686"/>
+                                        <color key="tintColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="OChkH"/>
+                                            <constraint firstAttribute="width" constant="20" id="OChkW"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Your donation will be reviewed and shared with nearby NGOs" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OReview">
+                                        <rect key="frame" x="52" y="300.33333333333337" width="317" height="31.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.45000000000000001" green="0.45000000000000001" blue="0.45000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Status: Pending Approval" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OStatus">
+                                        <rect key="frame" x="24" y="339.66666666666663" width="152.66666666666666" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.45000000000000001" green="0.45000000000000001" blue="0.45000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Expected Pickup: To be scheduled" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPickup">
+                                        <rect key="frame" x="24.000000000000014" y="359.66666666666663" width="208.33333333333337" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.45000000000000001" green="0.45000000000000001" blue="0.45000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OBottomPanel">
+                                        <rect key="frame" x="0.0" y="391.66666666666663" width="393" height="160.33333333333337"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Every meal counts." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMotive1">
+                                                <rect key="frame" x="24" y="24" width="345" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Let's make a difference together 👌!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMotive2">
+                                                <rect key="frame" x="24" y="46" width="345" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.34999999999999998" green="0.34999999999999998" blue="0.34999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSubmit">
+                                                <rect key="frame" x="24" y="79" width="345" height="54"/>
+                                                <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="OSubH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <state key="normal" title="Submit Donation">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="27"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="otherSubmitTapped:" destination="AddVC" eventType="touchUpInside" id="OSubAct"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Your donation will be saved as pending." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPendingNote">
+                                                <rect key="frame" x="24" y="145" width="345" height="14.333333333333343"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="OMotive1" firstAttribute="top" secondItem="OBottomPanel" secondAttribute="top" constant="24" id="OBP1"/>
+                                            <constraint firstItem="OPendingNote" firstAttribute="top" secondItem="OSubmit" secondAttribute="bottom" constant="12" id="OBP10"/>
+                                            <constraint firstItem="OPendingNote" firstAttribute="leading" secondItem="OBottomPanel" secondAttribute="leading" constant="24" id="OBP11"/>
+                                            <constraint firstAttribute="trailing" secondItem="OPendingNote" secondAttribute="trailing" constant="24" id="OBP12"/>
+                                            <constraint firstItem="OMotive1" firstAttribute="leading" secondItem="OBottomPanel" secondAttribute="leading" constant="24" id="OBP2"/>
+                                            <constraint firstAttribute="trailing" secondItem="OMotive1" secondAttribute="trailing" constant="24" id="OBP3"/>
+                                            <constraint firstItem="OMotive2" firstAttribute="top" secondItem="OMotive1" secondAttribute="bottom" constant="4" id="OBP4"/>
+                                            <constraint firstItem="OMotive2" firstAttribute="leading" secondItem="OBottomPanel" secondAttribute="leading" constant="24" id="OBP5"/>
+                                            <constraint firstAttribute="trailing" secondItem="OMotive2" secondAttribute="trailing" constant="24" id="OBP6"/>
+                                            <constraint firstItem="OSubmit" firstAttribute="top" secondItem="OMotive2" secondAttribute="bottom" constant="16" id="OBP7"/>
+                                            <constraint firstItem="OSubmit" firstAttribute="leading" secondItem="OBottomPanel" secondAttribute="leading" constant="24" id="OBP8"/>
+                                            <constraint firstAttribute="trailing" secondItem="OSubmit" secondAttribute="trailing" constant="24" id="OBP9"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="28"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="OBottomPanel" firstAttribute="top" secondItem="OPickup" secondAttribute="bottom" constant="16" id="OB1"/>
+                                    <constraint firstItem="OBottomPanel" firstAttribute="leading" secondItem="OtherContainer" secondAttribute="leading" id="OB2"/>
+                                    <constraint firstAttribute="trailing" secondItem="OBottomPanel" secondAttribute="trailing" id="OB3"/>
+                                    <constraint firstAttribute="bottom" secondItem="OBottomPanel" secondAttribute="bottom" id="OB4"/>
+                                    <constraint firstItem="OtherCard" firstAttribute="top" secondItem="ODonationNotesBtn" secondAttribute="bottom" constant="16" id="OC1a"/>
+                                    <constraint firstItem="OtherCard" firstAttribute="leading" secondItem="OtherContainer" secondAttribute="leading" constant="24" id="OC2a"/>
+                                    <constraint firstAttribute="trailing" secondItem="OtherCard" secondAttribute="trailing" constant="24" id="OC3a"/>
+                                    <constraint firstItem="OProdT" firstAttribute="top" secondItem="OtherCard" secondAttribute="bottom" constant="16" id="OD1"/>
+                                    <constraint firstItem="OProdT" firstAttribute="leading" secondItem="OtherContainer" secondAttribute="leading" constant="24" id="OD2"/>
+                                    <constraint firstAttribute="trailing" secondItem="OProdV" secondAttribute="trailing" constant="24" id="OD3"/>
+                                    <constraint firstItem="OProdV" firstAttribute="centerY" secondItem="OProdT" secondAttribute="centerY" id="OD4"/>
+                                    <constraint firstItem="OExpT" firstAttribute="top" secondItem="OProdT" secondAttribute="bottom" constant="8" id="OD5"/>
+                                    <constraint firstItem="OExpT" firstAttribute="leading" secondItem="OtherContainer" secondAttribute="leading" constant="24" id="OD6"/>
+                                    <constraint firstAttribute="trailing" secondItem="OExpV" secondAttribute="trailing" constant="24" id="OD7"/>
+                                    <constraint firstItem="OExpV" firstAttribute="centerY" secondItem="OExpT" secondAttribute="centerY" id="OD8"/>
+                                    <constraint firstItem="ODonationNotesBtn" firstAttribute="top" secondItem="OtherContainer" secondAttribute="top" constant="8" id="ON1"/>
+                                    <constraint firstItem="ODonationNotesBtn" firstAttribute="leading" secondItem="OtherContainer" secondAttribute="leading" constant="24" id="ON2"/>
+                                    <constraint firstItem="OHealthNotesBtn" firstAttribute="top" secondItem="OtherContainer" secondAttribute="top" constant="8" id="ON3"/>
+                                    <constraint firstAttribute="trailing" secondItem="OHealthNotesBtn" secondAttribute="trailing" constant="24" id="ON4"/>
+                                    <constraint firstItem="OPickup" firstAttribute="top" secondItem="OStatus" secondAttribute="bottom" constant="4" id="OP1"/>
+                                    <constraint firstItem="OPickup" firstAttribute="leading" secondItem="OtherContainer" secondAttribute="leading" constant="24" id="OP2"/>
+                                    <constraint firstItem="OChk" firstAttribute="top" secondItem="OExpT" secondAttribute="bottom" constant="12" id="OR1"/>
+                                    <constraint firstItem="OChk" firstAttribute="leading" secondItem="OtherContainer" secondAttribute="leading" constant="24" id="OR2"/>
+                                    <constraint firstItem="OReview" firstAttribute="leading" secondItem="OChk" secondAttribute="trailing" constant="8" id="OR3"/>
+                                    <constraint firstAttribute="trailing" secondItem="OReview" secondAttribute="trailing" constant="24" id="OR4"/>
+                                    <constraint firstItem="OReview" firstAttribute="centerY" secondItem="OChk" secondAttribute="centerY" id="OR5"/>
+                                    <constraint firstItem="OStatus" firstAttribute="top" secondItem="OReview" secondAttribute="bottom" constant="8" id="OS1a"/>
+                                    <constraint firstItem="OStatus" firstAttribute="leading" secondItem="OtherContainer" secondAttribute="leading" constant="24" id="OS2a"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="AddSafe"/>
+                        <color key="backgroundColor" red="0.96899999999999997" green="0.95699999999999996" blue="0.93300000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FoodContainer" firstAttribute="top" secondItem="CategorySegment" secondAttribute="bottom" constant="16" id="M1"/>
+                            <constraint firstItem="FoodContainer" firstAttribute="leading" secondItem="AddView" secondAttribute="leading" id="M2"/>
+                            <constraint firstItem="FoodContainer" firstAttribute="trailing" secondItem="AddView" secondAttribute="trailing" id="M3"/>
+                            <constraint firstItem="FoodContainer" firstAttribute="bottom" secondItem="AddSafe" secondAttribute="bottom" id="M4"/>
+                            <constraint firstItem="OtherContainer" firstAttribute="top" secondItem="CategorySegment" secondAttribute="bottom" constant="16" id="M5"/>
+                            <constraint firstItem="OtherContainer" firstAttribute="leading" secondItem="AddView" secondAttribute="leading" id="M6"/>
+                            <constraint firstItem="OtherContainer" firstAttribute="trailing" secondItem="AddView" secondAttribute="trailing" id="M7"/>
+                            <constraint firstItem="OtherContainer" firstAttribute="bottom" secondItem="AddSafe" secondAttribute="bottom" id="M8"/>
+                            <constraint firstItem="CategorySegment" firstAttribute="top" secondItem="AddSafe" secondAttribute="top" constant="8" id="Seg1"/>
+                            <constraint firstItem="CategorySegment" firstAttribute="leading" secondItem="AddSafe" secondAttribute="leading" constant="24" id="Seg2"/>
+                            <constraint firstItem="AddSafe" firstAttribute="trailing" secondItem="CategorySegment" secondAttribute="trailing" constant="24" id="Seg3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Donation" largeTitleDisplayMode="always" id="AddNavItem">
+                        <barButtonItem key="backBarButtonItem" title="Home" id="BackBarBtn"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="categorySegment" destination="CategorySegment" id="SegOut"/>
+                        <outlet property="foodContainer" destination="FoodContainer" id="FCOut"/>
+                        <outlet property="foodCountLabel" destination="FoodCount" id="FCntOut"/>
+                        <outlet property="foodDonationNotesBtn" destination="FDonationNotesBtn" id="FDNOut"/>
+                        <outlet property="foodExpiryDateField" destination="FExpV" id="FExpOut"/>
+                        <outlet property="foodHealthNotesBtn" destination="FHealthNotesBtn" id="FHNOut"/>
+                        <outlet property="foodProductionDateField" destination="FProdV" id="FProdOut"/>
+                        <outlet property="otherContainer" destination="OtherContainer" id="OCOut"/>
+                        <outlet property="otherCountLabel" destination="OtherCount" id="OCntOut"/>
+                        <outlet property="otherDonationNotesBtn" destination="ODonationNotesBtn" id="ODNOut"/>
+                        <outlet property="otherExpiryDateField" destination="OExpV" id="OExpOut"/>
+                        <outlet property="otherHealthNotesBtn" destination="OHealthNotesBtn" id="OHNOut"/>
+                        <outlet property="otherProductionDateField" destination="OProdV" id="OProdOut"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AddFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="0.0"/>
+        </scene>
+        <!--Donation Receipt View Controller-->
+        <scene sceneID="ReceiptScene">
+            <objects>
+                <viewController storyboardIdentifier="DonationReceiptViewController" id="ReceiptVC" customClass="DonationReceiptViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ReceiptView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBackBtn">
+                                <rect key="frame" x="8" y="126" width="58" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <state key="normal" title="‹ Home">
+                                    <color key="titleColor" red="0.0" green="0.47799999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="backTapped:" destination="ReceiptVC" eventType="touchUpInside" id="RBackAct"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RShareBtn">
+                                <rect key="frame" x="349" y="126.66666666666669" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="RShrH"/>
+                                    <constraint firstAttribute="width" constant="32" id="RShrW"/>
+                                </constraints>
+                                <state key="normal" image="square.and.arrow.up"/>
+                                <connections>
+                                    <action selector="shareTapped:" destination="ReceiptVC" eventType="touchUpInside" id="RShareAct"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="RDotsStack">
+                                <rect key="frame" x="178.66666666666666" y="138.66666666666666" width="36" height="8"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDot1">
+                                        <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" red="0.75" green="0.81999999999999995" blue="0.68000000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="RD1H"/>
+                                            <constraint firstAttribute="width" constant="8" id="RD1W"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDot2">
+                                        <rect key="frame" x="14" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" red="0.75" green="0.81999999999999995" blue="0.68000000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="RD2H"/>
+                                            <constraint firstAttribute="width" constant="8" id="RD2W"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDot3">
+                                        <rect key="frame" x="28" y="0.0" width="8" height="8"/>
+                                        <color key="backgroundColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="RD3H"/>
+                                            <constraint firstAttribute="width" constant="8" id="RD3W"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Donation Receipt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTitleLbl">
+                                <rect key="frame" x="24.000000000000014" y="175" width="225.33333333333337" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RDivider">
+                                <rect key="frame" x="0.0" y="220.66666666666666" width="393" height="1"/>
+                                <color key="backgroundColor" red="0.89000000000000001" green="0.88200000000000001" blue="0.85899999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="RDivH"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Donation Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCompleteLbl">
+                                <rect key="frame" x="24" y="237.66666666666666" width="345" height="21.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCard">
+                                <rect key="frame" x="24" y="275.33333333333331" width="345" height="451.99999999999994"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="building.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RStoreIcon">
+                                        <rect key="frame" x="148.66666666666666" y="22.333333333333336" width="48" height="51.666666666666664"/>
+                                        <color key="tintColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="RSIconH"/>
+                                            <constraint firstAttribute="width" constant="48" id="RSIconW"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Alfreej Shawarma's" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMerchantLbl">
+                                        <rect key="frame" x="20" y="84" width="305" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Donation completed successfully" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSuccessLbl">
+                                        <rect key="frame" x="20" y="112" width="305" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" red="0.46700000000000003" green="0.46700000000000003" blue="0.46700000000000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRow1Div">
+                                        <rect key="frame" x="20" y="150" width="305" height="1"/>
+                                        <color key="backgroundColor" red="0.90000000000000002" green="0.90000000000000002" blue="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="RR1H"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Item Donated" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RItemTitle">
+                                        <rect key="frame" x="20" y="167" width="102" height="19.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Chicken Shawarma (x7)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RItemValue">
+                                        <rect key="frame" x="154.33333333333337" y="167" width="170.66666666666663" height="19.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.41599999999999998" green="0.41599999999999998" blue="0.41599999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRow2Div">
+                                        <rect key="frame" x="20" y="202.33333333333337" width="305" height="1"/>
+                                        <color key="backgroundColor" red="0.90000000000000002" green="0.90000000000000002" blue="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="RR2H"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Donated To" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDonatedTitle">
+                                        <rect key="frame" x="20" y="219.33333333333337" width="86.333333333333329" height="19.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Helping Hands" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDonatedValue">
+                                        <rect key="frame" x="218.33333333333334" y="219.33333333333337" width="106.66666666666666" height="19.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.41599999999999998" green="0.41599999999999998" blue="0.41599999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRow3Div">
+                                        <rect key="frame" x="20" y="254.66666666666669" width="305" height="1"/>
+                                        <color key="backgroundColor" red="0.90000000000000002" green="0.90000000000000002" blue="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="RR3H"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDateTitle">
+                                        <rect key="frame" x="19.999999999999996" y="271.66666666666669" width="35.666666666666657" height="19.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Nov 9, 2025 – 7:42 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDateValue">
+                                        <rect key="frame" x="158.33333333333337" y="271.66666666666669" width="166.66666666666663" height="19.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.41599999999999998" green="0.41599999999999998" blue="0.41599999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRow4Div">
+                                        <rect key="frame" x="20" y="307.00000000000006" width="305" height="1"/>
+                                        <color key="backgroundColor" red="0.90000000000000002" green="0.90000000000000002" blue="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="RR4H"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RStatusTitle">
+                                        <rect key="frame" x="20.000000000000004" y="324.00000000000006" width="49.333333333333343" height="19.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Completed" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RStatusValue">
+                                        <rect key="frame" x="245.33333333333329" y="324.00000000000006" width="79.666666666666657" height="19.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.41599999999999998" green="0.41599999999999998" blue="0.41599999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSpecialNotes">
+                                        <rect key="frame" x="20" y="359.33333333333331" width="305" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.45000000000000001" green="0.45000000000000001" blue="0.45000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Scan for verification" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RScanHint">
+                                        <rect key="frame" x="211.66666666666666" y="421.66666666666669" width="113.33333333333334" height="14.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="RStoreIcon" firstAttribute="top" secondItem="RCard" secondAttribute="top" constant="24" id="RC1"/>
+                                    <constraint firstItem="RRow1Div" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC10"/>
+                                    <constraint firstAttribute="trailing" secondItem="RRow1Div" secondAttribute="trailing" constant="20" id="RC11"/>
+                                    <constraint firstItem="RItemTitle" firstAttribute="top" secondItem="RRow1Div" secondAttribute="bottom" constant="16" id="RC12"/>
+                                    <constraint firstItem="RItemTitle" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC13"/>
+                                    <constraint firstAttribute="trailing" secondItem="RItemValue" secondAttribute="trailing" constant="20" id="RC14"/>
+                                    <constraint firstItem="RItemValue" firstAttribute="centerY" secondItem="RItemTitle" secondAttribute="centerY" id="RC15"/>
+                                    <constraint firstItem="RRow2Div" firstAttribute="top" secondItem="RItemTitle" secondAttribute="bottom" constant="16" id="RC16"/>
+                                    <constraint firstItem="RRow2Div" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC17"/>
+                                    <constraint firstAttribute="trailing" secondItem="RRow2Div" secondAttribute="trailing" constant="20" id="RC18"/>
+                                    <constraint firstItem="RDonatedTitle" firstAttribute="top" secondItem="RRow2Div" secondAttribute="bottom" constant="16" id="RC19"/>
+                                    <constraint firstItem="RStoreIcon" firstAttribute="centerX" secondItem="RCard" secondAttribute="centerX" id="RC2"/>
+                                    <constraint firstItem="RDonatedTitle" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC20"/>
+                                    <constraint firstAttribute="trailing" secondItem="RDonatedValue" secondAttribute="trailing" constant="20" id="RC21"/>
+                                    <constraint firstItem="RDonatedValue" firstAttribute="centerY" secondItem="RDonatedTitle" secondAttribute="centerY" id="RC22"/>
+                                    <constraint firstItem="RRow3Div" firstAttribute="top" secondItem="RDonatedTitle" secondAttribute="bottom" constant="16" id="RC23"/>
+                                    <constraint firstItem="RRow3Div" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC24"/>
+                                    <constraint firstAttribute="trailing" secondItem="RRow3Div" secondAttribute="trailing" constant="20" id="RC25"/>
+                                    <constraint firstItem="RDateTitle" firstAttribute="top" secondItem="RRow3Div" secondAttribute="bottom" constant="16" id="RC26"/>
+                                    <constraint firstItem="RDateTitle" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC27"/>
+                                    <constraint firstAttribute="trailing" secondItem="RDateValue" secondAttribute="trailing" constant="20" id="RC28"/>
+                                    <constraint firstItem="RDateValue" firstAttribute="centerY" secondItem="RDateTitle" secondAttribute="centerY" id="RC29"/>
+                                    <constraint firstItem="RMerchantLbl" firstAttribute="top" secondItem="RStoreIcon" secondAttribute="bottom" constant="12" id="RC3"/>
+                                    <constraint firstItem="RRow4Div" firstAttribute="top" secondItem="RDateTitle" secondAttribute="bottom" constant="16" id="RC30"/>
+                                    <constraint firstItem="RRow4Div" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC31"/>
+                                    <constraint firstAttribute="trailing" secondItem="RRow4Div" secondAttribute="trailing" constant="20" id="RC32"/>
+                                    <constraint firstItem="RStatusTitle" firstAttribute="top" secondItem="RRow4Div" secondAttribute="bottom" constant="16" id="RC33"/>
+                                    <constraint firstItem="RStatusTitle" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC34"/>
+                                    <constraint firstAttribute="trailing" secondItem="RStatusValue" secondAttribute="trailing" constant="20" id="RC35"/>
+                                    <constraint firstItem="RStatusValue" firstAttribute="centerY" secondItem="RStatusTitle" secondAttribute="centerY" id="RC36"/>
+                                    <constraint firstAttribute="trailing" secondItem="RScanHint" secondAttribute="trailing" constant="20" id="RC37"/>
+                                    <constraint firstAttribute="bottom" secondItem="RScanHint" secondAttribute="bottom" constant="16" id="RC38"/>
+                                    <constraint firstItem="RMerchantLbl" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC4"/>
+                                    <constraint firstAttribute="trailing" secondItem="RMerchantLbl" secondAttribute="trailing" constant="20" id="RC5"/>
+                                    <constraint firstItem="RSuccessLbl" firstAttribute="top" secondItem="RMerchantLbl" secondAttribute="bottom" constant="4" id="RC6"/>
+                                    <constraint firstItem="RSuccessLbl" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC7"/>
+                                    <constraint firstAttribute="trailing" secondItem="RSuccessLbl" secondAttribute="trailing" constant="20" id="RC8"/>
+                                    <constraint firstItem="RRow1Div" firstAttribute="top" secondItem="RSuccessLbl" secondAttribute="bottom" constant="20" id="RC9"/>
+                                    <constraint firstItem="RSpecialNotes" firstAttribute="top" secondItem="RStatusValue" secondAttribute="bottom" constant="16" id="RSN1"/>
+                                    <constraint firstItem="RSpecialNotes" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RSN2"/>
+                                    <constraint firstAttribute="trailing" secondItem="RSpecialNotes" secondAttribute="trailing" constant="20" id="RSN3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RScanBtn">
+                                <rect key="frame" x="297" y="703.33333333333337" width="48" height="48"/>
+                                <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="RScanH"/>
+                                    <constraint firstAttribute="width" constant="48" id="RScanW"/>
+                                </constraints>
+                                <state key="normal" image="qrcode.viewfinder"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="scanTapped:" destination="ReceiptVC" eventType="touchUpInside" id="RScanAct"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RSafeArea"/>
+                        <color key="backgroundColor" red="0.96899999999999997" green="0.95699999999999996" blue="0.93300000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="RBackBtn" firstAttribute="top" secondItem="RSafeArea" secondAttribute="top" constant="8" id="RV1"/>
+                            <constraint firstItem="RDivider" firstAttribute="leading" secondItem="ReceiptView" secondAttribute="leading" id="RV10"/>
+                            <constraint firstItem="RDivider" firstAttribute="trailing" secondItem="ReceiptView" secondAttribute="trailing" id="RV11"/>
+                            <constraint firstItem="RCompleteLbl" firstAttribute="top" secondItem="RDivider" secondAttribute="bottom" constant="16" id="RV12"/>
+                            <constraint firstItem="RCompleteLbl" firstAttribute="leading" secondItem="ReceiptView" secondAttribute="leading" constant="24" id="RV13"/>
+                            <constraint firstAttribute="trailing" secondItem="RCompleteLbl" secondAttribute="trailing" constant="24" id="RV14"/>
+                            <constraint firstItem="RCard" firstAttribute="top" secondItem="RCompleteLbl" secondAttribute="bottom" constant="16" id="RV15"/>
+                            <constraint firstItem="RCard" firstAttribute="leading" secondItem="ReceiptView" secondAttribute="leading" constant="24" id="RV16"/>
+                            <constraint firstAttribute="trailing" secondItem="RCard" secondAttribute="trailing" constant="24" id="RV17"/>
+                            <constraint firstAttribute="height" secondItem="RCard" secondAttribute="height" constant="400" id="RV18"/>
+                            <constraint firstItem="RScanBtn" firstAttribute="top" secondItem="RCard" secondAttribute="bottom" constant="-24" id="RV19"/>
+                            <constraint firstItem="RBackBtn" firstAttribute="leading" secondItem="ReceiptView" secondAttribute="leading" constant="8" id="RV2"/>
+                            <constraint firstAttribute="trailing" secondItem="RScanBtn" secondAttribute="trailing" constant="48" id="RV20"/>
+                            <constraint firstItem="RShareBtn" firstAttribute="centerY" secondItem="RBackBtn" secondAttribute="centerY" id="RV3"/>
+                            <constraint firstAttribute="trailing" secondItem="RShareBtn" secondAttribute="trailing" constant="12" id="RV4"/>
+                            <constraint firstItem="RDotsStack" firstAttribute="centerX" secondItem="ReceiptView" secondAttribute="centerX" id="RV5"/>
+                            <constraint firstItem="RDotsStack" firstAttribute="centerY" secondItem="RBackBtn" secondAttribute="centerY" id="RV6"/>
+                            <constraint firstItem="RTitleLbl" firstAttribute="top" secondItem="RBackBtn" secondAttribute="bottom" constant="16" id="RV7"/>
+                            <constraint firstItem="RTitleLbl" firstAttribute="leading" secondItem="ReceiptView" secondAttribute="leading" constant="24" id="RV8"/>
+                            <constraint firstItem="RDivider" firstAttribute="top" secondItem="RTitleLbl" secondAttribute="bottom" constant="12" id="RV9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dateValueLabel" destination="RDateValue" id="ROut3"/>
+                        <outlet property="donatedToValueLabel" destination="RDonatedValue" id="ROut2"/>
+                        <outlet property="itemValueLabel" destination="RItemValue" id="ROut1"/>
+                        <outlet property="merchantLabel" destination="RMerchantLbl" id="ROut7"/>
+                        <outlet property="receiptCard" destination="RCard" id="ROut5"/>
+                        <outlet property="scanButton" destination="RScanBtn" id="ROut6"/>
+                        <outlet property="specialNotesLabel" destination="RSpecialNotes" id="ROut8"/>
+                        <outlet property="statusValueLabel" destination="RStatusValue" id="ROut4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ReceiptFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1700" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="building.2.fill" catalog="system" width="108" height="128"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="qrcode.viewfinder" width="128" height="128"/>
+        <image name="square.and.arrow.up" width="128" height="128"/>
+    </resources>
+</document>

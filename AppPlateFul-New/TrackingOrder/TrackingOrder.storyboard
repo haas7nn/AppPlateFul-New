@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TrackingVC">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tracking Order View Controller-->
+        <scene sceneID="TrackingScene">
+            <objects>
+                <viewController storyboardIdentifier="TrackingOrderViewController" id="TrackingVC" customClass="TrackingOrderViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TrackingView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CustomNavBar">
+                                <rect key="frame" x="0.0" y="118" width="393" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BackBtn">
+                                        <rect key="frame" x="8" y="5.6666666666666714" width="50" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <state key="normal" title="‹ Back">
+                                            <color key="titleColor" red="0.0" green="0.47799999999999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backTapped:" destination="TrackingVC" eventType="touchUpInside" id="BackAct"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracking order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NavTitleLabel">
+                                        <rect key="frame" x="138.66666666666666" y="11.999999999999998" width="116" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96899999999999997" green="0.95699999999999996" blue="0.93300000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="BackBtn" firstAttribute="centerY" secondItem="CustomNavBar" secondAttribute="centerY" id="BackCY"/>
+                                    <constraint firstItem="BackBtn" firstAttribute="leading" secondItem="CustomNavBar" secondAttribute="leading" constant="8" id="BackL"/>
+                                    <constraint firstAttribute="height" constant="44" id="NavBarH"/>
+                                    <constraint firstItem="NavTitleLabel" firstAttribute="centerX" secondItem="CustomNavBar" secondAttribute="centerX" id="TitleCX"/>
+                                    <constraint firstItem="NavTitleLabel" firstAttribute="centerY" secondItem="CustomNavBar" secondAttribute="centerY" id="TitleCY"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="figure.outdoor.cycle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ScooterIcon">
+                                <rect key="frame" x="146.66666666666666" y="193.33333333333334" width="100" height="97.666666666666657"/>
+                                <color key="tintColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="ScooterH"/>
+                                    <constraint firstAttribute="width" constant="100" id="ScooterW"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DeliveredPill">
+                                <rect key="frame" x="96.666666666666686" y="322" width="200" height="70"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ClockCircle">
+                                        <rect key="frame" x="-15" y="20" width="30" height="30"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="clock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ClockIcon">
+                                                <rect key="frame" x="5" y="5.6666666666666661" width="20" height="18.666666666666671"/>
+                                                <color key="tintColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="ClockIconH"/>
+                                                    <constraint firstAttribute="width" constant="20" id="ClockIconW"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ClockCircleH"/>
+                                            <constraint firstAttribute="width" constant="30" id="ClockCircleW"/>
+                                            <constraint firstItem="ClockIcon" firstAttribute="centerX" secondItem="ClockCircle" secondAttribute="centerX" id="ClockIconCX"/>
+                                            <constraint firstItem="ClockIcon" firstAttribute="centerY" secondItem="ClockCircle" secondAttribute="centerY" id="ClockIconCY"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeliveredLabel">
+                                        <rect key="frame" x="20" y="12.000000000000002" width="160" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dec 21, 06:03 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeliveredTime">
+                                        <rect key="frame" x="20" y="37.666666666666686" width="160" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ClockCircle" firstAttribute="centerY" secondItem="DeliveredPill" secondAttribute="centerY" id="ClockCircleCY"/>
+                                    <constraint firstItem="ClockCircle" firstAttribute="leading" secondItem="DeliveredPill" secondAttribute="leading" constant="-15" id="ClockCircleL"/>
+                                    <constraint firstItem="DeliveredLabel" firstAttribute="leading" secondItem="DeliveredPill" secondAttribute="leading" constant="20" id="DelLblL"/>
+                                    <constraint firstAttribute="trailing" secondItem="DeliveredLabel" secondAttribute="trailing" constant="20" id="DelLblR"/>
+                                    <constraint firstItem="DeliveredLabel" firstAttribute="top" secondItem="DeliveredPill" secondAttribute="top" constant="12" id="DelLblT"/>
+                                    <constraint firstItem="DeliveredTime" firstAttribute="leading" secondItem="DeliveredPill" secondAttribute="leading" constant="20" id="DelTimeL"/>
+                                    <constraint firstAttribute="trailing" secondItem="DeliveredTime" secondAttribute="trailing" constant="20" id="DelTimeR"/>
+                                    <constraint firstItem="DeliveredTime" firstAttribute="top" secondItem="DeliveredLabel" secondAttribute="bottom" constant="4" id="DelTimeT"/>
+                                    <constraint firstAttribute="height" constant="70" id="PillH"/>
+                                    <constraint firstAttribute="width" constant="200" id="PillW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ProgressLine">
+                                <rect key="frame" x="54" y="412" width="4" height="220"/>
+                                <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="LineH"/>
+                                    <constraint firstAttribute="width" constant="4" id="LineW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Step1Dot">
+                                <rect key="frame" x="46" y="432" width="20" height="20"/>
+                                <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Step1DotH"/>
+                                    <constraint firstAttribute="width" constant="20" id="Step1DotW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Received" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Step1Title">
+                                <rect key="frame" x="80" y="432" width="125.33333333333331" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:40 PM, Dec 21, 2025" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Step1Time">
+                                <rect key="frame" x="79.999999999999986" y="456.33333333333331" width="146.66666666666663" height="15.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Step2Dot">
+                                <rect key="frame" x="46" y="492" width="20" height="20"/>
+                                <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Step2DotH"/>
+                                    <constraint firstAttribute="width" constant="20" id="Step2DotW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On the Way" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Step2Title">
+                                <rect key="frame" x="80" y="491.66666666666669" width="92.666666666666686" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:44 PM, Dec 21, 2025" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Step2Time">
+                                <rect key="frame" x="80" y="516" width="147" height="15.666666666666629"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Step3Dot">
+                                <rect key="frame" x="46" y="551.66666666666663" width="20" height="20"/>
+                                <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Step3DotH"/>
+                                    <constraint firstAttribute="width" constant="20" id="Step3DotW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Step3Title">
+                                <rect key="frame" x="80" y="551.66666666666663" width="77.333333333333314" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06:03 PM, Dec 21, 2025" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Step3Time">
+                                <rect key="frame" x="79.999999999999986" y="576" width="146.66666666666663" height="15.666666666666629"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BottomPanel">
+                                <rect key="frame" x="0.0" y="700" width="393" height="152"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ConfirmBtn">
+                                        <rect key="frame" x="24" y="30" width="345" height="56"/>
+                                        <color key="backgroundColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="ConfirmBtnH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="Confirm Delivery">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="28"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="confirmDeliveryTapped:" destination="TrackingVC" eventType="touchUpInside" id="ConfirmAct"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ConfirmBtn" firstAttribute="leading" secondItem="BottomPanel" secondAttribute="leading" constant="24" id="ConfirmBtnL"/>
+                                    <constraint firstAttribute="trailing" secondItem="ConfirmBtn" secondAttribute="trailing" constant="24" id="ConfirmBtnR"/>
+                                    <constraint firstItem="ConfirmBtn" firstAttribute="top" secondItem="BottomPanel" secondAttribute="top" constant="30" id="ConfirmBtnT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OverlayBackground">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuccessDialog">
+                                <rect key="frame" x="46.666666666666657" y="326" width="300" height="200"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SuccessCheckmark">
+                                        <rect key="frame" x="125" y="30.666666666666668" width="50" height="48.666666666666657"/>
+                                        <color key="tintColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="CheckH"/>
+                                            <constraint firstAttribute="width" constant="50" id="CheckW"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Confirmed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuccessTitle">
+                                        <rect key="frame" x="20" y="95" width="260" height="26.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your delivery has been confirmed successfully" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuccessSubtitle">
+                                        <rect key="frame" x="20" y="129.33333333333331" width="260" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="SuccessCheckmark" firstAttribute="centerX" secondItem="SuccessDialog" secondAttribute="centerX" id="CheckCX"/>
+                                    <constraint firstItem="SuccessCheckmark" firstAttribute="top" secondItem="SuccessDialog" secondAttribute="top" constant="30" id="CheckT"/>
+                                    <constraint firstAttribute="height" constant="200" id="DialogH"/>
+                                    <constraint firstAttribute="width" constant="300" id="DialogW"/>
+                                    <constraint firstItem="SuccessSubtitle" firstAttribute="leading" secondItem="SuccessDialog" secondAttribute="leading" constant="20" id="SubL"/>
+                                    <constraint firstAttribute="trailing" secondItem="SuccessSubtitle" secondAttribute="trailing" constant="20" id="SubR"/>
+                                    <constraint firstItem="SuccessSubtitle" firstAttribute="top" secondItem="SuccessTitle" secondAttribute="bottom" constant="8" id="SubT"/>
+                                    <constraint firstItem="SuccessTitle" firstAttribute="leading" secondItem="SuccessDialog" secondAttribute="leading" constant="20" id="TitleL"/>
+                                    <constraint firstAttribute="trailing" secondItem="SuccessTitle" secondAttribute="trailing" constant="20" id="TitleR"/>
+                                    <constraint firstItem="SuccessTitle" firstAttribute="top" secondItem="SuccessCheckmark" secondAttribute="bottom" constant="15" id="TitleT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TrackingSafeArea"/>
+                        <color key="backgroundColor" red="0.96899999999999997" green="0.95699999999999996" blue="0.93300000000000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="BottomPanel" firstAttribute="bottom" secondItem="TrackingView" secondAttribute="bottom" id="BottomB"/>
+                            <constraint firstItem="BottomPanel" firstAttribute="height" constant="152" id="BottomH"/>
+                            <constraint firstItem="BottomPanel" firstAttribute="leading" secondItem="TrackingView" secondAttribute="leading" id="BottomL"/>
+                            <constraint firstItem="BottomPanel" firstAttribute="trailing" secondItem="TrackingView" secondAttribute="trailing" id="BottomR"/>
+                            <constraint firstItem="SuccessDialog" firstAttribute="centerX" secondItem="TrackingView" secondAttribute="centerX" id="DialogCX"/>
+                            <constraint firstItem="SuccessDialog" firstAttribute="centerY" secondItem="TrackingView" secondAttribute="centerY" id="DialogCY"/>
+                            <constraint firstItem="ProgressLine" firstAttribute="centerX" secondItem="Step1Dot" secondAttribute="centerX" id="LineCX"/>
+                            <constraint firstItem="ProgressLine" firstAttribute="top" secondItem="DeliveredPill" secondAttribute="bottom" constant="20" id="LineT"/>
+                            <constraint firstItem="CustomNavBar" firstAttribute="leading" secondItem="TrackingView" secondAttribute="leading" id="NavBarL"/>
+                            <constraint firstItem="CustomNavBar" firstAttribute="trailing" secondItem="TrackingView" secondAttribute="trailing" id="NavBarR"/>
+                            <constraint firstItem="CustomNavBar" firstAttribute="top" secondItem="TrackingSafeArea" secondAttribute="top" id="NavBarT"/>
+                            <constraint firstItem="OverlayBackground" firstAttribute="bottom" secondItem="TrackingView" secondAttribute="bottom" id="OverlayB"/>
+                            <constraint firstItem="OverlayBackground" firstAttribute="leading" secondItem="TrackingView" secondAttribute="leading" id="OverlayL"/>
+                            <constraint firstItem="OverlayBackground" firstAttribute="trailing" secondItem="TrackingView" secondAttribute="trailing" id="OverlayR"/>
+                            <constraint firstItem="OverlayBackground" firstAttribute="top" secondItem="TrackingView" secondAttribute="top" id="OverlayT"/>
+                            <constraint firstItem="DeliveredPill" firstAttribute="centerX" secondItem="TrackingView" secondAttribute="centerX" id="PillCX"/>
+                            <constraint firstItem="DeliveredPill" firstAttribute="top" secondItem="ScooterIcon" secondAttribute="bottom" constant="30" id="PillT"/>
+                            <constraint firstItem="Step1Dot" firstAttribute="leading" secondItem="TrackingView" secondAttribute="leading" constant="46" id="S1DotL"/>
+                            <constraint firstItem="Step1Dot" firstAttribute="top" secondItem="ProgressLine" secondAttribute="top" constant="20" id="S1DotT"/>
+                            <constraint firstItem="Step1Time" firstAttribute="leading" secondItem="Step1Title" secondAttribute="leading" id="S1TimeL"/>
+                            <constraint firstItem="Step1Time" firstAttribute="top" secondItem="Step1Title" secondAttribute="bottom" constant="4" id="S1TimeT"/>
+                            <constraint firstItem="Step1Title" firstAttribute="centerY" secondItem="Step1Dot" secondAttribute="centerY" id="S1TitleCY"/>
+                            <constraint firstItem="Step1Title" firstAttribute="leading" secondItem="Step1Dot" secondAttribute="trailing" constant="14" id="S1TitleL"/>
+                            <constraint firstItem="Step2Dot" firstAttribute="centerX" secondItem="Step1Dot" secondAttribute="centerX" id="S2DotCX"/>
+                            <constraint firstItem="Step2Dot" firstAttribute="top" secondItem="Step1Time" secondAttribute="bottom" constant="20" id="S2DotT"/>
+                            <constraint firstItem="Step2Time" firstAttribute="leading" secondItem="Step2Title" secondAttribute="leading" id="S2TimeL"/>
+                            <constraint firstItem="Step2Time" firstAttribute="top" secondItem="Step2Title" secondAttribute="bottom" constant="4" id="S2TimeT"/>
+                            <constraint firstItem="Step2Title" firstAttribute="centerY" secondItem="Step2Dot" secondAttribute="centerY" id="S2TitleCY"/>
+                            <constraint firstItem="Step2Title" firstAttribute="leading" secondItem="Step2Dot" secondAttribute="trailing" constant="14" id="S2TitleL"/>
+                            <constraint firstItem="Step3Dot" firstAttribute="centerX" secondItem="Step1Dot" secondAttribute="centerX" id="S3DotCX"/>
+                            <constraint firstItem="Step3Dot" firstAttribute="top" secondItem="Step2Time" secondAttribute="bottom" constant="20" id="S3DotT"/>
+                            <constraint firstItem="Step3Time" firstAttribute="leading" secondItem="Step3Title" secondAttribute="leading" id="S3TimeL"/>
+                            <constraint firstItem="Step3Time" firstAttribute="top" secondItem="Step3Title" secondAttribute="bottom" constant="4" id="S3TimeT"/>
+                            <constraint firstItem="Step3Title" firstAttribute="centerY" secondItem="Step3Dot" secondAttribute="centerY" id="S3TitleCY"/>
+                            <constraint firstItem="Step3Title" firstAttribute="leading" secondItem="Step3Dot" secondAttribute="trailing" constant="14" id="S3TitleL"/>
+                            <constraint firstItem="ScooterIcon" firstAttribute="centerX" secondItem="TrackingView" secondAttribute="centerX" id="ScooterCX"/>
+                            <constraint firstItem="ScooterIcon" firstAttribute="top" secondItem="CustomNavBar" secondAttribute="bottom" constant="30" id="ScooterT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="confirmButton" destination="ConfirmBtn" id="ConfirmOut"/>
+                        <outlet property="deliveredTimeLabel" destination="DeliveredTime" id="DelTimeOut"/>
+                        <outlet property="overlayBackground" destination="OverlayBackground" id="OverlayOut"/>
+                        <outlet property="step1TimeLabel" destination="Step1Time" id="S1TimeOut"/>
+                        <outlet property="step2TimeLabel" destination="Step2Time" id="S2TimeOut"/>
+                        <outlet property="step3TimeLabel" destination="Step3Time" id="S3TimeOut"/>
+                        <outlet property="successDialog" destination="SuccessDialog" id="DialogOut"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TrackingFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="clock.fill" catalog="system" width="128" height="123"/>
+        <image name="figure.outdoor.cycle" catalog="system" width="128" height="90"/>
+    </resources>
+</document>
