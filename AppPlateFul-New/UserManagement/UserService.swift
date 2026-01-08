@@ -61,4 +61,11 @@ class UserService {
             completion(error == nil)
         }
     }
+    func fetchUserImage(userId: String, completion: @escaping (String?) -> Void) {
+        db.collection("users").document(userId).getDocument { snap, _ in
+            let imageRef = snap?.data()?["imageRef"] as? String
+            completion(imageRef)
+        }
+    }
+    
 }
