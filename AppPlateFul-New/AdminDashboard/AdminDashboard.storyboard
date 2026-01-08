@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NavID">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="NavScene">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="NavID" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NavBar">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DashboardVC" kind="relationship" relationship="rootViewController" id="RootSeg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NavFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-700" y="0.0"/>
+        </scene>
+        <!--Admin Dashboard View Controller-->
+        <scene sceneID="DashboardScene">
+            <objects>
+                <viewController storyboardIdentifier="AdminDashboardViewController" id="DashboardVC" customClass="AdminDashboardViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MainView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DecorCircle1">
+                                <rect key="frame" x="-80" y="-100" width="250" height="250"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="DC1H"/>
+                                    <constraint firstAttribute="width" constant="250" id="DC1W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="125"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DecorCircle2">
+                                <rect key="frame" x="280" y="-50" width="180" height="180"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.75686274509803919" blue="0.47058823529411764" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="DC2H"/>
+                                    <constraint firstAttribute="width" constant="180" id="DC2W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="90"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScrollView">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="920"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HeaderCard">
+                                                <rect key="frame" x="20" y="16" width="353" height="120"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AvatarBg">
+                                                        <rect key="frame" x="20" y="25" width="70" height="70"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👨‍💼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AvatarEmoji">
+                                                                <rect key="frame" x="14.666666666666664" y="13.666666666666657" width="41" height="43"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94509803921568625" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="AvatarEmoji" firstAttribute="centerX" secondItem="AvatarBg" secondAttribute="centerX" id="AeX"/>
+                                                            <constraint firstItem="AvatarEmoji" firstAttribute="centerY" secondItem="AvatarBg" secondAttribute="centerY" id="AeY"/>
+                                                            <constraint firstAttribute="height" constant="70" id="AvH"/>
+                                                            <constraint firstAttribute="width" constant="70" id="AvW"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="35"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WelcomeLabel">
+                                                        <rect key="frame" x="108" y="30" width="105" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Administrator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdminLabel">
+                                                        <rect key="frame" x="108" y="50.000000000000007" width="167" height="31.333333333333336"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SettingsBtn">
+                                                        <rect key="frame" x="293" y="38" width="44" height="44"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="SBH"/>
+                                                            <constraint firstAttribute="width" constant="44" id="SBW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="⚙️"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="22"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="AdminLabel" firstAttribute="leading" secondItem="WelcomeLabel" secondAttribute="leading" id="AlL"/>
+                                                    <constraint firstItem="AdminLabel" firstAttribute="top" secondItem="WelcomeLabel" secondAttribute="bottom" constant="2" id="AlT"/>
+                                                    <constraint firstItem="AvatarBg" firstAttribute="centerY" secondItem="HeaderCard" secondAttribute="centerY" id="AvCY"/>
+                                                    <constraint firstItem="AvatarBg" firstAttribute="leading" secondItem="HeaderCard" secondAttribute="leading" constant="20" id="AvL"/>
+                                                    <constraint firstAttribute="height" constant="120" id="HCH"/>
+                                                    <constraint firstItem="SettingsBtn" firstAttribute="centerY" secondItem="HeaderCard" secondAttribute="centerY" id="SbCY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="SettingsBtn" secondAttribute="trailing" constant="16" id="SbTr"/>
+                                                    <constraint firstItem="WelcomeLabel" firstAttribute="leading" secondItem="AvatarBg" secondAttribute="trailing" constant="18" id="WlL"/>
+                                                    <constraint firstItem="WelcomeLabel" firstAttribute="top" secondItem="AvatarBg" secondAttribute="top" constant="5" id="WlT"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.29999999999999999"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="StatsStack">
+                                                <rect key="frame" x="20" y="156" width="353" height="90"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="StatCard1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="109.66666666666667" height="90"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📋" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stat1Icon">
+                                                                <rect key="frame" x="42.333333333333336" y="16" width="25.000000000000007" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stat1Num">
+                                                                <rect key="frame" x="42.666666666666664" y="40" width="24.333333333333336" height="26.333333333333329"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                                <color key="textColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stat1Text">
+                                                                <rect key="frame" x="33.666666666666671" y="66.333333333333314" width="42.666666666666671" height="13.333333333333329"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Stat1Icon" firstAttribute="top" secondItem="StatCard1" secondAttribute="top" constant="16" id="S1IT"/>
+                                                            <constraint firstItem="Stat1Icon" firstAttribute="centerX" secondItem="StatCard1" secondAttribute="centerX" id="S1IX"/>
+                                                            <constraint firstItem="Stat1Num" firstAttribute="top" secondItem="Stat1Icon" secondAttribute="bottom" id="S1NT"/>
+                                                            <constraint firstItem="Stat1Num" firstAttribute="centerX" secondItem="StatCard1" secondAttribute="centerX" id="S1NX"/>
+                                                            <constraint firstItem="Stat1Text" firstAttribute="top" secondItem="Stat1Num" secondAttribute="bottom" id="S1TT"/>
+                                                            <constraint firstItem="Stat1Text" firstAttribute="centerX" secondItem="StatCard1" secondAttribute="centerX" id="S1TX"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                                <real key="value" value="0.059999999999999998"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                                <integer key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                                <size key="value" width="0.0" height="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="StatCard2">
+                                                        <rect key="frame" x="121.66666666666666" y="0.0" width="109.66666666666666" height="90"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎁" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stat2Icon">
+                                                                <rect key="frame" x="42.333333333333343" y="16" width="25" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="248" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stat2Num">
+                                                                <rect key="frame" x="33.666666666666686" y="40" width="42.333333333333343" height="26.333333333333329"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                                <color key="textColor" red="0.94901960784313721" green="0.60784313725490191" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stat2Text">
+                                                                <rect key="frame" x="28.333333333333343" y="66.333333333333314" width="53" height="13.333333333333329"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Stat2Icon" firstAttribute="top" secondItem="StatCard2" secondAttribute="top" constant="16" id="S2IT"/>
+                                                            <constraint firstItem="Stat2Icon" firstAttribute="centerX" secondItem="StatCard2" secondAttribute="centerX" id="S2IX"/>
+                                                            <constraint firstItem="Stat2Num" firstAttribute="top" secondItem="Stat2Icon" secondAttribute="bottom" id="S2NT"/>
+                                                            <constraint firstItem="Stat2Num" firstAttribute="centerX" secondItem="StatCard2" secondAttribute="centerX" id="S2NX"/>
+                                                            <constraint firstItem="Stat2Text" firstAttribute="top" secondItem="Stat2Num" secondAttribute="bottom" id="S2TT"/>
+                                                            <constraint firstItem="Stat2Text" firstAttribute="centerX" secondItem="StatCard2" secondAttribute="centerX" id="S2TX"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                                <real key="value" value="0.059999999999999998"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                                <integer key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                                <size key="value" width="0.0" height="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="StatCard3">
+                                                        <rect key="frame" x="243.33333333333329" y="0.0" width="109.66666666666666" height="90"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👥" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stat3Icon">
+                                                                <rect key="frame" x="42.333333333333371" y="16" width="25" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2K" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stat3Num">
+                                                                <rect key="frame" x="32.666666666666686" y="40" width="44.666666666666657" height="26.333333333333329"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                                <color key="textColor" red="0.36078431372549019" green="0.54509803921568623" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Users" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stat3Text">
+                                                                <rect key="frame" x="39.666666666666686" y="66.333333333333314" width="30.333333333333329" height="13.333333333333329"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Stat3Icon" firstAttribute="top" secondItem="StatCard3" secondAttribute="top" constant="16" id="S3IT"/>
+                                                            <constraint firstItem="Stat3Icon" firstAttribute="centerX" secondItem="StatCard3" secondAttribute="centerX" id="S3IX"/>
+                                                            <constraint firstItem="Stat3Num" firstAttribute="top" secondItem="Stat3Icon" secondAttribute="bottom" id="S3NT"/>
+                                                            <constraint firstItem="Stat3Num" firstAttribute="centerX" secondItem="StatCard3" secondAttribute="centerX" id="S3NX"/>
+                                                            <constraint firstItem="Stat3Text" firstAttribute="top" secondItem="Stat3Num" secondAttribute="bottom" id="S3TT"/>
+                                                            <constraint firstItem="Stat3Text" firstAttribute="centerX" secondItem="StatCard3" secondAttribute="centerX" id="S3TX"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                                <real key="value" value="0.059999999999999998"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                                <integer key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                                <size key="value" width="0.0" height="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="90" id="StatsH"/>
+                                                </constraints>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Actions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QuickActionsLabel">
+                                                <rect key="frame" x="20" y="270" width="130.33333333333334" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard1">
+                                                <rect key="frame" x="20" y="310" width="353" height="100"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IconBg1">
+                                                        <rect key="frame" x="20" y="22" width="56" height="56"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏢" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icon1">
+                                                                <rect key="frame" x="12" y="11.333333333333314" width="32" height="33.666666666666664"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Icon1" firstAttribute="centerX" secondItem="IconBg1" secondAttribute="centerX" id="I1CX"/>
+                                                            <constraint firstItem="Icon1" firstAttribute="centerY" secondItem="IconBg1" secondAttribute="centerY" id="I1CY"/>
+                                                            <constraint firstAttribute="height" constant="56" id="IB1H"/>
+                                                            <constraint firstAttribute="width" constant="56" id="IB1W"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending NGOs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Title1">
+                                                        <rect key="frame" x="92" y="28" width="118" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review and approve NGO requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Desc1">
+                                                        <rect key="frame" x="91.999999999999986" y="50.333333333333314" width="210.66666666666663" height="15.666666666666671"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="›" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Arrow1">
+                                                        <rect key="frame" x="325.66666666666669" y="33.333333333333314" width="11.333333333333314" height="33.666666666666657"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                                        <color key="textColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btn1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title=""/>
+                                                        <connections>
+                                                            <action selector="pendingNGOsTapped:" destination="DashboardVC" eventType="touchUpInside" id="Btn1Act"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Arrow1" firstAttribute="centerY" secondItem="ActionCard1" secondAttribute="centerY" id="A1CY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Arrow1" secondAttribute="trailing" constant="16" id="A1Tr"/>
+                                                    <constraint firstAttribute="height" constant="100" id="AC1H"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Btn1" secondAttribute="bottom" id="B1B"/>
+                                                    <constraint firstItem="Btn1" firstAttribute="leading" secondItem="ActionCard1" secondAttribute="leading" id="B1L"/>
+                                                    <constraint firstItem="Btn1" firstAttribute="top" secondItem="ActionCard1" secondAttribute="top" id="B1T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Btn1" secondAttribute="trailing" id="B1Tr"/>
+                                                    <constraint firstItem="Desc1" firstAttribute="leading" secondItem="Title1" secondAttribute="leading" id="D1L"/>
+                                                    <constraint firstItem="Desc1" firstAttribute="top" secondItem="Title1" secondAttribute="bottom" constant="2" id="D1T"/>
+                                                    <constraint firstItem="IconBg1" firstAttribute="centerY" secondItem="ActionCard1" secondAttribute="centerY" id="IB1CY"/>
+                                                    <constraint firstItem="IconBg1" firstAttribute="leading" secondItem="ActionCard1" secondAttribute="leading" constant="20" id="IB1L"/>
+                                                    <constraint firstItem="Title1" firstAttribute="leading" secondItem="IconBg1" secondAttribute="trailing" constant="16" id="T1L"/>
+                                                    <constraint firstItem="Title1" firstAttribute="top" secondItem="IconBg1" secondAttribute="top" constant="6" id="T1T"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.080000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard2">
+                                                <rect key="frame" x="20" y="426" width="353" height="100"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IconBg2">
+                                                        <rect key="frame" x="20" y="22" width="56" height="56"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📊" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icon2">
+                                                                <rect key="frame" x="12" y="11.333333333333371" width="32" height="33.666666666666664"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.60784313725490191" blue="0.27058823529411763" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Icon2" firstAttribute="centerX" secondItem="IconBg2" secondAttribute="centerX" id="I2CX"/>
+                                                            <constraint firstItem="Icon2" firstAttribute="centerY" secondItem="IconBg2" secondAttribute="centerY" id="I2CY"/>
+                                                            <constraint firstAttribute="height" constant="56" id="IB2H"/>
+                                                            <constraint firstAttribute="width" constant="56" id="IB2W"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donation Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Title2">
+                                                        <rect key="frame" x="92" y="28" width="140" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track all donation transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Desc2">
+                                                        <rect key="frame" x="91.999999999999986" y="50.333333333333371" width="185.66666666666663" height="15.666666666666671"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="›" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Arrow2">
+                                                        <rect key="frame" x="325.66666666666669" y="33.333333333333371" width="11.333333333333314" height="33.666666666666657"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                                        <color key="textColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btn2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title=""/>
+                                                        <connections>
+                                                            <action selector="donationActivityTapped:" destination="DashboardVC" eventType="touchUpInside" id="Btn2Act"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Arrow2" firstAttribute="centerY" secondItem="ActionCard2" secondAttribute="centerY" id="A2CY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Arrow2" secondAttribute="trailing" constant="16" id="A2Tr"/>
+                                                    <constraint firstAttribute="height" constant="100" id="AC2H"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Btn2" secondAttribute="bottom" id="B2B"/>
+                                                    <constraint firstItem="Btn2" firstAttribute="leading" secondItem="ActionCard2" secondAttribute="leading" id="B2L"/>
+                                                    <constraint firstItem="Btn2" firstAttribute="top" secondItem="ActionCard2" secondAttribute="top" id="B2T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Btn2" secondAttribute="trailing" id="B2Tr"/>
+                                                    <constraint firstItem="Desc2" firstAttribute="leading" secondItem="Title2" secondAttribute="leading" id="D2L"/>
+                                                    <constraint firstItem="Desc2" firstAttribute="top" secondItem="Title2" secondAttribute="bottom" constant="2" id="D2T"/>
+                                                    <constraint firstItem="IconBg2" firstAttribute="centerY" secondItem="ActionCard2" secondAttribute="centerY" id="IB2CY"/>
+                                                    <constraint firstItem="IconBg2" firstAttribute="leading" secondItem="ActionCard2" secondAttribute="leading" constant="20" id="IB2L"/>
+                                                    <constraint firstItem="Title2" firstAttribute="leading" secondItem="IconBg2" secondAttribute="trailing" constant="16" id="T2L"/>
+                                                    <constraint firstItem="Title2" firstAttribute="top" secondItem="IconBg2" secondAttribute="top" constant="6" id="T2T"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.080000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard3">
+                                                <rect key="frame" x="20" y="542" width="353" height="100"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IconBg3">
+                                                        <rect key="frame" x="20" y="22" width="56" height="56"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👤" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icon3">
+                                                                <rect key="frame" x="12" y="11.333333333333371" width="32" height="33.666666666666664"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.36078431372549019" green="0.54509803921568623" blue="0.7686274509803922" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Icon3" firstAttribute="centerX" secondItem="IconBg3" secondAttribute="centerX" id="I3CX"/>
+                                                            <constraint firstItem="Icon3" firstAttribute="centerY" secondItem="IconBg3" secondAttribute="centerY" id="I3CY"/>
+                                                            <constraint firstAttribute="height" constant="56" id="IB3H"/>
+                                                            <constraint firstAttribute="width" constant="56" id="IB3W"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Users" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Title3">
+                                                        <rect key="frame" x="92" y="28" width="116.33333333333331" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View and manage user accounts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Desc3">
+                                                        <rect key="frame" x="92" y="50.333333333333371" width="196" height="15.666666666666671"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="›" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Arrow3">
+                                                        <rect key="frame" x="325.66666666666669" y="33.333333333333371" width="11.333333333333314" height="33.666666666666657"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                                        <color key="textColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btn3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title=""/>
+                                                        <connections>
+                                                            <action selector="manageUsersTapped:" destination="DashboardVC" eventType="touchUpInside" id="Btn3Act"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Arrow3" firstAttribute="centerY" secondItem="ActionCard3" secondAttribute="centerY" id="A3CY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Arrow3" secondAttribute="trailing" constant="16" id="A3Tr"/>
+                                                    <constraint firstAttribute="height" constant="100" id="AC3H"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Btn3" secondAttribute="bottom" id="B3B"/>
+                                                    <constraint firstItem="Btn3" firstAttribute="leading" secondItem="ActionCard3" secondAttribute="leading" id="B3L"/>
+                                                    <constraint firstItem="Btn3" firstAttribute="top" secondItem="ActionCard3" secondAttribute="top" id="B3T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Btn3" secondAttribute="trailing" id="B3Tr"/>
+                                                    <constraint firstItem="Desc3" firstAttribute="leading" secondItem="Title3" secondAttribute="leading" id="D3L"/>
+                                                    <constraint firstItem="Desc3" firstAttribute="top" secondItem="Title3" secondAttribute="bottom" constant="2" id="D3T"/>
+                                                    <constraint firstItem="IconBg3" firstAttribute="centerY" secondItem="ActionCard3" secondAttribute="centerY" id="IB3CY"/>
+                                                    <constraint firstItem="IconBg3" firstAttribute="leading" secondItem="ActionCard3" secondAttribute="leading" constant="20" id="IB3L"/>
+                                                    <constraint firstItem="Title3" firstAttribute="leading" secondItem="IconBg3" secondAttribute="trailing" constant="16" id="T3L"/>
+                                                    <constraint firstItem="Title3" firstAttribute="top" secondItem="IconBg3" secondAttribute="top" constant="6" id="T3T"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.080000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard4">
+                                                <rect key="frame" x="20" y="658" width="353" height="100"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IconBg4">
+                                                        <rect key="frame" x="20" y="22" width="56" height="56"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📈" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icon4">
+                                                                <rect key="frame" x="12" y="11.333333333333371" width="32" height="33.666666666666664"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.69803921568627447" green="0.33333333333333331" blue="0.62352941176470589" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Icon4" firstAttribute="centerX" secondItem="IconBg4" secondAttribute="centerX" id="I4CX"/>
+                                                            <constraint firstItem="Icon4" firstAttribute="centerY" secondItem="IconBg4" secondAttribute="centerY" id="I4CY"/>
+                                                            <constraint firstAttribute="height" constant="56" id="IB4H"/>
+                                                            <constraint firstAttribute="width" constant="56" id="IB4W"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Title4">
+                                                        <rect key="frame" x="92" y="28" width="64.666666666666686" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generate and view analytics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Desc4">
+                                                        <rect key="frame" x="92.000000000000014" y="50.333333333333371" width="170.33333333333337" height="15.666666666666671"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="›" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Arrow4">
+                                                        <rect key="frame" x="325.66666666666669" y="33.333333333333371" width="11.333333333333314" height="33.666666666666657"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                                        <color key="textColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btn5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title=""/>
+                                                        <connections>
+                                                            <action selector="reportsTapped:" destination="DashboardVC" eventType="touchUpInside" id="Btn5Act"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="Arrow4" firstAttribute="centerY" secondItem="ActionCard4" secondAttribute="centerY" id="A4CY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Arrow4" secondAttribute="trailing" constant="16" id="A4Tr"/>
+                                                    <constraint firstAttribute="height" constant="100" id="AC4H"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Btn5" secondAttribute="bottom" id="B4B"/>
+                                                    <constraint firstItem="Btn5" firstAttribute="leading" secondItem="ActionCard4" secondAttribute="leading" id="B4L"/>
+                                                    <constraint firstItem="Btn5" firstAttribute="top" secondItem="ActionCard4" secondAttribute="top" id="B4T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Btn5" secondAttribute="trailing" id="B4Tr"/>
+                                                    <constraint firstItem="Desc4" firstAttribute="leading" secondItem="Title4" secondAttribute="leading" id="D4L"/>
+                                                    <constraint firstItem="Desc4" firstAttribute="top" secondItem="Title4" secondAttribute="bottom" constant="2" id="D4T"/>
+                                                    <constraint firstItem="IconBg4" firstAttribute="centerY" secondItem="ActionCard4" secondAttribute="centerY" id="IB4CY"/>
+                                                    <constraint firstItem="IconBg4" firstAttribute="leading" secondItem="ActionCard4" secondAttribute="leading" constant="20" id="IB4L"/>
+                                                    <constraint firstItem="Title4" firstAttribute="leading" secondItem="IconBg4" secondAttribute="trailing" constant="16" id="T4L"/>
+                                                    <constraint firstItem="Title4" firstAttribute="top" secondItem="IconBg4" secondAttribute="top" constant="6" id="T4T"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.080000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LogoutBtn">
+                                                <rect key="frame" x="20" y="790" width="353" height="54"/>
+                                                <color key="backgroundColor" red="0.94509803921568625" green="0.2627450980392157" blue="0.21176470588235294" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="LBH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                <state key="normal" title="🚪  Sign Out">
+                                                    <color key="titleColor" red="0.94509803921568625" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlateFul Admin v1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VersionLabel">
+                                                <rect key="frame" x="141.33333333333334" y="860" width="110.33333333333334" height="14.333333333333371"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="ActionCard1" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="AC1L"/>
+                                            <constraint firstItem="ActionCard1" firstAttribute="top" secondItem="QuickActionsLabel" secondAttribute="bottom" constant="16" id="AC1T"/>
+                                            <constraint firstAttribute="trailing" secondItem="ActionCard1" secondAttribute="trailing" constant="20" id="AC1Tr"/>
+                                            <constraint firstItem="ActionCard2" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="AC2L"/>
+                                            <constraint firstItem="ActionCard2" firstAttribute="top" secondItem="ActionCard1" secondAttribute="bottom" constant="16" id="AC2T"/>
+                                            <constraint firstAttribute="trailing" secondItem="ActionCard2" secondAttribute="trailing" constant="20" id="AC2Tr"/>
+                                            <constraint firstItem="ActionCard3" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="AC3L"/>
+                                            <constraint firstItem="ActionCard3" firstAttribute="top" secondItem="ActionCard2" secondAttribute="bottom" constant="16" id="AC3T"/>
+                                            <constraint firstAttribute="trailing" secondItem="ActionCard3" secondAttribute="trailing" constant="20" id="AC3Tr"/>
+                                            <constraint firstItem="ActionCard4" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="AC4L"/>
+                                            <constraint firstItem="ActionCard4" firstAttribute="top" secondItem="ActionCard3" secondAttribute="bottom" constant="16" id="AC4T"/>
+                                            <constraint firstAttribute="trailing" secondItem="ActionCard4" secondAttribute="trailing" constant="20" id="AC4Tr"/>
+                                            <constraint firstAttribute="height" constant="920" id="CVH"/>
+                                            <constraint firstAttribute="width" constant="393" id="CVW"/>
+                                            <constraint firstItem="HeaderCard" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="HCL"/>
+                                            <constraint firstItem="HeaderCard" firstAttribute="top" secondItem="ContentView" secondAttribute="top" constant="16" id="HCT"/>
+                                            <constraint firstAttribute="trailing" secondItem="HeaderCard" secondAttribute="trailing" constant="20" id="HCTr"/>
+                                            <constraint firstItem="LogoutBtn" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="LBL"/>
+                                            <constraint firstItem="LogoutBtn" firstAttribute="top" secondItem="ActionCard4" secondAttribute="bottom" constant="32" id="LBT"/>
+                                            <constraint firstAttribute="trailing" secondItem="LogoutBtn" secondAttribute="trailing" constant="20" id="LBTr"/>
+                                            <constraint firstItem="QuickActionsLabel" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="QAL"/>
+                                            <constraint firstItem="QuickActionsLabel" firstAttribute="top" secondItem="StatsStack" secondAttribute="bottom" constant="24" id="QAT"/>
+                                            <constraint firstItem="StatsStack" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="SSL"/>
+                                            <constraint firstItem="StatsStack" firstAttribute="top" secondItem="HeaderCard" secondAttribute="bottom" constant="20" id="SST"/>
+                                            <constraint firstAttribute="trailing" secondItem="StatsStack" secondAttribute="trailing" constant="20" id="SSTr"/>
+                                            <constraint firstItem="VersionLabel" firstAttribute="top" secondItem="LogoutBtn" secondAttribute="bottom" constant="16" id="VLT"/>
+                                            <constraint firstItem="VersionLabel" firstAttribute="centerX" secondItem="ContentView" secondAttribute="centerX" id="VLX"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ContentView" firstAttribute="bottom" secondItem="ScrollView" secondAttribute="bottom" id="SVCB"/>
+                                    <constraint firstItem="ContentView" firstAttribute="leading" secondItem="ScrollView" secondAttribute="leading" id="SVCL"/>
+                                    <constraint firstItem="ContentView" firstAttribute="top" secondItem="ScrollView" secondAttribute="top" id="SVCT"/>
+                                    <constraint firstItem="ContentView" firstAttribute="trailing" secondItem="ScrollView" secondAttribute="trailing" id="SVCTr"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SafeArea"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803926" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DecorCircle1" firstAttribute="leading" secondItem="MainView" secondAttribute="leading" constant="-80" id="DC1L"/>
+                            <constraint firstItem="DecorCircle1" firstAttribute="top" secondItem="MainView" secondAttribute="top" constant="-100" id="DC1T"/>
+                            <constraint firstItem="DecorCircle2" firstAttribute="top" secondItem="MainView" secondAttribute="top" constant="-50" id="DC2T"/>
+                            <constraint firstItem="DecorCircle2" firstAttribute="trailing" secondItem="MainView" secondAttribute="trailing" constant="67" id="DC2Tr"/>
+                            <constraint firstItem="ScrollView" firstAttribute="bottom" secondItem="SafeArea" secondAttribute="bottom" id="SVB"/>
+                            <constraint firstItem="ScrollView" firstAttribute="leading" secondItem="SafeArea" secondAttribute="leading" id="SVL"/>
+                            <constraint firstItem="ScrollView" firstAttribute="top" secondItem="SafeArea" secondAttribute="top" id="SVT"/>
+                            <constraint firstItem="ScrollView" firstAttribute="trailing" secondItem="SafeArea" secondAttribute="trailing" id="SVTr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btn1" destination="Btn1" id="O1"/>
+                        <outlet property="btn2" destination="Btn2" id="O2"/>
+                        <outlet property="btn3" destination="Btn3" id="O3"/>
+                        <outlet property="btn5" destination="Btn5" id="O5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DashboardFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="0.0"/>
+        </scene>
+    </scenes>
+</document>
