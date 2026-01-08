@@ -1,6 +1,6 @@
 import Foundation
 
-struct Donation {
+struct Donation: Codable {
     let itemName: String
     let quantity: Int
     let donatedTo: String
@@ -12,26 +12,36 @@ struct Donation {
 final class DonationStore {
     
     static let shared = DonationStore()
+    private let storageKey = "savedDonations"
     
     private init() {}
     
-    // In‑memory only; cleared when app terminates
-    private var donations: [Donation] = []
-    
     func load() -> [Donation] {
-        return donations
+        let defaults = UserDefaults.standard
+        guard let data = defaults.data(forKey: storageKey) else {
+            return []
+        }
+        do {
+            return try JSONDecoder().decode([Donation].self, from: data)
+        } catch {
+            print("Failed to decode donations:", error)
+            return []
+        }
     }
     
     func save(_ donations: [Donation]) {
-        self.donations = donations
+        do {
+            let data = try JSONEncoder().encode(donations)
+            UserDefaults.standard.set(data, forKey: storageKey)
+        } catch {
+            print("Failed to encode donations:", error)
+        }
     }
     
     func add(_ donation: Donation) {
+        var all = load()
         // newest first
-        donations.insert(donation, at: 0)
-    }
-    
-    func clear() {
-        donations.removeAll()
+        all.insert(donation, at: 0)
+        save(all)
     }
 }
