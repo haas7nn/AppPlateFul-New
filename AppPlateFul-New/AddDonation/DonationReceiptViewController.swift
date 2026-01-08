@@ -4,7 +4,6 @@ class DonationReceiptViewController: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var itemValueLabel: UILabel!
-    @IBOutlet weak var donatedToValueLabel: UILabel!
     @IBOutlet weak var dateValueLabel: UILabel!
     @IBOutlet weak var statusValueLabel: UILabel!
     @IBOutlet weak var receiptCard: UIView!
@@ -18,6 +17,15 @@ class DonationReceiptViewController: UIViewController {
     var donatedTo: String = "Helping Hands"
     var merchantName: String = "Alfreej Shawarma's"
     var specialNotes: String = ""
+    
+    // NEW: expiry date passed from AddDonationViewController
+    var expiryDate: Date?
+    
+    private let expiryFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateFormat = "dd MMM yyyy"   // same as AddDonation date fields
+        return f
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -52,13 +60,24 @@ class DonationReceiptViewController: UIViewController {
     }
     
     private func populateData() {
-        merchantLabel.text = merchantName
-        itemValueLabel.text = "\(itemName) (x\(quantity))"
-        donatedToValueLabel.text = donatedTo
-        dateValueLabel.text = getCurrentDateTime()
-        statusValueLabel.text = "Completed"
+        // Hide merchant line
+        merchantLabel.isHidden = true
+        merchantLabel.text = ""
         
-        // Show special notes if available
+        // Item row
+        itemValueLabel.text = "\(itemName) (x\(quantity))"
+        
+        // Top date row: donation completion time
+        dateValueLabel.text = getCurrentDateTime()
+        
+        // Status row: show Expiry Date value
+        if let exp = expiryDate {
+            statusValueLabel.text = expiryFormatter.string(from: exp)
+        } else {
+            statusValueLabel.text = "-"
+        }
+        
+        // Notes
         if specialNotes.isEmpty {
             specialNotesLabel.isHidden = true
         } else {

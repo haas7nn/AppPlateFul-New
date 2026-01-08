@@ -177,7 +177,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Chicken Shawarma" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoodName">
+                                            <label opaque="NO" userInteractionEnabled="YES" contentMode="left" text="Enter food name" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoodName">
                                                 <rect key="frame" x="152" y="30" width="152" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -450,7 +450,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Canned Beans" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtherName">
+                                            <label opaque="NO" userInteractionEnabled="YES" contentMode="left" text="Enter item name" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtherName">
                                                 <rect key="frame" x="152" y="30" width="114.66666666666669" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -709,12 +709,19 @@
                         <outlet property="foodExpiryDateField" destination="FExpV" id="FExpOut"/>
                         <outlet property="foodHealthNotesBtn" destination="FHealthNotesBtn" id="FHNOut"/>
                         <outlet property="foodProductionDateField" destination="FProdV" id="FProdOut"/>
+                        
+                        <!-- NEW: connect food name label -->
+                        <outlet property="foodNameLabel" destination="FoodName" id="FoodNameOut"/>
+                        
                         <outlet property="otherContainer" destination="OtherContainer" id="OCOut"/>
                         <outlet property="otherCountLabel" destination="OtherCount" id="OCntOut"/>
                         <outlet property="otherDonationNotesBtn" destination="ODonationNotesBtn" id="ODNOut"/>
                         <outlet property="otherExpiryDateField" destination="OExpV" id="OExpOut"/>
                         <outlet property="otherHealthNotesBtn" destination="OHealthNotesBtn" id="OHNOut"/>
                         <outlet property="otherProductionDateField" destination="OProdV" id="OProdOut"/>
+                        
+                        <!-- NEW: connect other item name label -->
+                        <outlet property="otherNameLabel" destination="OtherName" id="OtherNameOut"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AddFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -806,15 +813,10 @@
                                     <constraint firstAttribute="height" constant="1" id="RDivH"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Donation Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCompleteLbl">
-                                <rect key="frame" x="24" y="237.66666666666666" width="345" height="21.666666666666657"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCard">
                                 <rect key="frame" x="24" y="275.33333333333331" width="345" height="451.99999999999994"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="building.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RStoreIcon">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RStoreIcon">
                                         <rect key="frame" x="148.66666666666666" y="22.333333333333336" width="48" height="51.666666666666664"/>
                                         <color key="tintColor" red="0.67800000000000005" green="0.75700000000000001" blue="0.57999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -822,7 +824,7 @@
                                             <constraint firstAttribute="width" constant="48" id="RSIconW"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Alfreej Shawarma's" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMerchantLbl">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMerchantLbl">
                                         <rect key="frame" x="20" y="84" width="305" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -856,23 +858,6 @@
                                             <constraint firstAttribute="height" constant="1" id="RR2H"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Donated To" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDonatedTitle">
-                                        <rect key="frame" x="20" y="219.33333333333337" width="86.333333333333329" height="19.333333333333343"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                        <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Helping Hands" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDonatedValue">
-                                        <rect key="frame" x="218.33333333333334" y="219.33333333333337" width="106.66666666666666" height="19.333333333333343"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" red="0.41599999999999998" green="0.41599999999999998" blue="0.41599999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRow3Div">
-                                        <rect key="frame" x="20" y="254.66666666666669" width="305" height="1"/>
-                                        <color key="backgroundColor" red="0.90000000000000002" green="0.90000000000000002" blue="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="RR3H"/>
-                                        </constraints>
-                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDateTitle">
                                         <rect key="frame" x="19.999999999999996" y="271.66666666666669" width="35.666666666666657" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
@@ -890,7 +875,7 @@
                                             <constraint firstAttribute="height" constant="1" id="RR4H"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RStatusTitle">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Expiry Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RStatusTitle">
                                         <rect key="frame" x="20.000000000000004" y="324.00000000000006" width="49.333333333333343" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <color key="textColor" red="0.067000000000000004" green="0.067000000000000004" blue="0.067000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -923,15 +908,8 @@
                                     <constraint firstItem="RRow2Div" firstAttribute="top" secondItem="RItemTitle" secondAttribute="bottom" constant="16" id="RC16"/>
                                     <constraint firstItem="RRow2Div" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC17"/>
                                     <constraint firstAttribute="trailing" secondItem="RRow2Div" secondAttribute="trailing" constant="20" id="RC18"/>
-                                    <constraint firstItem="RDonatedTitle" firstAttribute="top" secondItem="RRow2Div" secondAttribute="bottom" constant="16" id="RC19"/>
                                     <constraint firstItem="RStoreIcon" firstAttribute="centerX" secondItem="RCard" secondAttribute="centerX" id="RC2"/>
-                                    <constraint firstItem="RDonatedTitle" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC20"/>
-                                    <constraint firstAttribute="trailing" secondItem="RDonatedValue" secondAttribute="trailing" constant="20" id="RC21"/>
-                                    <constraint firstItem="RDonatedValue" firstAttribute="centerY" secondItem="RDonatedTitle" secondAttribute="centerY" id="RC22"/>
-                                    <constraint firstItem="RRow3Div" firstAttribute="top" secondItem="RDonatedTitle" secondAttribute="bottom" constant="16" id="RC23"/>
-                                    <constraint firstItem="RRow3Div" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC24"/>
-                                    <constraint firstAttribute="trailing" secondItem="RRow3Div" secondAttribute="trailing" constant="20" id="RC25"/>
-                                    <constraint firstItem="RDateTitle" firstAttribute="top" secondItem="RRow3Div" secondAttribute="bottom" constant="16" id="RC26"/>
+                                    <constraint firstItem="RDateTitle" firstAttribute="top" secondItem="RRow2Div" secondAttribute="bottom" constant="16" id="RC26"/>
                                     <constraint firstItem="RDateTitle" firstAttribute="leading" secondItem="RCard" secondAttribute="leading" constant="20" id="RC27"/>
                                     <constraint firstAttribute="trailing" secondItem="RDateValue" secondAttribute="trailing" constant="20" id="RC28"/>
                                     <constraint firstItem="RDateValue" firstAttribute="centerY" secondItem="RDateTitle" secondAttribute="centerY" id="RC29"/>
@@ -985,10 +963,7 @@
                             <constraint firstItem="RBackBtn" firstAttribute="top" secondItem="RSafeArea" secondAttribute="top" constant="8" id="RV1"/>
                             <constraint firstItem="RDivider" firstAttribute="leading" secondItem="ReceiptView" secondAttribute="leading" id="RV10"/>
                             <constraint firstItem="RDivider" firstAttribute="trailing" secondItem="ReceiptView" secondAttribute="trailing" id="RV11"/>
-                            <constraint firstItem="RCompleteLbl" firstAttribute="top" secondItem="RDivider" secondAttribute="bottom" constant="16" id="RV12"/>
-                            <constraint firstItem="RCompleteLbl" firstAttribute="leading" secondItem="ReceiptView" secondAttribute="leading" constant="24" id="RV13"/>
-                            <constraint firstAttribute="trailing" secondItem="RCompleteLbl" secondAttribute="trailing" constant="24" id="RV14"/>
-                            <constraint firstItem="RCard" firstAttribute="top" secondItem="RCompleteLbl" secondAttribute="bottom" constant="16" id="RV15"/>
+                            <constraint firstItem="RCard" firstAttribute="top" secondItem="RDivider" secondAttribute="bottom" constant="16" id="RV15"/>
                             <constraint firstItem="RCard" firstAttribute="leading" secondItem="ReceiptView" secondAttribute="leading" constant="24" id="RV16"/>
                             <constraint firstAttribute="trailing" secondItem="RCard" secondAttribute="trailing" constant="24" id="RV17"/>
                             <constraint firstAttribute="height" secondItem="RCard" secondAttribute="height" constant="400" id="RV18"/>
@@ -1006,7 +981,6 @@
                     </view>
                     <connections>
                         <outlet property="dateValueLabel" destination="RDateValue" id="ROut3"/>
-                        <outlet property="donatedToValueLabel" destination="RDonatedValue" id="ROut2"/>
                         <outlet property="itemValueLabel" destination="RItemValue" id="ROut1"/>
                         <outlet property="merchantLabel" destination="RMerchantLbl" id="ROut7"/>
                         <outlet property="receiptCard" destination="RCard" id="ROut5"/>
