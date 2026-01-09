@@ -98,36 +98,36 @@
 
 <h3>Feature 1: Authentication & Role Management</h3>
 <ul>
-  <li><b>Developer:</b> Hasan Fardan</li>
-  <li><b>Tester:</b> Samana Kamal</li>
+  <li><b>Developer:</b> Ghadeer Alwasti</li>
+  <li><b>Tester:</b> Adil Taufique</li>
   <li><b>Description:</b> Firebase Authentication and role-based routing (Donor/NGO/Collector/Admin) with protected navigation flows.</li>
 </ul>
 
 <h3>Feature 2: Donor Home & Donation Management</h3>
 <ul>
-  <li><b>Developer:</b> Hasan Fardan</li>
-  <li><b>Tester:</b> Samana Kamal</li>
+  <li><b>Developer:</b> Abdulwahid Shehab</li>
+  <li><b>Tester:</b> Rashed Alsuwaidi</li>
   <li><b>Description:</b> Donor dashboard UI, donation creation flow, donation history, and recurring donations management.</li>
 </ul>
 
 <h3>Feature 3: NGO Discovery & Favorites</h3>
 <ul>
-  <li><b>Developer:</b> Hasan Fardan</li>
-  <li><b>Tester:</b> Adil Taufique</li>
+  <li><b>Developer:</b> Samana Kamal</li>
+  <li><b>Tester:</b> Hasan Fardan</li>
   <li><b>Description:</b> Searchable NGO listings, NGO profile screens, and favorite/save functionality for donors.</li>
 </ul>
 
 <h3>Feature 4: Real-Time Donation Status Tracking</h3>
 <ul>
-  <li><b>Developer:</b> Hasan Fardan</li>
-  <li><b>Tester:</b> Samana Kamal</li>
+  <li><b>Developer:</b> Adil Taufique</li>
+  <li><b>Tester:</b> Ghadeer Alwasti</li>
   <li><b>Description:</b> Status lifecycle handling using Firestore listeners for instant UI updates across roles.</li>
 </ul>
 
 <h3>Feature 5: Collector Workflow & Delivery Updates</h3>
 <ul>
-  <li><b>Developer:</b> Hasan Fardan</li>
-  <li><b>Tester:</b> Rashed Alsuwaidi</li>
+  <li><b>Developer:</b> Rashed Alsuwaidi</li>
+  <li><b>Tester:</b> Abdulwahid Shehab</li>
   <li><b>Description:</b> Collector dashboard and delivery status update flow with real-time synchronization.</li>
 </ul>
 
@@ -140,22 +140,15 @@
 
 <h3>Feature 7: Notifications & Announcements</h3>
 <ul>
-  <li><b>Developer:</b> Hasan Fardan</li>
-  <li><b>Tester:</b> Adil Taufique</li>
+  <li><b>Developer:</b> Rashed Alsuwaidi</li>
+  <li><b>Tester:</b> Ghadeer Alwasti</li>
   <li><b>Description:</b> Notification center and admin announcements targeting user roles (message/announcement/system types).</li>
 </ul>
 
-<h3>Feature 8: Reports & Analytics</h3>
+<h3>Feature 8: Legal Pages</h3>
 <ul>
   <li><b>Developer:</b> Hasan Fardan</li>
-  <li><b>Tester:</b> Rashed Alsuwaidi</li>
-  <li><b>Description:</b> Admin reporting module for monitoring totals, pending pickups, verification status, and activity insights.</li>
-</ul>
-
-<h3>Feature 9: Legal Pages</h3>
-<ul>
-  <li><b>Developer:</b> Hasan Fardan</li>
-  <li><b>Tester:</b> Samana Kamal</li>
+  <li><b>Tester:</b> Adil Taufique</li>
   <li><b>Description:</b> FAQ, Privacy Policy, and Terms & Conditions pages accessible in-app for transparency and compliance.</li>
 </ul>
 
