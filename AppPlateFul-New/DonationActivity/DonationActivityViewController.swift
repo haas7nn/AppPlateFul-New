@@ -20,11 +20,13 @@ class DonationActivityViewController: UIViewController {
     // MARK: - Properties
     private var donations: [DonationActivityDonation] = []
     private var currentFilter: FilterOption = .all
+    private var backButton: UIButton!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupBackButton()
         setupNotifications()
         loadDonations()
         updateStats()
@@ -32,13 +34,11 @@ class DonationActivityViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Hide navigation bar since we have custom header
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // Show navigation bar for other screens
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
@@ -54,6 +54,39 @@ class DonationActivityViewController: UIViewController {
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         tableView.separatorStyle = .none
+    }
+    
+    private func setupBackButton() {
+        backButton = UIButton(type: .system)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Style the button
+        backButton.backgroundColor = .white
+        backButton.setTitle("‹", for: .normal)
+        backButton.setTitleColor(UIColor(red: 0.256, green: 0.573, blue: 0.166, alpha: 1.0), for: .normal)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 28, weight: .medium)
+        backButton.layer.cornerRadius = 22
+        backButton.layer.shadowColor = UIColor.black.cgColor
+        backButton.layer.shadowOpacity = 0.1
+        backButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        backButton.layer.shadowRadius = 4
+        
+        // Add action
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        // Add to view
+        view.addSubview(backButton)
+        
+        // Constraints
+        NSLayoutConstraint.activate([
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            backButton.widthAnchor.constraint(equalToConstant: 44),
+            backButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
+        
+        // Bring to front
+        view.bringSubviewToFront(backButton)
     }
     
     private func setupNotifications() {
@@ -76,7 +109,6 @@ class DonationActivityViewController: UIViewController {
     private func loadDonations() {
         donations = DonationDataProvider.shared.filteredDonations(by: currentFilter)
         
-        // Update empty state
         if let emptyStateView = emptyStateLabel?.superview {
             emptyStateView.isHidden = !donations.isEmpty
         }
@@ -87,16 +119,13 @@ class DonationActivityViewController: UIViewController {
     private func updateStats() {
         let allDonations = DonationDataProvider.shared.donations
         
-        // Total count
         totalCountLabel.text = "\(allDonations.count)"
         
-        // Completed count (completed + picked up)
         let completedCount = allDonations.filter {
             $0.status == .completed || $0.status == .pickedUp
         }.count
         completedCountLabel.text = "\(completedCount)"
         
-        // Pending count (pending + ongoing)
         let pendingCount = allDonations.filter {
             $0.status == .pending || $0.status == .ongoing
         }.count
@@ -104,6 +133,27 @@ class DonationActivityViewController: UIViewController {
     }
     
     // MARK: - Actions
+    @objc private func backButtonTapped() {
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
+        } else if presentingViewController != nil {
+            dismiss(animated: true, completion: nil)
+        } else {
+            // Fallback: Navigate to AdminDashboard
+            let storyboard = UIStoryboard(name: "AdminDashboard", bundle: nil)
+            if let adminVC = storyboard.instantiateInitialViewController() {
+                adminVC.modalPresentationStyle = .fullScreen
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let window = windowScene.windows.first {
+                    window.rootViewController = adminVC
+                    window.makeKeyAndVisible()
+                    UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil)
+                }
+            }
+        }
+    }
+    
     @IBAction func filterButtonTapped(_ sender: Any) {
         showFilterPopup()
     }
@@ -190,7 +240,7 @@ extension DonationActivityViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        116 // Updated for new compact cell design
+        116
     }
 }
 
