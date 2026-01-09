@@ -99,7 +99,7 @@
 <h3>Feature 1: Authentication & Role Management</h3>
 <ul>
   <li><b>Developer:</b> Ghadeer Alwasti</li>
-  <li><b>Tester:</b> Adil Taufique</li>
+  <li><b>Tester:</b> Abdulwahid Shehab</li>
   <li><b>Description:</b> Firebase Authentication and role-based routing (Donor/NGO/Collector/Admin) with protected navigation flows.</li>
 </ul>
 
