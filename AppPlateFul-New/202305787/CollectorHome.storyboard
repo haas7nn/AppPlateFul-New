@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CollectorNavID">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="CollectorNavScene">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="CollectorNavID" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CollectorNavBar">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="CollectorHomeVC" kind="relationship" relationship="rootViewController" id="CollectorRootSeg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CollectorNavFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-700" y="0.0"/>
+        </scene>
+        <!--Collector Home View Controller-->
+        <scene sceneID="CollectorHomeScene">
+            <objects>
+                <viewController storyboardIdentifier="CollectorHomeViewController" id="CollectorHomeVC" customClass="CollectorHomeViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CollectorMainView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorDecorCircle1">
+                                <rect key="frame" x="-80" y="-100" width="250" height="250"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="CDC1H"/>
+                                    <constraint firstAttribute="width" constant="250" id="CDC1W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="125"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorDecorCircle2">
+                                <rect key="frame" x="280" y="-50" width="180" height="180"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.75686274509803919" blue="0.47058823529411764" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="CDC2H"/>
+                                    <constraint firstAttribute="width" constant="180" id="CDC2W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="90"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorScrollView">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="680"/>
+                                        <subviews>
+                                            <!-- Header Card -->
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorHeaderCard">
+                                                <rect key="frame" x="20" y="16" width="353" height="120"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorAvatarBg">
+                                                        <rect key="frame" x="20" y="25" width="70" height="70"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🚚" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorAvatarEmoji">
+                                                                <rect key="frame" x="14.666666666666664" y="13.666666666666657" width="41" height="43"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.94509803921568625" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="CollectorAvatarEmoji" firstAttribute="centerX" secondItem="CollectorAvatarBg" secondAttribute="centerX" id="CAeX"/>
+                                                            <constraint firstItem="CollectorAvatarEmoji" firstAttribute="centerY" secondItem="CollectorAvatarBg" secondAttribute="centerY" id="CAeY"/>
+                                                            <constraint firstAttribute="height" constant="70" id="CAvH"/>
+                                                            <constraint firstAttribute="width" constant="70" id="CAvW"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="35"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, Collector 👋" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorHelloLabel">
+                                                        <rect key="frame" x="108" y="30" width="160" height="22"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn your mission into action !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorSubtitleLabel">
+                                                        <rect key="frame" x="108" y="54" width="200" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorSettingsBtn">
+                                                        <rect key="frame" x="293" y="38" width="44" height="44"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="CSBH"/>
+                                                            <constraint firstAttribute="width" constant="44" id="CSBW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <state key="normal" title="⚙️"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="22"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="CollectorSubtitleLabel" firstAttribute="leading" secondItem="CollectorHelloLabel" secondAttribute="leading" id="CSlL"/>
+                                                    <constraint firstItem="CollectorSubtitleLabel" firstAttribute="top" secondItem="CollectorHelloLabel" secondAttribute="bottom" constant="2" id="CSlT"/>
+                                                    <constraint firstItem="CollectorAvatarBg" firstAttribute="centerY" secondItem="CollectorHeaderCard" secondAttribute="centerY" id="CAvCY"/>
+                                                    <constraint firstItem="CollectorAvatarBg" firstAttribute="leading" secondItem="CollectorHeaderCard" secondAttribute="leading" constant="20" id="CAvL"/>
+                                                    <constraint firstAttribute="height" constant="120" id="CHCH"/>
+                                                    <constraint firstItem="CollectorSettingsBtn" firstAttribute="centerY" secondItem="CollectorHeaderCard" secondAttribute="centerY" id="CSbCY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CollectorSettingsBtn" secondAttribute="trailing" constant="16" id="CSbTr"/>
+                                                    <constraint firstItem="CollectorHelloLabel" firstAttribute="leading" secondItem="CollectorAvatarBg" secondAttribute="trailing" constant="18" id="CHlL"/>
+                                                    <constraint firstItem="CollectorHelloLabel" firstAttribute="top" secondItem="CollectorAvatarBg" secondAttribute="top" constant="5" id="CHlT"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="24"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.29999999999999999"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <!-- Quick Actions Label -->
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Actions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorQuickActionsLabel">
+                                                <rect key="frame" x="20" y="160" width="130.33333333333334" height="24"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                            <!-- Action Card 1: Community Leaderboard -->
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorActionCard1">
+                                                <rect key="frame" x="20" y="200" width="353" height="100"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorIconBg1">
+                                                        <rect key="frame" x="20" y="22" width="56" height="56"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorIcon1">
+                                                                <rect key="frame" x="12" y="11.333333333333314" width="32" height="33.666666666666664"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.94901960784313721" green="0.75686274509803919" blue="0.47058823529411764" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="CollectorIcon1" firstAttribute="centerX" secondItem="CollectorIconBg1" secondAttribute="centerX" id="CI1CX"/>
+                                                            <constraint firstItem="CollectorIcon1" firstAttribute="centerY" secondItem="CollectorIconBg1" secondAttribute="centerY" id="CI1CY"/>
+                                                            <constraint firstAttribute="height" constant="56" id="CIB1H"/>
+                                                            <constraint firstAttribute="width" constant="56" id="CIB1W"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Community Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorTitle1">
+                                                        <rect key="frame" x="92" y="28" width="190" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See top collectors in your area" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorDesc1">
+                                                        <rect key="frame" x="91.999999999999986" y="50.333333333333314" width="200" height="15.666666666666671"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="›" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorArrow1">
+                                                        <rect key="frame" x="325.66666666666669" y="33.333333333333314" width="11.333333333333314" height="33.666666666666657"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                                        <color key="textColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorBtn1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title=""/>
+                                                        <connections>
+                                                            <action selector="communityLeaderboardTapped:" destination="CollectorHomeVC" eventType="touchUpInside" id="CBtn1Act"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="CollectorArrow1" firstAttribute="centerY" secondItem="CollectorActionCard1" secondAttribute="centerY" id="CA1CY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CollectorArrow1" secondAttribute="trailing" constant="16" id="CA1Tr"/>
+                                                    <constraint firstAttribute="height" constant="100" id="CAC1H"/>
+                                                    <constraint firstAttribute="bottom" secondItem="CollectorBtn1" secondAttribute="bottom" id="CB1B"/>
+                                                    <constraint firstItem="CollectorBtn1" firstAttribute="leading" secondItem="CollectorActionCard1" secondAttribute="leading" id="CB1L"/>
+                                                    <constraint firstItem="CollectorBtn1" firstAttribute="top" secondItem="CollectorActionCard1" secondAttribute="top" id="CB1T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CollectorBtn1" secondAttribute="trailing" id="CB1Tr"/>
+                                                    <constraint firstItem="CollectorDesc1" firstAttribute="leading" secondItem="CollectorTitle1" secondAttribute="leading" id="CD1L"/>
+                                                    <constraint firstItem="CollectorDesc1" firstAttribute="top" secondItem="CollectorTitle1" secondAttribute="bottom" constant="2" id="CD1T"/>
+                                                    <constraint firstItem="CollectorIconBg1" firstAttribute="centerY" secondItem="CollectorActionCard1" secondAttribute="centerY" id="CIB1CY"/>
+                                                    <constraint firstItem="CollectorIconBg1" firstAttribute="leading" secondItem="CollectorActionCard1" secondAttribute="leading" constant="20" id="CIB1L"/>
+                                                    <constraint firstItem="CollectorTitle1" firstAttribute="leading" secondItem="CollectorIconBg1" secondAttribute="trailing" constant="16" id="CT1L"/>
+                                                    <constraint firstItem="CollectorTitle1" firstAttribute="top" secondItem="CollectorIconBg1" secondAttribute="top" constant="6" id="CT1T"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.080000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <!-- Action Card 2: Update Delivery Status -->
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorActionCard2">
+                                                <rect key="frame" x="20" y="316" width="353" height="100"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorIconBg2">
+                                                        <rect key="frame" x="20" y="22" width="56" height="56"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📦" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorIcon2">
+                                                                <rect key="frame" x="12" y="11.333333333333371" width="32" height="33.666666666666664"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="CollectorIcon2" firstAttribute="centerX" secondItem="CollectorIconBg2" secondAttribute="centerX" id="CI2CX"/>
+                                                            <constraint firstItem="CollectorIcon2" firstAttribute="centerY" secondItem="CollectorIconBg2" secondAttribute="centerY" id="CI2CY"/>
+                                                            <constraint firstAttribute="height" constant="56" id="CIB2H"/>
+                                                            <constraint firstAttribute="width" constant="56" id="CIB2W"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Delivery Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorTitle2">
+                                                        <rect key="frame" x="92" y="28" width="180" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark pickups and deliveries complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorDesc2">
+                                                        <rect key="frame" x="91.999999999999986" y="50.333333333333371" width="220" height="15.666666666666671"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="›" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorArrow2">
+                                                        <rect key="frame" x="325.66666666666669" y="33.333333333333371" width="11.333333333333314" height="33.666666666666657"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                                        <color key="textColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorBtn2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title=""/>
+                                                        <connections>
+                                                            <action selector="updateDeliveryStatusTapped:" destination="CollectorHomeVC" eventType="touchUpInside" id="CBtn2Act"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="CollectorArrow2" firstAttribute="centerY" secondItem="CollectorActionCard2" secondAttribute="centerY" id="CA2CY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CollectorArrow2" secondAttribute="trailing" constant="16" id="CA2Tr"/>
+                                                    <constraint firstAttribute="height" constant="100" id="CAC2H"/>
+                                                    <constraint firstAttribute="bottom" secondItem="CollectorBtn2" secondAttribute="bottom" id="CB2B"/>
+                                                    <constraint firstItem="CollectorBtn2" firstAttribute="leading" secondItem="CollectorActionCard2" secondAttribute="leading" id="CB2L"/>
+                                                    <constraint firstItem="CollectorBtn2" firstAttribute="top" secondItem="CollectorActionCard2" secondAttribute="top" id="CB2T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CollectorBtn2" secondAttribute="trailing" id="CB2Tr"/>
+                                                    <constraint firstItem="CollectorDesc2" firstAttribute="leading" secondItem="CollectorTitle2" secondAttribute="leading" id="CD2L"/>
+                                                    <constraint firstItem="CollectorDesc2" firstAttribute="top" secondItem="CollectorTitle2" secondAttribute="bottom" constant="2" id="CD2T"/>
+                                                    <constraint firstItem="CollectorIconBg2" firstAttribute="centerY" secondItem="CollectorActionCard2" secondAttribute="centerY" id="CIB2CY"/>
+                                                    <constraint firstItem="CollectorIconBg2" firstAttribute="leading" secondItem="CollectorActionCard2" secondAttribute="leading" constant="20" id="CIB2L"/>
+                                                    <constraint firstItem="CollectorTitle2" firstAttribute="leading" secondItem="CollectorIconBg2" secondAttribute="trailing" constant="16" id="CT2L"/>
+                                                    <constraint firstItem="CollectorTitle2" firstAttribute="top" secondItem="CollectorIconBg2" secondAttribute="top" constant="6" id="CT2T"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.080000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <!-- Action Card 3: Collector Profile -->
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorActionCard3">
+                                                <rect key="frame" x="20" y="432" width="353" height="100"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorIconBg3">
+                                                        <rect key="frame" x="20" y="22" width="56" height="56"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👤" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorIcon3">
+                                                                <rect key="frame" x="12" y="11.333333333333371" width="32" height="33.666666666666664"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.36078431372549019" green="0.54509803921568623" blue="0.7686274509803922" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="CollectorIcon3" firstAttribute="centerX" secondItem="CollectorIconBg3" secondAttribute="centerX" id="CI3CX"/>
+                                                            <constraint firstItem="CollectorIcon3" firstAttribute="centerY" secondItem="CollectorIconBg3" secondAttribute="centerY" id="CI3CY"/>
+                                                            <constraint firstAttribute="height" constant="56" id="CIB3H"/>
+                                                            <constraint firstAttribute="width" constant="56" id="CIB3W"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="16"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collector Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorTitle3">
+                                                        <rect key="frame" x="92" y="28" width="135" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View and edit your profile details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorDesc3">
+                                                        <rect key="frame" x="92" y="50.333333333333371" width="200" height="15.666666666666671"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                        <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="›" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorArrow3">
+                                                        <rect key="frame" x="325.66666666666669" y="33.333333333333371" width="11.333333333333314" height="33.666666666666657"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                                        <color key="textColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorBtn3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title=""/>
+                                                        <connections>
+                                                            <action selector="collectorProfileTapped:" destination="CollectorHomeVC" eventType="touchUpInside" id="CBtn3Act"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="CollectorArrow3" firstAttribute="centerY" secondItem="CollectorActionCard3" secondAttribute="centerY" id="CA3CY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CollectorArrow3" secondAttribute="trailing" constant="16" id="CA3Tr"/>
+                                                    <constraint firstAttribute="height" constant="100" id="CAC3H"/>
+                                                    <constraint firstAttribute="bottom" secondItem="CollectorBtn3" secondAttribute="bottom" id="CB3B"/>
+                                                    <constraint firstItem="CollectorBtn3" firstAttribute="leading" secondItem="CollectorActionCard3" secondAttribute="leading" id="CB3L"/>
+                                                    <constraint firstItem="CollectorBtn3" firstAttribute="top" secondItem="CollectorActionCard3" secondAttribute="top" id="CB3T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CollectorBtn3" secondAttribute="trailing" id="CB3Tr"/>
+                                                    <constraint firstItem="CollectorDesc3" firstAttribute="leading" secondItem="CollectorTitle3" secondAttribute="leading" id="CD3L"/>
+                                                    <constraint firstItem="CollectorDesc3" firstAttribute="top" secondItem="CollectorTitle3" secondAttribute="bottom" constant="2" id="CD3T"/>
+                                                    <constraint firstItem="CollectorIconBg3" firstAttribute="centerY" secondItem="CollectorActionCard3" secondAttribute="centerY" id="CIB3CY"/>
+                                                    <constraint firstItem="CollectorIconBg3" firstAttribute="leading" secondItem="CollectorActionCard3" secondAttribute="leading" constant="20" id="CIB3L"/>
+                                                    <constraint firstItem="CollectorTitle3" firstAttribute="leading" secondItem="CollectorIconBg3" secondAttribute="trailing" constant="16" id="CT3L"/>
+                                                    <constraint firstItem="CollectorTitle3" firstAttribute="top" secondItem="CollectorIconBg3" secondAttribute="top" constant="6" id="CT3T"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.080000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <!-- Logout Button -->
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorLogoutBtn">
+                                                <rect key="frame" x="20" y="564" width="353" height="54"/>
+                                                <color key="backgroundColor" red="0.94509803921568625" green="0.2627450980392157" blue="0.21176470588235294" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="CLBH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                <state key="normal" title="🚪  Sign Out">
+                                                    <color key="titleColor" red="0.94509803921568625" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="logoutTapped:" destination="CollectorHomeVC" eventType="touchUpInside" id="CLogoutAct"/>
+                                                </connections>
+                                            </button>
+                                            <!-- Version Label -->
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlateFul Collector v1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorVersionLabel">
+                                                <rect key="frame" x="131" y="634" width="131" height="14.333333333333371"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="CollectorActionCard1" firstAttribute="leading" secondItem="CollectorContentView" secondAttribute="leading" constant="20" id="CAC1L"/>
+                                            <constraint firstItem="CollectorActionCard1" firstAttribute="top" secondItem="CollectorQuickActionsLabel" secondAttribute="bottom" constant="16" id="CAC1T"/>
+                                            <constraint firstAttribute="trailing" secondItem="CollectorActionCard1" secondAttribute="trailing" constant="20" id="CAC1Tr"/>
+                                            <constraint firstItem="CollectorActionCard2" firstAttribute="leading" secondItem="CollectorContentView" secondAttribute="leading" constant="20" id="CAC2L"/>
+                                            <constraint firstItem="CollectorActionCard2" firstAttribute="top" secondItem="CollectorActionCard1" secondAttribute="bottom" constant="16" id="CAC2T"/>
+                                            <constraint firstAttribute="trailing" secondItem="CollectorActionCard2" secondAttribute="trailing" constant="20" id="CAC2Tr"/>
+                                            <constraint firstItem="CollectorActionCard3" firstAttribute="leading" secondItem="CollectorContentView" secondAttribute="leading" constant="20" id="CAC3L"/>
+                                            <constraint firstItem="CollectorActionCard3" firstAttribute="top" secondItem="CollectorActionCard2" secondAttribute="bottom" constant="16" id="CAC3T"/>
+                                            <constraint firstAttribute="trailing" secondItem="CollectorActionCard3" secondAttribute="trailing" constant="20" id="CAC3Tr"/>
+                                            <constraint firstAttribute="height" constant="680" id="CCVH"/>
+                                            <constraint firstAttribute="width" constant="393" id="CCVW"/>
+                                            <constraint firstItem="CollectorHeaderCard" firstAttribute="leading" secondItem="CollectorContentView" secondAttribute="leading" constant="20" id="CHCL"/>
+                                            <constraint firstItem="CollectorHeaderCard" firstAttribute="top" secondItem="CollectorContentView" secondAttribute="top" constant="16" id="CHCT"/>
+                                            <constraint firstAttribute="trailing" secondItem="CollectorHeaderCard" secondAttribute="trailing" constant="20" id="CHCTr"/>
+                                            <constraint firstItem="CollectorLogoutBtn" firstAttribute="leading" secondItem="CollectorContentView" secondAttribute="leading" constant="20" id="CLBL"/>
+                                            <constraint firstItem="CollectorLogoutBtn" firstAttribute="top" secondItem="CollectorActionCard3" secondAttribute="bottom" constant="32" id="CLBT"/>
+                                            <constraint firstAttribute="trailing" secondItem="CollectorLogoutBtn" secondAttribute="trailing" constant="20" id="CLBTr"/>
+                                            <constraint firstItem="CollectorQuickActionsLabel" firstAttribute="leading" secondItem="CollectorContentView" secondAttribute="leading" constant="20" id="CQAL"/>
+                                            <constraint firstItem="CollectorQuickActionsLabel" firstAttribute="top" secondItem="CollectorHeaderCard" secondAttribute="bottom" constant="24" id="CQAT"/>
+                                            <constraint firstItem="CollectorVersionLabel" firstAttribute="top" secondItem="CollectorLogoutBtn" secondAttribute="bottom" constant="16" id="CVLT"/>
+                                            <constraint firstItem="CollectorVersionLabel" firstAttribute="centerX" secondItem="CollectorContentView" secondAttribute="centerX" id="CVLX"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="CollectorContentView" firstAttribute="bottom" secondItem="CollectorScrollView" secondAttribute="bottom" id="CSVCB"/>
+                                    <constraint firstItem="CollectorContentView" firstAttribute="leading" secondItem="CollectorScrollView" secondAttribute="leading" id="CSVCL"/>
+                                    <constraint firstItem="CollectorContentView" firstAttribute="top" secondItem="CollectorScrollView" secondAttribute="top" id="CSVCT"/>
+                                    <constraint firstItem="CollectorContentView" firstAttribute="trailing" secondItem="CollectorScrollView" secondAttribute="trailing" id="CSVCTr"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CollectorSafeArea"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803926" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="CollectorDecorCircle1" firstAttribute="leading" secondItem="CollectorMainView" secondAttribute="leading" constant="-80" id="CDC1L"/>
+                            <constraint firstItem="CollectorDecorCircle1" firstAttribute="top" secondItem="CollectorMainView" secondAttribute="top" constant="-100" id="CDC1T"/>
+                            <constraint firstItem="CollectorDecorCircle2" firstAttribute="top" secondItem="CollectorMainView" secondAttribute="top" constant="-50" id="CDC2T"/>
+                            <constraint firstItem="CollectorDecorCircle2" firstAttribute="trailing" secondItem="CollectorMainView" secondAttribute="trailing" constant="67" id="CDC2Tr"/>
+                            <constraint firstItem="CollectorScrollView" firstAttribute="bottom" secondItem="CollectorSafeArea" secondAttribute="bottom" id="CSVB"/>
+                            <constraint firstItem="CollectorScrollView" firstAttribute="leading" secondItem="CollectorSafeArea" secondAttribute="leading" id="CSVL"/>
+                            <constraint firstItem="CollectorScrollView" firstAttribute="top" secondItem="CollectorSafeArea" secondAttribute="top" id="CSVT"/>
+                            <constraint firstItem="CollectorScrollView" firstAttribute="trailing" secondItem="CollectorSafeArea" secondAttribute="trailing" id="CSVTr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="communityLeaderboardBtn" destination="CollectorBtn1" id="CO1"/>
+                        <outlet property="updateDeliveryBtn" destination="CollectorBtn2" id="CO2"/>
+                        <outlet property="collectorProfileBtn" destination="CollectorBtn3" id="CO3"/>
+                        <outlet property="logoutBtn" destination="CollectorLogoutBtn" id="CO4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CollectorHomeFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="0.0"/>
+        </scene>
+    </scenes>
+</document>
