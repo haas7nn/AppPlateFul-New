@@ -40,11 +40,31 @@ class DonorHomeScreenViewController: UIViewController {
     }
     
     @IBAction func trackDeliveriesTapped(_ sender: UIButton) {
-        // Navigate to Track Deliveries
+        // Load the TrackingOrder storyboard
+        let storyboard = UIStoryboard(name: "TrackingOrder", bundle: nil)
+        
+        // Instantiate its initial view controller
+        guard let trackingRootVC = storyboard.instantiateInitialViewController() else {
+            print("Could not instantiate initial view controller from TrackingOrder.storyboard")
+            return
+        }
+        
+        // Push onto the current navigation stack
+        navigationController?.pushViewController(trackingRootVC, animated: true)
     }
     
     @IBAction func donationUpdatesTapped(_ sender: UIButton) {
-        // Navigate to Donation Updates
+        // Load the DonationsList storyboard (file name without .storyboard)
+        let storyboard = UIStoryboard(name: "DonationsList", bundle: nil)
+        
+        // Instantiate its initial view controller
+        guard let donationsListRootVC = storyboard.instantiateInitialViewController() else {
+            print("Could not instantiate initial view controller from DonationsList.storyboard")
+            return
+        }
+        
+        // Push onto the current navigation stack
+        navigationController?.pushViewController(donationsListRootVC, animated: true)
     }
     
     @IBAction func recurringDonationsTapped(_ sender: UIButton) {
