@@ -134,25 +134,65 @@ class DonationActivityViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func backButtonTapped() {
-        if let navigationController = navigationController {
-            navigationController.popViewController(animated: true)
-        } else if presentingViewController != nil {
-            dismiss(animated: true, completion: nil)
-        } else {
-            // Fallback: Navigate to AdminDashboard
-            let storyboard = UIStoryboard(name: "AdminDashboard", bundle: nil)
-            if let adminVC = storyboard.instantiateInitialViewController() {
-                adminVC.modalPresentationStyle = .fullScreen
-                
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                   let window = windowScene.windows.first {
-                    window.rootViewController = adminVC
-                    window.makeKeyAndVisible()
-                    UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil)
-                }
-            }
+
+        // 1) If we are in a nav stack and not the root -> pop
+        if let nav = navigationController, nav.viewControllers.first != self {
+            nav.popViewController(animated: true)
+            return
         }
+
+        // 2) If presented modally -> dismiss
+        if presentingViewController != nil {
+            dismiss(animated: true)
+            return
+        }
+
+        // 3) If we're root of a nav stack -> go to root (still "back-ish")
+        if let nav = navigationController {
+            nav.popToRootViewController(animated: true)
+            return
+        }
+
+        // 4) If inside a tab bar -> jump to first tab
+        if let tab = tabBarController {
+            tab.selectedIndex = 0
+            return
+        }
+
+        // 5) Final fallback: reset root to AdminDashboard (key window correctly)
+        let sb = UIStoryboard(name: "AdminDashboard", bundle: nil)
+
+        // Prefer a known storyboard ID (best), otherwise initial VC
+        let adminRoot: UIViewController
+
+        if let nav = sb.instantiateViewController(withIdentifier: "AdminDashboardNav") as? UINavigationController {
+            adminRoot = nav
+        } else if let initial = sb.instantiateInitialViewController() {
+            adminRoot = initial
+        } else {
+            assertionFailure("AdminDashboard storyboard misconfigured")
+            return
+        }
+
+
+
+        guard
+            let windowScene = UIApplication.shared.connectedScenes
+                .compactMap({ $0 as? UIWindowScene })
+                .first(where: { $0.activationState == .foregroundActive }),
+            let window = windowScene.windows.first(where: { $0.isKeyWindow }) ?? windowScene.windows.first
+        else { return }
+
+        adminRoot.modalPresentationStyle = .fullScreen
+        window.rootViewController = adminRoot
+        window.makeKeyAndVisible()
+
+        UIView.transition(with: window,
+                          duration: 0.25,
+                          options: .transitionCrossDissolve,
+                          animations: nil)
     }
+
     
     @IBAction func filterButtonTapped(_ sender: Any) {
         showFilterPopup()

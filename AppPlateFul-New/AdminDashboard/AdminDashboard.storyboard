@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NavID">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DashboardVC">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
@@ -10,7 +10,7 @@
         <!--Navigation Controller-->
         <scene sceneID="NavScene">
             <objects>
-                <navigationController navigationBarHidden="YES" id="NavID" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AdminDashboardNav" navigationBarHidden="YES" id="NavID" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NavBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -96,21 +96,6 @@
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SettingsBtn">
-                                                        <rect key="frame" x="293" y="38" width="44" height="44"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="SBH"/>
-                                                            <constraint firstAttribute="width" constant="44" id="SBW"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <state key="normal" title="⚙️"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="22"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -119,8 +104,6 @@
                                                     <constraint firstItem="AvatarBg" firstAttribute="centerY" secondItem="HeaderCard" secondAttribute="centerY" id="AvCY"/>
                                                     <constraint firstItem="AvatarBg" firstAttribute="leading" secondItem="HeaderCard" secondAttribute="leading" constant="20" id="AvL"/>
                                                     <constraint firstAttribute="height" constant="120" id="HCH"/>
-                                                    <constraint firstItem="SettingsBtn" firstAttribute="centerY" secondItem="HeaderCard" secondAttribute="centerY" id="SbCY"/>
-                                                    <constraint firstAttribute="trailing" secondItem="SettingsBtn" secondAttribute="trailing" constant="16" id="SbTr"/>
                                                     <constraint firstItem="WelcomeLabel" firstAttribute="leading" secondItem="AvatarBg" secondAttribute="trailing" constant="18" id="WlL"/>
                                                     <constraint firstItem="WelcomeLabel" firstAttribute="top" secondItem="AvatarBg" secondAttribute="top" constant="5" id="WlT"/>
                                                 </constraints>
@@ -536,7 +519,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard4">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard4">
                                                 <rect key="frame" x="20" y="658" width="353" height="100"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IconBg4">
