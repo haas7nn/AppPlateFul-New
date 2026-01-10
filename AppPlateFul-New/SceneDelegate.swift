@@ -1,11 +1,5 @@
-//
-//  SceneDelegate.swift
-//  AppPlateFul-New
-//
-//  Created by Hassan Fardan on 06/01/2026.
-//
-
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,33 +12,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = scene as? UIWindowScene else { return }
 
-        // Create window
         let window = UIWindow(windowScene: windowScene)
-
-        // Load AdminDashboard storyboard
-        let storyboard = UIStoryboard(name: "AdminDashboard", bundle: nil)
-
-        // Instantiate AdminDashboardViewController
-        let adminVC = storyboard.instantiateViewController(
-            withIdentifier: "AdminDashboardViewController"
-        )
-
-        // Embed in navigation controller
-        let navController = UINavigationController(rootViewController: adminVC)
-
-        // Set root view controller
-        window.rootViewController = navController
         self.window = window
+
+        window.rootViewController = UIViewController()
         window.makeKeyAndVisible()
+
+        if Auth.auth().currentUser != nil {
+            AuthRouter.shared.routeAfterLogin(from: window.rootViewController ?? UIViewController())
+        } else {
+            AppNavigator.shared.navigateToAuth()
+        }
     }
-
-    func sceneDidDisconnect(_ scene: UIScene) {}
-
-    func sceneDidBecomeActive(_ scene: UIScene) {}
-
-    func sceneWillResignActive(_ scene: UIScene) {}
-
-    func sceneWillEnterForeground(_ scene: UIScene) {}
-
-    func sceneDidEnterBackground(_ scene: UIScene) {}
 }
