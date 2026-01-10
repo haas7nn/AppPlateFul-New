@@ -18,7 +18,14 @@ class DonorHomeScreenViewController: UIViewController {
 
     // MARK: - Actions
     @IBAction func communityLeaderboardTapped(_ sender: UIButton) {
-        // todo
+        let storyboard = UIStoryboard(name: "Leaderboard", bundle: nil)
+        
+        guard let leaderboardVC = storyboard.instantiateInitialViewController() else {
+            print("Could not instantiate initial view controller from Leaderboard.storyboard")
+            return
+        }
+        
+        navigationController?.pushViewController(leaderboardVC, animated: true)
     }
 
     @IBAction func favoriteNGOsTapped(_ sender: UIButton) {
@@ -27,6 +34,7 @@ class DonorHomeScreenViewController: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "FavoriteNGOsViewController")
         navigationController?.pushViewController(vc, animated: true)
     }
+
 
     @IBAction func myDonationsTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(

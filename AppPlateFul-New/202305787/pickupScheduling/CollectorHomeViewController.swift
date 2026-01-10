@@ -11,12 +11,27 @@ class CollectorHomeViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func communityLeaderboardTapped(_ sender: UIButton) {
-        // TODO: Navigate to leaderboard
+        let storyboard = UIStoryboard(name: "Leaderboard", bundle: nil)
+        
+        guard let leaderboardVC = storyboard.instantiateInitialViewController() else {
+            print("Could not instantiate initial view controller from Leaderboard.storyboard")
+            return
+        }
+        
+        navigationController?.pushViewController(leaderboardVC, animated: true)
     }
+    
+    
+        @IBAction func updateDeliveryStatusTapped(_ sender: UIButton) {
+            let storyboard = UIStoryboard(name: "DonationsList", bundle: nil)
 
-    @IBAction func updateDeliveryStatusTapped(_ sender: UIButton) {
-        // TODO: Navigate to delivery status
-    }
+            guard let donationsListRootVC = storyboard.instantiateInitialViewController() else {
+                print("Could not instantiate initial view controller from DonationsList.storyboard")
+                return
+            }
+
+            navigationController?.pushViewController(donationsListRootVC, animated: true)
+        }
 
     @IBAction func collectorProfileTapped(_ sender: UIButton) {
         // TODO: Navigate to profile

@@ -1,5 +1,4 @@
 import UIKit
-import MapKit
 
 class HistoryDetailsViewController: UIViewController {
 
@@ -11,13 +10,8 @@ class HistoryDetailsViewController: UIViewController {
     @IBOutlet weak var pickupDateLabel: UILabel!
     @IBOutlet weak var finalStatusLabel: UILabel!
 
-    // Container view holding both address and mobile labels
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var mobileNumberLabel: UILabel!
-
     // MARK: - Properties
-    var history: DonationHistory?
+    var donation: Donation?
 
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -25,138 +19,41 @@ class HistoryDetailsViewController: UIViewController {
         return formatter
     }()
 
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupGestures()
     }
-    
 
-    // MARK: - Setup UI
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        makeImageCornersRounded()
+    }
+
     private func setupUI() {
-        guard let history = history else { return }
+        guard let donation = donation else { return }
 
-        imageView.image = UIImage(named: history.imageName)
-        restaurantLabel.text = history.restaurantName
-        itemsLabel.text = "Items: \(history.itemsWithQuantity)"
-        dateLabel.text = " \(dateFormatter.string(from: history.date))"
-        pickupDateLabel.text = "Pickup: \(dateFormatter.string(from: history.pickupDate))"
-        finalStatusLabel.text = "Status: \(history.finalStatus)"
+        restaurantLabel.text = donation.donorName
+        itemsLabel.text = "Items: \(donation.title) (\(donation.quantity))"
+        dateLabel.text = donation.expiryDate.map { dateFormatter.string(from: $0) } ?? "Date: —"
+        pickupDateLabel.text = donation.scheduledPickup.map { "Pickup: \(dateFormatter.string(from: $0.pickupDate))" } ?? "Pickup: Not scheduled"
+        finalStatusLabel.text = "Status: \(donation.status.rawValue.capitalized)"
 
-        // Address
-        if let addressText = formattedAddress(from: history) {
-            let attributed = NSMutableAttributedString(string: addressText)
-            if let range = addressText.range(of: "Delivery Address:") {
-                let nsRange = NSRange(range, in: addressText)
-                attributed.addAttribute(.font,
-                                        value: UIFont.boldSystemFont(ofSize: addressLabel.font.pointSize),
-                                        range: nsRange)
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+
+        // Load image using ImageLoader
+        if !donation.imageRef.isEmpty {
+            ImageLoader.shared.load(donation.imageRef) { [weak self] image in
+                DispatchQueue.main.async {
+                    self?.imageView.image = image ?? UIImage(systemName: "photo")
+                }
             }
-            addressLabel.attributedText = attributed
-            addressLabel.numberOfLines = 0
-            addressLabel.lineBreakMode = .byWordWrapping
-            addressLabel.textColor = .systemBlue
-            addressLabel.isHidden = false
         } else {
-            addressLabel.isHidden = true
-        }
-
-        // Mobile
-        if let phone = history.mobileNumber, !phone.isEmpty {
-            mobileNumberLabel.text = "Mobile: \(phone)"
-            mobileNumberLabel.textColor = .systemBlue
-            mobileNumberLabel.numberOfLines = 1
-            mobileNumberLabel.isHidden = false
-        } else {
-            mobileNumberLabel.isHidden = true
-        }
-
-        // Ensure container view is visible
-        containerView.isHidden = addressLabel.isHidden && mobileNumberLabel.isHidden
-        containerView.isUserInteractionEnabled = true
-    }
-
-    // MARK: - Format Address
-    private func formattedAddress(from history: DonationHistory) -> String? {
-        guard let house = history.house,
-              let road = history.road,
-              let block = history.block,
-              let area = history.area,
-              !house.isEmpty || !road.isEmpty || !block.isEmpty || !area.isEmpty else { return nil }
-
-        return "House: \(house), Road \(road), Block \(block), \(area)"
-    }
-
-    // MARK: - Setup Gestures
-    private func setupGestures() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(containerTapped(_:)))
-        containerView.addGestureRecognizer(tapGesture)
-    }
-
-    @objc private func containerTapped(_ sender: UITapGestureRecognizer) {
-        let locationInContainer = sender.location(in: containerView)
-
-        // Convert location to label's coordinate space
-        let locationInAddress = containerView.convert(locationInContainer, to: addressLabel)
-        let locationInPhone = containerView.convert(locationInContainer, to: mobileNumberLabel)
-
-        if addressLabel.bounds.contains(locationInAddress) {
-            openMap()
-        } else if mobileNumberLabel.bounds.contains(locationInPhone) {
-            callNumber()
+            imageView.image = UIImage(systemName: "photo")
         }
     }
 
-    // MARK: - Actions
-    @objc func callNumber() {
-        guard let phone = history?.mobileNumber, !phone.isEmpty else {
-            print("No phone number available")
-            return
-        }
-
-        // Remove spaces or extra characters
-        let digits = phone.filter("0123456789+".contains)
-        if let url = URL(string: "tel://\(digits)"), UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
-        } else {
-            print("Cannot open phone URL")
-        }
-    }
-
-    @objc func openMap() {
-        guard let history = history,
-              let house = history.house,
-              let road = history.road,
-              let block = history.block,
-              let area = history.area else {
-            print("No address available")
-            return
-        }
-
-        let addressString = "House: \(house), Road: \(road), Block: \(block), \(area)"
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(addressString) { placemarks, error in
-            if let error = error {
-                print("Geocoding error: \(error.localizedDescription)")
-                return
-            }
-
-            guard let placemark = placemarks?.first else {
-                print("No placemarks found")
-                return
-            }
-
-            let mkPlacemark = MKPlacemark(placemark: placemark)
-            let mapItem = MKMapItem(placemark: mkPlacemark)
-            mapItem.name = history.restaurantName
-            mapItem.openInMaps(launchOptions: [
-                MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving
-            ])
-        }
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        setupGestures()
+    private func makeImageCornersRounded() {
+        imageView.layer.cornerRadius = 12  // adjust this for more/less rounding
     }
 }

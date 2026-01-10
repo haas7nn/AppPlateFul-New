@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LeaderboardVC">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+    </dependencies>
+    <scenes>
+        <!--Community Leaderboard View Controller-->
+        <scene sceneID="leaderboardScene">
+            <objects>
+                <viewController storyboardIdentifier="CommunityLeaderboardViewController" title="Community Leaderboard" id="LeaderboardVC" customClass="CommunityLeaderboardViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mainView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <!-- Decorative Circle 1 -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbCircle1">
+                                <rect key="frame" x="-80" y="-100" width="250" height="250"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.75686274509803919" blue="0.47058823529411764" alpha="0.15" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="lbc1H"/>
+                                    <constraint firstAttribute="width" constant="250" id="lbc1W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="125"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Decorative Circle 2 -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbCircle2">
+                                <rect key="frame" x="280" y="-50" width="180" height="180"/>
+                                <color key="backgroundColor" red="0.776" green="0.635" blue="0.494" alpha="0.2" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="lbc2H"/>
+                                    <constraint firstAttribute="width" constant="180" id="lbc2W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="90"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Back Button -->
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbBackBtn">
+                                <rect key="frame" x="20" y="59" width="44" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="0.95" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="lbBBW"/>
+                                    <constraint firstAttribute="height" constant="44" id="lbBBH"/>
+                                </constraints>
+                                <state key="normal" title="‹">
+                                    <color key="titleColor" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                        <color key="value" red="0" green="0" blue="0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="LeaderboardVC" eventType="touchUpInside" id="lbBackAction"/>
+                                </connections>
+                            </button>
+                            <!-- Header Card -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbHeaderCard">
+                                <rect key="frame" x="20" y="115" width="353" height="110"/>
+                                <subviews>
+                                    <!-- Trophy Icon Container -->
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbIconBg">
+                                        <rect key="frame" x="20" y="25" width="60" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏆" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbIconEmoji">
+                                                <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="lbIconEmoji" firstAttribute="centerX" secondItem="lbIconBg" secondAttribute="centerX" id="lbIEX"/>
+                                            <constraint firstItem="lbIconEmoji" firstAttribute="centerY" secondItem="lbIconBg" secondAttribute="centerY" id="lbIEY"/>
+                                            <constraint firstAttribute="height" constant="60" id="lbIBH"/>
+                                            <constraint firstAttribute="width" constant="60" id="lbIBW"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <!-- Title -->
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Making a Difference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbHeaderTitle">
+                                        <rect key="frame" x="96" y="28" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.85" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <!-- Subtitle -->
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Community Leaders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbHeaderSubtitle">
+                                        <rect key="frame" x="96" y="50" width="220" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="lbIconBg" firstAttribute="leading" secondItem="lbHeaderCard" secondAttribute="leading" constant="20" id="lbIBL"/>
+                                    <constraint firstItem="lbIconBg" firstAttribute="centerY" secondItem="lbHeaderCard" secondAttribute="centerY" id="lbIBCY"/>
+                                    <constraint firstItem="lbHeaderTitle" firstAttribute="leading" secondItem="lbIconBg" secondAttribute="trailing" constant="16" id="lbHTL"/>
+                                    <constraint firstItem="lbHeaderTitle" firstAttribute="top" secondItem="lbIconBg" secondAttribute="top" constant="3" id="lbHTT"/>
+                                    <constraint firstItem="lbHeaderSubtitle" firstAttribute="leading" secondItem="lbHeaderTitle" secondAttribute="leading" id="lbHSL"/>
+                                    <constraint firstItem="lbHeaderSubtitle" firstAttribute="top" secondItem="lbHeaderTitle" secondAttribute="bottom" constant="2" id="lbHST"/>
+                                    <constraint firstAttribute="height" constant="110" id="lbHCH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                        <color key="value" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0" height="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Search Container -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbSearchContainer">
+                                <rect key="frame" x="20" y="241" width="353" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lbSearchIcon">
+                                        <rect key="frame" x="16" y="15" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="lbSIW"/>
+                                            <constraint firstAttribute="height" constant="20" id="lbSIH"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search donors or NGOs..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lbSearchField">
+                                        <rect key="frame" x="48" y="13" width="257" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mic.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lbMicIcon">
+                                        <rect key="frame" x="317" y="15" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="lbMIW"/>
+                                            <constraint firstAttribute="height" constant="20" id="lbMIH"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.6" green="0.6" blue="0.6" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="lbSearchIcon" firstAttribute="leading" secondItem="lbSearchContainer" secondAttribute="leading" constant="16" id="lbSIconL"/>
+                                    <constraint firstItem="lbSearchIcon" firstAttribute="centerY" secondItem="lbSearchContainer" secondAttribute="centerY" id="lbSIconCY"/>
+                                    <constraint firstItem="lbSearchField" firstAttribute="leading" secondItem="lbSearchIcon" secondAttribute="trailing" constant="12" id="lbSFL"/>
+                                    <constraint firstItem="lbSearchField" firstAttribute="centerY" secondItem="lbSearchContainer" secondAttribute="centerY" id="lbSFCY"/>
+                                    <constraint firstItem="lbSearchField" firstAttribute="trailing" secondItem="lbMicIcon" secondAttribute="leading" constant="-12" id="lbSFTr"/>
+                                    <constraint firstAttribute="trailing" secondItem="lbMicIcon" secondAttribute="trailing" constant="16" id="lbMIconTr"/>
+                                    <constraint firstItem="lbMicIcon" firstAttribute="centerY" secondItem="lbSearchContainer" secondAttribute="centerY" id="lbMIconCY"/>
+                                    <constraint firstAttribute="height" constant="50" id="lbSCH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                        <color key="value" red="0" green="0" blue="0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.06"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0" height="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Filter Pills Container -->
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbFilterScroll">
+                                <rect key="frame" x="0" y="303" width="393" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lbFilterStack">
+                                        <rect key="frame" x="20" y="6" width="340" height="32"/>
+                                        <subviews>
+                                            <!-- All Filter -->
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbFilterAll">
+                                                <rect key="frame" x="0" y="0" width="50" height="32"/>
+                                                <color key="backgroundColor" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="lbFAH"/>
+                                                </constraints>
+                                                <state key="normal" title="All">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="plain" title="All">
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="filterAllTapped:" destination="LeaderboardVC" eventType="touchUpInside" id="lbFAAction"/>
+                                                </connections>
+                                            </button>
+                                            <!-- This Week -->
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbFilterWeek">
+                                                <rect key="frame" x="60" y="0" width="90" height="32"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="lbFWH"/>
+                                                </constraints>
+                                                <state key="normal" title="This Week">
+                                                    <color key="titleColor" red="0.4" green="0.4" blue="0.4" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="plain" title="This Week">
+                                                    <color key="baseForegroundColor" red="0.4" green="0.4" blue="0.4" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                        <color key="value" red="0.85" green="0.85" blue="0.85" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="filterWeekTapped:" destination="LeaderboardVC" eventType="touchUpInside" id="lbFWAction"/>
+                                                </connections>
+                                            </button>
+                                            <!-- This Month -->
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbFilterMonth">
+                                                <rect key="frame" x="160" y="0" width="100" height="32"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="lbFMH"/>
+                                                </constraints>
+                                                <state key="normal" title="This Month">
+                                                    <color key="titleColor" red="0.4" green="0.4" blue="0.4" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="plain" title="This Month">
+                                                    <color key="baseForegroundColor" red="0.4" green="0.4" blue="0.4" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                        <color key="value" red="0.85" green="0.85" blue="0.85" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="filterMonthTapped:" destination="LeaderboardVC" eventType="touchUpInside" id="lbFMAction"/>
+                                                </connections>
+                                            </button>
+                                            <!-- This Year -->
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbFilterYear">
+                                                <rect key="frame" x="270" y="0" width="90" height="32"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="lbFYH"/>
+                                                </constraints>
+                                                <state key="normal" title="This Year">
+                                                    <color key="titleColor" red="0.4" green="0.4" blue="0.4" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <buttonConfiguration key="configuration" style="plain" title="This Year">
+                                                    <color key="baseForegroundColor" red="0.4" green="0.4" blue="0.4" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                        <color key="value" red="0.85" green="0.85" blue="0.85" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="filterYearTapped:" destination="LeaderboardVC" eventType="touchUpInside" id="lbFYAction"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="lbFilterStack" firstAttribute="top" secondItem="lbFilterScroll" secondAttribute="top" constant="6" id="lbFST"/>
+                                    <constraint firstItem="lbFilterStack" firstAttribute="leading" secondItem="lbFilterScroll" secondAttribute="leading" constant="20" id="lbFSL"/>
+                                    <constraint firstItem="lbFilterStack" firstAttribute="trailing" secondItem="lbFilterScroll" secondAttribute="trailing" constant="-20" id="lbFSTr"/>
+                                    <constraint firstItem="lbFilterStack" firstAttribute="bottom" secondItem="lbFilterScroll" secondAttribute="bottom" constant="-6" id="lbFSB"/>
+                                    <constraint firstAttribute="height" constant="44" id="lbFilterScrollH"/>
+                                </constraints>
+                            </scrollView>
+                            <!-- Segmented Control Container -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbSegmentContainer">
+                                <rect key="frame" x="20" y="359" width="353" height="48"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lbSegmentedControl">
+                                        <rect key="frame" x="4" y="4" width="345" height="40"/>
+                                        <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <segments>
+                                            <segment title="🎁 Top Donors"/>
+                                            <segment title="🏢 Top NGOs"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentChanged:" destination="LeaderboardVC" eventType="valueChanged" id="lbSegmentAction"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94" green="0.94" blue="0.94" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="lbSegmentedControl" firstAttribute="top" secondItem="lbSegmentContainer" secondAttribute="top" constant="4" id="lbSCT"/>
+                                    <constraint firstItem="lbSegmentedControl" firstAttribute="leading" secondItem="lbSegmentContainer" secondAttribute="leading" constant="4" id="lbSCL"/>
+                                    <constraint firstAttribute="trailing" secondItem="lbSegmentedControl" secondAttribute="trailing" constant="4" id="lbSCTr"/>
+                                    <constraint firstAttribute="bottom" secondItem="lbSegmentedControl" secondAttribute="bottom" constant="4" id="lbSCB"/>
+                                    <constraint firstAttribute="height" constant="48" id="lbSegContH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Table View -->
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lbTableView">
+                                <rect key="frame" x="0.0" y="419" width="393" height="399"/>
+                                <color key="backgroundColor" red="0" green="0" blue="0" alpha="0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <!-- Leaderboard Cell -->
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LeaderboardCell" rowHeight="100" id="lbCellPrototype" customClass="LeaderboardCell" customModule="AppPlateFul" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lbCellPrototype" id="lbCellContent">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <!-- Card Container -->
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbCellCard">
+                                                    <rect key="frame" x="20" y="6" width="353" height="88"/>
+                                                    <subviews>
+                                                        <!-- Rank Badge -->
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbRankBadge">
+                                                            <rect key="frame" x="14" y="30" width="28" height="28"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbRankLabel">
+                                                                    <rect key="frame" x="0" y="4" width="28" height="20"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="lbRankLabel" firstAttribute="centerX" secondItem="lbRankBadge" secondAttribute="centerX" id="lbRLCX"/>
+                                                                <constraint firstItem="lbRankLabel" firstAttribute="centerY" secondItem="lbRankBadge" secondAttribute="centerY" id="lbRLCY"/>
+                                                                <constraint firstAttribute="width" constant="28" id="lbRBW"/>
+                                                                <constraint firstAttribute="height" constant="28" id="lbRBH"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="14"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <!-- Avatar/Logo ImageView -->
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lbAvatarImageView">
+                                                            <rect key="frame" x="54" y="19" width="50" height="50"/>
+                                                            <color key="backgroundColor" red="0.776" green="0.635" blue="0.494" alpha="0.15" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="50" id="lbAIW"/>
+                                                                <constraint firstAttribute="height" constant="50" id="lbAIH"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="16"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <!-- Name Label -->
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbNameLabel">
+                                                            <rect key="frame" x="120" y="24" width="150" height="22"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                            <color key="textColor" red="0.133" green="0.133" blue="0.133" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </label>
+                                                        <!-- Subtitle Label -->
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="156 Donations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbSubtitleLabel">
+                                                            <rect key="frame" x="120" y="48" width="150" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </label>
+                                                        <!-- Stats Container -->
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbStatsContainer">
+                                                            <rect key="frame" x="275" y="24" width="64" height="40"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="156" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbStatsNumber">
+                                                                    <rect key="frame" x="8" y="4" width="48" height="20"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                                    <color key="textColor" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbStatsLabel">
+                                                                    <rect key="frame" x="8" y="24" width="48" height="12"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                    <color key="textColor" red="0.6" green="0.6" blue="0.6" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.256" green="0.573" blue="0.166" alpha="0.1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="lbStatsNumber" firstAttribute="top" secondItem="lbStatsContainer" secondAttribute="top" constant="4" id="lbSNT"/>
+                                                                <constraint firstItem="lbStatsNumber" firstAttribute="centerX" secondItem="lbStatsContainer" secondAttribute="centerX" id="lbSNCX"/>
+                                                                <constraint firstItem="lbStatsLabel" firstAttribute="top" secondItem="lbStatsNumber" secondAttribute="bottom" id="lbSLT"/>
+                                                                <constraint firstItem="lbStatsLabel" firstAttribute="centerX" secondItem="lbStatsContainer" secondAttribute="centerX" id="lbSLCX"/>
+                                                                <constraint firstAttribute="width" constant="64" id="lbStatsCW"/>
+                                                                <constraint firstAttribute="height" constant="40" id="lbStatsCH"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <!-- Rank Badge -->
+                                                        <constraint firstItem="lbRankBadge" firstAttribute="leading" secondItem="lbCellCard" secondAttribute="leading" constant="14" id="lbRBL"/>
+                                                        <constraint firstItem="lbRankBadge" firstAttribute="centerY" secondItem="lbCellCard" secondAttribute="centerY" id="lbRBCY"/>
+                                                        <!-- Avatar -->
+                                                        <constraint firstItem="lbAvatarImageView" firstAttribute="leading" secondItem="lbRankBadge" secondAttribute="trailing" constant="12" id="lbAIL"/>
+                                                        <constraint firstItem="lbAvatarImageView" firstAttribute="centerY" secondItem="lbCellCard" secondAttribute="centerY" id="lbAICY"/>
+                                                        <!-- Name -->
+                                                        <constraint firstItem="lbNameLabel" firstAttribute="leading" secondItem="lbAvatarImageView" secondAttribute="trailing" constant="16" id="lbNLL"/>
+                                                        <constraint firstItem="lbNameLabel" firstAttribute="top" secondItem="lbAvatarImageView" secondAttribute="top" constant="5" id="lbNLT"/>
+                                                        <constraint firstItem="lbNameLabel" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="lbStatsContainer" secondAttribute="leading" constant="-8" id="lbNLTr"/>
+                                                        <!-- Subtitle -->
+                                                        <constraint firstItem="lbSubtitleLabel" firstAttribute="leading" secondItem="lbNameLabel" secondAttribute="leading" id="lbSLL"/>
+                                                        <constraint firstItem="lbSubtitleLabel" firstAttribute="top" secondItem="lbNameLabel" secondAttribute="bottom" constant="2" id="lbSLTp"/>
+                                                        <constraint firstItem="lbSubtitleLabel" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="lbStatsContainer" secondAttribute="leading" constant="-8" id="lbSLTr"/>
+                                                        <!-- Stats Container -->
+                                                        <constraint firstAttribute="trailing" secondItem="lbStatsContainer" secondAttribute="trailing" constant="14" id="lbStatsTr"/>
+                                                        <constraint firstItem="lbStatsContainer" firstAttribute="centerY" secondItem="lbCellCard" secondAttribute="centerY" id="lbStatsCY"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="18"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                            <color key="value" red="0" green="0" blue="0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                            <real key="value" value="0.08"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                            <size key="value" width="0" height="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0" green="0" blue="0" alpha="0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="lbCellCard" firstAttribute="leading" secondItem="lbCellContent" secondAttribute="leading" constant="20" id="lbCCL"/>
+                                                <constraint firstAttribute="trailing" secondItem="lbCellCard" secondAttribute="trailing" constant="20" id="lbCCTr"/>
+                                                <constraint firstItem="lbCellCard" firstAttribute="top" secondItem="lbCellContent" secondAttribute="top" constant="6" id="lbCCT"/>
+                                                <constraint firstAttribute="bottom" secondItem="lbCellCard" secondAttribute="bottom" constant="6" id="lbCCB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cardView" destination="lbCellCard" id="lbCardOut"/>
+                                            <outlet property="rankBadge" destination="lbRankBadge" id="lbRankBadgeOut"/>
+                                            <outlet property="rankLabel" destination="lbRankLabel" id="lbRankLabelOut"/>
+                                            <outlet property="avatarImageView" destination="lbAvatarImageView" id="lbAvatarOut"/>
+                                            <outlet property="nameLabel" destination="lbNameLabel" id="lbNameOut"/>
+                                            <outlet property="subtitleLabel" destination="lbSubtitleLabel" id="lbSubtitleOut"/>
+                                            <outlet property="statsContainer" destination="lbStatsContainer" id="lbStatsContOut"/>
+                                            <outlet property="statsNumberLabel" destination="lbStatsNumber" id="lbStatsNumOut"/>
+                                            <outlet property="statsLabel" destination="lbStatsLabel" id="lbStatsLblOut"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="LeaderboardVC" id="lbTVDataSource"/>
+                                    <outlet property="delegate" destination="LeaderboardVC" id="lbTVDelegate"/>
+                                </connections>
+                            </tableView>
+                            <!-- Empty State View -->
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lbEmptyStateView">
+                                <rect key="frame" x="96" y="500" width="200" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📊" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbEmptyIcon">
+                                        <rect key="frame" x="77" y="0" width="46" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbEmptyTitle">
+                                        <rect key="frame" x="50" y="60" width="100" height="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" red="0.133" green="0.133" blue="0.133" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check back soon for updates" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbEmptySubtitle">
+                                        <rect key="frame" x="0" y="86" width="200" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0" green="0" blue="0" alpha="0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="lbEmptyIcon" firstAttribute="top" secondItem="lbEmptyStateView" secondAttribute="top" id="lbEIT"/>
+                                    <constraint firstItem="lbEmptyIcon" firstAttribute="centerX" secondItem="lbEmptyStateView" secondAttribute="centerX" id="lbEICX"/>
+                                    <constraint firstItem="lbEmptyTitle" firstAttribute="top" secondItem="lbEmptyIcon" secondAttribute="bottom" constant="10" id="lbETT"/>
+                                    <constraint firstItem="lbEmptyTitle" firstAttribute="centerX" secondItem="lbEmptyStateView" secondAttribute="centerX" id="lbETCX"/>
+                                    <constraint firstItem="lbEmptySubtitle" firstAttribute="top" secondItem="lbEmptyTitle" secondAttribute="bottom" constant="4" id="lbEST"/>
+                                    <constraint firstItem="lbEmptySubtitle" firstAttribute="centerX" secondItem="lbEmptyStateView" secondAttribute="centerX" id="lbESCX"/>
+                                    <constraint firstAttribute="width" constant="200" id="lbESVW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="safeArea"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803926" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <!-- Decorative Circles -->
+                            <constraint firstItem="lbCircle1" firstAttribute="leading" secondItem="mainView" secondAttribute="leading" constant="-80" id="lbc1L"/>
+                            <constraint firstItem="lbCircle1" firstAttribute="top" secondItem="mainView" secondAttribute="top" constant="-100" id="lbc1T"/>
+                            <constraint firstItem="lbCircle2" firstAttribute="trailing" secondItem="mainView" secondAttribute="trailing" constant="67" id="lbc2Tr"/>
+                            <constraint firstItem="lbCircle2" firstAttribute="top" secondItem="mainView" secondAttribute="top" constant="-50" id="lbc2T"/>
+                            <!-- Back Button -->
+                            <constraint firstItem="lbBackBtn" firstAttribute="top" secondItem="safeArea" secondAttribute="top" constant="8" id="lbBBT"/>
+                            <constraint firstItem="lbBackBtn" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" constant="20" id="lbBBL"/>
+                            <!-- Header Card -->
+                            <constraint firstItem="lbHeaderCard" firstAttribute="top" secondItem="lbBackBtn" secondAttribute="bottom" constant="12" id="lbHCT"/>
+                            <constraint firstItem="lbHeaderCard" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" constant="20" id="lbHCL"/>
+                            <constraint firstItem="safeArea" firstAttribute="trailing" secondItem="lbHeaderCard" secondAttribute="trailing" constant="20" id="lbHCTr"/>
+                            <!-- Search Container -->
+                            <constraint firstItem="lbSearchContainer" firstAttribute="top" secondItem="lbHeaderCard" secondAttribute="bottom" constant="16" id="lbSearchT"/>
+                            <constraint firstItem="lbSearchContainer" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" constant="20" id="lbSearchL"/>
+                            <constraint firstItem="safeArea" firstAttribute="trailing" secondItem="lbSearchContainer" secondAttribute="trailing" constant="20" id="lbSearchTr"/>
+                            <!-- Filter Scroll -->
+                            <constraint firstItem="lbFilterScroll" firstAttribute="top" secondItem="lbSearchContainer" secondAttribute="bottom" constant="12" id="lbFilterT"/>
+                            <constraint firstItem="lbFilterScroll" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" id="lbFilterL"/>
+                            <constraint firstItem="safeArea" firstAttribute="trailing" secondItem="lbFilterScroll" secondAttribute="trailing" id="lbFilterTr"/>
+                            <!-- Segment Container -->
+                            <constraint firstItem="lbSegmentContainer" firstAttribute="top" secondItem="lbFilterScroll" secondAttribute="bottom" constant="12" id="lbSegContT"/>
+                            <constraint firstItem="lbSegmentContainer" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" constant="20" id="lbSegContL"/>
+                            <constraint firstItem="safeArea" firstAttribute="trailing" secondItem="lbSegmentContainer" secondAttribute="trailing" constant="20" id="lbSegContTr"/>
+                            <!-- Table View -->
+                            <constraint firstItem="lbTableView" firstAttribute="top" secondItem="lbSegmentContainer" secondAttribute="bottom" constant="12" id="lbTVT"/>
+                            <constraint firstItem="lbTableView" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" id="lbTVL"/>
+                            <constraint firstItem="safeArea" firstAttribute="trailing" secondItem="lbTableView" secondAttribute="trailing" id="lbTVTr"/>
+                            <constraint firstItem="safeArea" firstAttribute="bottom" secondItem="lbTableView" secondAttribute="bottom" id="lbTVB"/>
+                            <!-- Empty State -->
+                            <constraint firstItem="lbEmptyStateView" firstAttribute="centerX" secondItem="lbTableView" secondAttribute="centerX" id="lbESVCX"/>
+                            <constraint firstItem="lbEmptyStateView" firstAttribute="centerY" secondItem="lbTableView" secondAttribute="centerY" id="lbESVCY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Community Leaderboard" id="navItem"/>
+                    <connections>
+                        <outlet property="searchField" destination="lbSearchField" id="lbSearchOut"/>
+                        <outlet property="filterAllButton" destination="lbFilterAll" id="lbFilterAllOut"/>
+                        <outlet property="filterWeekButton" destination="lbFilterWeek" id="lbFilterWeekOut"/>
+                        <outlet property="filterMonthButton" destination="lbFilterMonth" id="lbFilterMonthOut"/>
+                        <outlet property="filterYearButton" destination="lbFilterYear" id="lbFilterYearOut"/>
+                        <outlet property="segmentedControl" destination="lbSegmentedControl" id="lbSegmentOut"/>
+                        <outlet property="tableView" destination="lbTableView" id="lbTableViewOut"/>
+                        <outlet property="emptyStateView" destination="lbEmptyStateView" id="lbEmptyStateOut"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="leaderboardFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="119"/>
+        <image name="mic.fill" catalog="system" width="100" height="128"/>
+    </resources>
+</document>
