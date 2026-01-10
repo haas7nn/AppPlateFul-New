@@ -32,7 +32,7 @@ final class ToBeApprovedViewController: UIViewController {
            loadDonorImage()
        }
 
-       // Fill screen labels/images from Donation object
+     
        private func configureUI() {
            guard let donation else { return }
 
@@ -78,16 +78,16 @@ final class ToBeApprovedViewController: UIViewController {
            df.timeStyle = .none
            return df.string(from: date)
        }
-    // MARK: - Actions
+  
 
     @IBAction private func approveTapped(_ sender: UIButton) {
         guard let donation else { return }
 
-               // Update Firestore: approved -> toBeCollected
+               
                DonationService.shared.updatePickupApproval(donationId: donation.id, approved: true) { [weak self] _ in
                    guard let self = self else { return }
 
-                   // Update local copy for this screen
+                   // Update local
                    self.donation.status = .toBeCollected
                    self.configureUI()
 
@@ -111,11 +111,11 @@ final class ToBeApprovedViewController: UIViewController {
     @IBAction private func rejectTapped(_ sender: UIButton) {
         guard let donation else { return }
 
-               // Update Firestore: rejected -> back to accepted + clear schedule
+               // Update Firestore
                DonationService.shared.updatePickupApproval(donationId: donation.id, approved: false) { [weak self] _ in
                    guard let self = self else { return }
 
-                   // Update local copy for this screen
+                   // Update local
                    self.donation.status = .accepted
                    self.donation.scheduledPickup = nil
                    self.configureUI()
@@ -137,9 +137,7 @@ final class ToBeApprovedViewController: UIViewController {
                }
     }
 
-    // MARK: - Store update
-
-    // MARK: - Alert (standard style used across the app)
+    
 
        private func showIconAlert(
            title: String,

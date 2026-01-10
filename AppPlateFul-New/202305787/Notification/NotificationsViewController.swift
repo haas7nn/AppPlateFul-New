@@ -39,6 +39,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
 
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
+            // refresh in case new notifications were added
             loadNotifications()
         }
 
@@ -56,7 +57,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
                }
            }
 
-           // MARK: - Table
+         
 
            func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
                filteredNotifications.count
@@ -80,7 +81,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
                return cell
            }
 
-           // Simple time formatting for the UI
+           // time formation
            private func timeAgo(from date: Date) -> String {
                let seconds = Int(Date().timeIntervalSince(date))
                if seconds < 60 { return "\(seconds)s" }

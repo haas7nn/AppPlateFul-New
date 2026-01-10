@@ -36,7 +36,7 @@ class AvailableDonationsViewController: UIViewController, UITableViewDataSource 
            }
        }
 
-       // MARK: - Table
+      
 
        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            availableDonations.count
@@ -49,7 +49,17 @@ class AvailableDonationsViewController: UIViewController, UITableViewDataSource 
 
            cell.TitleLabel.text = donation.title
            cell.subtitleLabel.text = donation.description
-           cell.iconImageView.image = UIImage(systemName: donation.imageRef)
+           cell.iconImageView.image = UIImage(systemName: "photo") // placeholder
+           
+           ImageLoader.shared.load(donation.imageRef) { image in
+               DispatchQueue.main.async {
+                   // Avoid wrong image due to cell reuse
+                   if let currentIndexPath = tableView.indexPath(for: cell),
+                      currentIndexPath == indexPath {
+                       cell.iconImageView.image = image ?? UIImage(systemName: "photo")
+                   }
+               }
+           }
 
            cell.button.setTitle("View Details", for: .normal)
 
@@ -60,7 +70,7 @@ class AvailableDonationsViewController: UIViewController, UITableViewDataSource 
            return cell
        }
 
-       // MARK: - Navigation
+      
 
        @objc private func donateNowTapped(_ sender: UIButton) {
            

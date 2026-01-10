@@ -17,17 +17,17 @@ class NotificationTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
            super.awakeFromNib()
-
+        // card look
            cardView.layer.cornerRadius = 12
            cardView.layer.shadowColor = UIColor.black.cgColor
            cardView.layer.shadowOpacity = 0.15
            cardView.layer.shadowOffset = CGSize(width: 0, height: 4)
            cardView.layer.shadowRadius = 6
-
+        // icon shape
            iconImageView.layer.cornerRadius = 20
            iconImageView.clipsToBounds = true
        }
-
+        //load data into the cells 
        func configure(title: String, message: String, time: String, iconName: String) {
            titleLabel.text = title
            messageLabel.text = message

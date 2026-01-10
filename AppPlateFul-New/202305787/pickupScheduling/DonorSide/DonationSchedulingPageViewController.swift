@@ -32,7 +32,7 @@ class DonationSchedulingPageViewController: UIViewController {
 
                 let timeText = time.text ?? ""
                 let locationText = location.text ?? ""
-
+        //validation before saving
                 if timeText.isEmpty || locationText.isEmpty {
                     showSimpleAlert(message: "Please enter pickup time and location.")
                     return
@@ -68,14 +68,14 @@ class DonationSchedulingPageViewController: UIViewController {
                 }
             }
 
-            // Simple validation alert
+           
             private func showSimpleAlert(message: String) {
                 let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 present(alert, animated: true)
             }
 
-            // Standard success alert 
+          
             private func showIconAlert(
                 title: String,
                 systemImage: String,
