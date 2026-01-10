@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,7 +11,7 @@
         <!--Donation Scheduling View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="sche" id="Y6W-OH-hqX" customClass="DonationSchedulingViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DonorSchedulingSide" id="Y6W-OH-hqX" customClass="DonationSchedulingViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +21,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="separatorColor" red="0.96862745289999996" green="0.96078431610000004" blue="0.94901967050000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DonationSchedulingCell" rowHeight="291" id="riC-cZ-YeA" customClass="DonationSchedulingTableViewCell" customModule="AppPlateFul" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DonationSchedulingCell" rowHeight="291" id="riC-cZ-YeA" customClass="DonationSchedulingTableViewCell" customModule="AppPlateFul_New" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="291"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="riC-cZ-YeA" id="2or-Yx-1dX">
@@ -135,12 +134,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1052.6717557251909" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="1979.3893129770991" y="3.5211267605633805"/>
         </scene>
         <!--Show Pickup Info Details View Controller-->
         <scene sceneID="7ov-hr-7uk">
             <objects>
-                <viewController id="up2-Ry-Lg9" customClass="showPickupInfoDetailsViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="up2-Ry-Lg9" customClass="showPickupInfoDetailsViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="47a-TD-AIv">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -385,7 +384,7 @@
         <!--Show Pending Donation Details View Controller-->
         <scene sceneID="nQl-vj-BVb">
             <objects>
-                <viewController id="3C1-eg-YB3" customClass="showPendingDonationDetailsViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3C1-eg-YB3" customClass="showPendingDonationDetailsViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5nQ-iL-bYu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -545,12 +544,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vU-CT-FLJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2505" y="-14"/>
+            <point key="canvasLocation" x="3431.2977099236641" y="-14.084507042253522"/>
         </scene>
         <!--Donation Scheduling Page View Controller-->
         <scene sceneID="6ot-bq-owH">
             <objects>
-                <viewController id="FIF-3M-aNp" customClass="DonationSchedulingPageViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FIF-3M-aNp" customClass="DonationSchedulingPageViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xRB-7H-vYe">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

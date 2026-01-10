@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CollectorNavID">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CollectorNavID">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +25,7 @@
         <!--Collector Home View Controller-->
         <scene sceneID="CollectorHomeScene">
             <objects>
-                <viewController storyboardIdentifier="CollectorHomeViewController" id="CollectorHomeVC" customClass="CollectorHomeViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CollectorHomeVC" customClass="CollectorHomeViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CollectorMainView">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,9 +190,6 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title=""/>
-                                                        <connections>
-                                                            <action selector="communityLeaderboardTapped:" destination="CollectorHomeVC" eventType="touchUpInside" id="CBtn1Act"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -272,9 +269,6 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title=""/>
-                                                        <connections>
-                                                            <action selector="updateDeliveryStatusTapped:" destination="CollectorHomeVC" eventType="touchUpInside" id="CBtn2Act"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -354,9 +348,6 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title=""/>
-                                                        <connections>
-                                                            <action selector="collectorProfileTapped:" destination="CollectorHomeVC" eventType="touchUpInside" id="CBtn3Act"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -408,9 +399,6 @@
                                                         <integer key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="logoutTapped:" destination="CollectorHomeVC" eventType="touchUpInside" id="qEY-od-h36"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlateFul Collector v1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorVersionLabel">
                                                 <rect key="frame" x="133.66666666666666" y="634" width="125.99999999999997" height="14.333333333333371"/>
@@ -465,12 +453,6 @@
                             <constraint firstItem="CollectorScrollView" firstAttribute="trailing" secondItem="CollectorSafeArea" secondAttribute="trailing" id="CSVTr"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="collectorProfileBtn" destination="CollectorBtn3" id="CO3"/>
-                        <outlet property="communityLeaderboardBtn" destination="CollectorBtn1" id="CO1"/>
-                        <outlet property="logoutBtn" destination="CollectorLogoutBtn" id="CO4"/>
-                        <outlet property="updateDeliveryBtn" destination="CollectorBtn2" id="CO2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CollectorHomeFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

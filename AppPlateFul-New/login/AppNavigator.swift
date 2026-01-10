@@ -16,7 +16,7 @@ final class AppNavigator {
 
         case .ngo:
             setRoot(
-                storyboard: "CollectorHome",
+                storyboard: "NgoFlow",
                 vcID: "CollectorHomeViewController"
             )
 
