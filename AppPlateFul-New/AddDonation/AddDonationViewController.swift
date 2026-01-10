@@ -1,33 +1,35 @@
 import UIKit
 
+// Screen where the donor adds a new donation (food or other items).
 class AddDonationViewController: UIViewController {
     
-    // MARK: - IBOutlets
+    // MARK: - IBOutlets (connected from storyboard)
     @IBOutlet weak var categorySegment: UISegmentedControl!
     @IBOutlet weak var foodContainer: UIView!
     @IBOutlet weak var otherContainer: UIView!
     @IBOutlet weak var foodCountLabel: UILabel!
     @IBOutlet weak var otherCountLabel: UILabel!
     
-    // Food Date TextFields
+    // Food date fields
     @IBOutlet weak var foodProductionDateField: UITextField!
     @IBOutlet weak var foodExpiryDateField: UITextField!
     
-    // Other Date TextFields
+    // Other date fields
     @IBOutlet weak var otherProductionDateField: UITextField!
     @IBOutlet weak var otherExpiryDateField: UITextField!
     
-    // Notes Buttons
+    // Notes buttons
     @IBOutlet weak var foodDonationNotesBtn: UIButton!
     @IBOutlet weak var foodHealthNotesBtn: UIButton!
     @IBOutlet weak var otherDonationNotesBtn: UIButton!
     @IBOutlet weak var otherHealthNotesBtn: UIButton!
     
-    // Name labels
-    @IBOutlet weak var foodNameLabel: UILabel!   // connected to "Chicken Shawarma" label
-    @IBOutlet weak var otherNameLabel: UILabel!  // connected to "Canned Beans" label
+    // Item name labels shown on the cards
+    @IBOutlet weak var foodNameLabel: UILabel!
+    @IBOutlet weak var otherNameLabel: UILabel!
     
-    // MARK: - Properties
+    // MARK: - State
+    
     private var foodQuantity: Int = 0
     private var otherQuantity: Int = 0
     
@@ -36,16 +38,18 @@ class AddDonationViewController: UIViewController {
     private var otherProductionDate: Date = Date()
     private var otherExpiryDate: Date = Date()
     
-    // Notes storage
+    // We keep notes in memory so the alert can reopen with previous text
     private var foodDonationNotes: String = ""
     private var foodHealthNotes: String = ""
     private var otherDonationNotes: String = ""
     private var otherHealthNotes: String = ""
     
-    // Cloudinary
+    // MARK: - Cloudinary
+    
+    // Our Cloudinary cloud
     private let cloudName = "dnumu6zzg"
     
-    /// Cloudinary public IDs for FOOD (names exactly as in Cloudinary)
+    // Allowed food images (public IDs in Cloudinary)
     private let foodImageOptions: [String] = [
         "chicken_shawarma",
         "Burger",
@@ -55,7 +59,7 @@ class AddDonationViewController: UIViewController {
         "other_items"
     ]
     
-    /// Currently selected food image (Cloudinary public ID)
+    // The currently selected image for the food card
     private var selectedFoodImageRef: String = "chicken_shawarma"
     
     private let dateFormatter: DateFormatter = {
@@ -75,7 +79,7 @@ class AddDonationViewController: UIViewController {
         setupNotesButtons()
         setupImages()
         setupNameEditing()
-        setupFoodImageTap() // enable dropdown on food image
+        setupFoodImageTap() // tap the food image to change it
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,23 +90,25 @@ class AddDonationViewController: UIViewController {
     
     // MARK: - Cloudinary Helpers
     
+    // Builds the Cloudinary URL for a given public ID
     private func cloudinaryURL(for publicId: String) -> URL? {
         let base = "https://res.cloudinary.com/\(cloudName)/image/upload/"
         return URL(string: base + publicId)
     }
     
     // MARK: - Setup Images
+    
     private func setupImages() {
         setupFoodImage()
         setupOtherImage()
     }
     
-    // FOOD image now loads from Cloudinary
+    // Food image is always loaded from Cloudinary
     private func setupFoodImage() {
         updateFoodImageUI()
     }
     
-    // OTHER image stays local (no change in its behavior)
+    // Other items card still uses a static local image
     private func setupOtherImage() {
         for subview in otherContainer.subviews {
             if subview.backgroundColor == UIColor(red: 0.678, green: 0.757, blue: 0.58, alpha: 1.0) ||
@@ -118,7 +124,7 @@ class AddDonationViewController: UIViewController {
         findAndAddImage(in: otherContainer, width: 120, imageName: "canned_beans")
     }
     
-    // Find the FoodImg container view (the 120-width image placeholder inside FoodCard)
+    // Finds the image placeholder inside the food card
     private func foodImageContainer() -> UIView? {
         for subview in foodContainer.subviews {
             if subview.backgroundColor == UIColor(red: 0.678, green: 0.757, blue: 0.58, alpha: 1.0) ||
@@ -135,6 +141,7 @@ class AddDonationViewController: UIViewController {
         return nil
     }
     
+    // Recursive helper used for the static other-items image
     private func findAndAddImage(in containerView: UIView, width: CGFloat, imageName: String) {
         for subview in containerView.subviews {
             if subview.frame.width == width && !(subview is UILabel) && !(subview is UIButton) {
@@ -145,7 +152,7 @@ class AddDonationViewController: UIViewController {
         }
     }
     
-    /// Local asset loader (used only by OTHER items now)
+    /// Adds a UIImageView with a local asset. Used only by the Other card.
     private func addImageToView(_ view: UIView, imageName: String) {
         for subview in view.subviews where subview is UIImageView {
             subview.removeFromSuperview()
@@ -160,9 +167,8 @@ class AddDonationViewController: UIViewController {
         view.addSubview(imageView)
     }
     
-    /// Load a Cloudinary image into the given container view
+    /// Loads a Cloudinary image into the food image container
     private func loadCloudinaryImage(publicId: String, into container: UIView) {
-        // Clear any previous image view
         for sub in container.subviews where sub is UIImageView {
             sub.removeFromSuperview()
         }
@@ -187,6 +193,7 @@ class AddDonationViewController: UIViewController {
     
     // MARK: - Food image dropdown
     
+    // Make the food image tappable
     private func setupFoodImageTap() {
         guard let container = foodImageContainer() else { return }
         container.isUserInteractionEnabled = true
@@ -194,6 +201,7 @@ class AddDonationViewController: UIViewController {
         container.addGestureRecognizer(tap)
     }
     
+    // Friendly names for the Cloudinary IDs
     private func displayName(for imageRef: String) -> String {
         switch imageRef {
         case "chicken_shawarma": return "Shawarma"
@@ -206,6 +214,7 @@ class AddDonationViewController: UIViewController {
         }
     }
     
+    // Show action sheet to choose which food image to use
     @objc private func foodImageTapped() {
         let alert = UIAlertController(title: "Select Food Item", message: nil, preferredStyle: .actionSheet)
         
@@ -221,7 +230,7 @@ class AddDonationViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
-        // iPad safety
+        // Needed on iPad so the sheet has an anchor
         if let popover = alert.popoverPresentationController {
             popover.sourceView = foodContainer
             popover.sourceRect = foodContainer.bounds
@@ -230,20 +239,21 @@ class AddDonationViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    // Redraw food image and update name label if still placeholder
     private func updateFoodImageUI() {
         guard let container = foodImageContainer() else { return }
         loadCloudinaryImage(publicId: selectedFoodImageRef, into: container)
         
-        // If name label is still placeholder, auto-fill to selected item
         let current = foodNameLabel.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         if current.isEmpty || current == "Enter food name" {
             foodNameLabel.text = displayName(for: selectedFoodImageRef)
         }
     }
     
-    // MARK: - Name Editing Setup
+    // MARK: - Name Editing
+    
+    // Tapping the labels lets the donor rename the items
     private func setupNameEditing() {
-        // Initial placeholder text
         foodNameLabel.text = "Enter food name"
         otherNameLabel.text = "Enter item name"
         
@@ -269,6 +279,7 @@ class AddDonationViewController: UIViewController {
                           label: otherNameLabel)
     }
     
+    // Simple alert to edit a UILabel's text
     private func showNameEditAlert(title: String,
                                    placeholder: String,
                                    label: UILabel) {
@@ -276,11 +287,7 @@ class AddDonationViewController: UIViewController {
         
         alert.addTextField { textField in
             let current = label.text ?? ""
-            if current == placeholder {
-                textField.text = ""
-            } else {
-                textField.text = current
-            }
+            textField.text = (current == placeholder) ? "" : current
             textField.placeholder = placeholder
             textField.autocapitalizationType = .words
         }
@@ -297,7 +304,8 @@ class AddDonationViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    // MARK: - Notes Buttons Setup
+    // MARK: - Notes Buttons
+    
     private func setupNotesButtons() {
         foodDonationNotesBtn.addTarget(self, action: #selector(foodDonationNotesTapped), for: .touchUpInside)
         foodHealthNotesBtn.addTarget(self, action: #selector(foodHealthNotesTapped), for: .touchUpInside)
@@ -305,7 +313,8 @@ class AddDonationViewController: UIViewController {
         otherHealthNotesBtn.addTarget(self, action: #selector(otherHealthNotesTapped), for: .touchUpInside)
     }
     
-    // MARK: - Notes Button Actions
+    // Each notes button opens the same type of alert, then updates its style
+    
     @objc private func foodDonationNotesTapped() {
         showNotesAlert(title: "Donation Notes", currentText: foodDonationNotes) { [weak self] newText in
             self?.foodDonationNotes = newText
@@ -334,6 +343,7 @@ class AddDonationViewController: UIViewController {
         }
     }
     
+    // Generic "enter notes" alert used by all four buttons
     private func showNotesAlert(title: String, currentText: String, completion: @escaping (String) -> Void) {
         let alert = UIAlertController(title: title, message: "Enter your notes below:", preferredStyle: .alert)
         
@@ -357,6 +367,7 @@ class AddDonationViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    // Visually indicate whether a notes button has any text yet
     private func updateButtonAppearance(button: UIButton?, hasContent: Bool, title: String) {
         guard let button = button else { return }
         
@@ -371,7 +382,8 @@ class AddDonationViewController: UIViewController {
         }
     }
     
-    // MARK: - Date Picker Setup
+    // MARK: - Date Pickers
+    
     private func setupDatePickers() {
         let foodProdPicker = UIDatePicker()
         foodProdPicker.datePickerMode = .date
@@ -428,7 +440,8 @@ class AddDonationViewController: UIViewController {
         otherExpiryDateField.text = dateFormatter.string(from: otherExpiryDate)
     }
     
-    // MARK: - Date Changed Actions
+    // Each picker change keeps the backing Date in sync with the visible text
+    
     @objc private func foodProductionDateChanged(_ picker: UIDatePicker) {
         foodProductionDate = picker.date
         foodProductionDateField.text = dateFormatter.string(from: picker.date)
@@ -449,7 +462,8 @@ class AddDonationViewController: UIViewController {
         otherExpiryDateField.text = dateFormatter.string(from: picker.date)
     }
     
-    // MARK: - Container Toggle
+    // MARK: - Food vs Other toggle
+    
     private func updateContainerVisibility() {
         let isFood = categorySegment.selectedSegmentIndex == 0
         foodContainer.isHidden = !isFood
@@ -461,6 +475,7 @@ class AddDonationViewController: UIViewController {
     }
     
     // MARK: - Food Count
+    
     private func updateFoodCount() {
         foodCountLabel.text = "\(foodQuantity)"
     }
@@ -479,6 +494,7 @@ class AddDonationViewController: UIViewController {
         }
     }
     
+    // Submit FOOD donation
     @IBAction func submitTapped(_ sender: UIButton) {
         guard foodQuantity > 0 else {
             showAlert(title: "Oops!", message: "Please add at least 1 item to donate.")
@@ -508,6 +524,7 @@ class AddDonationViewController: UIViewController {
     }
     
     // MARK: - Other Count
+    
     private func updateOtherCount() {
         otherCountLabel.text = "\(otherQuantity)"
     }
@@ -526,6 +543,7 @@ class AddDonationViewController: UIViewController {
         }
     }
     
+    // Submit OTHER ITEMS donation
     @IBAction func otherSubmitTapped(_ sender: UIButton) {
         guard otherQuantity > 0 else {
             showAlert(title: "Oops!", message: "Please add at least 1 item to donate.")
@@ -554,14 +572,18 @@ class AddDonationViewController: UIViewController {
         )
     }
     
-    // MARK: - Helper
+    // MARK: - Simple Alert
+    
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
     
-    // MARK: - Navigation
+    // MARK: - Navigation + Firestore
+    
+    // Builds a Donation object, saves it, and opens the receipt screen
+    // MARK: - Navigation + Firestore
     private func navigateToReceipt(itemName: String,
                                    quantity: Int,
                                    merchantName: String,
@@ -569,16 +591,20 @@ class AddDonationViewController: UIViewController {
                                    specialNotes: String,
                                    isFood: Bool) {
         let expiry: Date? = isFood ? foodExpiryDate : otherExpiryDate
-        // FOOD: selected Cloudinary ID; OTHER: generic Cloudinary other_items
-        let imageRef: String = isFood ? selectedFoodImageRef : "other_items"
+
+        // 1) Decide which public ID to use
+        let publicId = isFood ? selectedFoodImageRef : "other_items"
+
+        // 2) Build a full Cloudinary URL string and store that
+        let fullImageURLString = cloudinaryURL(for: publicId)?.absoluteString ?? publicId
+        let imageRef = fullImageURLString
         
-        // TODO: plug in your real authenticated user data
-        let donorId = "CURRENT_USER_ID"      // e.g. Auth.auth().currentUser?.uid ?? ""
-        let donorName = "CURRENT_USER_NAME"  // e.g. currentUser.displayName
+        // These should be filled with the logged-in user's details
         
-        // TODO: use a real status case from your DonationStatus enum
+        let donorId = UserSession.shared.userId ?? "unknown_donor"
+        let donorName = "Donor"
+        
         let status: DonationStatus = .pending
-        
         let scheduledPickup: PickupSchedule? = nil
         
         let donation = Donation(
@@ -587,7 +613,7 @@ class AddDonationViewController: UIViewController {
             description: specialNotes,
             quantity: String(quantity),
             expiryDate: expiry,
-            imageRef: imageRef,
+            imageRef: imageRef,          // now holds full URL, not just ID
             donorId: donorId,
             donorName: donorName,
             ngoId: donatedTo,

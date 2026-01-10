@@ -4,7 +4,7 @@ class DonationHomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Any additional setup for the home screen can go here
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
