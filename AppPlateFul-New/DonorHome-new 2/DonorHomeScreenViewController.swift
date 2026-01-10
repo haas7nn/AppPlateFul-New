@@ -29,7 +29,18 @@ class DonorHomeScreenViewController: UIViewController {
     }
 
     @IBAction func myDonationsTapped(_ sender: UIButton) {
-        // todo
+        let storyboard = UIStoryboard(
+            name: "DonationSchedulingStoryboard",
+            bundle: nil
+        )
+
+        let vc = storyboard.instantiateViewController(
+            withIdentifier: "DonorSchedulingSide"
+            
+        )
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+       
     }
 
     @IBAction func trackDeliveriesTapped(_ sender: UIButton) {

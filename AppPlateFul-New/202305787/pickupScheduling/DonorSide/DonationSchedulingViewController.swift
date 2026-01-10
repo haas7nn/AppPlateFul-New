@@ -60,7 +60,16 @@ class DonationSchedulingViewController: UIViewController, UITableViewDataSource,
 
         cell.titleLabel.text = donation.title
         cell.desc.text = donation.description
-        cell.icon.image = UIImage(systemName: donation.imageRef)
+        ImageLoader.shared.load(donation.imageRef) { image in
+            DispatchQueue.main.async {
+               
+                if let currentIndexPath = tableView.indexPath(for: cell),
+                   currentIndexPath == indexPath {
+                    cell.icon.image = image ?? UIImage(systemName: "photo")
+                }
+            }
+        }
+
 
         configureStatusButton(cell.status, status: donation.status)
 
