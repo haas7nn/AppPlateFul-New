@@ -25,7 +25,7 @@
         <!--Collector Home View Controller-->
         <scene sceneID="CollectorHomeScene">
             <objects>
-                <viewController storyboardIdentifier="CollectorHomeViewController" id="CollectorHomeVC" customClass="CollectorHomeViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CollectorHomeViewController" id="CollectorHomeVC" customClass="CollectorHomeViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CollectorMainView">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,12 +57,11 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorScrollView">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="680"/>
                                         <subviews>
-                                            <!-- Header Card -->
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorHeaderCard">
                                                 <rect key="frame" x="20" y="16" width="353" height="120"/>
                                                 <subviews>
@@ -93,7 +92,7 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn your mission into action !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorSubtitleLabel">
-                                                        <rect key="frame" x="108" y="54" width="200" height="18"/>
+                                                        <rect key="frame" x="108" y="54" width="194" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
@@ -115,15 +114,15 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="CollectorSubtitleLabel" firstAttribute="leading" secondItem="CollectorHelloLabel" secondAttribute="leading" id="CSlL"/>
-                                                    <constraint firstItem="CollectorSubtitleLabel" firstAttribute="top" secondItem="CollectorHelloLabel" secondAttribute="bottom" constant="2" id="CSlT"/>
                                                     <constraint firstItem="CollectorAvatarBg" firstAttribute="centerY" secondItem="CollectorHeaderCard" secondAttribute="centerY" id="CAvCY"/>
                                                     <constraint firstItem="CollectorAvatarBg" firstAttribute="leading" secondItem="CollectorHeaderCard" secondAttribute="leading" constant="20" id="CAvL"/>
                                                     <constraint firstAttribute="height" constant="120" id="CHCH"/>
-                                                    <constraint firstItem="CollectorSettingsBtn" firstAttribute="centerY" secondItem="CollectorHeaderCard" secondAttribute="centerY" id="CSbCY"/>
-                                                    <constraint firstAttribute="trailing" secondItem="CollectorSettingsBtn" secondAttribute="trailing" constant="16" id="CSbTr"/>
                                                     <constraint firstItem="CollectorHelloLabel" firstAttribute="leading" secondItem="CollectorAvatarBg" secondAttribute="trailing" constant="18" id="CHlL"/>
                                                     <constraint firstItem="CollectorHelloLabel" firstAttribute="top" secondItem="CollectorAvatarBg" secondAttribute="top" constant="5" id="CHlT"/>
+                                                    <constraint firstItem="CollectorSettingsBtn" firstAttribute="centerY" secondItem="CollectorHeaderCard" secondAttribute="centerY" id="CSbCY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CollectorSettingsBtn" secondAttribute="trailing" constant="16" id="CSbTr"/>
+                                                    <constraint firstItem="CollectorSubtitleLabel" firstAttribute="leading" secondItem="CollectorHelloLabel" secondAttribute="leading" id="CSlL"/>
+                                                    <constraint firstItem="CollectorSubtitleLabel" firstAttribute="top" secondItem="CollectorHelloLabel" secondAttribute="bottom" constant="2" id="CSlT"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -143,13 +142,11 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <!-- Quick Actions Label -->
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Actions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorQuickActionsLabel">
                                                 <rect key="frame" x="20" y="160" width="130.33333333333334" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </label>
-                                            <!-- Action Card 1: Community Leaderboard -->
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorActionCard1">
                                                 <rect key="frame" x="20" y="200" width="353" height="100"/>
                                                 <subviews>
@@ -175,12 +172,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Community Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorTitle1">
-                                                        <rect key="frame" x="92" y="28" width="190" height="20.333333333333329"/>
+                                                        <rect key="frame" x="92.000000000000014" y="28" width="202.33333333333337" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See top collectors in your area" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorDesc1">
-                                                        <rect key="frame" x="91.999999999999986" y="50.333333333333314" width="200" height="15.666666666666671"/>
+                                                        <rect key="frame" x="92" y="50.333333333333314" width="184" height="15.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
@@ -232,7 +229,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <!-- Action Card 2: Update Delivery Status -->
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorActionCard2">
                                                 <rect key="frame" x="20" y="316" width="353" height="100"/>
                                                 <subviews>
@@ -240,7 +236,7 @@
                                                         <rect key="frame" x="20" y="22" width="56" height="56"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📦" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorIcon2">
-                                                                <rect key="frame" x="12" y="11.333333333333371" width="32" height="33.666666666666664"/>
+                                                                <rect key="frame" x="12" y="11.333333333333314" width="32" height="33.666666666666664"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                             </label>
                                                         </subviews>
@@ -258,17 +254,17 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Delivery Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorTitle2">
-                                                        <rect key="frame" x="92" y="28" width="180" height="20.333333333333329"/>
+                                                        <rect key="frame" x="91.999999999999986" y="28" width="187.66666666666663" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark pickups and deliveries complete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorDesc2">
-                                                        <rect key="frame" x="91.999999999999986" y="50.333333333333371" width="220" height="15.666666666666671"/>
+                                                        <rect key="frame" x="91.999999999999986" y="50.333333333333314" width="228.66666666666663" height="15.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="›" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorArrow2">
-                                                        <rect key="frame" x="325.66666666666669" y="33.333333333333371" width="11.333333333333314" height="33.666666666666657"/>
+                                                        <rect key="frame" x="325.66666666666669" y="33.333333333333314" width="11.333333333333314" height="33.666666666666657"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
                                                         <color key="textColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
@@ -315,7 +311,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <!-- Action Card 3: Collector Profile -->
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorActionCard3">
                                                 <rect key="frame" x="20" y="432" width="353" height="100"/>
                                                 <subviews>
@@ -341,12 +336,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collector Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorTitle3">
-                                                        <rect key="frame" x="92" y="28" width="135" height="20.333333333333329"/>
+                                                        <rect key="frame" x="91.999999999999986" y="28" width="131.66666666666663" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View and edit your profile details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorDesc3">
-                                                        <rect key="frame" x="92" y="50.333333333333371" width="200" height="15.666666666666671"/>
+                                                        <rect key="frame" x="92" y="50.333333333333371" width="198" height="15.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
@@ -398,7 +393,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <!-- Logout Button -->
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorLogoutBtn">
                                                 <rect key="frame" x="20" y="564" width="353" height="54"/>
                                                 <color key="backgroundColor" red="0.94509803921568625" green="0.2627450980392157" blue="0.21176470588235294" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -415,12 +409,11 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="logoutTapped:" destination="CollectorHomeVC" eventType="touchUpInside" id="CLogoutAct"/>
+                                                    <action selector="logoutTapped:" destination="CollectorHomeVC" eventType="touchUpInside" id="qEY-od-h36"/>
                                                 </connections>
                                             </button>
-                                            <!-- Version Label -->
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlateFul Collector v1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CollectorVersionLabel">
-                                                <rect key="frame" x="131" y="634" width="131" height="14.333333333333371"/>
+                                                <rect key="frame" x="133.66666666666666" y="634" width="125.99999999999997" height="14.333333333333371"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </label>
@@ -473,10 +466,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="communityLeaderboardBtn" destination="CollectorBtn1" id="CO1"/>
-                        <outlet property="updateDeliveryBtn" destination="CollectorBtn2" id="CO2"/>
                         <outlet property="collectorProfileBtn" destination="CollectorBtn3" id="CO3"/>
+                        <outlet property="communityLeaderboardBtn" destination="CollectorBtn1" id="CO1"/>
                         <outlet property="logoutBtn" destination="CollectorLogoutBtn" id="CO4"/>
+                        <outlet property="updateDeliveryBtn" destination="CollectorBtn2" id="CO2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CollectorHomeFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -1,97 +1,365 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wbx-e3-G29">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Terms & Conditions-->
-        <scene sceneID="kqP-bM-gBr">
-            <objects>
-                <navigationController title="Terms &amp; Conditions" automaticallyAdjustsScrollViewInsets="NO" id="Wbx-e3-G29" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eeU-fM-6J9">
-                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="REt-4b-9lw"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1TH-u5-TVY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="139.69465648854961" y="91.549295774647888"/>
-        </scene>
-        <!--Terms & Conditions-->
+        <!--Terms & Conditions View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController title="Terms &amp; Conditions" id="Y6W-OH-hqX" customClass="TermsViewController" customModule="TermsAndConditions" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermsViewController" title="Terms &amp; Conditions" id="Y6W-OH-hqX" customClass="TermsViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TermCell" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vtb-py-uAp">
-                                <rect key="frame" x="0.0" y="172" width="393" height="612"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <!-- Decorative Circle 1 -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcCircle1">
+                                <rect key="frame" x="-80" y="-100" width="250" height="250"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.75686274509803919" blue="0.47058823529411764" alpha="0.15" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="tcc1H"/>
+                                    <constraint firstAttribute="width" constant="250" id="tcc1W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="125"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Decorative Circle 2 -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcCircle2">
+                                <rect key="frame" x="280" y="-50" width="180" height="180"/>
+                                <color key="backgroundColor" red="0.776" green="0.635" blue="0.494" alpha="0.2" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="tcc2H"/>
+                                    <constraint firstAttribute="width" constant="180" id="tcc2W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="90"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Back Button -->
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcBackBtn">
+                                <rect key="frame" x="20" y="59" width="44" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="0.95" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="tcBBW"/>
+                                    <constraint firstAttribute="height" constant="44" id="tcBBH"/>
+                                </constraints>
+                                <state key="normal" title="‹">
+                                    <color key="titleColor" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                        <color key="value" red="0" green="0" blue="0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tcBackAction"/>
+                                </connections>
+                            </button>
+                            <!-- Header Card -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcHeaderCard">
+                                <rect key="frame" x="20" y="115" width="353" height="100"/>
+                                <subviews>
+                                    <!-- Icon Container -->
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcIconBg">
+                                        <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcIconEmoji">
+                                                <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="tcIconEmoji" firstAttribute="centerX" secondItem="tcIconBg" secondAttribute="centerX" id="tcIEX"/>
+                                            <constraint firstItem="tcIconEmoji" firstAttribute="centerY" secondItem="tcIconBg" secondAttribute="centerY" id="tcIEY"/>
+                                            <constraint firstAttribute="height" constant="60" id="tcIBH"/>
+                                            <constraint firstAttribute="width" constant="60" id="tcIBW"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <!-- Title -->
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Read Carefully" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcHeaderTitle">
+                                        <rect key="frame" x="96" y="25" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.8" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <!-- Subtitle -->
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcHeaderSubtitle">
+                                        <rect key="frame" x="96" y="47" width="241" height="32"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.776" green="0.635" blue="0.494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="tcIconBg" firstAttribute="leading" secondItem="tcHeaderCard" secondAttribute="leading" constant="20" id="tcIBL"/>
+                                    <constraint firstItem="tcIconBg" firstAttribute="centerY" secondItem="tcHeaderCard" secondAttribute="centerY" id="tcIBCY"/>
+                                    <constraint firstItem="tcHeaderTitle" firstAttribute="leading" secondItem="tcIconBg" secondAttribute="trailing" constant="16" id="tcHTL"/>
+                                    <constraint firstItem="tcHeaderTitle" firstAttribute="top" secondItem="tcIconBg" secondAttribute="top" constant="5" id="tcHTT"/>
+                                    <constraint firstItem="tcHeaderSubtitle" firstAttribute="leading" secondItem="tcHeaderTitle" secondAttribute="leading" id="tcHSL"/>
+                                    <constraint firstItem="tcHeaderSubtitle" firstAttribute="top" secondItem="tcHeaderTitle" secondAttribute="bottom" constant="2" id="tcHST"/>
+                                    <constraint firstAttribute="height" constant="100" id="tcHCH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                        <color key="value" red="0.776" green="0.635" blue="0.494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0" height="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Effective Date Badge -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcDateBadge">
+                                <rect key="frame" x="20" y="231" width="170" height="32"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tcCalendarIcon">
+                                        <rect key="frame" x="12" y="8" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="tcCIW"/>
+                                            <constraint firstAttribute="height" constant="16" id="tcCIH"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.776" green="0.635" blue="0.494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Effective: Nov 2025" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcDateLabel">
+                                        <rect key="frame" x="36" y="8" width="122" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                        <color key="textColor" red="0.776" green="0.635" blue="0.494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.776" green="0.635" blue="0.494" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="tcCalendarIcon" firstAttribute="leading" secondItem="tcDateBadge" secondAttribute="leading" constant="12" id="tcCIL"/>
+                                    <constraint firstItem="tcCalendarIcon" firstAttribute="centerY" secondItem="tcDateBadge" secondAttribute="centerY" id="tcCICY"/>
+                                    <constraint firstItem="tcDateLabel" firstAttribute="leading" secondItem="tcCalendarIcon" secondAttribute="trailing" constant="8" id="tcDLL"/>
+                                    <constraint firstItem="tcDateLabel" firstAttribute="centerY" secondItem="tcDateBadge" secondAttribute="centerY" id="tcDLCY"/>
+                                    <constraint firstAttribute="height" constant="32" id="tcDBH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Section Title -->
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agreement Sections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcSectionTitle">
+                                <rect key="frame" x="20" y="279" width="200" height="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.133" green="0.133" blue="0.133" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <!-- Table View -->
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vtb-py-uAp">
+                                <rect key="frame" x="0.0" y="309" width="393" height="509"/>
+                                <color key="backgroundColor" red="0" green="0" blue="0" alpha="0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TermsNConQuestionCell" id="Jjm-og-UmL" customClass="TermsNConQuestionCell">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="54"/>
+                                    <!-- Question/Title Cell -->
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TermsQuestionCell" rowHeight="76" id="Jjm-og-UmL" customClass="TermsQuestionCell" customModule="AppPlateFul" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="FAQQuestionCell" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jjm-og-UmL" id="X1V-Gf-99r" customClass="FAQQuestionCell">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="54"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jjm-og-UmL" id="X1V-Gf-99r">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKW-7q-6CO">
-                                                    <rect key="frame" x="28" y="0.0" width="345" height="54"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcQCard">
+                                                    <rect key="frame" x="20" y="6" width="353" height="64"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is this app about? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAl-hr-KMa">
-                                                            <rect key="frame" x="12" y="17" width="183" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
+                                                        <!-- Section Number -->
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcQNumBg">
+                                                            <rect key="frame" x="14" y="14" width="36" height="36"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcQNum">
+                                                                    <rect key="frame" x="8" y="8" width="20" height="20"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.776" green="0.635" blue="0.494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="tcQNum" firstAttribute="centerX" secondItem="tcQNumBg" secondAttribute="centerX" id="tcQNCX"/>
+                                                                <constraint firstItem="tcQNum" firstAttribute="centerY" secondItem="tcQNumBg" secondAttribute="centerY" id="tcQNCY"/>
+                                                                <constraint firstAttribute="width" constant="36" id="tcQNBW"/>
+                                                                <constraint firstAttribute="height" constant="36" id="tcQNBH"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <!-- Title Label -->
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acceptance of Terms" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcQLbl">
+                                                            <rect key="frame" x="62" y="22" width="241" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                            <color key="textColor" red="0.133" green="0.133" blue="0.133" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="chevron.compact.up.chevron.compact.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hba-2p-q70">
-                                                            <rect key="frame" x="316" y="16.666666666666629" width="19" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </imageView>
+                                                        <!-- Chevron Container -->
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcChevronBg">
+                                                            <rect key="frame" x="311" y="18" width="28" height="28"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tcChevron">
+                                                                    <rect key="frame" x="7" y="7" width="14" height="14"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="14" id="tcChW"/>
+                                                                        <constraint firstAttribute="height" constant="14" id="tcChH"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.95" green="0.95" blue="0.95" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="tcChevron" firstAttribute="centerX" secondItem="tcChevronBg" secondAttribute="centerX" id="tcChCX"/>
+                                                                <constraint firstItem="tcChevron" firstAttribute="centerY" secondItem="tcChevronBg" secondAttribute="centerY" id="tcChCY"/>
+                                                                <constraint firstAttribute="width" constant="28" id="tcChBW"/>
+                                                                <constraint firstAttribute="height" constant="28" id="tcChBH"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="14"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="tcQNumBg" firstAttribute="leading" secondItem="tcQCard" secondAttribute="leading" constant="14" id="tcQNBL"/>
+                                                        <constraint firstItem="tcQNumBg" firstAttribute="centerY" secondItem="tcQCard" secondAttribute="centerY" id="tcQNBCY"/>
+                                                        <constraint firstItem="tcQLbl" firstAttribute="leading" secondItem="tcQNumBg" secondAttribute="trailing" constant="12" id="tcQLL"/>
+                                                        <constraint firstItem="tcQLbl" firstAttribute="centerY" secondItem="tcQCard" secondAttribute="centerY" id="tcQLCY"/>
+                                                        <constraint firstItem="tcQLbl" firstAttribute="trailing" secondItem="tcChevronBg" secondAttribute="leading" constant="-12" id="tcQLT"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tcChevronBg" secondAttribute="trailing" constant="14" id="tcChBT"/>
+                                                        <constraint firstItem="tcChevronBg" firstAttribute="centerY" secondItem="tcQCard" secondAttribute="centerY" id="tcChBCY"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                            <color key="value" red="0" green="0" blue="0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                            <real key="value" value="0.08"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                            <size key="value" width="0" height="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0" green="0" blue="0" alpha="0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="tcQCard" firstAttribute="leading" secondItem="X1V-Gf-99r" secondAttribute="leading" constant="20" id="tcQCL"/>
+                                                <constraint firstAttribute="trailing" secondItem="tcQCard" secondAttribute="trailing" constant="20" id="tcQCT"/>
+                                                <constraint firstItem="tcQCard" firstAttribute="top" secondItem="X1V-Gf-99r" secondAttribute="top" constant="6" id="tcQCTop"/>
+                                                <constraint firstAttribute="bottom" secondItem="tcQCard" secondAttribute="bottom" constant="6" id="tcQCB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cardView" destination="tcQCard" id="tcQCardOut"/>
+                                            <outlet property="titleLabel" destination="tcQLbl" id="tcQLblOut"/>
+                                            <outlet property="chevronImageView" destination="tcChevron" id="tcChevronOut"/>
+                                            <outlet property="chevronBackground" destination="tcChevronBg" id="tcChevronBgOut"/>
+                                            <outlet property="numberLabel" destination="tcQNum" id="tcQNumOut"/>
+                                            <outlet property="numberBackground" destination="tcQNumBg" id="tcQNumBgOut"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TermsNConAnswerCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TermsNConAnswerCell" id="HhG-8h-MYP" customClass="TermsNConAnswerCell" customModule="TermsAndConditions" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="104" width="393" height="54"/>
+                                    <!-- Answer/Content Cell -->
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TermsAnswerCell" rowHeight="100" id="HhG-8h-MYP" customClass="TermsAnswerCell" customModule="AppPlateFul" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="126" width="393" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HhG-8h-MYP" id="Wrj-8M-Zuv">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="54"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HhG-8h-MYP" id="Wrj-8M-Zuv">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x16-iN-0r9">
-                                                    <rect key="frame" x="29" y="7" width="344" height="47"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcACard">
+                                                    <rect key="frame" x="36" y="0" width="337" height="94"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="its abiut ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pck-4E-gGY">
-                                                            <rect key="frame" x="32" y="17" width="79" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
+                                                        <!-- Accent Bar -->
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tcAccentBar">
+                                                            <rect key="frame" x="0" y="12" width="4" height="70"/>
+                                                            <color key="backgroundColor" red="0.776" green="0.635" blue="0.494" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="4" id="tcABW"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <!-- Content Label -->
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By accessing or using PlateFul, you agree to be bound by these Terms and Conditions." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcALbl">
+                                                            <rect key="frame" x="20" y="14" width="301" height="66"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.35" green="0.35" blue="0.35" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" red="0.776" green="0.635" blue="0.494" alpha="0.08" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="tcAccentBar" firstAttribute="leading" secondItem="tcACard" secondAttribute="leading" id="tcABL"/>
+                                                        <constraint firstItem="tcAccentBar" firstAttribute="top" secondItem="tcACard" secondAttribute="top" constant="12" id="tcABT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="tcAccentBar" secondAttribute="bottom" constant="12" id="tcABB"/>
+                                                        <constraint firstItem="tcALbl" firstAttribute="leading" secondItem="tcAccentBar" secondAttribute="trailing" constant="16" id="tcALL"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tcALbl" secondAttribute="trailing" constant="16" id="tcALT"/>
+                                                        <constraint firstItem="tcALbl" firstAttribute="top" secondItem="tcACard" secondAttribute="top" constant="14" id="tcALTop"/>
+                                                        <constraint firstAttribute="bottom" secondItem="tcALbl" secondAttribute="bottom" constant="14" id="tcALB"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="14"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" red="0" green="0" blue="0" alpha="0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="tcACard" firstAttribute="leading" secondItem="Wrj-8M-Zuv" secondAttribute="leading" constant="36" id="tcACL"/>
+                                                <constraint firstAttribute="trailing" secondItem="tcACard" secondAttribute="trailing" constant="20" id="tcACT"/>
+                                                <constraint firstItem="tcACard" firstAttribute="top" secondItem="Wrj-8M-Zuv" secondAttribute="top" id="tcACTop"/>
+                                                <constraint firstAttribute="bottom" secondItem="tcACard" secondAttribute="bottom" constant="6" id="tcACB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cardView" destination="tcACard" id="tcACardOut"/>
+                                            <outlet property="contentLabel" destination="tcALbl" id="tcALblOut"/>
+                                            <outlet property="accentBar" destination="tcAccentBar" id="tcAccentBarOut"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -101,12 +369,31 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803926" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="vtb-py-uAp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="8wv-rh-RMV"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vtb-py-uAp" secondAttribute="trailing" id="CWi-GF-IWa"/>
-                            <constraint firstItem="vtb-py-uAp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="M26-AF-RPo"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vtb-py-uAp" secondAttribute="bottom" id="s1h-gb-lQC"/>
+                            <!-- Decorative Circles -->
+                            <constraint firstItem="tcCircle1" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-80" id="tcc1L"/>
+                            <constraint firstItem="tcCircle1" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="-100" id="tcc1T"/>
+                            <constraint firstItem="tcCircle2" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" constant="67" id="tcc2Tr"/>
+                            <constraint firstItem="tcCircle2" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="-50" id="tcc2T"/>
+                            <!-- Back Button -->
+                            <constraint firstItem="tcBackBtn" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="tcBBT"/>
+                            <constraint firstItem="tcBackBtn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="tcBBL"/>
+                            <!-- Header Card -->
+                            <constraint firstItem="tcHeaderCard" firstAttribute="top" secondItem="tcBackBtn" secondAttribute="bottom" constant="12" id="tcHCT"/>
+                            <constraint firstItem="tcHeaderCard" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="tcHCL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tcHeaderCard" secondAttribute="trailing" constant="20" id="tcHCTr"/>
+                            <!-- Date Badge -->
+                            <constraint firstItem="tcDateBadge" firstAttribute="top" secondItem="tcHeaderCard" secondAttribute="bottom" constant="16" id="tcDBT"/>
+                            <constraint firstItem="tcDateBadge" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="tcDBL"/>
+                            <!-- Section Title -->
+                            <constraint firstItem="tcSectionTitle" firstAttribute="top" secondItem="tcDateBadge" secondAttribute="bottom" constant="16" id="tcSTT"/>
+                            <constraint firstItem="tcSectionTitle" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="tcSTL"/>
+                            <!-- Table View -->
+                            <constraint firstItem="vtb-py-uAp" firstAttribute="top" secondItem="tcSectionTitle" secondAttribute="bottom" constant="8" id="tcTVT"/>
+                            <constraint firstItem="vtb-py-uAp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="tcTVL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vtb-py-uAp" secondAttribute="trailing" id="tcTVTr"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vtb-py-uAp" secondAttribute="bottom" id="tcTVB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eDu-gI-kJD"/>
@@ -116,13 +403,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="92"/>
+            <point key="canvasLocation" x="139" y="91"/>
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.compact.up.chevron.compact.down" catalog="system" width="128" height="89"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="calendar" catalog="system" width="128" height="118"/>
+        <image name="chevron.down" catalog="system" width="128" height="74"/>
     </resources>
 </document>

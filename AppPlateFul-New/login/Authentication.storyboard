@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LFD-HG-gQz">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gradientTop">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="280"/>
+                                <color key="backgroundColor" red="0.68999999999999995" green="0.77000000000000002" blue="0.60999999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="280" id="gradH"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaf.circle.fill" translatesAutoresizingMaskIntoConstraints="NO" id="logoImage">
+                                <rect key="frame" x="156.66666666666666" y="192" width="80" height="80"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="logoH"/>
+                                    <constraint firstAttribute="width" constant="80" id="logoW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plateful" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="appTitle">
+                                <rect key="frame" x="20" y="284" width="353" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reduce waste, share food" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tagline">
+                                <rect key="frame" x="20" y="324" width="353" height="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cardView">
+                                <rect key="frame" x="20" y="250" width="353" height="474"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tabContainer">
+                                        <rect key="frame" x="20" y="20" width="313" height="48"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loginTabBtn">
+                                                <rect key="frame" x="0.0" y="0.0" width="156.66666666666666" height="48"/>
+                                                <color key="backgroundColor" red="0.68999999999999995" green="0.77000000000000002" blue="0.60999999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="ltbH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Login"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="registerTabBtn">
+                                                <rect key="frame" x="156.66666666666663" y="0.0" width="156.33333333333337" height="48"/>
+                                                <color key="backgroundColor" red="0.94999999999999996" green="0.94999999999999996" blue="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="rtbH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                <color key="tintColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Register"/>
+                                                <connections>
+                                                    <segue destination="xrK-VN-yRh" kind="show" id="segueToRegister"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94999999999999996" green="0.94999999999999996" blue="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="loginTabBtn" firstAttribute="leading" secondItem="tabContainer" secondAttribute="leading" id="tc1"/>
+                                            <constraint firstItem="loginTabBtn" firstAttribute="top" secondItem="tabContainer" secondAttribute="top" id="tc2"/>
+                                            <constraint firstItem="loginTabBtn" firstAttribute="bottom" secondItem="tabContainer" secondAttribute="bottom" id="tc3"/>
+                                            <constraint firstItem="registerTabBtn" firstAttribute="leading" secondItem="loginTabBtn" secondAttribute="trailing" id="tc4"/>
+                                            <constraint firstItem="registerTabBtn" firstAttribute="top" secondItem="tabContainer" secondAttribute="top" id="tc5"/>
+                                            <constraint firstItem="registerTabBtn" firstAttribute="bottom" secondItem="tabContainer" secondAttribute="bottom" id="tc6"/>
+                                            <constraint firstAttribute="trailing" secondItem="registerTabBtn" secondAttribute="trailing" id="tc7"/>
+                                            <constraint firstItem="registerTabBtn" firstAttribute="width" secondItem="loginTabBtn" secondAttribute="width" id="tc8"/>
+                                            <constraint firstAttribute="height" constant="48" id="tcH"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back! 👋" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="welcomeLabel">
+                                        <rect key="frame" x="20" y="92" width="313" height="32"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in to continue your journey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="subtitleLabel">
+                                        <rect key="frame" x="20" y="128" width="313" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.55000000000000004" green="0.55000000000000004" blue="0.55000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="emailTF">
+                                        <rect key="frame" x="20" y="170" width="313" height="52"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="emailH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="emailAddress"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="passTF">
+                                        <rect key="frame" x="20" y="238" width="313" height="52"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="passH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="forgotBtn">
+                                        <rect key="frame" x="303" y="298" width="30" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <color key="tintColor" red="0.68999999999999995" green="0.77000000000000002" blue="0.60999999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loginButton">
+                                        <rect key="frame" x="20" y="351" width="313" height="56"/>
+                                        <color key="backgroundColor" red="0.68999999999999995" green="0.77000000000000002" blue="0.60999999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="loginBtnH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Sign In"/>
+                                        <connections>
+                                            <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="loginAction"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dividerLeft">
+                                        <rect key="frame" x="20" y="431" width="133.66666666666666" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="dlH"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orLabel">
+                                        <rect key="frame" x="169.66666666666666" y="423" width="14" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dividerRight">
+                                        <rect key="frame" x="199.66666666666663" y="431" width="133.33333333333337" height="1"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="drH"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue as NGO or Admin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="socialHint">
+                                        <rect key="frame" x="20" y="456" width="313" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="tabContainer" firstAttribute="top" secondItem="cardView" secondAttribute="top" constant="20" id="cv1"/>
+                                    <constraint firstItem="emailTF" firstAttribute="top" secondItem="subtitleLabel" secondAttribute="bottom" constant="24" id="cv10"/>
+                                    <constraint firstItem="emailTF" firstAttribute="leading" secondItem="cardView" secondAttribute="leading" constant="20" id="cv11"/>
+                                    <constraint firstAttribute="trailing" secondItem="emailTF" secondAttribute="trailing" constant="20" id="cv12"/>
+                                    <constraint firstItem="passTF" firstAttribute="top" secondItem="emailTF" secondAttribute="bottom" constant="16" id="cv13"/>
+                                    <constraint firstItem="passTF" firstAttribute="leading" secondItem="cardView" secondAttribute="leading" constant="20" id="cv14"/>
+                                    <constraint firstAttribute="trailing" secondItem="passTF" secondAttribute="trailing" constant="20" id="cv15"/>
+                                    <constraint firstItem="forgotBtn" firstAttribute="top" secondItem="passTF" secondAttribute="bottom" constant="8" id="cv16"/>
+                                    <constraint firstAttribute="trailing" secondItem="forgotBtn" secondAttribute="trailing" constant="20" id="cv17"/>
+                                    <constraint firstItem="loginButton" firstAttribute="top" secondItem="forgotBtn" secondAttribute="bottom" constant="24" id="cv18"/>
+                                    <constraint firstItem="loginButton" firstAttribute="leading" secondItem="cardView" secondAttribute="leading" constant="20" id="cv19"/>
+                                    <constraint firstItem="tabContainer" firstAttribute="leading" secondItem="cardView" secondAttribute="leading" constant="20" id="cv2"/>
+                                    <constraint firstAttribute="trailing" secondItem="loginButton" secondAttribute="trailing" constant="20" id="cv20"/>
+                                    <constraint firstItem="dividerLeft" firstAttribute="top" secondItem="loginButton" secondAttribute="bottom" constant="24" id="cv21"/>
+                                    <constraint firstItem="dividerLeft" firstAttribute="leading" secondItem="cardView" secondAttribute="leading" constant="20" id="cv22"/>
+                                    <constraint firstItem="orLabel" firstAttribute="centerY" secondItem="dividerLeft" secondAttribute="centerY" id="cv23"/>
+                                    <constraint firstItem="orLabel" firstAttribute="centerX" secondItem="cardView" secondAttribute="centerX" id="cv24"/>
+                                    <constraint firstItem="dividerRight" firstAttribute="centerY" secondItem="dividerLeft" secondAttribute="centerY" id="cv25"/>
+                                    <constraint firstAttribute="trailing" secondItem="dividerRight" secondAttribute="trailing" constant="20" id="cv26"/>
+                                    <constraint firstItem="dividerLeft" firstAttribute="trailing" secondItem="orLabel" secondAttribute="leading" constant="-16" id="cv27"/>
+                                    <constraint firstItem="dividerRight" firstAttribute="leading" secondItem="orLabel" secondAttribute="trailing" constant="16" id="cv28"/>
+                                    <constraint firstItem="socialHint" firstAttribute="top" secondItem="orLabel" secondAttribute="bottom" constant="16" id="cv29"/>
+                                    <constraint firstAttribute="trailing" secondItem="tabContainer" secondAttribute="trailing" constant="20" id="cv3"/>
+                                    <constraint firstItem="socialHint" firstAttribute="leading" secondItem="cardView" secondAttribute="leading" constant="20" id="cv30"/>
+                                    <constraint firstAttribute="trailing" secondItem="socialHint" secondAttribute="trailing" constant="20" id="cv31"/>
+                                    <constraint firstItem="welcomeLabel" firstAttribute="top" secondItem="tabContainer" secondAttribute="bottom" constant="24" id="cv4"/>
+                                    <constraint firstItem="welcomeLabel" firstAttribute="leading" secondItem="cardView" secondAttribute="leading" constant="20" id="cv5"/>
+                                    <constraint firstAttribute="trailing" secondItem="welcomeLabel" secondAttribute="trailing" constant="20" id="cv6"/>
+                                    <constraint firstItem="subtitleLabel" firstAttribute="top" secondItem="welcomeLabel" secondAttribute="bottom" constant="4" id="cv7"/>
+                                    <constraint firstItem="subtitleLabel" firstAttribute="leading" secondItem="cardView" secondAttribute="leading" constant="20" id="cv8"/>
+                                    <constraint firstAttribute="trailing" secondItem="subtitleLabel" secondAttribute="trailing" constant="20" id="cv9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.95999999999999996" green="0.95999999999999996" blue="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gradientTop" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="m1"/>
+                            <constraint firstItem="tagline" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="m10"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tagline" secondAttribute="trailing" constant="20" id="m11"/>
+                            <constraint firstItem="cardView" firstAttribute="top" secondItem="gradientTop" secondAttribute="bottom" constant="-30" id="m12"/>
+                            <constraint firstItem="cardView" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="m13"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cardView" secondAttribute="trailing" constant="20" id="m14"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cardView" secondAttribute="bottom" constant="60" id="m15"/>
+                            <constraint firstItem="gradientTop" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="m2"/>
+                            <constraint firstAttribute="trailing" secondItem="gradientTop" secondAttribute="trailing" id="m3"/>
+                            <constraint firstItem="logoImage" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="m4"/>
+                            <constraint firstItem="logoImage" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="m5"/>
+                            <constraint firstItem="appTitle" firstAttribute="top" secondItem="logoImage" secondAttribute="bottom" constant="12" id="m6"/>
+                            <constraint firstItem="appTitle" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="m7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="appTitle" secondAttribute="trailing" constant="20" id="m8"/>
+                            <constraint firstItem="tagline" firstAttribute="top" secondItem="appTitle" secondAttribute="bottom" constant="4" id="m9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="oR9-g1-eIC"/>
+                    <connections>
+                        <outlet property="cardView" destination="cardView" id="cardViewOutlet"/>
+                        <outlet property="emailTF" destination="emailTF" id="emailOutlet"/>
+                        <outlet property="loginButton" destination="loginButton" id="loginBtnOutlet"/>
+                        <outlet property="loginTabButton" destination="loginTabBtn" id="loginTabOutlet"/>
+                        <outlet property="passTF" destination="passTF" id="passOutlet"/>
+                        <outlet property="registerTabButton" destination="registerTabBtn" id="regTabOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="971.7557251908396" y="-2.1126760563380285"/>
+        </scene>
+        <!--Register View Controller-->
+        <scene sceneID="GmH-QF-mSU">
+            <objects>
+                <viewController storyboardIdentifier="RegisterViewController" id="xrK-VN-yRh" customClass="RegisterViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D1a-cA-3wX">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gradientTopReg">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="280"/>
+                                <color key="backgroundColor" red="0.68999999999999995" green="0.77000000000000002" blue="0.60999999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="280" id="gHR"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaf.circle.fill" translatesAutoresizingMaskIntoConstraints="NO" id="logoReg">
+                                <rect key="frame" x="156.66666666666666" y="192" width="80" height="80"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="lHR"/>
+                                    <constraint firstAttribute="width" constant="80" id="lWR"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plateful" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="titleReg">
+                                <rect key="frame" x="20" y="284" width="353" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join our community today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tagReg">
+                                <rect key="frame" x="20" y="324" width="353" height="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cardViewReg">
+                                <rect key="frame" x="20" y="250" width="353" height="514"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tabContainerReg">
+                                        <rect key="frame" x="20" y="20" width="313" height="48"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loginTabReg">
+                                                <rect key="frame" x="0.0" y="0.0" width="156.66666666666666" height="48"/>
+                                                <color key="backgroundColor" red="0.94999999999999996" green="0.94999999999999996" blue="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="ltHR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                <color key="tintColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Login"/>
+                                                <connections>
+                                                    <action selector="backToLoginTapped:" destination="xrK-VN-yRh" eventType="touchUpInside" id="backAction"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="registerTabReg">
+                                                <rect key="frame" x="156.66666666666663" y="0.0" width="156.33333333333337" height="48"/>
+                                                <color key="backgroundColor" red="0.68999999999999995" green="0.77000000000000002" blue="0.60999999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="rtHR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Register"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94999999999999996" green="0.94999999999999996" blue="0.94999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="loginTabReg" firstAttribute="leading" secondItem="tabContainerReg" secondAttribute="leading" id="tcr1"/>
+                                            <constraint firstItem="loginTabReg" firstAttribute="top" secondItem="tabContainerReg" secondAttribute="top" id="tcr2"/>
+                                            <constraint firstItem="loginTabReg" firstAttribute="bottom" secondItem="tabContainerReg" secondAttribute="bottom" id="tcr3"/>
+                                            <constraint firstItem="registerTabReg" firstAttribute="leading" secondItem="loginTabReg" secondAttribute="trailing" id="tcr4"/>
+                                            <constraint firstItem="registerTabReg" firstAttribute="top" secondItem="tabContainerReg" secondAttribute="top" id="tcr5"/>
+                                            <constraint firstItem="registerTabReg" firstAttribute="bottom" secondItem="tabContainerReg" secondAttribute="bottom" id="tcr6"/>
+                                            <constraint firstAttribute="trailing" secondItem="registerTabReg" secondAttribute="trailing" id="tcr7"/>
+                                            <constraint firstItem="registerTabReg" firstAttribute="width" secondItem="loginTabReg" secondAttribute="width" id="tcr8"/>
+                                            <constraint firstAttribute="height" constant="48" id="tcrH"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account ✨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="welcomeReg">
+                                        <rect key="frame" x="20" y="84" width="313" height="32"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill in your details to get started" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="subReg">
+                                        <rect key="frame" x="20" y="120" width="313" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.55000000000000004" green="0.55000000000000004" blue="0.55000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nameTF">
+                                        <rect key="frame" x="20" y="158" width="313" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="nH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" textContentType="name"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="emailTFReg">
+                                        <rect key="frame" x="20" y="220" width="313" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="eHR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="emailAddress"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="passTFReg">
+                                        <rect key="frame" x="20" y="282" width="313" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="pHR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="newPassword"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="confirmTF">
+                                        <rect key="frame" x="20" y="344" width="313" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="cH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="newPassword"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By registering, you agree to our Terms &amp; Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="termsLabel">
+                                        <rect key="frame" x="20" y="410" width="313" height="14.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="registerButton">
+                                        <rect key="frame" x="20" y="440.33333333333337" width="313" height="56"/>
+                                        <color key="backgroundColor" red="0.68999999999999995" green="0.77000000000000002" blue="0.60999999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="rbH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Create Account"/>
+                                        <connections>
+                                            <action selector="registerTapped:" destination="xrK-VN-yRh" eventType="touchUpInside" id="regAction"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account? Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alreadyLabel">
+                                        <rect key="frame" x="20" y="512.33333333333337" width="313" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <color key="textColor" red="0.68999999999999995" green="0.77000000000000002" blue="0.60999999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="tabContainerReg" firstAttribute="top" secondItem="cardViewReg" secondAttribute="top" constant="20" id="cvr1"/>
+                                    <constraint firstItem="nameTF" firstAttribute="top" secondItem="subReg" secondAttribute="bottom" constant="20" id="cvr10"/>
+                                    <constraint firstItem="nameTF" firstAttribute="leading" secondItem="cardViewReg" secondAttribute="leading" constant="20" id="cvr11"/>
+                                    <constraint firstAttribute="trailing" secondItem="nameTF" secondAttribute="trailing" constant="20" id="cvr12"/>
+                                    <constraint firstItem="emailTFReg" firstAttribute="top" secondItem="nameTF" secondAttribute="bottom" constant="12" id="cvr13"/>
+                                    <constraint firstItem="emailTFReg" firstAttribute="leading" secondItem="cardViewReg" secondAttribute="leading" constant="20" id="cvr14"/>
+                                    <constraint firstAttribute="trailing" secondItem="emailTFReg" secondAttribute="trailing" constant="20" id="cvr15"/>
+                                    <constraint firstItem="passTFReg" firstAttribute="top" secondItem="emailTFReg" secondAttribute="bottom" constant="12" id="cvr16"/>
+                                    <constraint firstItem="passTFReg" firstAttribute="leading" secondItem="cardViewReg" secondAttribute="leading" constant="20" id="cvr17"/>
+                                    <constraint firstAttribute="trailing" secondItem="passTFReg" secondAttribute="trailing" constant="20" id="cvr18"/>
+                                    <constraint firstItem="confirmTF" firstAttribute="top" secondItem="passTFReg" secondAttribute="bottom" constant="12" id="cvr19"/>
+                                    <constraint firstItem="tabContainerReg" firstAttribute="leading" secondItem="cardViewReg" secondAttribute="leading" constant="20" id="cvr2"/>
+                                    <constraint firstItem="confirmTF" firstAttribute="leading" secondItem="cardViewReg" secondAttribute="leading" constant="20" id="cvr20"/>
+                                    <constraint firstAttribute="trailing" secondItem="confirmTF" secondAttribute="trailing" constant="20" id="cvr21"/>
+                                    <constraint firstItem="termsLabel" firstAttribute="top" secondItem="confirmTF" secondAttribute="bottom" constant="16" id="cvr22"/>
+                                    <constraint firstItem="termsLabel" firstAttribute="leading" secondItem="cardViewReg" secondAttribute="leading" constant="20" id="cvr23"/>
+                                    <constraint firstAttribute="trailing" secondItem="termsLabel" secondAttribute="trailing" constant="20" id="cvr24"/>
+                                    <constraint firstItem="registerButton" firstAttribute="top" secondItem="termsLabel" secondAttribute="bottom" constant="16" id="cvr25"/>
+                                    <constraint firstItem="registerButton" firstAttribute="leading" secondItem="cardViewReg" secondAttribute="leading" constant="20" id="cvr26"/>
+                                    <constraint firstAttribute="trailing" secondItem="registerButton" secondAttribute="trailing" constant="20" id="cvr27"/>
+                                    <constraint firstItem="alreadyLabel" firstAttribute="top" secondItem="registerButton" secondAttribute="bottom" constant="16" id="cvr28"/>
+                                    <constraint firstItem="alreadyLabel" firstAttribute="leading" secondItem="cardViewReg" secondAttribute="leading" constant="20" id="cvr29"/>
+                                    <constraint firstAttribute="trailing" secondItem="tabContainerReg" secondAttribute="trailing" constant="20" id="cvr3"/>
+                                    <constraint firstAttribute="trailing" secondItem="alreadyLabel" secondAttribute="trailing" constant="20" id="cvr30"/>
+                                    <constraint firstItem="welcomeReg" firstAttribute="top" secondItem="tabContainerReg" secondAttribute="bottom" constant="16" id="cvr4"/>
+                                    <constraint firstItem="welcomeReg" firstAttribute="leading" secondItem="cardViewReg" secondAttribute="leading" constant="20" id="cvr5"/>
+                                    <constraint firstAttribute="trailing" secondItem="welcomeReg" secondAttribute="trailing" constant="20" id="cvr6"/>
+                                    <constraint firstItem="subReg" firstAttribute="top" secondItem="welcomeReg" secondAttribute="bottom" constant="4" id="cvr7"/>
+                                    <constraint firstItem="subReg" firstAttribute="leading" secondItem="cardViewReg" secondAttribute="leading" constant="20" id="cvr8"/>
+                                    <constraint firstAttribute="trailing" secondItem="subReg" secondAttribute="trailing" constant="20" id="cvr9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1Bx-Pk-iA0"/>
+                        <color key="backgroundColor" red="0.95999999999999996" green="0.95999999999999996" blue="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gradientTopReg" firstAttribute="top" secondItem="D1a-cA-3wX" secondAttribute="top" id="mr1"/>
+                            <constraint firstItem="tagReg" firstAttribute="leading" secondItem="1Bx-Pk-iA0" secondAttribute="leading" constant="20" id="mr10"/>
+                            <constraint firstItem="1Bx-Pk-iA0" firstAttribute="trailing" secondItem="tagReg" secondAttribute="trailing" constant="20" id="mr11"/>
+                            <constraint firstItem="cardViewReg" firstAttribute="top" secondItem="gradientTopReg" secondAttribute="bottom" constant="-30" id="mr12"/>
+                            <constraint firstItem="cardViewReg" firstAttribute="leading" secondItem="1Bx-Pk-iA0" secondAttribute="leading" constant="20" id="mr13"/>
+                            <constraint firstItem="1Bx-Pk-iA0" firstAttribute="trailing" secondItem="cardViewReg" secondAttribute="trailing" constant="20" id="mr14"/>
+                            <constraint firstItem="1Bx-Pk-iA0" firstAttribute="bottom" secondItem="cardViewReg" secondAttribute="bottom" constant="20" id="mr15"/>
+                            <constraint firstItem="gradientTopReg" firstAttribute="leading" secondItem="D1a-cA-3wX" secondAttribute="leading" id="mr2"/>
+                            <constraint firstAttribute="trailing" secondItem="gradientTopReg" secondAttribute="trailing" id="mr3"/>
+                            <constraint firstItem="logoReg" firstAttribute="centerX" secondItem="D1a-cA-3wX" secondAttribute="centerX" id="mr4"/>
+                            <constraint firstItem="logoReg" firstAttribute="top" secondItem="1Bx-Pk-iA0" secondAttribute="top" constant="20" id="mr5"/>
+                            <constraint firstItem="titleReg" firstAttribute="top" secondItem="logoReg" secondAttribute="bottom" constant="12" id="mr6"/>
+                            <constraint firstItem="titleReg" firstAttribute="leading" secondItem="1Bx-Pk-iA0" secondAttribute="leading" constant="20" id="mr7"/>
+                            <constraint firstItem="1Bx-Pk-iA0" firstAttribute="trailing" secondItem="titleReg" secondAttribute="trailing" constant="20" id="mr8"/>
+                            <constraint firstItem="tagReg" firstAttribute="top" secondItem="titleReg" secondAttribute="bottom" constant="4" id="mr9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fpW-o3-Voz"/>
+                    <connections>
+                        <outlet property="cardView" destination="cardViewReg" id="cvRO"/>
+                        <outlet property="confirmTF" destination="confirmTF" id="cfO"/>
+                        <outlet property="emailTF" destination="emailTFReg" id="emRO"/>
+                        <outlet property="loginTabButton" destination="loginTabReg" id="ltRO"/>
+                        <outlet property="nameTF" destination="nameTF" id="nmO"/>
+                        <outlet property="passTF" destination="passTFReg" id="psRO"/>
+                        <outlet property="registerButton" destination="registerButton" id="rbO"/>
+                        <outlet property="registerTabButton" destination="registerTabReg" id="rtRO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cgJ-qm-diA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1763" y="-2"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EhG-c4-z29">
+            <objects>
+                <navigationController storyboardIdentifier="AuthenticationNC" automaticallyAdjustsScrollViewInsets="NO" id="LFD-HG-gQz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DRR-Oy-FrW">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bM4-oU-pz1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2D-Um-zWS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="47" y="-2"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="leaf.circle.fill" width="128" height="128"/>
+    </resources>
+</document>

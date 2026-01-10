@@ -276,34 +276,14 @@ class AdminDashboardViewController: UIViewController {
         UserDefaults.standard.removeObject(forKey: "currentUserEmail")
         UserDefaults.standard.removeObject(forKey: "currentUserRole")
         UserDefaults.standard.removeObject(forKey: "currentUserId")
-        UserDefaults.standard.synchronize()
 
-        navigateToLogin()
-    }
-
-    private func navigateToLogin() {
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let window = windowScene.windows.first else {
-            dismiss(animated: true)
-            return
-        }
-
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-        if let loginVC = storyboard.instantiateInitialViewController() {
-            window.rootViewController = loginVC
-            window.makeKeyAndVisible()
-
-            UIView.transition(
-                with: window,
-                duration: 0.4,
-                options: .transitionCrossDissolve,
-                animations: nil
-            )
-        } else {
-            dismiss(animated: true)
+        DispatchQueue.main.async {
+            AppNavigator.shared.navigateToAuth()
         }
     }
+
+
+
 
     // MARK: - Alerts
 

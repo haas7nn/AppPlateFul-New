@@ -1,107 +1,327 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PrivacyPolicyNavController">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PrivacyPolicyVC">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="navScene">
-            <objects>
-                <navigationController storyboardIdentifier="PrivacyPolicyNavController" id="PrivacyPolicyNavController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="navBar">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.969" green="0.957" blue="0.937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <navigationBarAppearance key="standardAppearance" backgroundColor="#F7F4EF">
-                            <color key="backgroundColor" red="0.969" green="0.957" blue="0.937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </navigationBarAppearance>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="PrivacyPolicyVC" kind="relationship" relationship="rootViewController" id="navToPrivacySegue"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="navFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-800" y="0"/>
-        </scene>
-        
         <!--Privacy Policy View Controller-->
         <scene sceneID="privacyScene">
             <objects>
-                <viewController storyboardIdentifier="PrivacyPolicyViewController" id="PrivacyPolicyVC" customClass="PrivacyPolicyViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivacyPolicyViewController" id="PrivacyPolicyVC" customClass="PrivacyPolicyViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mainView">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <!--ScrollView-->
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scrollView">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppCircle1">
+                                <rect key="frame" x="-80" y="-100" width="250" height="250"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.75686274509803919" blue="0.47058823529411764" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="ppc1H"/>
+                                    <constraint firstAttribute="width" constant="250" id="ppc1W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="125"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppCircle2">
+                                <rect key="frame" x="280" y="-50" width="180" height="180"/>
+                                <color key="backgroundColor" red="0.77600000000000002" green="0.63500000000000001" blue="0.49399999999999999" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="ppc2H"/>
+                                    <constraint firstAttribute="width" constant="180" id="ppc2W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="90"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppBackBtn">
+                                <rect key="frame" x="20" y="126" width="44" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ppBBH"/>
+                                    <constraint firstAttribute="width" constant="44" id="ppBBW"/>
+                                </constraints>
+                                <state key="normal" title="‹">
+                                    <color key="titleColor" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="PrivacyPolicyVC" eventType="touchUpInside" id="ppBackAction"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppHeaderCard">
+                                <rect key="frame" x="20" y="182" width="353" height="100"/>
                                 <subviews>
-                                    <!--Content View-->
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1400"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppIconBg">
+                                        <rect key="frame" x="20" y="20" width="60" height="60"/>
                                         <subviews>
-                                            <!--Page Title-->
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pageTitleLabel">
-                                                <rect key="frame" x="20" y="24" width="353" height="38"/>
-                                                <fontDescription key="fontDescription" type="system" weight="bold" pointSize="30"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🔒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppIconEmoji">
+                                                <rect key="frame" x="12" y="11" width="36" height="38.333333333333336"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                             </label>
-                                            
-                                            <!--Main Card Container-->
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cardContainer">
-                                                <rect key="frame" x="16" y="82" width="361" height="1280"/>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="ppIBH"/>
+                                            <constraint firstAttribute="width" constant="60" id="ppIBW"/>
+                                            <constraint firstItem="ppIconEmoji" firstAttribute="centerX" secondItem="ppIconBg" secondAttribute="centerX" id="ppIEX"/>
+                                            <constraint firstItem="ppIconEmoji" firstAttribute="centerY" secondItem="ppIconBg" secondAttribute="centerY" id="ppIEY"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Data is Safe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppHeaderTitle">
+                                        <rect key="frame" x="96" y="25" width="116.66666666666669" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppHeaderSubtitle">
+                                        <rect key="frame" x="96" y="45" width="169" height="32"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="ppHCH"/>
+                                    <constraint firstItem="ppHeaderSubtitle" firstAttribute="leading" secondItem="ppHeaderTitle" secondAttribute="leading" id="ppHSL"/>
+                                    <constraint firstItem="ppHeaderSubtitle" firstAttribute="top" secondItem="ppHeaderTitle" secondAttribute="bottom" constant="2" id="ppHST"/>
+                                    <constraint firstItem="ppHeaderTitle" firstAttribute="leading" secondItem="ppIconBg" secondAttribute="trailing" constant="16" id="ppHTL"/>
+                                    <constraint firstItem="ppHeaderTitle" firstAttribute="top" secondItem="ppIconBg" secondAttribute="top" constant="5" id="ppHTT"/>
+                                    <constraint firstItem="ppIconBg" firstAttribute="centerY" secondItem="ppHeaderCard" secondAttribute="centerY" id="ppIBCY"/>
+                                    <constraint firstItem="ppIconBg" firstAttribute="leading" secondItem="ppHeaderCard" secondAttribute="leading" constant="20" id="ppIBL"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                        <color key="value" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0.0" height="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ppLastUpdatedBadge">
+                                <rect key="frame" x="20" y="298" width="180" height="32"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ppClockIcon">
+                                        <rect key="frame" x="12" y="8.6666666666666661" width="16" height="14.66666666666667"/>
+                                        <color key="tintColor" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="ppCIH"/>
+                                            <constraint firstAttribute="width" constant="16" id="ppCIW"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updated: November 2025" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppLastUpdatedLabel">
+                                        <rect key="frame" x="36" y="9" width="150" height="14.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                        <color key="textColor" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ppClockIcon" firstAttribute="centerY" secondItem="ppLastUpdatedBadge" secondAttribute="centerY" id="ppCICY"/>
+                                    <constraint firstItem="ppClockIcon" firstAttribute="leading" secondItem="ppLastUpdatedBadge" secondAttribute="leading" constant="12" id="ppCIL"/>
+                                    <constraint firstAttribute="height" constant="32" id="ppLUBH"/>
+                                    <constraint firstItem="ppLastUpdatedLabel" firstAttribute="centerY" secondItem="ppLastUpdatedBadge" secondAttribute="centerY" id="ppLUCY"/>
+                                    <constraint firstItem="ppLastUpdatedLabel" firstAttribute="leading" secondItem="ppClockIcon" secondAttribute="trailing" constant="8" id="ppLUL"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppScrollView">
+                                <rect key="frame" x="0.0" y="346" width="393" height="438"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1905"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppIntroCard">
+                                                <rect key="frame" x="20" y="16.000000000000007" width="353" height="103.66666666666669"/>
                                                 <subviews>
-                                                    <!--Last Updated-->
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last updated : November 2025" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lastUpdatedLabel">
-                                                        <rect key="frame" x="20" y="20" width="321" height="18"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppIntroLabel">
+                                                        <rect key="frame" x="16" y="16" width="321" height="71.666666666666671"/>
+                                                        <string key="text">At Plateful, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data.</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" red="0.29999999999999999" green="0.29999999999999999" blue="0.29999999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="ppIntroLabel" secondAttribute="bottom" constant="16" id="ppILB"/>
+                                                    <constraint firstItem="ppIntroLabel" firstAttribute="leading" secondItem="ppIntroCard" secondAttribute="leading" constant="16" id="ppILL"/>
+                                                    <constraint firstItem="ppIntroLabel" firstAttribute="top" secondItem="ppIntroCard" secondAttribute="top" constant="16" id="ppILT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ppIntroLabel" secondAttribute="trailing" constant="16" id="ppILTr"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.059999999999999998"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppSection1Card">
+                                                <rect key="frame" x="20" y="135.66666666666671" width="353" height="364.33333333333326"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppS1IconBg">
+                                                        <rect key="frame" x="16" y="16" width="36" height="36"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.text.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ppS1Icon">
+                                                                <rect key="frame" x="8" y="8.3333333333333304" width="20" height="19.666666666666671"/>
+                                                                <color key="tintColor" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="ppS1IH"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="ppS1IW"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="ppS1IBH"/>
+                                                            <constraint firstAttribute="width" constant="36" id="ppS1IBW"/>
+                                                            <constraint firstItem="ppS1Icon" firstAttribute="centerX" secondItem="ppS1IconBg" secondAttribute="centerX" id="ppS1ICX"/>
+                                                            <constraint firstItem="ppS1Icon" firstAttribute="centerY" secondItem="ppS1IconBg" secondAttribute="centerY" id="ppS1ICY"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information We Collect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS1Title">
+                                                        <rect key="frame" x="64.000000000000014" y="24" width="181.33333333333337" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" red="0.13300000000000001" green="0.13300000000000001" blue="0.13300000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS1Content">
+                                                        <rect key="frame" x="16" y="63.999999999999943" width="321" height="284.33333333333331"/>
+                                                        <string key="text">We collect information that you provide directly to us:
+
+• Personal Information: Name, email, phone number, and profile picture
+
+• Account Information: Login credentials and preferences
+
+• Location Data: Your location for nearby donation opportunities
+
+• Transaction History: Records of donations and pickups
+
+• Device Information: Device type and app usage patterns</string>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <color key="textColor" red="0.431" green="0.431" blue="0.431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" red="0.34999999999999998" green="0.34999999999999998" blue="0.34999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
-                                                    
-                                                    <!--Intro Paragraph-->
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="introLabel">
-                                                        <rect key="frame" x="20" y="50" width="321" height="80"/>
-                                                        <string key="text">At Plateful, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our food donation platform.</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="ppS1Content" secondAttribute="bottom" constant="16" id="ppS1CB"/>
+                                                    <constraint firstItem="ppS1Content" firstAttribute="leading" secondItem="ppSection1Card" secondAttribute="leading" constant="16" id="ppS1CL"/>
+                                                    <constraint firstItem="ppS1Content" firstAttribute="top" secondItem="ppS1IconBg" secondAttribute="bottom" constant="12" id="ppS1CT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ppS1Content" secondAttribute="trailing" constant="16" id="ppS1CTr"/>
+                                                    <constraint firstItem="ppS1IconBg" firstAttribute="leading" secondItem="ppSection1Card" secondAttribute="leading" constant="16" id="ppS1IBL"/>
+                                                    <constraint firstItem="ppS1IconBg" firstAttribute="top" secondItem="ppSection1Card" secondAttribute="top" constant="16" id="ppS1IBT"/>
+                                                    <constraint firstItem="ppS1Title" firstAttribute="centerY" secondItem="ppS1IconBg" secondAttribute="centerY" id="ppS1TCY"/>
+                                                    <constraint firstItem="ppS1Title" firstAttribute="leading" secondItem="ppS1IconBg" secondAttribute="trailing" constant="12" id="ppS1TL"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.059999999999999998"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppSection2Card">
+                                                <rect key="frame" x="20" y="516" width="353" height="297.33333333333326"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppS2IconBg">
+                                                        <rect key="frame" x="16" y="16" width="36" height="36"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gearshape.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ppS2Icon">
+                                                                <rect key="frame" x="8" y="8.3333333333333321" width="20" height="19.33333333333335"/>
+                                                                <color key="tintColor" red="0.77600000000000002" green="0.63500000000000001" blue="0.49399999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="ppS2IH"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="ppS2IW"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.77600000000000002" green="0.63500000000000001" blue="0.49399999999999999" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="ppS2IBH"/>
+                                                            <constraint firstAttribute="width" constant="36" id="ppS2IBW"/>
+                                                            <constraint firstItem="ppS2Icon" firstAttribute="centerX" secondItem="ppS2IconBg" secondAttribute="centerX" id="ppS2ICX"/>
+                                                            <constraint firstItem="ppS2Icon" firstAttribute="centerY" secondItem="ppS2IconBg" secondAttribute="centerY" id="ppS2ICY"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How We Use Your Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS2Title">
+                                                        <rect key="frame" x="64.000000000000014" y="24" width="236.33333333333337" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" red="0.13300000000000001" green="0.13300000000000001" blue="0.13300000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
-                                                    
-                                                    <!--Section 1: Information We Collect-->
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information We Collect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section1Title">
-                                                        <rect key="frame" x="20" y="150" width="321" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </label>
-                                                    
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section1Content">
-                                                        <rect key="frame" x="20" y="182" width="321" height="160"/>
-                                                        <string key="text">We collect information that you provide directly to us, including:
-
-• Personal Information: Name, email address, phone number, and profile picture
-
-• Account Information: Login credentials and account preferences
-
-• Location Data: Your location to connect you with nearby food donation opportunities
-
-• Transaction History: Records of your donations and pickups
-
-• Device Information: Device type, operating system, and app usage patterns</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </label>
-                                                    
-                                                    <!--Section 2: How We Use Your Information-->
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How We Use Your Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section2Title">
-                                                        <rect key="frame" x="20" y="362" width="321" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </label>
-                                                    
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section2Content">
-                                                        <rect key="frame" x="20" y="394" width="321" height="140"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS2Content">
+                                                        <rect key="frame" x="16" y="64.000000000000014" width="321" height="217.33333333333337"/>
                                                         <string key="text">We use the information we collect to:
 
 • Facilitate food donations between donors and recipients
@@ -112,45 +332,153 @@
 
 • Improve our services and develop new features
 
-• Ensure the security and integrity of our platform
-
-• Comply with legal obligations</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+• Ensure platform security and integrity</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" red="0.34999999999999998" green="0.34999999999999998" blue="0.34999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
-                                                    
-                                                    <!--Section 3: Sharing Your Information-->
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sharing Your Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section3Title">
-                                                        <rect key="frame" x="20" y="554" width="321" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="ppS2Content" secondAttribute="bottom" constant="16" id="ppS2CB"/>
+                                                    <constraint firstItem="ppS2Content" firstAttribute="leading" secondItem="ppSection2Card" secondAttribute="leading" constant="16" id="ppS2CL"/>
+                                                    <constraint firstItem="ppS2Content" firstAttribute="top" secondItem="ppS2IconBg" secondAttribute="bottom" constant="12" id="ppS2CT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ppS2Content" secondAttribute="trailing" constant="16" id="ppS2CTr"/>
+                                                    <constraint firstItem="ppS2IconBg" firstAttribute="leading" secondItem="ppSection2Card" secondAttribute="leading" constant="16" id="ppS2IBL"/>
+                                                    <constraint firstItem="ppS2IconBg" firstAttribute="top" secondItem="ppSection2Card" secondAttribute="top" constant="16" id="ppS2IBT"/>
+                                                    <constraint firstItem="ppS2Title" firstAttribute="centerY" secondItem="ppS2IconBg" secondAttribute="centerY" id="ppS2TCY"/>
+                                                    <constraint firstItem="ppS2Title" firstAttribute="leading" secondItem="ppS2IconBg" secondAttribute="trailing" constant="12" id="ppS2TL"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.059999999999999998"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppSection3Card">
+                                                <rect key="frame" x="20" y="829.33333333333326" width="353" height="247.33333333333326"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppS3IconBg">
+                                                        <rect key="frame" x="16" y="16" width="36" height="36"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ppS3Icon">
+                                                                <rect key="frame" x="8" y="9.6666666666666643" width="20" height="18"/>
+                                                                <color key="tintColor" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="ppS3IH"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="ppS3IW"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="ppS3IBH"/>
+                                                            <constraint firstAttribute="width" constant="36" id="ppS3IBW"/>
+                                                            <constraint firstItem="ppS3Icon" firstAttribute="centerX" secondItem="ppS3IconBg" secondAttribute="centerX" id="ppS3ICX"/>
+                                                            <constraint firstItem="ppS3Icon" firstAttribute="centerY" secondItem="ppS3IconBg" secondAttribute="centerY" id="ppS3ICY"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sharing Your Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS3Title">
+                                                        <rect key="frame" x="63.999999999999986" y="24" width="197.66666666666663" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" red="0.13300000000000001" green="0.13300000000000001" blue="0.13300000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
-                                                    
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section3Content">
-                                                        <rect key="frame" x="20" y="586" width="321" height="120"/>
-                                                        <string key="text">We do not sell your personal information. We may share your information with:
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS3Content">
+                                                        <rect key="frame" x="16" y="64.000000000000014" width="321" height="167.33333333333337"/>
+                                                        <string key="text">We do not sell your personal information. We may share with:
 
 • NGO partners to facilitate donations
 
-• Service providers who assist in operating our platform
+• Service providers who assist our platform
 
 • Law enforcement when required by law
 
 • Other users only with your explicit consent</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" red="0.34999999999999998" green="0.34999999999999998" blue="0.34999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
-                                                    
-                                                    <!--Section 4: Data Security-->
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Security" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section4Title">
-                                                        <rect key="frame" x="20" y="726" width="321" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="ppS3Content" secondAttribute="bottom" constant="16" id="ppS3CB"/>
+                                                    <constraint firstItem="ppS3Content" firstAttribute="leading" secondItem="ppSection3Card" secondAttribute="leading" constant="16" id="ppS3CL"/>
+                                                    <constraint firstItem="ppS3Content" firstAttribute="top" secondItem="ppS3IconBg" secondAttribute="bottom" constant="12" id="ppS3CT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ppS3Content" secondAttribute="trailing" constant="16" id="ppS3CTr"/>
+                                                    <constraint firstItem="ppS3IconBg" firstAttribute="leading" secondItem="ppSection3Card" secondAttribute="leading" constant="16" id="ppS3IBL"/>
+                                                    <constraint firstItem="ppS3IconBg" firstAttribute="top" secondItem="ppSection3Card" secondAttribute="top" constant="16" id="ppS3IBT"/>
+                                                    <constraint firstItem="ppS3Title" firstAttribute="centerY" secondItem="ppS3IconBg" secondAttribute="centerY" id="ppS3TCY"/>
+                                                    <constraint firstItem="ppS3Title" firstAttribute="leading" secondItem="ppS3IconBg" secondAttribute="trailing" constant="12" id="ppS3TL"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.059999999999999998"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppSection4Card">
+                                                <rect key="frame" x="20" y="1092.6666666666667" width="353" height="247.33333333333326"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppS4IconBg">
+                                                        <rect key="frame" x="16" y="16" width="36" height="36"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield.checkered" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ppS4Icon">
+                                                                <rect key="frame" x="8" y="8.9999999999999982" width="20" height="18.666666666666664"/>
+                                                                <color key="tintColor" red="0.77600000000000002" green="0.63500000000000001" blue="0.49399999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="ppS4IH"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="ppS4IW"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.77600000000000002" green="0.63500000000000001" blue="0.49399999999999999" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="ppS4IBH"/>
+                                                            <constraint firstAttribute="width" constant="36" id="ppS4IBW"/>
+                                                            <constraint firstItem="ppS4Icon" firstAttribute="centerX" secondItem="ppS4IconBg" secondAttribute="centerX" id="ppS4ICX"/>
+                                                            <constraint firstItem="ppS4Icon" firstAttribute="centerY" secondItem="ppS4IconBg" secondAttribute="centerY" id="ppS4ICY"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Security" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS4Title">
+                                                        <rect key="frame" x="64" y="24" width="107.66666666666669" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" red="0.13300000000000001" green="0.13300000000000001" blue="0.13300000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
-                                                    
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section4Content">
-                                                        <rect key="frame" x="20" y="758" width="321" height="100"/>
-                                                        <string key="text">We implement industry-standard security measures to protect your personal information, including:
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS4Content">
+                                                        <rect key="frame" x="16" y="64.000000000000014" width="321" height="167.33333333333337"/>
+                                                        <string key="text">We implement industry-standard security measures:
 
 • Encryption of data in transit and at rest
 
@@ -159,19 +487,74 @@
 • Access controls and authentication protocols
 
 • Secure data storage practices</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" red="0.34999999999999998" green="0.34999999999999998" blue="0.34999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
-                                                    
-                                                    <!--Section 5: Your Rights-->
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Rights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section5Title">
-                                                        <rect key="frame" x="20" y="878" width="321" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="ppS4Content" secondAttribute="bottom" constant="16" id="ppS4CB"/>
+                                                    <constraint firstItem="ppS4Content" firstAttribute="leading" secondItem="ppSection4Card" secondAttribute="leading" constant="16" id="ppS4CL"/>
+                                                    <constraint firstItem="ppS4Content" firstAttribute="top" secondItem="ppS4IconBg" secondAttribute="bottom" constant="12" id="ppS4CT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ppS4Content" secondAttribute="trailing" constant="16" id="ppS4CTr"/>
+                                                    <constraint firstItem="ppS4IconBg" firstAttribute="leading" secondItem="ppSection4Card" secondAttribute="leading" constant="16" id="ppS4IBL"/>
+                                                    <constraint firstItem="ppS4IconBg" firstAttribute="top" secondItem="ppSection4Card" secondAttribute="top" constant="16" id="ppS4IBT"/>
+                                                    <constraint firstItem="ppS4Title" firstAttribute="centerY" secondItem="ppS4IconBg" secondAttribute="centerY" id="ppS4TCY"/>
+                                                    <constraint firstItem="ppS4Title" firstAttribute="leading" secondItem="ppS4IconBg" secondAttribute="trailing" constant="12" id="ppS4TL"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.059999999999999998"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppSection5Card">
+                                                <rect key="frame" x="20" y="1356" width="353" height="297.33333333333326"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppS5IconBg">
+                                                        <rect key="frame" x="16" y="16" width="36" height="36"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand.raised.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ppS5Icon">
+                                                                <rect key="frame" x="8" y="7.9999999999999964" width="20" height="19.666666666666657"/>
+                                                                <color key="tintColor" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="ppS5IH"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="ppS5IW"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.25600000000000001" green="0.57299999999999995" blue="0.16600000000000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="ppS5IBH"/>
+                                                            <constraint firstAttribute="width" constant="36" id="ppS5IBW"/>
+                                                            <constraint firstItem="ppS5Icon" firstAttribute="centerX" secondItem="ppS5IconBg" secondAttribute="centerX" id="ppS5ICX"/>
+                                                            <constraint firstItem="ppS5Icon" firstAttribute="centerY" secondItem="ppS5IconBg" secondAttribute="centerY" id="ppS5ICY"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Rights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS5Title">
+                                                        <rect key="frame" x="63.999999999999993" y="24" width="91.333333333333314" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" red="0.13300000000000001" green="0.13300000000000001" blue="0.13300000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
-                                                    
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section5Content">
-                                                        <rect key="frame" x="20" y="910" width="321" height="120"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS5Content">
+                                                        <rect key="frame" x="16" y="64.000000000000014" width="321" height="217.33333333333337"/>
                                                         <string key="text">You have the right to:
 
 • Access your personal information
@@ -185,164 +568,193 @@
 • Export your data in a portable format
 
 • Withdraw consent at any time</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </label>
-                                                    
-                                                    <!--Section 6: Contact Us-->
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section6Title">
-                                                        <rect key="frame" x="20" y="1050" width="321" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </label>
-                                                    
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section6Content">
-                                                        <rect key="frame" x="20" y="1082" width="321" height="80"/>
-                                                        <string key="text">If you have any questions about this Privacy Policy or our data practices, please contact us at:
-
-Email: privacy@plateful.app
-Address: Manama, Kingdom of Bahrain</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </label>
-                                                    
-                                                    <!--Section 7: Changes to Policy-->
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Changes to This Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section7Title">
-                                                        <rect key="frame" x="20" y="1182" width="321" height="24"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </label>
-                                                    
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="section7Content">
-                                                        <rect key="frame" x="20" y="1214" width="321" height="46"/>
-                                                        <string key="text">We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last updated" date.</string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.227" green="0.227" blue="0.227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" red="0.34999999999999998" green="0.34999999999999998" blue="0.34999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.949" green="0.937" blue="0.918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <!--Last Updated-->
-                                                    <constraint firstItem="lastUpdatedLabel" firstAttribute="top" secondItem="cardContainer" secondAttribute="top" constant="20" id="lu1"/>
-                                                    <constraint firstItem="lastUpdatedLabel" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="lu2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="lastUpdatedLabel" secondAttribute="trailing" constant="20" id="lu3"/>
-                                                    
-                                                    <!--Intro-->
-                                                    <constraint firstItem="introLabel" firstAttribute="top" secondItem="lastUpdatedLabel" secondAttribute="bottom" constant="12" id="intro1"/>
-                                                    <constraint firstItem="introLabel" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="intro2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="introLabel" secondAttribute="trailing" constant="20" id="intro3"/>
-                                                    
-                                                    <!--Section 1-->
-                                                    <constraint firstItem="section1Title" firstAttribute="top" secondItem="introLabel" secondAttribute="bottom" constant="24" id="s1t1"/>
-                                                    <constraint firstItem="section1Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s1t2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section1Title" secondAttribute="trailing" constant="20" id="s1t3"/>
-                                                    <constraint firstItem="section1Content" firstAttribute="top" secondItem="section1Title" secondAttribute="bottom" constant="8" id="s1c1"/>
-                                                    <constraint firstItem="section1Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s1c2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section1Content" secondAttribute="trailing" constant="20" id="s1c3"/>
-                                                    
-                                                    <!--Section 2-->
-                                                    <constraint firstItem="section2Title" firstAttribute="top" secondItem="section1Content" secondAttribute="bottom" constant="24" id="s2t1"/>
-                                                    <constraint firstItem="section2Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s2t2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section2Title" secondAttribute="trailing" constant="20" id="s2t3"/>
-                                                    <constraint firstItem="section2Content" firstAttribute="top" secondItem="section2Title" secondAttribute="bottom" constant="8" id="s2c1"/>
-                                                    <constraint firstItem="section2Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s2c2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section2Content" secondAttribute="trailing" constant="20" id="s2c3"/>
-                                                    
-                                                    <!--Section 3-->
-                                                    <constraint firstItem="section3Title" firstAttribute="top" secondItem="section2Content" secondAttribute="bottom" constant="24" id="s3t1"/>
-                                                    <constraint firstItem="section3Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s3t2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section3Title" secondAttribute="trailing" constant="20" id="s3t3"/>
-                                                    <constraint firstItem="section3Content" firstAttribute="top" secondItem="section3Title" secondAttribute="bottom" constant="8" id="s3c1"/>
-                                                    <constraint firstItem="section3Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s3c2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section3Content" secondAttribute="trailing" constant="20" id="s3c3"/>
-                                                    
-                                                    <!--Section 4-->
-                                                    <constraint firstItem="section4Title" firstAttribute="top" secondItem="section3Content" secondAttribute="bottom" constant="24" id="s4t1"/>
-                                                    <constraint firstItem="section4Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s4t2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section4Title" secondAttribute="trailing" constant="20" id="s4t3"/>
-                                                    <constraint firstItem="section4Content" firstAttribute="top" secondItem="section4Title" secondAttribute="bottom" constant="8" id="s4c1"/>
-                                                    <constraint firstItem="section4Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s4c2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section4Content" secondAttribute="trailing" constant="20" id="s4c3"/>
-                                                    
-                                                    <!--Section 5-->
-                                                    <constraint firstItem="section5Title" firstAttribute="top" secondItem="section4Content" secondAttribute="bottom" constant="24" id="s5t1"/>
-                                                    <constraint firstItem="section5Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s5t2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section5Title" secondAttribute="trailing" constant="20" id="s5t3"/>
-                                                    <constraint firstItem="section5Content" firstAttribute="top" secondItem="section5Title" secondAttribute="bottom" constant="8" id="s5c1"/>
-                                                    <constraint firstItem="section5Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s5c2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section5Content" secondAttribute="trailing" constant="20" id="s5c3"/>
-                                                    
-                                                    <!--Section 6-->
-                                                    <constraint firstItem="section6Title" firstAttribute="top" secondItem="section5Content" secondAttribute="bottom" constant="24" id="s6t1"/>
-                                                    <constraint firstItem="section6Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s6t2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section6Title" secondAttribute="trailing" constant="20" id="s6t3"/>
-                                                    <constraint firstItem="section6Content" firstAttribute="top" secondItem="section6Title" secondAttribute="bottom" constant="8" id="s6c1"/>
-                                                    <constraint firstItem="section6Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s6c2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section6Content" secondAttribute="trailing" constant="20" id="s6c3"/>
-                                                    
-                                                    <!--Section 7-->
-                                                    <constraint firstItem="section7Title" firstAttribute="top" secondItem="section6Content" secondAttribute="bottom" constant="24" id="s7t1"/>
-                                                    <constraint firstItem="section7Title" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s7t2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section7Title" secondAttribute="trailing" constant="20" id="s7t3"/>
-                                                    <constraint firstItem="section7Content" firstAttribute="top" secondItem="section7Title" secondAttribute="bottom" constant="8" id="s7c1"/>
-                                                    <constraint firstItem="section7Content" firstAttribute="leading" secondItem="cardContainer" secondAttribute="leading" constant="20" id="s7c2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="section7Content" secondAttribute="trailing" constant="20" id="s7c3"/>
-                                                    <constraint firstAttribute="bottom" secondItem="section7Content" secondAttribute="bottom" constant="20" id="s7c4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ppS5Content" secondAttribute="bottom" constant="16" id="ppS5CB"/>
+                                                    <constraint firstItem="ppS5Content" firstAttribute="leading" secondItem="ppSection5Card" secondAttribute="leading" constant="16" id="ppS5CL"/>
+                                                    <constraint firstItem="ppS5Content" firstAttribute="top" secondItem="ppS5IconBg" secondAttribute="bottom" constant="12" id="ppS5CT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ppS5Content" secondAttribute="trailing" constant="16" id="ppS5CTr"/>
+                                                    <constraint firstItem="ppS5IconBg" firstAttribute="leading" secondItem="ppSection5Card" secondAttribute="leading" constant="16" id="ppS5IBL"/>
+                                                    <constraint firstItem="ppS5IconBg" firstAttribute="top" secondItem="ppSection5Card" secondAttribute="top" constant="16" id="ppS5IBT"/>
+                                                    <constraint firstItem="ppS5Title" firstAttribute="centerY" secondItem="ppS5IconBg" secondAttribute="centerY" id="ppS5TCY"/>
+                                                    <constraint firstItem="ppS5Title" firstAttribute="leading" secondItem="ppS5IconBg" secondAttribute="trailing" constant="12" id="ppS5TL"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="22"/>
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.059999999999999998"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppSection6Card">
+                                                <rect key="frame" x="20" y="1669.3333333333333" width="353" height="147"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ppS6IconBg">
+                                                        <rect key="frame" x="16" y="16" width="36" height="36"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ppS6Icon">
+                                                                <rect key="frame" x="8" y="10.333333333333334" width="20" height="16"/>
+                                                                <color key="tintColor" red="0.77600000000000002" green="0.63500000000000001" blue="0.49399999999999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="20" id="ppS6IH"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="ppS6IW"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.77600000000000002" green="0.63500000000000001" blue="0.49399999999999999" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="ppS6IBH"/>
+                                                            <constraint firstAttribute="width" constant="36" id="ppS6IBW"/>
+                                                            <constraint firstItem="ppS6Icon" firstAttribute="centerX" secondItem="ppS6IconBg" secondAttribute="centerX" id="ppS6ICX"/>
+                                                            <constraint firstItem="ppS6Icon" firstAttribute="centerY" secondItem="ppS6IconBg" secondAttribute="centerY" id="ppS6ICY"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS6Title">
+                                                        <rect key="frame" x="64" y="24" width="89" height="20.333333333333329"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" red="0.13300000000000001" green="0.13300000000000001" blue="0.13300000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppS6Content">
+                                                        <rect key="frame" x="16" y="64.000000000000227" width="321" height="67"/>
+                                                        <string key="text">Have questions about this Privacy Policy?
+
+📧 Email: privacy@plateful.app
+📍 Address: Manama, Kingdom of Bahrain</string>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" red="0.34999999999999998" green="0.34999999999999998" blue="0.34999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="ppS6Content" secondAttribute="bottom" constant="16" id="ppS6CB"/>
+                                                    <constraint firstItem="ppS6Content" firstAttribute="leading" secondItem="ppSection6Card" secondAttribute="leading" constant="16" id="ppS6CL"/>
+                                                    <constraint firstItem="ppS6Content" firstAttribute="top" secondItem="ppS6IconBg" secondAttribute="bottom" constant="12" id="ppS6CT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ppS6Content" secondAttribute="trailing" constant="16" id="ppS6CTr"/>
+                                                    <constraint firstItem="ppS6IconBg" firstAttribute="leading" secondItem="ppSection6Card" secondAttribute="leading" constant="16" id="ppS6IBL"/>
+                                                    <constraint firstItem="ppS6IconBg" firstAttribute="top" secondItem="ppSection6Card" secondAttribute="top" constant="16" id="ppS6IBT"/>
+                                                    <constraint firstItem="ppS6Title" firstAttribute="centerY" secondItem="ppS6IconBg" secondAttribute="centerY" id="ppS6TCY"/>
+                                                    <constraint firstItem="ppS6Title" firstAttribute="leading" secondItem="ppS6IconBg" secondAttribute="trailing" constant="12" id="ppS6TL"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.059999999999999998"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="0.0" height="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We may update this Privacy Policy from time to time. Changes will be posted here with an updated date." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppFooterLabel">
+                                                <rect key="frame" x="40" y="1836.3333333333335" width="313" height="28.666666666666742"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.969" green="0.957" blue="0.937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <!--Page Title-->
-                                            <constraint firstItem="pageTitleLabel" firstAttribute="top" secondItem="contentView" secondAttribute="top" constant="24" id="pt1"/>
-                                            <constraint firstItem="pageTitleLabel" firstAttribute="leading" secondItem="contentView" secondAttribute="leading" constant="20" id="pt2"/>
-                                            <constraint firstAttribute="trailing" secondItem="pageTitleLabel" secondAttribute="trailing" constant="20" id="pt3"/>
-                                            
-                                            <!--Card Container-->
-                                            <constraint firstItem="cardContainer" firstAttribute="top" secondItem="pageTitleLabel" secondAttribute="bottom" constant="20" id="cc1"/>
-                                            <constraint firstItem="cardContainer" firstAttribute="leading" secondItem="contentView" secondAttribute="leading" constant="16" id="cc2"/>
-                                            <constraint firstAttribute="trailing" secondItem="cardContainer" secondAttribute="trailing" constant="16" id="cc3"/>
-                                            <constraint firstAttribute="bottom" secondItem="cardContainer" secondAttribute="bottom" constant="30" id="cc4"/>
+                                            <constraint firstAttribute="bottom" secondItem="ppFooterLabel" secondAttribute="bottom" constant="40" id="ppFLB"/>
+                                            <constraint firstItem="ppFooterLabel" firstAttribute="leading" secondItem="ppContentView" secondAttribute="leading" constant="40" id="ppFLL"/>
+                                            <constraint firstItem="ppFooterLabel" firstAttribute="top" secondItem="ppSection6Card" secondAttribute="bottom" constant="20" id="ppFLT"/>
+                                            <constraint firstAttribute="trailing" secondItem="ppFooterLabel" secondAttribute="trailing" constant="40" id="ppFLTr"/>
+                                            <constraint firstItem="ppIntroCard" firstAttribute="leading" secondItem="ppContentView" secondAttribute="leading" constant="20" id="ppICL"/>
+                                            <constraint firstItem="ppIntroCard" firstAttribute="top" secondItem="ppContentView" secondAttribute="top" constant="16" id="ppICT"/>
+                                            <constraint firstAttribute="trailing" secondItem="ppIntroCard" secondAttribute="trailing" constant="20" id="ppICTr"/>
+                                            <constraint firstItem="ppSection1Card" firstAttribute="leading" secondItem="ppContentView" secondAttribute="leading" constant="20" id="ppS1L"/>
+                                            <constraint firstItem="ppSection1Card" firstAttribute="top" secondItem="ppIntroCard" secondAttribute="bottom" constant="16" id="ppS1T"/>
+                                            <constraint firstAttribute="trailing" secondItem="ppSection1Card" secondAttribute="trailing" constant="20" id="ppS1Tr"/>
+                                            <constraint firstItem="ppSection2Card" firstAttribute="leading" secondItem="ppContentView" secondAttribute="leading" constant="20" id="ppS2L"/>
+                                            <constraint firstItem="ppSection2Card" firstAttribute="top" secondItem="ppSection1Card" secondAttribute="bottom" constant="16" id="ppS2T"/>
+                                            <constraint firstAttribute="trailing" secondItem="ppSection2Card" secondAttribute="trailing" constant="20" id="ppS2Tr"/>
+                                            <constraint firstItem="ppSection3Card" firstAttribute="leading" secondItem="ppContentView" secondAttribute="leading" constant="20" id="ppS3L"/>
+                                            <constraint firstItem="ppSection3Card" firstAttribute="top" secondItem="ppSection2Card" secondAttribute="bottom" constant="16" id="ppS3T"/>
+                                            <constraint firstAttribute="trailing" secondItem="ppSection3Card" secondAttribute="trailing" constant="20" id="ppS3Tr"/>
+                                            <constraint firstItem="ppSection4Card" firstAttribute="leading" secondItem="ppContentView" secondAttribute="leading" constant="20" id="ppS4L"/>
+                                            <constraint firstItem="ppSection4Card" firstAttribute="top" secondItem="ppSection3Card" secondAttribute="bottom" constant="16" id="ppS4T"/>
+                                            <constraint firstAttribute="trailing" secondItem="ppSection4Card" secondAttribute="trailing" constant="20" id="ppS4Tr"/>
+                                            <constraint firstItem="ppSection5Card" firstAttribute="leading" secondItem="ppContentView" secondAttribute="leading" constant="20" id="ppS5L"/>
+                                            <constraint firstItem="ppSection5Card" firstAttribute="top" secondItem="ppSection4Card" secondAttribute="bottom" constant="16" id="ppS5T"/>
+                                            <constraint firstAttribute="trailing" secondItem="ppSection5Card" secondAttribute="trailing" constant="20" id="ppS5Tr"/>
+                                            <constraint firstItem="ppSection6Card" firstAttribute="leading" secondItem="ppContentView" secondAttribute="leading" constant="20" id="ppS6L"/>
+                                            <constraint firstItem="ppSection6Card" firstAttribute="top" secondItem="ppSection5Card" secondAttribute="bottom" constant="16" id="ppS6T"/>
+                                            <constraint firstAttribute="trailing" secondItem="ppSection6Card" secondAttribute="trailing" constant="20" id="ppS6Tr"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="contentView" firstAttribute="top" secondItem="scrollView" secondAttribute="top" id="sv1"/>
-                                    <constraint firstItem="contentView" firstAttribute="leading" secondItem="scrollView" secondAttribute="leading" id="sv2"/>
-                                    <constraint firstItem="contentView" firstAttribute="trailing" secondItem="scrollView" secondAttribute="trailing" id="sv3"/>
-                                    <constraint firstItem="contentView" firstAttribute="bottom" secondItem="scrollView" secondAttribute="bottom" id="sv4"/>
-                                    <constraint firstItem="contentView" firstAttribute="width" secondItem="scrollView" secondAttribute="width" id="sv5"/>
+                                    <constraint firstItem="ppContentView" firstAttribute="top" secondItem="ppScrollView" secondAttribute="top" id="ppSV1"/>
+                                    <constraint firstItem="ppContentView" firstAttribute="leading" secondItem="ppScrollView" secondAttribute="leading" id="ppSV2"/>
+                                    <constraint firstItem="ppContentView" firstAttribute="trailing" secondItem="ppScrollView" secondAttribute="trailing" id="ppSV3"/>
+                                    <constraint firstItem="ppContentView" firstAttribute="bottom" secondItem="ppScrollView" secondAttribute="bottom" id="ppSV4"/>
+                                    <constraint firstItem="ppContentView" firstAttribute="width" secondItem="ppScrollView" secondAttribute="width" id="ppSV5"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="safeArea"/>
-                        <color key="backgroundColor" red="0.969" green="0.957" blue="0.937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803926" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="scrollView" firstAttribute="top" secondItem="safeArea" secondAttribute="top" id="m1"/>
-                            <constraint firstItem="scrollView" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" id="m2"/>
-                            <constraint firstItem="safeArea" firstAttribute="trailing" secondItem="scrollView" secondAttribute="trailing" id="m3"/>
-                            <constraint firstItem="safeArea" firstAttribute="bottom" secondItem="scrollView" secondAttribute="bottom" id="m4"/>
+                            <constraint firstItem="ppBackBtn" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" constant="20" id="ppBBL"/>
+                            <constraint firstItem="ppBackBtn" firstAttribute="top" secondItem="safeArea" secondAttribute="top" constant="8" id="ppBBT"/>
+                            <constraint firstItem="ppHeaderCard" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" constant="20" id="ppHCL"/>
+                            <constraint firstItem="ppHeaderCard" firstAttribute="top" secondItem="ppBackBtn" secondAttribute="bottom" constant="12" id="ppHCT"/>
+                            <constraint firstItem="safeArea" firstAttribute="trailing" secondItem="ppHeaderCard" secondAttribute="trailing" constant="20" id="ppHCTr"/>
+                            <constraint firstItem="ppLastUpdatedBadge" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" constant="20" id="ppLUBL"/>
+                            <constraint firstItem="ppLastUpdatedBadge" firstAttribute="top" secondItem="ppHeaderCard" secondAttribute="bottom" constant="16" id="ppLUBT"/>
+                            <constraint firstItem="safeArea" firstAttribute="bottom" secondItem="ppScrollView" secondAttribute="bottom" id="ppSVB"/>
+                            <constraint firstItem="ppScrollView" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" id="ppSVL"/>
+                            <constraint firstItem="ppScrollView" firstAttribute="top" secondItem="ppLastUpdatedBadge" secondAttribute="bottom" constant="16" id="ppSVT"/>
+                            <constraint firstItem="safeArea" firstAttribute="trailing" secondItem="ppScrollView" secondAttribute="trailing" id="ppSVTr"/>
+                            <constraint firstItem="ppCircle1" firstAttribute="leading" secondItem="mainView" secondAttribute="leading" constant="-80" id="ppc1L"/>
+                            <constraint firstItem="ppCircle1" firstAttribute="top" secondItem="mainView" secondAttribute="top" constant="-100" id="ppc1T"/>
+                            <constraint firstItem="ppCircle2" firstAttribute="top" secondItem="mainView" secondAttribute="top" constant="-50" id="ppc2T"/>
+                            <constraint firstItem="ppCircle2" firstAttribute="trailing" secondItem="mainView" secondAttribute="trailing" constant="67" id="ppc2Tr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="navItem">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="backButton">
-                            <connections>
-                                <action selector="backTapped:" destination="PrivacyPolicyVC" id="backAction"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="navItem"/>
                     <connections>
-                        <outlet property="scrollView" destination="scrollView" id="scrollOutlet"/>
+                        <outlet property="scrollView" destination="ppScrollView" id="ppScrollOutlet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="privacyFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="0"/>
+            <point key="canvasLocation" x="100" y="0.0"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clock.fill" catalog="system" width="128" height="123"/>
+        <image name="doc.text.fill" catalog="system" width="115" height="128"/>
+        <image name="envelope.fill" catalog="system" width="128" height="85"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+        <image name="hand.raised.fill" catalog="system" width="128" height="128"/>
+        <image name="person.2.fill" catalog="system" width="128" height="86"/>
+        <image name="shield.checkered" catalog="system" width="121" height="128"/>
+    </resources>
 </document>
