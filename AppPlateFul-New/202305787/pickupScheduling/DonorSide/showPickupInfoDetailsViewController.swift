@@ -26,14 +26,21 @@ class showPickupInfoDetailsViewController: UIViewController {
         }
 
         private func configureUI() {
+            title = "Donation Details"
             guard let donation else { return }
+            
+            donator.text = "Loading…"
 
-            title = donation.title
+            UserService.shared.fetchUser(by: donation.donorId) { [weak self] user in
+                DispatchQueue.main.async {
+                    self?.donator.text = user?.name ?? "Unknown Donor"
+                }
+            }
+
             donationDesc.text = donation.description
-            donator.text = donation.donorName
+            
             qty.text = donation.quantity
 
-            icon.image = UIImage(systemName: donation.imageRef)
 
             // expiryDate is optional
             if let expiry = donation.expiryDate {
@@ -51,9 +58,18 @@ class showPickupInfoDetailsViewController: UIViewController {
                 time.text = "—"
                 date.text = "—"
             }
-
+            loadDonorImage()
+            
             
         }
+    private func loadDonorImage() {
+        guard let donation else { return }
+
+        UserService.shared.fetchUserImage(userId: donation.donorId) { [weak self] imageRef in
+            let name = imageRef ?? "person.circle.fill"
+            self?.icon.image = UIImage(systemName: name)
+        }
+    }
 
         private func formatDate(_ date: Date) -> String {
             let df = DateFormatter()

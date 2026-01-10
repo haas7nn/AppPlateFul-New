@@ -67,5 +67,15 @@ class UserService {
             completion(imageRef)
         }
     }
+    func fetchUser(by id: String, completion: @escaping (User?) -> Void) {
+        db.collection("users").document(id).getDocument { snapshot, _ in
+            guard let snapshot,
+                  let user = User.fromFirestore(snapshot) else {
+                completion(nil)
+                return
+            }
+            completion(user)
+        }
+    }
     
 }

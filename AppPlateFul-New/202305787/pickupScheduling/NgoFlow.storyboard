@@ -58,7 +58,7 @@
                                                             </buttonConfiguration>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.96862745289999996" green="0.96078431610000004" blue="0.94901967050000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="Ruf-F0-ve1" firstAttribute="leading" secondItem="XkE-8E-dLv" secondAttribute="leading" constant="61" id="27Q-mO-Qej"/>
                                                         <constraint firstItem="had-ua-3hB" firstAttribute="top" secondItem="XkE-8E-dLv" secondAttribute="top" constant="15" id="E0a-pI-GeY"/>
@@ -181,7 +181,7 @@
                                                             </buttonConfiguration>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.96862745289999996" green="0.96078431610000004" blue="0.94901967050000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="O4E-wa-0jx" firstAttribute="top" secondItem="KWI-Ec-md3" secondAttribute="top" constant="25" id="ETw-HX-Vl9"/>
                                                         <constraint firstItem="O4E-wa-0jx" firstAttribute="leading" secondItem="Vbe-Rq-CHs" secondAttribute="trailing" constant="12" id="GOq-VW-Nzm"/>
@@ -379,6 +379,9 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htd-zG-8J7">
                                                         <rect key="frame" x="35.000000000000007" y="49.333333333333371" width="71.666666666666686" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="71.670000000000002" id="9xc-Hd-jL0"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -802,6 +805,9 @@
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tc-3m-xqV">
                                                         <rect key="frame" x="35.000000000000007" y="49.333333333333371" width="71.666666666666686" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="71.670000000000002" id="EgJ-eG-HqE"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

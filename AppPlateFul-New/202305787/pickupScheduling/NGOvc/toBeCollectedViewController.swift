@@ -34,9 +34,16 @@ class toBeCollectedViewController: UIViewController {
         private func configureUI() {
             guard let donation else { return }
 
-            title = donation.title
+            title = "Donation Details"
             donationDesc.text = donation.description
-            donator.text = donation.donorName
+            donator.text = "Loading…"
+
+            UserService.shared.fetchUser(by: donation.donorId) { [weak self] user in
+                DispatchQueue.main.async {
+                    self?.donator.text = user?.name ?? "Unknown Donor"
+                }
+            }
+
             qty.text = donation.quantity
            
 
