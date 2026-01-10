@@ -30,7 +30,7 @@ class toBeCollectedViewController: UIViewController {
             loadDonorImage()
         }
 
-        // Fill screen labels from donation
+        
         private func configureUI() {
             guard let donation else { return }
 

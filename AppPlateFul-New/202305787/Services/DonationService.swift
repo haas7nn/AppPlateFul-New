@@ -259,4 +259,14 @@ final class DonationService {
                 }
         }
     }
+    func assignNgoAndUpdateStatus(donationId: String, ngoId: String, status: DonationStatus, completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        db.collection("donations").document(donationId).updateData([
+            "ngoId": ngoId,
+            "status": status.rawValue
+        ]) { err in
+            completion(err == nil)
+        }
+    }
+
 }

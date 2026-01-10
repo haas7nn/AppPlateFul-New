@@ -46,7 +46,7 @@ class MyPickupsViewController: UIViewController, UITableViewDataSource, UITableV
              }
        }
 
-       // MARK: - Table
+       
 
        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
            pickups.count
@@ -68,7 +68,7 @@ class MyPickupsViewController: UIViewController, UITableViewDataSource, UITableV
            return cell
        }
 
-        // MARK: - Button Tap
+       
 
         @objc private func viewDetailsTapped(_ sender: UIButton) {
 

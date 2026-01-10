@@ -28,7 +28,7 @@ class showPendingDonationDetailsViewController: UIViewController {
             configureUI()
         }
 
-        // Fill the UI from the donation object
+        
         private func configureUI() {
             guard let donation else { return }
 

@@ -30,7 +30,8 @@ class DonationSchedulingViewController: UIViewController, UITableViewDataSource,
 
             DonationService.shared.fetchForDonor(donorId: donorId) { [weak self] items in
                 guard let self = self else { return }
-
+               
+                // only show the ones still in progress
                 self.donations = items.filter {
                     $0.status == .pending ||
                     $0.status == .accepted ||
@@ -70,7 +71,7 @@ class DonationSchedulingViewController: UIViewController, UITableViewDataSource,
     }
 
     @objc private func viewDetailsTapped(_ sender: UIButton) {
-
+        // map the pressed button back to its row
         let point = sender.convert(CGPoint.zero, to: tableView)
         guard let indexPath = tableView.indexPathForRow(at: point) else { return }
 
