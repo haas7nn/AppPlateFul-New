@@ -34,7 +34,14 @@ class AcceptAvailableDonationDetailsViewController: UIViewController {
         title = "Donation Details"
 
         
-        donator.text = donation.donorName
+        donator.text = "Loading…"
+
+        UserService.shared.fetchUser(by: donation.donorId) { [weak self] user in
+            DispatchQueue.main.async {
+                self?.donator.text = user?.name ?? "Unknown Donor"
+            }
+        }
+
         donationDesc.text = donation.description
         qty.text = donation.quantity
         

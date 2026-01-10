@@ -59,7 +59,15 @@ class MyPickupsViewController: UIViewController, UITableViewDataSource, UITableV
 
            cell.titlelbl.text = donation.title
            cell.desclbl.text = donation.description
-           cell.icon.image = UIImage(systemName: donation.imageRef)
+           ImageLoader.shared.load(donation.imageRef) { image in
+               DispatchQueue.main.async {
+                   
+                   if let currentIndexPath = tableView.indexPath(for: cell),
+                      currentIndexPath == indexPath {
+                       cell.icon.image = image ?? UIImage(systemName: "photo")
+                   }
+               }
+           }
            cell.ViewDetailsBtn.setTitle("View Details", for: .normal)
            cell.configure(with: donation)
            cell.ViewDetailsBtn.removeTarget(nil, action: nil, for: .allEvents)
