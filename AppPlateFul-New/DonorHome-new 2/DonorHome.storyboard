@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NavID">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NavID">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -96,24 +96,6 @@
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SettingsBtn">
-                                                        <rect key="frame" x="293" y="38" width="44" height="44"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="SBH"/>
-                                                            <constraint firstAttribute="width" constant="44" id="SBW"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <state key="normal" title="⚙️"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="22"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="settingsTapped:" destination="DonorHomeVC" eventType="touchUpInside" id="SettingsBtnAct"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -122,8 +104,6 @@
                                                     <constraint firstItem="DonorLabel" firstAttribute="leading" secondItem="WelcomeLabel" secondAttribute="leading" id="DlL"/>
                                                     <constraint firstItem="DonorLabel" firstAttribute="top" secondItem="WelcomeLabel" secondAttribute="bottom" constant="2" id="DlT"/>
                                                     <constraint firstAttribute="height" constant="120" id="HCH"/>
-                                                    <constraint firstItem="SettingsBtn" firstAttribute="centerY" secondItem="HeaderCard" secondAttribute="centerY" id="SbCY"/>
-                                                    <constraint firstAttribute="trailing" secondItem="SettingsBtn" secondAttribute="trailing" constant="16" id="SbTr"/>
                                                     <constraint firstItem="WelcomeLabel" firstAttribute="leading" secondItem="AvatarBg" secondAttribute="trailing" constant="18" id="WlL"/>
                                                     <constraint firstItem="WelcomeLabel" firstAttribute="top" secondItem="AvatarBg" secondAttribute="top" constant="5" id="WlT"/>
                                                 </constraints>

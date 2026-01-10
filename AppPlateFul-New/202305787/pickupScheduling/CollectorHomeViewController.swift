@@ -34,7 +34,8 @@ class CollectorHomeViewController: UIViewController {
         }
 
     @IBAction func collectorProfileTapped(_ sender: UIButton) {
-        // TODO: Navigate to profile
+        
+    
     }
 
     @IBAction func logoutTapped(_ sender: UIButton) {

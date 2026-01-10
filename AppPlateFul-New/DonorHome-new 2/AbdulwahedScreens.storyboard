@@ -574,24 +574,6 @@
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDn-8h-Rxz">
-                                                        <rect key="frame" x="293" y="38" width="44" height="44"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="44" id="5jw-Ke-Y44"/>
-                                                            <constraint firstAttribute="height" constant="44" id="fMy-NE-khw"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <state key="normal" title="⚙️"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="22"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="settingsTapped:" destination="wFa-R9-LmP" eventType="touchUpInside" id="Q5n-gJ-VVU"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -600,9 +582,7 @@
                                                     <constraint firstItem="C09-pI-lpw" firstAttribute="leading" secondItem="uOY-fL-j2h" secondAttribute="leading" constant="20" id="EqM-Zc-YE2"/>
                                                     <constraint firstItem="C09-pI-lpw" firstAttribute="centerY" secondItem="uOY-fL-j2h" secondAttribute="centerY" id="RkZ-jf-2Gs"/>
                                                     <constraint firstItem="1UN-rF-ZfS" firstAttribute="leading" secondItem="C09-pI-lpw" secondAttribute="trailing" constant="18" id="b4D-QB-Bpg"/>
-                                                    <constraint firstAttribute="trailing" secondItem="NDn-8h-Rxz" secondAttribute="trailing" constant="16" id="bH1-Av-ndB"/>
                                                     <constraint firstItem="LQf-sp-4oj" firstAttribute="top" secondItem="1UN-rF-ZfS" secondAttribute="bottom" constant="2" id="pvl-Vt-kQF"/>
-                                                    <constraint firstItem="NDn-8h-Rxz" firstAttribute="centerY" secondItem="uOY-fL-j2h" secondAttribute="centerY" id="swg-dF-bAP"/>
                                                     <constraint firstItem="LQf-sp-4oj" firstAttribute="leading" secondItem="1UN-rF-ZfS" secondAttribute="leading" id="yFk-Sg-eWA"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>

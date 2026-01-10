@@ -74,7 +74,9 @@ class DonorHomeScreenViewController: UIViewController {
     }
 
     @IBAction func recurringDonationsTapped(_ sender: UIButton) {
-        // todo
+        let alert = UIAlertController(title: nil, message: "Coming soon!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
     @IBAction func settingsTapped(_ sender: UIButton) {
