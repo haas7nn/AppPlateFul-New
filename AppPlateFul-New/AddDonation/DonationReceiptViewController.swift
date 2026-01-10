@@ -1,29 +1,31 @@
 import UIKit
 
+// Screen that shows a simple receipt after a donation is submitted.
 class DonationReceiptViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var itemValueLabel: UILabel!
-    @IBOutlet weak var dateValueLabel: UILabel!
-    @IBOutlet weak var statusValueLabel: UILabel!
-    @IBOutlet weak var receiptCard: UIView!
-    @IBOutlet weak var scanButton: UIButton!
-    @IBOutlet weak var merchantLabel: UILabel!
-    @IBOutlet weak var specialNotesLabel: UILabel!
+    @IBOutlet weak var itemValueLabel: UILabel!      // shows item name + quantity
+    @IBOutlet weak var dateValueLabel: UILabel!      // shows when the donation was completed
+    @IBOutlet weak var statusValueLabel: UILabel!    // used here to show the expiry date
+    @IBOutlet weak var receiptCard: UIView!          // white card in the middle
+    @IBOutlet weak var scanButton: UIButton!         // round button with QR icon
+    @IBOutlet weak var merchantLabel: UILabel!       // currently hidden (we don't show merchant here)
+    @IBOutlet weak var specialNotesLabel: UILabel!   // shows donation + health notes if any
     
-    // MARK: - Properties
+    // MARK: - Properties passed in from AddDonationViewController
     var itemName: String = "Chicken Shawarma Meal"
     var quantity: Int = 0
     var donatedTo: String = "Helping Hands"
     var merchantName: String = "Alfreej Shawarma's"
     var specialNotes: String = ""
     
-    // NEW: expiry date passed from AddDonationViewController
+    // expiry date passed from AddDonationViewController
     var expiryDate: Date?
     
+    // Used to format the expiry date text
     private let expiryFormatter: DateFormatter = {
         let f = DateFormatter()
-        f.dateFormat = "dd MMM yyyy"   // same as AddDonation date fields
+        f.dateFormat = "dd MMM yyyy"
         return f
     }()
     
@@ -32,15 +34,18 @@ class DonationReceiptViewController: UIViewController {
         super.viewDidLoad()
         setupCardShadow()
         setupButtonShadow()
-        populateData()
+        populateData()   // fill labels with the values we got
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Hide nav bar so the custom top design is used
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     // MARK: - Setup
+    
+    // Add shadow and rounded corners to the receipt card
     private func setupCardShadow() {
         receiptCard.layer.cornerRadius = 20
         receiptCard.layer.shadowColor = UIColor.black.cgColor
@@ -50,6 +55,7 @@ class DonationReceiptViewController: UIViewController {
         receiptCard.layer.masksToBounds = false
     }
     
+    // Add shadow to the scan button
     private func setupButtonShadow() {
         scanButton.layer.cornerRadius = 24
         scanButton.layer.shadowColor = UIColor.black.cgColor
@@ -59,25 +65,26 @@ class DonationReceiptViewController: UIViewController {
         scanButton.layer.masksToBounds = false
     }
     
+    // Fill all labels based on the data passed from AddDonation
     private func populateData() {
-        // Hide merchant line
+        // We don't want to show merchant line on this design
         merchantLabel.isHidden = true
         merchantLabel.text = ""
         
-        // Item row
+        // Example: "Shawarma (x4)"
         itemValueLabel.text = "\(itemName) (x\(quantity))"
         
-        // Top date row: donation completion time
+        // Top line: when the donation was completed (current time)
         dateValueLabel.text = getCurrentDateTime()
         
-        // Status row: show Expiry Date value
+        // Status line now means "Expiry Date"
         if let exp = expiryDate {
             statusValueLabel.text = expiryFormatter.string(from: exp)
         } else {
             statusValueLabel.text = "-"
         }
         
-        // Notes
+        // Show notes only if we actually have any
         if specialNotes.isEmpty {
             specialNotesLabel.isHidden = true
         } else {
@@ -86,6 +93,7 @@ class DonationReceiptViewController: UIViewController {
         }
     }
     
+    // Helper to format the completion date/time
     private func getCurrentDateTime() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, yyyy – h:mm a"
@@ -93,10 +101,13 @@ class DonationReceiptViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    // Back button closes the receipt and returns to the root (home)
     @IBAction func backTapped(_ sender: UIButton) {
         navigationController?.popToRootViewController(animated: true)
     }
     
+    // Share button builds a simple summary text and opens the iOS share sheet
     @IBAction func shareTapped(_ sender: UIButton) {
         var shareText = "I donated \(quantity) \(itemName) to \(donatedTo) via PlateFul! 🍽️"
         if !specialNotes.isEmpty {
@@ -106,6 +117,7 @@ class DonationReceiptViewController: UIViewController {
         present(activityVC, animated: true)
     }
     
+    // Scan button currently just shows a placeholder alert
     @IBAction func scanTapped(_ sender: UIButton) {
         let alert = UIAlertController(title: "QR Scanner", message: "QR scanning coming soon!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))

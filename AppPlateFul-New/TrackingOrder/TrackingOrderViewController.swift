@@ -26,7 +26,7 @@ class TrackingOrderViewController: UIViewController {
     private func setupUI() {
         
         
-        // Tap on overlay to dismiss dialog
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissDialog))
         overlayBackground.addGestureRecognizer(tapGesture)
         
@@ -34,16 +34,16 @@ class TrackingOrderViewController: UIViewController {
         overlayBackground.isHidden = true
         successDialog.isHidden = true
         
-        // 1) Only times (no dates)
+        
         step1TimeLabel.text = "05:40 PM"
         step2TimeLabel.text = "05:44 PM"
         step3TimeLabel.text = "06:03 PM"
         
-        // 2) Initial status: ON THE WAY (not delivered)
+        // Initial status: ON THE WAY (not delivered)
         deliveredStatusLabel.text = "On the Way"
-        deliveredTimeLabel.text = step2TimeLabel.text  // show second step time
+        deliveredTimeLabel.text = step2TimeLabel.text  
         
-        // 3) Hide Delivered row (step 3) until user confirms
+        // show delivered only when user clicks
         step3DotView.isHidden = true
         step3TitleLabel.isHidden = true
         step3TimeLabel.isHidden = true
