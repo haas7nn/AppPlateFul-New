@@ -22,7 +22,7 @@ final class AppNavigator {
 
         case .donor, .student:
             setRoot(
-                storyboard: "DonorHome",
+                storyboard: "AbdulwahedScreens",
                 vcID: "DonorHomeScreenViewController"
             )
 
