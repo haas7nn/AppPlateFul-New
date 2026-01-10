@@ -22,7 +22,10 @@ class DonorHomeScreenViewController: UIViewController {
     }
 
     @IBAction func favoriteNGOsTapped(_ sender: UIButton) {
-        // todo
+        let storyboard = UIStoryboard(name: "FavoriteNGOs", bundle: nil)
+
+        let vc = storyboard.instantiateViewController(withIdentifier: "FavoriteNGOsViewController")
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func myDonationsTapped(_ sender: UIButton) {
