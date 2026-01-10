@@ -1,8 +1,54 @@
+//
+//  FAQViewController.swift
+//  AppPlateFul
+//
+
 import UIKit
 
+// MARK: - Question Cell
+class FAQQuestionCell: UITableViewCell {
+    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var chevronImageView: UIImageView!
+    @IBOutlet weak var chevronBackground: UIView!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var iconBackground: UIView!
+    
+    func configure(question: String, isOpen: Bool) {
+        questionLabel.text = question
+        
+        let chevronImage = isOpen ? "chevron.up" : "chevron.down"
+        chevronImageView.image = UIImage(systemName: chevronImage)
+        
+        // Animate chevron background color
+        UIView.animate(withDuration: 0.2) {
+            if isOpen {
+                self.chevronBackground.backgroundColor = UIColor(red: 0.256, green: 0.573, blue: 0.166, alpha: 1.0)
+                self.chevronImageView.tintColor = .white
+            } else {
+                self.chevronBackground.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+                self.chevronImageView.tintColor = UIColor(white: 0.5, alpha: 1.0)
+            }
+        }
+    }
+}
+
+// MARK: - Answer Cell
+class FAQAnswerCell: UITableViewCell {
+    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var accentBar: UIView!
+    
+    func configure(answer: String) {
+        answerLabel.text = answer
+    }
+}
+
+// MARK: - FAQ View Controller
 final class FAQViewController: UIViewController {
 
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchField: UITextField!
 
     private struct FAQItem {
         let q: String
@@ -10,214 +56,209 @@ final class FAQViewController: UIViewController {
         var isOpen: Bool
     }
 
-    private var items: [FAQItem] = [
-        FAQItem(q: "What is this app about?",
-                a: "PlateFul connects donors with verified NGOs to donate food safely and easily.",
-                isOpen: false),
+    private var allItems: [FAQItem] = []
+    private var filteredItems: [FAQItem] = []
 
-        FAQItem(q: "Is there a fee to donate?",
-                a: "No. Donating through PlateFul is free.",
-                isOpen: false),
-
-        FAQItem(q: "Who can receive the donations?",
-                a: "Only verified NGOs and community organizations registered on the app.",
-                isOpen: false),
-
-        FAQItem(q: "How do I know my donation reached the right place?",
-                a: "You can track donation updates and confirmation inside the app.",
-                isOpen: false),
-
-        FAQItem(q: "What types of food can I donate?",
-                a: "Packaged items and properly stored fresh food. Avoid expired items.",
-                isOpen: false),
-        
-        FAQItem(q: "How do I donate using PlateFul?",
-                        a: "Choose an NGO, enter your donation details, then follow the delivery or pickup instructions.",
-                        isOpen: false),
-
-                FAQItem(q: "Can I donate anonymously?",
-                        a: "Yes. You can choose to hide your name when submitting a donation.",
-                        isOpen: false),
-
-                FAQItem(q: "Can I cancel or edit a donation after submitting?",
-                        a: "Yes, as long as the NGO has not confirmed pickup or completion yet.",
-                        isOpen: false),
-
-                FAQItem(q: "How are NGOs verified in the app?",
-                        a: "Each NGO is screened before being approved, to ensure safety and transparency.",
-                        isOpen: false),
-
-                FAQItem(q: "What if I have a problem with a donation?",
-                        a: "Use the support/help option in the app to report the issue and contact the team.",
-                        isOpen: false)
-            ]
-    
-
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationItem.title = "FAQ"
-
-        view.backgroundColor = .white
-        tableView.backgroundColor = .white
-        tableView.backgroundView = nil
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-
-        tableView.separatorStyle = .none
-        tableView.estimatedRowHeight = 70
-        tableView.rowHeight = UITableView.automaticDimension
-
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "QuestionCell")
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AnswerCell")
+        setupData()
+        setupUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        navigationController?.setNavigationBarHidden(false, animated: false)
-
-        // Make sure nav bar is visible + clean
-        if let nav = navigationController {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = .white
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-            nav.navigationBar.standardAppearance = appearance
-            nav.navigationBar.scrollEdgeAppearance = appearance
-            nav.navigationBar.compactAppearance = appearance
-            nav.navigationBar.tintColor = .black
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    // MARK: - Setup
+    private func setupData() {
+        allItems = [
+            FAQItem(q: "What is PlateFul?",
+                    a: "PlateFul is a food donation platform that connects generous donors with verified NGOs and community organizations. Our mission is to reduce food waste while helping those in need.",
+                    isOpen: false),
+            
+            FAQItem(q: "Is there a fee to donate?",
+                    a: "No! Donating through PlateFul is completely free. We believe in making food donation accessible to everyone without any barriers.",
+                    isOpen: false),
+            
+            FAQItem(q: "How do I create an account?",
+                    a: "Simply download the app, tap 'Sign Up', and follow the easy registration process. You can sign up using your email or phone number.",
+                    isOpen: false),
+            
+            FAQItem(q: "How do I donate using PlateFul?",
+                    a: "It's simple! Browse verified NGOs, select one, enter your donation details (food type, quantity, expiry), choose pickup or delivery, and submit.",
+                    isOpen: false),
+            
+            FAQItem(q: "What types of food can I donate?",
+                    a: "You can donate packaged foods, properly stored fresh items, cooked meals (within safe time limits), canned goods, and dry provisions. Please avoid expired items.",
+                    isOpen: false),
+            
+            FAQItem(q: "Can I donate anonymously?",
+                    a: "Yes! When submitting a donation, you can toggle the 'Donate Anonymously' option. Your personal details won't be shared with the NGO.",
+                    isOpen: false),
+            
+            FAQItem(q: "Can I schedule a donation for later?",
+                    a: "Yes, you can schedule donations for a future date and time that works best for you and the receiving organization.",
+                    isOpen: false),
+            
+            FAQItem(q: "How do I track my donation?",
+                    a: "Go to 'Donation Activity' in the app to see all your donations. Each donation shows its current status: Pending, Ongoing, Picked Up, or Completed.",
+                    isOpen: false),
+            
+            FAQItem(q: "Can I cancel or edit a donation?",
+                    a: "Yes, you can modify or cancel a donation as long as the NGO hasn't confirmed pickup yet. Go to Donation Activity, select the donation, and tap Edit or Cancel.",
+                    isOpen: false),
+            
+            FAQItem(q: "How do I know my donation reached?",
+                    a: "You'll receive status updates throughout the process. Once completed, you'll get a confirmation with details about how your donation helped.",
+                    isOpen: false),
+            
+            FAQItem(q: "Who can receive the donations?",
+                    a: "Only verified NGOs and registered community organizations can receive donations through PlateFul. This ensures your food goes to legitimate causes.",
+                    isOpen: false),
+            
+            FAQItem(q: "How are NGOs verified?",
+                    a: "Each NGO undergoes a thorough screening process including document verification, background checks, and compliance review before being approved.",
+                    isOpen: false),
+            
+            FAQItem(q: "Can I choose which NGO receives my donation?",
+                    a: "Absolutely! You can browse all verified NGOs, view their profiles, see their causes, and select the one that aligns with your values.",
+                    isOpen: false),
+            
+            FAQItem(q: "What if I have a problem with a donation?",
+                    a: "Use the 'Report' button on any donation or go to Settings > Help & Support to contact our team. We typically respond within 24 hours.",
+                    isOpen: false),
+            
+            FAQItem(q: "Is my personal information safe?",
+                    a: "Yes! We use industry-standard encryption and never share your personal data with third parties without your consent.",
+                    isOpen: false),
+            
+            FAQItem(q: "How can I contact support?",
+                    a: "You can reach us through the app's Help section, email us at support@plateful.app, or call our helpline. We're here to help!",
+                    isOpen: false)
+        ]
+        
+        filteredItems = allItems
+    }
+    
+    private func setupUI() {
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        // Setup search field
+        searchField.delegate = self
+        searchField.addTarget(self, action: #selector(searchTextChanged(_:)), for: .editingChanged)
+        searchField.returnKeyType = .search
+    }
+    
+    // MARK: - Actions
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
+        } else if presentingViewController != nil {
+            dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @objc private func searchTextChanged(_ textField: UITextField) {
+        guard let searchText = textField.text?.lowercased(), !searchText.isEmpty else {
+            filteredItems = allItems
+            tableView.reloadData()
+            return
+        }
+        
+        filteredItems = allItems.filter { item in
+            item.q.lowercased().contains(searchText) || item.a.lowercased().contains(searchText)
+        }
+        tableView.reloadData()
     }
 }
 
+// MARK: - UITableViewDataSource
 extension FAQViewController: UITableViewDataSource {
 
-    func numberOfSections(in tableView: UITableView) -> Int { items.count }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return filteredItems.count
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        items[section].isOpen ? 2 : 1
+        return filteredItems[section].isOpen ? 2 : 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = filteredItems[indexPath.section]
 
-        let item = items[indexPath.section]
-
-        // Question
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath)
-            cell.selectionStyle = .none
-            cell.backgroundColor = .clear
-            cell.contentView.backgroundColor = .clear
-
-            // Clean old content (reuse safety)
-            cell.contentView.subviews.forEach { $0.removeFromSuperview() }
-
-            // Card (LIGHT GREY)
-            let card = UIView()
-            card.translatesAutoresizingMaskIntoConstraints = false
-            card.backgroundColor = UIColor(white: 0.93, alpha: 1.0)   // ✅ light grey
-            card.layer.cornerRadius = 12
-
-            // Label
-            let label = UILabel()
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.text = item.q
-            label.font = .systemFont(ofSize: 16, weight: .medium)
-            label.textColor = UIColor.black
-            label.numberOfLines = 0
-
-            // Chevron
-            let chevron = UIImageView()
-            chevron.translatesAutoresizingMaskIntoConstraints = false
-            chevron.tintColor = UIColor(white: 0.45, alpha: 1.0)
-            chevron.image = UIImage(systemName: item.isOpen ? "chevron.up" : "chevron.down")
-
-            cell.contentView.addSubview(card)
-            card.addSubview(label)
-            card.addSubview(chevron)
-
-            NSLayoutConstraint.activate([
-                card.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 16),
-                card.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -16),
-                card.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 10),
-                card.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -10),
-
-                label.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 14),
-                label.trailingAnchor.constraint(equalTo: chevron.leadingAnchor, constant: -10),
-                label.topAnchor.constraint(equalTo: card.topAnchor, constant: 14),
-                label.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -14),
-
-                chevron.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -14),
-                chevron.centerYAnchor.constraint(equalTo: card.centerYAnchor),
-                chevron.widthAnchor.constraint(equalToConstant: 18),
-                chevron.heightAnchor.constraint(equalToConstant: 18),
-            ])
-
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FAQQuestionCell", for: indexPath) as? FAQQuestionCell else {
+                return UITableViewCell()
+            }
+            cell.configure(question: item.q, isOpen: item.isOpen)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FAQAnswerCell", for: indexPath) as? FAQAnswerCell else {
+                return UITableViewCell()
+            }
+            cell.configure(answer: item.a)
             return cell
         }
-
-        // Answer
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath)
-        cell.selectionStyle = .none
-        cell.backgroundColor = .clear
-        cell.contentView.backgroundColor = .clear
-
-        cell.contentView.subviews.forEach { $0.removeFromSuperview() }
-
-        let card = UIView()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = UIColor(white: 0.93, alpha: 1.0)      // ✅ light grey (same)
-        card.layer.cornerRadius = 12
-
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = item.a
-        label.font = .systemFont(ofSize: 14, weight: .regular)
-        label.textColor = UIColor.darkGray
-        label.numberOfLines = 0
-        label.textAlignment = .center
-
-        cell.contentView.addSubview(card)
-        card.addSubview(label)
-
-        NSLayoutConstraint.activate([
-            card.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 16),
-            card.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -16),
-            card.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 0),
-            card.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -10),
-
-            label.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 14),
-            label.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -14),
-            label.topAnchor.constraint(equalTo: card.topAnchor, constant: 14),
-            label.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -14),
-        ])
-
-        return cell
     }
 }
 
+// MARK: - UITableViewDelegate
 extension FAQViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row != 0 { return }
 
-        for i in 0..<items.count {
-            if i != indexPath.section { items[i].isOpen = false }
+        // Close other sections
+        for i in 0..<filteredItems.count {
+            if i != indexPath.section {
+                filteredItems[i].isOpen = false
+            }
         }
 
-        items[indexPath.section].isOpen.toggle()
+        // Toggle current section
+        filteredItems[indexPath.section].isOpen.toggle()
+        
+        // Reload with animation
         tableView.reloadData()
     }
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 10 }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.row == 0 ? 80 : 100
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 4
+    }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let v = UIView()
         v.backgroundColor = .clear
         return v
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension FAQViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

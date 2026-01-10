@@ -2,40 +2,37 @@
 //  PrivacyPolicyViewController.swift
 //  AppPlateFul
 //
-//  202301686 - Hasan
-//
 
 import UIKit
 
-// Displays the application's privacy policy content
 class PrivacyPolicyViewController: UIViewController {
     
-    // MARK: - IBOutlets
-    @IBOutlet weak var scrollView: UIScrollView?
+    @IBOutlet weak var scrollView: UIScrollView!
     
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
-    // MARK: - Setup
-    // Configures base UI appearance
-    private func setupUI() {
-        view.backgroundColor =
-            UIColor(red: 0.969, green: 0.957, blue: 0.937, alpha: 1)
-        
-        // Title is handled inside the content view
-        navigationItem.title = ""
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    // MARK: - Actions
-    // Navigates back to previous screen
-    @IBAction func backTapped(_ sender: Any) {
-        if let nav = navigationController {
-            nav.popViewController(animated: true)
-        } else {
-            dismiss(animated: true)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    private func setupUI() {
+        scrollView.showsVerticalScrollIndicator = false
+    }
+    
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
+        } else if presentingViewController != nil {
+            dismiss(animated: true, completion: nil)
         }
     }
 }

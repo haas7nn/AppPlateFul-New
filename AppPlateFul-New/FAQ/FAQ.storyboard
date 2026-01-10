@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wbx-e3-G29">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--FAQ-->
+        <!--FAQ View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="FAQVC" title="FAQ" id="Y6W-OH-hqX" customClass="FAQViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,64 +15,367 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <!-- Decorative Circle 1 -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faqCircle1">
+                                <rect key="frame" x="-80" y="-100" width="250" height="250"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.75686274509803919" blue="0.47058823529411764" alpha="0.15" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="fc1H"/>
+                                    <constraint firstAttribute="width" constant="250" id="fc1W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="125"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Decorative Circle 2 -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faqCircle2">
+                                <rect key="frame" x="280" y="-50" width="180" height="180"/>
+                                <color key="backgroundColor" red="0.776" green="0.635" blue="0.494" alpha="0.2" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="fc2H"/>
+                                    <constraint firstAttribute="width" constant="180" id="fc2W"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="90"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Back Button -->
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faqBackBtn">
+                                <rect key="frame" x="20" y="59" width="44" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="0.95" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="faqBBW"/>
+                                    <constraint firstAttribute="height" constant="44" id="faqBBH"/>
+                                </constraints>
+                                <state key="normal" title="‹">
+                                    <color key="titleColor" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                        <color key="value" red="0" green="0" blue="0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="faqBackAction"/>
+                                </connections>
+                            </button>
+                            <!-- Header Card -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faqHeaderCard">
+                                <rect key="frame" x="20" y="115" width="353" height="100"/>
+                                <subviews>
+                                    <!-- Icon Container -->
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faqIconBg">
+                                        <rect key="frame" x="20" y="20" width="60" height="60"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❓" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faqIconEmoji">
+                                                <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="faqIconEmoji" firstAttribute="centerX" secondItem="faqIconBg" secondAttribute="centerX" id="faqIEX"/>
+                                            <constraint firstItem="faqIconEmoji" firstAttribute="centerY" secondItem="faqIconBg" secondAttribute="centerY" id="faqIEY"/>
+                                            <constraint firstAttribute="height" constant="60" id="faqIBH"/>
+                                            <constraint firstAttribute="width" constant="60" id="faqIBW"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <!-- Title -->
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequently Asked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faqTitleLabel">
+                                        <rect key="frame" x="96" y="25" width="200" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.8" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </label>
+                                    <!-- Subtitle -->
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faqSubtitleLabel">
+                                        <rect key="frame" x="96" y="47" width="150" height="32"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="faqIconBg" firstAttribute="leading" secondItem="faqHeaderCard" secondAttribute="leading" constant="20" id="faqIBL"/>
+                                    <constraint firstItem="faqIconBg" firstAttribute="centerY" secondItem="faqHeaderCard" secondAttribute="centerY" id="faqIBCY"/>
+                                    <constraint firstItem="faqTitleLabel" firstAttribute="leading" secondItem="faqIconBg" secondAttribute="trailing" constant="16" id="faqTLL"/>
+                                    <constraint firstItem="faqTitleLabel" firstAttribute="top" secondItem="faqIconBg" secondAttribute="top" constant="5" id="faqTLT"/>
+                                    <constraint firstItem="faqSubtitleLabel" firstAttribute="leading" secondItem="faqTitleLabel" secondAttribute="leading" id="faqSLL"/>
+                                    <constraint firstItem="faqSubtitleLabel" firstAttribute="top" secondItem="faqTitleLabel" secondAttribute="bottom" constant="2" id="faqSLT"/>
+                                    <constraint firstAttribute="height" constant="100" id="faqHCH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                        <color key="value" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0" height="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Search Container -->
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faqSearchContainer">
+                                <rect key="frame" x="20" y="231" width="353" height="52"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="faqSearchIcon">
+                                        <rect key="frame" x="16" y="16" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="faqSIW"/>
+                                            <constraint firstAttribute="height" constant="20" id="faqSIH"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search questions..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="faqSearchField">
+                                        <rect key="frame" x="48" y="14" width="289" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="faqSearchIcon" firstAttribute="leading" secondItem="faqSearchContainer" secondAttribute="leading" constant="16" id="faqSIL"/>
+                                    <constraint firstItem="faqSearchIcon" firstAttribute="centerY" secondItem="faqSearchContainer" secondAttribute="centerY" id="faqSICY"/>
+                                    <constraint firstItem="faqSearchField" firstAttribute="leading" secondItem="faqSearchIcon" secondAttribute="trailing" constant="12" id="faqSFL"/>
+                                    <constraint firstAttribute="trailing" secondItem="faqSearchField" secondAttribute="trailing" constant="16" id="faqSFT"/>
+                                    <constraint firstItem="faqSearchField" firstAttribute="centerY" secondItem="faqSearchContainer" secondAttribute="centerY" id="faqSFCY"/>
+                                    <constraint firstAttribute="height" constant="52" id="faqSCH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                        <color key="value" red="0" green="0" blue="0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.06"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0" height="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <!-- Section Title -->
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Common Questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faqSectionTitle">
+                                <rect key="frame" x="20" y="299" width="200" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="0.133" green="0.133" blue="0.133" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <!-- Table View -->
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vtb-py-uAp">
-                                <rect key="frame" x="0.0" y="172" width="393" height="612"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="331" width="393" height="487"/>
+                                <color key="backgroundColor" red="0" green="0" blue="0" alpha="0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FAQQuestionCell" id="Jjm-og-UmL" customClass="FAQQuestionCell" customModule="faq">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="54"/>
+                                    <!-- Question Cell -->
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FAQQuestionCell" rowHeight="80" id="Jjm-og-UmL" customClass="FAQQuestionCell" customModule="AppPlateFul" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="FAQQuestionCell" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jjm-og-UmL" id="X1V-Gf-99r" customClass="FAQQuestionCell">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="54"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jjm-og-UmL" id="X1V-Gf-99r">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKW-7q-6CO">
-                                                    <rect key="frame" x="28" y="0.0" width="345" height="54"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faqQCard">
+                                                    <rect key="frame" x="20" y="6" width="353" height="68"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What is this app about? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAl-hr-KMa">
-                                                            <rect key="frame" x="12" y="17" width="183" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
+                                                        <!-- Icon Container -->
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faqQIconBg">
+                                                            <rect key="frame" x="14" y="14" width="40" height="40"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="faqQIcon">
+                                                                    <rect key="frame" x="8" y="8" width="24" height="24"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="24" id="faqQIW"/>
+                                                                        <constraint firstAttribute="height" constant="24" id="faqQIH"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.256" green="0.573" blue="0.166" alpha="0.1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="faqQIcon" firstAttribute="centerX" secondItem="faqQIconBg" secondAttribute="centerX" id="faqQICX"/>
+                                                                <constraint firstItem="faqQIcon" firstAttribute="centerY" secondItem="faqQIconBg" secondAttribute="centerY" id="faqQICY"/>
+                                                                <constraint firstAttribute="width" constant="40" id="faqQIBW"/>
+                                                                <constraint firstAttribute="height" constant="40" id="faqQIBH"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="12"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <!-- Question Label -->
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is this app about?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faqQLbl">
+                                                            <rect key="frame" x="66" y="24" width="241" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                            <color key="textColor" red="0.133" green="0.133" blue="0.133" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="chevron.compact.up.chevron.compact.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hba-2p-q70">
-                                                            <rect key="frame" x="316" y="16.666666666666629" width="19" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </imageView>
+                                                        <!-- Chevron Container -->
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faqChevronBg">
+                                                            <rect key="frame" x="319" y="20" width="28" height="28"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="faqChevron">
+                                                                    <rect key="frame" x="7" y="7" width="14" height="14"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="14" id="faqChW"/>
+                                                                        <constraint firstAttribute="height" constant="14" id="faqChH"/>
+                                                                    </constraints>
+                                                                    <color key="tintColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="0.95" green="0.95" blue="0.95" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="faqChevron" firstAttribute="centerX" secondItem="faqChevronBg" secondAttribute="centerX" id="faqChCX"/>
+                                                                <constraint firstItem="faqChevron" firstAttribute="centerY" secondItem="faqChevronBg" secondAttribute="centerY" id="faqChCY"/>
+                                                                <constraint firstAttribute="width" constant="28" id="faqChBW"/>
+                                                                <constraint firstAttribute="height" constant="28" id="faqChBH"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="14"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="faqQIconBg" firstAttribute="leading" secondItem="faqQCard" secondAttribute="leading" constant="14" id="faqQIBL"/>
+                                                        <constraint firstItem="faqQIconBg" firstAttribute="centerY" secondItem="faqQCard" secondAttribute="centerY" id="faqQIBCY"/>
+                                                        <constraint firstItem="faqQLbl" firstAttribute="leading" secondItem="faqQIconBg" secondAttribute="trailing" constant="12" id="faqQLL"/>
+                                                        <constraint firstItem="faqQLbl" firstAttribute="centerY" secondItem="faqQCard" secondAttribute="centerY" id="faqQLCY"/>
+                                                        <constraint firstItem="faqQLbl" firstAttribute="trailing" secondItem="faqChevronBg" secondAttribute="leading" constant="-12" id="faqQLT"/>
+                                                        <constraint firstAttribute="trailing" secondItem="faqChevronBg" secondAttribute="trailing" constant="14" id="faqChBT"/>
+                                                        <constraint firstItem="faqChevronBg" firstAttribute="centerY" secondItem="faqQCard" secondAttribute="centerY" id="faqChBCY"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowColor">
+                                                            <color key="value" red="0" green="0" blue="0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                            <real key="value" value="0.08"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                            <size key="value" width="0" height="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" red="0" green="0" blue="0" alpha="0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="faqQCard" firstAttribute="leading" secondItem="X1V-Gf-99r" secondAttribute="leading" constant="20" id="faqQCL"/>
+                                                <constraint firstAttribute="trailing" secondItem="faqQCard" secondAttribute="trailing" constant="20" id="faqQCT"/>
+                                                <constraint firstItem="faqQCard" firstAttribute="top" secondItem="X1V-Gf-99r" secondAttribute="top" constant="6" id="faqQCTop"/>
+                                                <constraint firstAttribute="bottom" secondItem="faqQCard" secondAttribute="bottom" constant="6" id="faqQCB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cardView" destination="faqQCard" id="faqQCardOut"/>
+                                            <outlet property="questionLabel" destination="faqQLbl" id="faqQLblOut"/>
+                                            <outlet property="chevronImageView" destination="faqChevron" id="faqChevronOut"/>
+                                            <outlet property="chevronBackground" destination="faqChevronBg" id="faqChevronBgOut"/>
+                                            <outlet property="iconImageView" destination="faqQIcon" id="faqQIconOut"/>
+                                            <outlet property="iconBackground" destination="faqQIconBg" id="faqQIconBgOut"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FAQAnswerCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FAQAnswerCell" id="HhG-8h-MYP" customClass="FAQAnswerCell" customModule="faq">
-                                        <rect key="frame" x="0.0" y="104" width="393" height="54"/>
+                                    <!-- Answer Cell -->
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FAQAnswerCell" rowHeight="80" id="HhG-8h-MYP" customClass="FAQAnswerCell" customModule="AppPlateFul" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="130" width="393" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HhG-8h-MYP" id="Wrj-8M-Zuv">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="54"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HhG-8h-MYP" id="Wrj-8M-Zuv">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x16-iN-0r9">
-                                                    <rect key="frame" x="29" y="7" width="344" height="47"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faqACard">
+                                                    <rect key="frame" x="36" y="0" width="337" height="74"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="its abiut ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pck-4E-gGY">
-                                                            <rect key="frame" x="32" y="17" width="79" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
+                                                        <!-- Accent Bar -->
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faqAccentBar">
+                                                            <rect key="frame" x="0" y="12" width="4" height="50"/>
+                                                            <color key="backgroundColor" red="0.256" green="0.573" blue="0.166" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="4" id="faqABW"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                        <!-- Answer Label -->
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlateFul connects donors with verified NGOs to donate food safely and easily." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faqALbl">
+                                                            <rect key="frame" x="20" y="14" width="301" height="46"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.3" green="0.3" blue="0.3" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" red="0.256" green="0.573" blue="0.166" alpha="0.08" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="faqAccentBar" firstAttribute="leading" secondItem="faqACard" secondAttribute="leading" id="faqABL"/>
+                                                        <constraint firstItem="faqAccentBar" firstAttribute="top" secondItem="faqACard" secondAttribute="top" constant="12" id="faqABT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="faqAccentBar" secondAttribute="bottom" constant="12" id="faqABB"/>
+                                                        <constraint firstItem="faqALbl" firstAttribute="leading" secondItem="faqAccentBar" secondAttribute="trailing" constant="16" id="faqALL"/>
+                                                        <constraint firstAttribute="trailing" secondItem="faqALbl" secondAttribute="trailing" constant="16" id="faqALT"/>
+                                                        <constraint firstItem="faqALbl" firstAttribute="top" secondItem="faqACard" secondAttribute="top" constant="14" id="faqALTop"/>
+                                                        <constraint firstAttribute="bottom" secondItem="faqALbl" secondAttribute="bottom" constant="14" id="faqALB"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="14"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" red="0" green="0" blue="0" alpha="0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="faqACard" firstAttribute="leading" secondItem="Wrj-8M-Zuv" secondAttribute="leading" constant="36" id="faqACL"/>
+                                                <constraint firstAttribute="trailing" secondItem="faqACard" secondAttribute="trailing" constant="20" id="faqACT"/>
+                                                <constraint firstItem="faqACard" firstAttribute="top" secondItem="Wrj-8M-Zuv" secondAttribute="top" id="faqACTop"/>
+                                                <constraint firstAttribute="bottom" secondItem="faqACard" secondAttribute="bottom" constant="6" id="faqACB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cardView" destination="faqACard" id="faqACardOut"/>
+                                            <outlet property="answerLabel" destination="faqALbl" id="faqALblOut"/>
+                                            <outlet property="accentBar" destination="faqAccentBar" id="faqAccentBarOut"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -83,46 +385,48 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803926" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="vtb-py-uAp" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="8wv-rh-RMV"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vtb-py-uAp" secondAttribute="trailing" id="CWi-GF-IWa"/>
-                            <constraint firstItem="vtb-py-uAp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="M26-AF-RPo"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vtb-py-uAp" secondAttribute="bottom" id="s1h-gb-lQC"/>
+                            <!-- Decorative Circles -->
+                            <constraint firstItem="faqCircle1" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="-80" id="fc1L"/>
+                            <constraint firstItem="faqCircle1" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="-100" id="fc1T"/>
+                            <constraint firstItem="faqCircle2" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" constant="67" id="fc2Tr"/>
+                            <constraint firstItem="faqCircle2" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="-50" id="fc2T"/>
+                            <!-- Back Button -->
+                            <constraint firstItem="faqBackBtn" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="faqBBT"/>
+                            <constraint firstItem="faqBackBtn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="faqBBL"/>
+                            <!-- Header Card -->
+                            <constraint firstItem="faqHeaderCard" firstAttribute="top" secondItem="faqBackBtn" secondAttribute="bottom" constant="12" id="faqHCT"/>
+                            <constraint firstItem="faqHeaderCard" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="faqHCL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="faqHeaderCard" secondAttribute="trailing" constant="20" id="faqHCTr"/>
+                            <!-- Search Container -->
+                            <constraint firstItem="faqSearchContainer" firstAttribute="top" secondItem="faqHeaderCard" secondAttribute="bottom" constant="16" id="faqSCT"/>
+                            <constraint firstItem="faqSearchContainer" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="faqSCL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="faqSearchContainer" secondAttribute="trailing" constant="20" id="faqSCTr"/>
+                            <!-- Section Title -->
+                            <constraint firstItem="faqSectionTitle" firstAttribute="top" secondItem="faqSearchContainer" secondAttribute="bottom" constant="16" id="faqSTT"/>
+                            <constraint firstItem="faqSectionTitle" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="faqSTL"/>
+                            <!-- Table View -->
+                            <constraint firstItem="vtb-py-uAp" firstAttribute="top" secondItem="faqSectionTitle" secondAttribute="bottom" constant="8" id="faqTVT"/>
+                            <constraint firstItem="vtb-py-uAp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="faqTVL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="vtb-py-uAp" secondAttribute="trailing" id="faqTVTr"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="vtb-py-uAp" secondAttribute="bottom" id="faqTVB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eDu-gI-kJD"/>
                     <connections>
                         <outlet property="tableView" destination="vtb-py-uAp" id="odt-Lx-dRf"/>
+                        <outlet property="searchField" destination="faqSearchField" id="faqSFOut"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="72"/>
-        </scene>
-        <!--FAQ-->
-        <scene sceneID="kqP-bM-gBr">
-            <objects>
-                <navigationController title="FAQ" automaticallyAdjustsScrollViewInsets="NO" id="Wbx-e3-G29" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eeU-fM-6J9">
-                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="REt-4b-9lw"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1TH-u5-TVY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="139.69465648854961" y="91.549295774647888"/>
+            <point key="canvasLocation" x="139" y="91"/>
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.compact.up.chevron.compact.down" catalog="system" width="128" height="89"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="chevron.down" catalog="system" width="128" height="74"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="119"/>
+        <image name="questionmark.circle.fill" catalog="system" width="128" height="123"/>
     </resources>
 </document>
