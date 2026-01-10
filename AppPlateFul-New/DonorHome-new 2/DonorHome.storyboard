@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NavID">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NavID">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +27,7 @@
         <!--Donor Home Screen View Controller-->
         <scene sceneID="DonorHomeScene">
             <objects>
-                <viewController storyboardIdentifier="DonorHomeScreenViewController" id="DonorHomeVC" customClass="DonorHomeScreenViewController" customModule="AppPlateFul" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DonorHomeScreenViewController" id="DonorHomeVC" customClass="DonorHomeScreenViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MainView">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,12 +59,11 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScrollView">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="1020"/>
                                         <subviews>
-                                            <!-- Header Card -->
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HeaderCard">
                                                 <rect key="frame" x="20" y="16" width="353" height="120"/>
                                                 <subviews>
@@ -93,7 +94,7 @@
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DonorLabel">
-                                                        <rect key="frame" x="108" y="50.000000000000007" width="167" height="31.333333333333336"/>
+                                                        <rect key="frame" x="108" y="50.000000000000007" width="74.333333333333314" height="31.333333333333336"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </label>
@@ -118,10 +119,10 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.40000000000000002" green="0.56499999999999995" blue="0.35299999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="DonorLabel" firstAttribute="leading" secondItem="WelcomeLabel" secondAttribute="leading" id="DlL"/>
-                                                    <constraint firstItem="DonorLabel" firstAttribute="top" secondItem="WelcomeLabel" secondAttribute="bottom" constant="2" id="DlT"/>
                                                     <constraint firstItem="AvatarBg" firstAttribute="centerY" secondItem="HeaderCard" secondAttribute="centerY" id="AvCY"/>
                                                     <constraint firstItem="AvatarBg" firstAttribute="leading" secondItem="HeaderCard" secondAttribute="leading" constant="20" id="AvL"/>
+                                                    <constraint firstItem="DonorLabel" firstAttribute="leading" secondItem="WelcomeLabel" secondAttribute="leading" id="DlL"/>
+                                                    <constraint firstItem="DonorLabel" firstAttribute="top" secondItem="WelcomeLabel" secondAttribute="bottom" constant="2" id="DlT"/>
                                                     <constraint firstAttribute="height" constant="120" id="HCH"/>
                                                     <constraint firstItem="SettingsBtn" firstAttribute="centerY" secondItem="HeaderCard" secondAttribute="centerY" id="SbCY"/>
                                                     <constraint firstAttribute="trailing" secondItem="SettingsBtn" secondAttribute="trailing" constant="16" id="SbTr"/>
@@ -146,15 +147,11 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            
-                                            <!-- Quick Actions Label -->
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Actions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QuickActionsLabel">
                                                 <rect key="frame" x="20" y="160" width="130.33333333333334" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </label>
-                                            
-                                            <!-- Action Card 1: Community Leaderboard -->
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard1">
                                                 <rect key="frame" x="20" y="200" width="353" height="100"/>
                                                 <subviews>
@@ -180,12 +177,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Community Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Title1">
-                                                        <rect key="frame" x="92" y="28" width="190" height="20.333333333333329"/>
+                                                        <rect key="frame" x="92.000000000000014" y="28" width="202.33333333333337" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See top donors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Desc1">
-                                                        <rect key="frame" x="91.999999999999986" y="50.333333333333314" width="210.66666666666663" height="15.666666666666671"/>
+                                                        <rect key="frame" x="92" y="50.333333333333314" width="92.333333333333314" height="15.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
@@ -237,8 +234,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            
-                                            <!-- Action Card 2: Favorite NGOs -->
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard2">
                                                 <rect key="frame" x="20" y="316" width="353" height="100"/>
                                                 <subviews>
@@ -246,7 +241,7 @@
                                                         <rect key="frame" x="20" y="22" width="56" height="56"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❤️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icon2">
-                                                                <rect key="frame" x="12" y="11.333333333333371" width="32" height="33.666666666666664"/>
+                                                                <rect key="frame" x="12" y="11.333333333333314" width="32" height="33.666666666666664"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                             </label>
                                                         </subviews>
@@ -264,17 +259,17 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite NGOs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Title2">
-                                                        <rect key="frame" x="92" y="28" width="140" height="20.333333333333329"/>
+                                                        <rect key="frame" x="92" y="28" width="117" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View NGOs you saved" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Desc2">
-                                                        <rect key="frame" x="91.999999999999986" y="50.333333333333371" width="185.66666666666663" height="15.666666666666671"/>
+                                                        <rect key="frame" x="92.000000000000014" y="50.333333333333314" width="133.33333333333337" height="15.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="›" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Arrow2">
-                                                        <rect key="frame" x="325.66666666666669" y="33.333333333333371" width="11.333333333333314" height="33.666666666666657"/>
+                                                        <rect key="frame" x="325.66666666666669" y="33.333333333333314" width="11.333333333333314" height="33.666666666666657"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
                                                         <color key="textColor" red="0.75" green="0.75" blue="0.75" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
@@ -321,8 +316,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            
-                                            <!-- Action Card 3: My Donations -->
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard3">
                                                 <rect key="frame" x="20" y="432" width="353" height="100"/>
                                                 <subviews>
@@ -348,12 +341,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Donations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Title3">
-                                                        <rect key="frame" x="92" y="28" width="116.33333333333331" height="20.333333333333329"/>
+                                                        <rect key="frame" x="92" y="28" width="111.66666666666669" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View your donation history" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Desc3">
-                                                        <rect key="frame" x="92" y="50.333333333333371" width="196" height="15.666666666666671"/>
+                                                        <rect key="frame" x="92.000000000000014" y="50.333333333333371" width="161.33333333333337" height="15.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
@@ -405,8 +398,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            
-                                            <!-- Action Card 4: Track Deliveries -->
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard4">
                                                 <rect key="frame" x="20" y="548" width="353" height="100"/>
                                                 <subviews>
@@ -437,7 +428,7 @@
                                                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track your donation deliveries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Desc4">
-                                                        <rect key="frame" x="92.000000000000014" y="50.333333333333371" width="190" height="15.666666666666671"/>
+                                                        <rect key="frame" x="91.999999999999986" y="50.333333333333371" width="181.66666666666663" height="15.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
@@ -449,9 +440,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Btn4">
                                                         <rect key="frame" x="0.0" y="0.0" width="353" height="100"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" title=""/>
                                                         <connections>
                                                             <action selector="trackDeliveriesTapped:" destination="DonorHomeVC" eventType="touchUpInside" id="Btn4Act"/>
+                                                            <segue destination="1Bj-0w-Yvv" kind="show" id="tAP-Pn-D6m"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -489,8 +480,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            
-                                            <!-- Action Card 5: Donation Updates -->
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard5">
                                                 <rect key="frame" x="20" y="664" width="353" height="100"/>
                                                 <subviews>
@@ -516,12 +505,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Donation Updates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Title5">
-                                                        <rect key="frame" x="92" y="28" width="145" height="20.333333333333329"/>
+                                                        <rect key="frame" x="92.000000000000014" y="28" width="146.33333333333337" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest updates from NGOs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Desc5">
-                                                        <rect key="frame" x="92" y="50.333333333333371" width="170" height="15.666666666666671"/>
+                                                        <rect key="frame" x="91.999999999999986" y="50.333333333333371" width="161.66666666666663" height="15.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
@@ -573,8 +562,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            
-                                            <!-- Action Card 6: Recurring Donations -->
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ActionCard6">
                                                 <rect key="frame" x="20" y="780" width="353" height="100"/>
                                                 <subviews>
@@ -600,12 +587,12 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recurring Donations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Title6">
-                                                        <rect key="frame" x="92" y="28" width="165" height="20.333333333333329"/>
+                                                        <rect key="frame" x="91.999999999999986" y="28" width="166.66666666666663" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage recurring donations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Desc6">
-                                                        <rect key="frame" x="92" y="50.333333333333371" width="175" height="15.666666666666671"/>
+                                                        <rect key="frame" x="92.000000000000014" y="50.333333333333371" width="170.33333333333337" height="15.666666666666671"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
@@ -657,8 +644,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            
-                                            <!-- Sign Out Button -->
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LogoutBtn">
                                                 <rect key="frame" x="20" y="912" width="353" height="54"/>
                                                 <color key="backgroundColor" red="0.94509803921568625" green="0.2627450980392157" blue="0.21176470588235294" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
@@ -678,21 +663,14 @@
                                                     <action selector="signOutTapped:" destination="DonorHomeVC" eventType="touchUpInside" id="LogoutBtnAct"/>
                                                 </connections>
                                             </button>
-                                            
-                                            <!-- Version Label -->
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlateFul Donor v1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VersionLabel">
-                                                <rect key="frame" x="141.33333333333334" y="982" width="110.33333333333334" height="14.333333333333371"/>
+                                                <rect key="frame" x="142" y="982" width="109" height="14.333333333333371"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="HeaderCard" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="HCL"/>
-                                            <constraint firstItem="HeaderCard" firstAttribute="top" secondItem="ContentView" secondAttribute="top" constant="16" id="HCT"/>
-                                            <constraint firstAttribute="trailing" secondItem="HeaderCard" secondAttribute="trailing" constant="20" id="HCTr"/>
-                                            <constraint firstItem="QuickActionsLabel" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="QAL"/>
-                                            <constraint firstItem="QuickActionsLabel" firstAttribute="top" secondItem="HeaderCard" secondAttribute="bottom" constant="24" id="QAT"/>
                                             <constraint firstItem="ActionCard1" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="AC1L"/>
                                             <constraint firstItem="ActionCard1" firstAttribute="top" secondItem="QuickActionsLabel" secondAttribute="bottom" constant="16" id="AC1T"/>
                                             <constraint firstAttribute="trailing" secondItem="ActionCard1" secondAttribute="trailing" constant="20" id="AC1Tr"/>
@@ -711,13 +689,18 @@
                                             <constraint firstItem="ActionCard6" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="AC6L"/>
                                             <constraint firstItem="ActionCard6" firstAttribute="top" secondItem="ActionCard5" secondAttribute="bottom" constant="16" id="AC6T"/>
                                             <constraint firstAttribute="trailing" secondItem="ActionCard6" secondAttribute="trailing" constant="20" id="AC6Tr"/>
+                                            <constraint firstAttribute="height" constant="1020" id="CVH"/>
+                                            <constraint firstAttribute="width" constant="393" id="CVW"/>
+                                            <constraint firstItem="HeaderCard" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="HCL"/>
+                                            <constraint firstItem="HeaderCard" firstAttribute="top" secondItem="ContentView" secondAttribute="top" constant="16" id="HCT"/>
+                                            <constraint firstAttribute="trailing" secondItem="HeaderCard" secondAttribute="trailing" constant="20" id="HCTr"/>
                                             <constraint firstItem="LogoutBtn" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="LBL"/>
                                             <constraint firstItem="LogoutBtn" firstAttribute="top" secondItem="ActionCard6" secondAttribute="bottom" constant="32" id="LBT"/>
                                             <constraint firstAttribute="trailing" secondItem="LogoutBtn" secondAttribute="trailing" constant="20" id="LBTr"/>
+                                            <constraint firstItem="QuickActionsLabel" firstAttribute="leading" secondItem="ContentView" secondAttribute="leading" constant="20" id="QAL"/>
+                                            <constraint firstItem="QuickActionsLabel" firstAttribute="top" secondItem="HeaderCard" secondAttribute="bottom" constant="24" id="QAT"/>
                                             <constraint firstItem="VersionLabel" firstAttribute="top" secondItem="LogoutBtn" secondAttribute="bottom" constant="16" id="VLT"/>
                                             <constraint firstItem="VersionLabel" firstAttribute="centerX" secondItem="ContentView" secondAttribute="centerX" id="VLX"/>
-                                            <constraint firstAttribute="height" constant="1020" id="CVH"/>
-                                            <constraint firstAttribute="width" constant="393" id="CVW"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -744,16 +727,170 @@
                     </view>
                     <connections>
                         <outlet property="CommunityLeaderBoard" destination="Btn1" id="OBtn1"/>
+                        <outlet property="DonationUpdates" destination="Btn5" id="OBtn5"/>
                         <outlet property="FavNGOS" destination="Btn2" id="OBtn2"/>
                         <outlet property="MyDonations" destination="Btn3" id="OBtn3"/>
-                        <outlet property="TrackDeliveries" destination="Btn4" id="OBtn4"/>
-                        <outlet property="DonationUpdates" destination="Btn5" id="OBtn5"/>
                         <outlet property="RecDonations" destination="Btn6" id="OBtn6"/>
+                        <outlet property="TrackDeliveries" destination="Btn4" id="OBtn4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DonorHomeFR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="100" y="0.0"/>
         </scene>
+        <!--Tracking Order View Controller-->
+        <scene sceneID="41v-f3-8s9">
+            <objects>
+                <viewController storyboardIdentifier="TrackingOrderViewController" id="1Bj-0w-Yvv" customClass="TrackingOrderViewController" customModule="AppPlateFul_New" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZUy-Jj-EyX">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sJb-Xr-IEp">
+                                <rect key="frame" x="69" y="394" width="254" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJm-YA-9oq">
+                                        <rect key="frame" x="85" y="8" width="145" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Mun-Ro-7Nc">
+                                        <rect key="frame" x="18" y="13.666666666666664" width="17" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dec 21, 06:03 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3dp-SZ-sZE">
+                                        <rect key="frame" x="67" y="38" width="120" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="LightGreen"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tracking" translatesAutoresizingMaskIntoConstraints="NO" id="FtY-se-2Ra">
+                                <rect key="frame" x="76" y="221" width="240" height="137"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6GA-pb-KaX">
+                                <rect key="frame" x="-43" y="0.0" width="473" height="184"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tracking Order" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vA3-Kl-NQM">
+                                        <rect key="frame" x="146" y="92" width="181" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jz0-Yb-vZ5">
+                                <rect key="frame" x="-40" y="724" width="470" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hn2-Mn-fIs">
+                                        <rect key="frame" x="121" y="31" width="228" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" name="LightGreen"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Confirm Delivery"/>
+                                        <connections>
+                                            <action selector="didTapConfirmDelivery:" destination="1Bj-0w-Yvv" eventType="touchUpInside" id="CoX-8C-OOt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order Received" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="968-1A-Yq2">
+                                <rect key="frame" x="114" y="487" width="127" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="05:40 PM, Dec 21 , 2025" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWv-0p-hM3">
+                                <rect key="frame" x="115" y="518" width="181" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.66432425900000003" green="0.56125193760000003" blue="0.41383243060000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="On the Way " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKv-sq-0JJ">
+                                <rect key="frame" x="115" y="557" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="05:44 PM, Dec 21 , 2025" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRd-Qh-GDo">
+                                <rect key="frame" x="115" y="580" width="181" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.66432425900000003" green="0.56125193760000003" blue="0.41383243060000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="06:03 PM, Dec 21 , 2025" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U13-An-U86">
+                                <rect key="frame" x="114" y="641" width="181" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.66432425900000003" green="0.56125193760000003" blue="0.41383243060000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4Zg-05-vX6">
+                                <rect key="frame" x="90" y="513" width="17" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HI2-Xa-6FV">
+                                <rect key="frame" x="90" y="575" width="17" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UnN-cu-Esv">
+                                <rect key="frame" x="90" y="637" width="17" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92S-Zz-FdH">
+                                <rect key="frame" x="115" y="619" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="H25-7V-54Q"/>
+                        <color key="backgroundColor" name="View"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ry8-Pg-1mM"/>
+                    <connections>
+                        <outlet property="confirmButton" destination="hn2-Mn-fIs" id="qAT-DY-oVt"/>
+                        <outlet property="deliveredView" destination="sJb-Xr-IEp" id="n22-gB-8iD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Tm-yx-l3f" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="873" y="0.0"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Tracking" width="736" height="709"/>
+        <image name="clock" catalog="system" width="128" height="123"/>
+        <namedColor name="LightGreen">
+            <color red="0.67843137254901964" green="0.75686274509803919" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="View">
+            <color red="0.96862745098039216" green="0.96078431372549022" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
