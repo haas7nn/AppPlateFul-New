@@ -36,7 +36,7 @@ final class ToBeApprovedViewController: UIViewController {
        private func configureUI() {
            guard let donation else { return }
 
-           title = donation.title
+           title = "Donation Details"
            donationDesc.text = donation.description
            donator.text = "Loading…"
 

@@ -26,8 +26,9 @@ class showPickupInfoDetailsViewController: UIViewController {
         }
 
         private func configureUI() {
+            title = "Donation Details"
             guard let donation else { return }
-
+            
             donator.text = "Loading…"
 
             UserService.shared.fetchUser(by: donation.donorId) { [weak self] user in
