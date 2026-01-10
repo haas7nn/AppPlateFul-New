@@ -34,10 +34,18 @@ class showPendingDonationDetailsViewController: UIViewController {
 
             title = "Donation Details"
 
-            donator.text = donation.donorName
+            donator.text = "Loading…"
+
+            UserService.shared.fetchUser(by: donation.donorId) { [weak self] user in
+                DispatchQueue.main.async {
+                    self?.donator.text = user?.name ?? "Unknown Donor"
+                }
+            }
+
+            
             donationDesc.text = donation.description
             qty.text = donation.quantity
-            icon.image = UIImage(systemName: donation.imageRef)
+            loadDonorImage()
 
             if let expiry = donation.expiryDate {
                 exp.text = formatDate(expiry)
@@ -48,7 +56,14 @@ class showPendingDonationDetailsViewController: UIViewController {
             donationDesc.numberOfLines = 0
             donationDesc.lineBreakMode = .byWordWrapping
         }
+    private func loadDonorImage() {
+        guard let donation else { return }
 
+        UserService.shared.fetchUserImage(userId: donation.donorId) { [weak self] imageRef in
+            let name = imageRef ?? "person.circle.fill"
+            self?.icon.image = UIImage(systemName: name)
+        }
+    }
         private func formatDate(_ date: Date) -> String {
             let df = DateFormatter()
             df.dateStyle = .medium
