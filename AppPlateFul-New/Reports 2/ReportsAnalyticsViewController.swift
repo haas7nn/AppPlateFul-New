@@ -7,24 +7,31 @@
 
 import UIKit
 
-class ReportsAnalyticsViewController: UIViewController {
-    
+/// Displays a quick "Reports & Analytics" dashboard using programmatic UI.
+/// Shows KPI cards (totals, activity counts) and a button to navigate to detailed breakdown reports.
+final class ReportsAnalyticsViewController: UIViewController {
+
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
         title = "Reports & Analytics"
         view.backgroundColor = UIColor(red: 0.969, green: 0.953, blue: 0.929, alpha: 1)
+
         setupUI()
     }
-    
-    func setupUI() {
-        // Main panel
+
+    // MARK: - UI Setup
+    /// Builds a rounded panel containing KPI cards in a grid + a navigation button.
+    private func setupUI() {
+        // Main rounded panel container
         let panel = UIView()
         panel.backgroundColor = UIColor(red: 0.969, green: 0.953, blue: 0.929, alpha: 1)
         panel.layer.cornerRadius = 35
         panel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(panel)
-        
-        // Cards data
+
+        // Static demo metrics (can be replaced with real analytics later)
         let cardsData: [(title: String, value: String, subtitle: String)] = [
             ("Total Donations", "1,234", "all time"),
             ("Completed Deliveries", "892", "this month"),
@@ -32,16 +39,16 @@ class ReportsAnalyticsViewController: UIViewController {
             ("Active NGOs", "24", "registered"),
             ("Active Users", "3,456", "online now")
         ]
-        
-        // Create cards
+
+        // Create KPI cards
         var cards: [UIView] = []
         for data in cardsData {
             let card = createCard(title: data.title, value: data.value, subtitle: data.subtitle)
             panel.addSubview(card)
             cards.append(card)
         }
-        
-        // Button
+
+        // CTA button to open the detailed reports screen
         let button = UIButton(type: .system)
         button.setTitle("View Detailed Reports", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
@@ -51,43 +58,47 @@ class ReportsAnalyticsViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(viewDetailedReportsTapped), for: .touchUpInside)
         panel.addSubview(button)
-        
-        // Layout
+
+        // Layout strategy:
+        // - Panel fills most of the screen with padding
+        // - Cards arranged in a grid (2 columns across multiple rows)
+        // - Last row is split: one KPI card + one button (equal widths)
         NSLayoutConstraint.activate([
+            // Panel constraints
             panel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             panel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             panel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             panel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            
-            // Row 1
+
+            // Row 1 (Card 0 left, Card 1 right)
             cards[0].topAnchor.constraint(equalTo: panel.topAnchor, constant: 20),
             cards[0].leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 16),
             cards[0].heightAnchor.constraint(equalToConstant: 130),
-            
+
             cards[1].topAnchor.constraint(equalTo: panel.topAnchor, constant: 20),
             cards[1].trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -16),
             cards[1].leadingAnchor.constraint(equalTo: cards[0].trailingAnchor, constant: 16),
             cards[1].widthAnchor.constraint(equalTo: cards[0].widthAnchor),
             cards[1].heightAnchor.constraint(equalToConstant: 130),
-            
-            // Row 2
+
+            // Row 2 (Card 2 left, Card 3 right)
             cards[2].topAnchor.constraint(equalTo: cards[0].bottomAnchor, constant: 16),
             cards[2].leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 16),
             cards[2].widthAnchor.constraint(equalTo: cards[0].widthAnchor),
             cards[2].heightAnchor.constraint(equalToConstant: 130),
-            
+
             cards[3].topAnchor.constraint(equalTo: cards[1].bottomAnchor, constant: 16),
             cards[3].trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -16),
             cards[3].leadingAnchor.constraint(equalTo: cards[2].trailingAnchor, constant: 16),
             cards[3].widthAnchor.constraint(equalTo: cards[2].widthAnchor),
             cards[3].heightAnchor.constraint(equalToConstant: 130),
-            
-            // Row 3
+
+            // Row 3 (Card 4 left, Button right)
             cards[4].topAnchor.constraint(equalTo: cards[2].bottomAnchor, constant: 16),
             cards[4].leadingAnchor.constraint(equalTo: panel.leadingAnchor, constant: 16),
             cards[4].widthAnchor.constraint(equalTo: cards[0].widthAnchor),
             cards[4].heightAnchor.constraint(equalToConstant: 130),
-            
+
             button.topAnchor.constraint(equalTo: cards[3].bottomAnchor, constant: 16),
             button.trailingAnchor.constraint(equalTo: panel.trailingAnchor, constant: -16),
             button.leadingAnchor.constraint(equalTo: cards[4].trailingAnchor, constant: 16),
@@ -95,53 +106,60 @@ class ReportsAnalyticsViewController: UIViewController {
             button.heightAnchor.constraint(equalToConstant: 130)
         ])
     }
-    
-    func createCard(title: String, value: String, subtitle: String) -> UIView {
+
+    // MARK: - Card Factory
+    /// Creates a single KPI card that shows:
+    /// - title (what the metric is)
+    /// - value (big number)
+    /// - subtitle (timeframe/context)
+    private func createCard(title: String, value: String, subtitle: String) -> UIView {
         let card = UIView()
         card.backgroundColor = .white
         card.layer.cornerRadius = 24
         card.translatesAutoresizingMaskIntoConstraints = false
-        
+
         let titleLabel = UILabel()
         titleLabel.text = title
         titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
         titleLabel.textColor = .black
         titleLabel.textAlignment = .center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         let valueLabel = UILabel()
         valueLabel.text = value
         valueLabel.font = UIFont.boldSystemFont(ofSize: 40)
         valueLabel.textColor = UIColor(red: 0.898, green: 0.224, blue: 0.208, alpha: 1)
         valueLabel.textAlignment = .center
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         let subtitleLabel = UILabel()
         subtitleLabel.text = subtitle
         subtitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         subtitleLabel.textColor = .gray
         subtitleLabel.textAlignment = .center
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         card.addSubview(titleLabel)
         card.addSubview(valueLabel)
         card.addSubview(subtitleLabel)
-        
+
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: card.topAnchor, constant: 14),
             titleLabel.centerXAnchor.constraint(equalTo: card.centerXAnchor),
-            
+
             valueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             valueLabel.centerXAnchor.constraint(equalTo: card.centerXAnchor),
-            
+
             subtitleLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: 6),
             subtitleLabel.centerXAnchor.constraint(equalTo: card.centerXAnchor)
         ])
-        
+
         return card
     }
-    
-    @objc func viewDetailedReportsTapped() {
+
+    // MARK: - Navigation
+    /// Navigates to the detailed breakdown screen (more granular report lists).
+    @objc private func viewDetailedReportsTapped() {
         let storyboard = UIStoryboard(name: "Reports", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "BreakdownViewController")
         navigationController?.pushViewController(vc, animated: true)
