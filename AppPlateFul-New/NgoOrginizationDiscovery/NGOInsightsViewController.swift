@@ -21,16 +21,16 @@ final class NGOInsightsViewController: UIViewController {
     @IBOutlet weak var communityReviewValueLabel: UILabel!
     @IBOutlet weak var leaveReviewButton: UIButton!
 
-    // Passed in from previous screen
+    
     var ngoId: String = ""
     var ngoName: String = ""
-    var ngoImageName: String = ""   // Asset OR URL
+    var ngoImageName: String = ""
     var ngoRating: Double = 0.0
     var ngoReviews: Int = 0
     var isVerified: Bool = false
     var ngoAddress: String = ""
 
-    // Firestore-driven (fallback defaults)
+    
     var openingHours: String = "8:00AM – 9:00PM"
     var averagePickupTime: String = "40 mins"
     var collectedDonations: String = "99 this month"
@@ -44,20 +44,15 @@ final class NGOInsightsViewController: UIViewController {
 
         title = "Feedback & Rating"
         configureNavigationBar()
-
         communityReviewValueLabel.numberOfLines = 0
-
-        // show passed values fast
         applyUI()
-
-        // then load real values
         fetchInsightsIfPossible()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        // ✅ hide tab bar on this screen
+        // hide tab bar on this screen
         tabBarController?.tabBar.isHidden = true
 
         // refresh when coming back
@@ -67,7 +62,7 @@ final class NGOInsightsViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        // ✅ show tab bar again when leaving
+        // show tab bar again when leaving
         tabBarController?.tabBar.isHidden = false
     }
 
@@ -89,6 +84,8 @@ final class NGOInsightsViewController: UIViewController {
     }
 
     // MARK: - Firestore
+    
+    //fetchs ngo insights data from firestore if id exists
     private func fetchInsightsIfPossible() {
         let id = ngoId.trimmingCharacters(in: .whitespacesAndNewlines)
         if id.isEmpty { return }
@@ -98,6 +95,7 @@ final class NGOInsightsViewController: UIViewController {
             .getDocument { [weak self] snap, error in
                 guard let self else { return }
 
+                //stops if theres an error
                 if let error = error {
                     print("NGOInsights fetch error:", error.localizedDescription)
                     return
@@ -121,7 +119,7 @@ final class NGOInsightsViewController: UIViewController {
                 else if let r = data["rating"] as? Int { self.ngoRating = Double(r) }
                 else if let r = data["rating"] as? String, let rr = Double(r) { self.ngoRating = rr }
 
-                // ratingsCount (your Firestore uses ratingsCount)
+                // ratingsCount
                 if let c = data["ratingsCount"] as? Int { self.ngoReviews = c }
                 else if let c = data["ratingsCount"] as? Double { self.ngoReviews = Int(c) }
                 else if let c = data["ratingsCount"] as? String, let cc = Int(c) { self.ngoReviews = cc }
@@ -134,7 +132,7 @@ final class NGOInsightsViewController: UIViewController {
                     self.isVerified = (s == "approved" || s == "verified" || s == "active")
                 }
 
-                // address/area
+                // address
                 let area = (data["area"] as? String) ?? ""
                 let address = (data["address"] as? String) ?? ""
                 if !address.isEmpty {
@@ -234,6 +232,7 @@ final class NGOInsightsViewController: UIViewController {
         return components.first?.trimmingCharacters(in: .whitespaces) ?? "Hamad Town"
     }
 
+    //decodes html text to plain text
     private func decodeHTML(_ text: String) -> String {
         guard let data = text.data(using: .utf8) else { return text }
         let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
