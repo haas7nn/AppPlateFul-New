@@ -1,58 +1,50 @@
 import UIKit
 
-// custom collection view cell used to display an NGO card
+//collection view cell that displays the ngos info
 final class FavoriteNGOCell: UICollectionViewCell {
 
-    // UI elements connected from the storyboard.
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var starContainerView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var learnMoreButton: UIButton!
     @IBOutlet weak var verifiedBadgeView: UIView!
-
-    // called when the button is tapped
+    
+    //notifies the vc when button is tapped
     var onLearnMoreTapped: (() -> Void)?
 
-    // stops image loading when cell is reused
+    //cancels image loading when cell is reused
     private var imageToken: String?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        // image attributes
         setupShadow()
+
         logoImageView.clipsToBounds = true
         logoImageView.contentMode = .scaleAspectFit
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-
-        // cancels any ongoing image loading when the cell is reused
+        // resets cell before reusing
         ImageLoader.shared.cancel(imageToken)
         imageToken = nil
 
-        // Shows a placeholder image.
         logoImageView.image = UIImage(named: "ngo_placeholder") ?? UIImage(systemName: "photo")
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.clipsToBounds = true
     }
 
-    // sets ngo image
+        //sets image using url or asset
     func configureImage(imageNameOrURL: String) {
-
-        // Cleans the image reference before using it.
         let v = imageNameOrURL.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        // Placeholder image shown while loading or if the image fails.
         let placeholder = UIImage(named: "ngo_placeholder") ?? UIImage(systemName: "photo")
-
-        // Loads the image from the internet if the value is a URL.
+        
+        //checks if image path is a url, if not, it loads an asset
         if v.lowercased().hasPrefix("http://") || v.lowercased().hasPrefix("https://") {
             imageToken = ImageLoader.shared.load(v, into: logoImageView, placeholder: placeholder)
         } else {
-            // Loads a local image asset if the value is not a URL.
             ImageLoader.shared.cancel(imageToken)
             imageToken = nil
             logoImageView.image = UIImage(named: v) ?? placeholder
@@ -60,8 +52,7 @@ final class FavoriteNGOCell: UICollectionViewCell {
             logoImageView.clipsToBounds = true
         }
     }
-
-    // Adds rounded corners and a shadow to the cell for visual styling.
+// rounded corners and shadow of cell
     private func setupShadow() {
         contentView.layer.cornerRadius = 16
         contentView.layer.masksToBounds = true
@@ -72,8 +63,7 @@ final class FavoriteNGOCell: UICollectionViewCell {
         layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.masksToBounds = false
     }
-
-    // Triggers the callback when the Learn More button is tapped.
+//called when learn more button is tapped
     @IBAction func learnMoreTapped(_ sender: UIButton) {
         onLearnMoreTapped?()
     }
