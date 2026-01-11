@@ -46,23 +46,23 @@ struct DiscoveryNGO {
         self.address = address
     }
 
-    // Used when fetching with getDocuments()
+    // initializes ngo from a firestore query document
     init?(doc: QueryDocumentSnapshot) {
         self.init(doc: doc as DocumentSnapshot)
     }
 
-    // Used when fetching a single document
+    // initializes ngo from a single firestore document
     init?(doc: DocumentSnapshot) {
         let data = doc.data() ?? [:]
 
-        // Name (supports multiple keys)
+        // Name
         let name = data["name"] as? String
             ?? data["orgName"] as? String
             ?? data["organizationName"] as? String
             ?? ""
         if name.isEmpty { return nil }
 
-        // Description (supports multiple keys)
+        // Description
         let desc = data["desc"] as? String
             ?? data["tagline"] as? String
             ?? data["description"] as? String
@@ -70,13 +70,13 @@ struct DiscoveryNGO {
             ?? data["bio"] as? String
             ?? ""
 
-        // Full description (supports multiple keys)
+        // Full description
         let fullDescription = data["fullDescription"] as? String
             ?? data["details"] as? String
             ?? data["fullDetails"] as? String
             ?? desc
 
-        // Verified (supports multiple keys + types)
+        // Verified 
         let verified: Bool = {
             if let b = data["verified"] as? Bool { return b }
             if let b = data["isVerified"] as? Bool { return b }
