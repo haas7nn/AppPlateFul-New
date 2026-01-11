@@ -36,7 +36,7 @@ final class OrganizationDiscoveryViewController: UIViewController {
         title = "Organization Discovery"
         configureNavigationBar()
 
-        // Top spacing fix (safe-area / nav-bar push-down)
+        // Top spacing fix , prevents nav bar being pushed down
         navigationController?.navigationBar.isTranslucent = true
         edgesForExtendedLayout = [.top]
         extendedLayoutIncludesOpaqueBars = true
