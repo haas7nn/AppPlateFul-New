@@ -8,15 +8,18 @@
 import UIKit
 import FirebaseFirestore
 
-// Displays a list of NGOs pending review (approved = false)
-class NGOReviewListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+/// Admin screen that lists NGOs pending review.
+/// Uses a Firestore snapshot listener so the list updates live when new requests arrive.
+final class NGOReviewListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    // MARK: - IBOutlets
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var emptyStateLabel: UILabel!
+    // MARK: - Outlets
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var emptyStateLabel: UILabel!
 
     // MARK: - Data
     private var ngoList: [NGOReviewItem] = []
+
+    // MARK: - Firestore
     private let db = Firestore.firestore()
     private var listener: ListenerRegistration?
 
@@ -24,42 +27,49 @@ class NGOReviewListViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "NGO Review"
+        setupNavigation()
+        setupTableView()
+        listenPending()
+    }
 
-        // Adds a close button for both push and modal cases
+    deinit {
+        // Important: remove the snapshot listener to avoid leaks and duplicate listeners.
+        listener?.remove()
+    }
+
+    // MARK: - Setup
+    private func setupNavigation() {
+        // Close button works for both push navigation and modal presentation.
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "Close",
             style: .done,
             target: self,
             action: #selector(closeTapped)
         )
-
-        // Table view setup
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = 70
-        tableView.tableFooterView = UIView()
-
-        // Starts Firestore listener for pending NGOs
-        listenPending()
     }
 
-    // Removes Firestore listener when controller is deallocated
-    deinit {
-        listener?.remove()
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        tableView.rowHeight = 70
+        tableView.tableFooterView = UIView()
     }
 
     // MARK: - Actions
-    // Closes the screen depending on how it was presented
     @objc private func closeTapped() {
+        // If pushed inside a navigation stack -> pop.
         if let nav = navigationController, nav.viewControllers.count > 1 {
             nav.popViewController(animated: true)
         } else {
+            // If presented modally -> dismiss.
             dismiss(animated: true)
         }
     }
 
     // MARK: - Firestore Listener
-    // Listens for NGOs where approved is false, ordered by createdAt
+    /// Listens for NGOs where `approved == false`, ordered by newest first.
+    /// Snapshot listener provides real-time updates without manual refresh.
     private func listenPending() {
         listener?.remove()
 
@@ -71,24 +81,27 @@ class NGOReviewListViewController: UIViewController, UITableViewDelegate, UITabl
             guard let self = self else { return }
 
             if let err = err {
-                // Handles Firestore query failure (e.g., missing composite index)
+                // Common cause: Firestore requires a composite index for certain queries.
                 print("Firestore error:", err.localizedDescription)
                 self.ngoList = []
                 self.reloadUI()
                 return
             }
 
-            // Maps documents into NGOReviewItem objects
+            // Convert Firestore docs into app models (invalid docs are ignored by init?).
             self.ngoList = snap?.documents.compactMap { NGOReviewItem(doc: $0) } ?? []
             self.reloadUI()
         }
     }
 
-    // MARK: - UI Updates
-    // Refreshes table data and empty state
+    // MARK: - UI
     private func reloadUI() {
         tableView.reloadData()
+
+        // Empty state when there are no pending reviews.
         emptyStateLabel.isHidden = !ngoList.isEmpty
+
+        // Optional: disable scrolling when empty to keep UX clean.
         tableView.isScrollEnabled = !ngoList.isEmpty
     }
 
@@ -101,7 +114,7 @@ class NGOReviewListViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "NGOCell", for: indexPath)
         let ngo = ngoList[indexPath.row]
 
-        // Default content before loading image
+        // Default content first (fast), then update logo asynchronously.
         var content = cell.defaultContentConfiguration()
         content.text = ngo.name
         content.secondaryText = ngo.status
@@ -111,20 +124,19 @@ class NGOReviewListViewController: UIViewController, UITableViewDelegate, UITabl
         content.imageProperties.cornerRadius = 10
         cell.contentConfiguration = content
 
-        // Loads logo image asynchronously
+        // Load logo (cached + async). Update only if the same row is still visible.
         ImageLoader.shared.load(ngo.logoURL) { img in
             DispatchQueue.main.async {
-                // Updates only if the cell is still visible
-                if let cell = tableView.cellForRow(at: indexPath) {
-                    var updated = cell.defaultContentConfiguration()
-                    updated.text = ngo.name
-                    updated.secondaryText = ngo.status
-                    updated.secondaryTextProperties.color = .systemOrange
-                    updated.image = img ?? UIImage(systemName: "photo")
-                    updated.imageProperties.maximumSize = CGSize(width: 50, height: 50)
-                    updated.imageProperties.cornerRadius = 10
-                    cell.contentConfiguration = updated
-                }
+                guard let visibleCell = tableView.cellForRow(at: indexPath) else { return }
+
+                var updated = visibleCell.defaultContentConfiguration()
+                updated.text = ngo.name
+                updated.secondaryText = ngo.status
+                updated.secondaryTextProperties.color = .systemOrange
+                updated.image = img ?? UIImage(systemName: "photo")
+                updated.imageProperties.maximumSize = CGSize(width: 50, height: 50)
+                updated.imageProperties.cornerRadius = 10
+                visibleCell.contentConfiguration = updated
             }
         }
 
@@ -139,16 +151,17 @@ class NGOReviewListViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     // MARK: - Navigation
-    // Opens detail screen for selected NGO
+    /// Opens the detail screen and removes the item locally once a decision is made.
     private func openDetail(for ngo: NGOReviewItem) {
         let storyboard = UIStoryboard(name: "NGOReview", bundle: nil)
+
         let vc = storyboard.instantiateViewController(
             withIdentifier: "NGOReviewDetailViewController"
         ) as! NGOReviewDetailViewController
 
         vc.ngo = ngo
 
-        // Removes the NGO from the list after approval/rejection
+        // After approve/reject, remove from this list for immediate UX feedback.
         vc.onDecision = { [weak self] id in
             self?.ngoList.removeAll { $0.id == id }
             self?.reloadUI()
