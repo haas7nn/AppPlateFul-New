@@ -56,13 +56,13 @@ final class NGODetailsViewController: UIViewController {
         checkIfFavorite()
     }
 
-    // Hide tab bar ONLY on this screen
+    // hide tab bar on this screen
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
     }
 
-    // Bring tab bar back when leaving this screen
+    // bring tab bar back when leaving this screen
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tabBarController?.tabBar.isHidden = false
@@ -84,6 +84,7 @@ final class NGODetailsViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .systemBlue
     }
 
+    //ngo data
     private func configureUI() {
         nameLabel.text = ngoName
         ratingLabel.text = "\(ngoRating) (\(ngoReviews))"
@@ -131,7 +132,7 @@ final class NGODetailsViewController: UIViewController {
         }
     }
 
-    // MARK: - Favorites (same path as Favorites page)
+    // MARK: - Favorites
     private func favDocRef() -> DocumentReference {
         db.collection("users")
             .document(userId)
@@ -158,6 +159,7 @@ final class NGODetailsViewController: UIViewController {
         }
     }
 
+    //update btn ui based on state
     private func updateFavoriteButton() {
         if isFavorite {
             addToFavoritesButton.setTitle("Remove from Favorites", for: .normal)
@@ -168,6 +170,7 @@ final class NGODetailsViewController: UIViewController {
         }
     }
 
+    // adds this ngo to firestore fav
     private func addFavorite(completion: @escaping () -> Void) {
         guard ngoId.isEmpty == false else { return }
 
@@ -181,6 +184,7 @@ final class NGODetailsViewController: UIViewController {
         }
     }
 
+    //removes from fav
     private func removeFavorite(completion: @escaping () -> Void) {
         guard ngoId.isEmpty == false else { return }
 
@@ -193,6 +197,8 @@ final class NGODetailsViewController: UIViewController {
     }
 
     // MARK: - Actions
+    
+    //handles add/remove fav btn tapped
     @IBAction func addToFavoritesTapped(_ sender: UIButton) {
         if ngoId.isEmpty { return }
 
@@ -220,6 +226,7 @@ final class NGODetailsViewController: UIViewController {
         }
     }
 
+    //opens reviews screen of this ngo
     @IBAction func reviewsTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "NgoOrginzationDiscovery", bundle: nil)
         if let reviewsVC = storyboard.instantiateViewController(withIdentifier: "NGOReviewsViewController") as? NGOReviewsViewController {
@@ -236,6 +243,7 @@ final class NGODetailsViewController: UIViewController {
         }
     }
 
+    //shows call
     @IBAction func phoneTapped(_ sender: UIButton) {
         let number = ngoPhone.trimmingCharacters(in: .whitespacesAndNewlines)
 
@@ -259,6 +267,7 @@ final class NGODetailsViewController: UIViewController {
         presentActionSheet(alert, from: sender)
     }
 
+    //shows messaging
     @IBAction func messageTapped(_ sender: UIButton) {
         let number = ngoPhone.trimmingCharacters(in: .whitespacesAndNewlines)
 
@@ -282,6 +291,7 @@ final class NGODetailsViewController: UIViewController {
         presentActionSheet(alert, from: sender)
     }
 
+    //confirmation alert
     private func showFavoriteAlert(message: String) {
         let alert = UIAlertController(title: "Favorites", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
