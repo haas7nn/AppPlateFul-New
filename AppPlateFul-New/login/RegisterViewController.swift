@@ -1,23 +1,36 @@
+// AppPlateFul // 
+// 202301686 - Hasan 
+//
+
+
 import UIKit
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+/// Registration screen responsible for:
+/// - collecting user info (name, email, password)
+/// - validating inputs (empty fields, password rules)
+/// - creating FirebaseAuth account
+/// - saving the user profile in Firestore (users/{uid})
+/// - routing to the correct app flow after success
 final class RegisterViewController: UIViewController {
 
-    // MARK: - IBOutlets
-    @IBOutlet weak var nameTF: UITextField!
-    @IBOutlet weak var emailTF: UITextField!
-    @IBOutlet weak var passTF: UITextField!
-    @IBOutlet weak var confirmTF: UITextField!
-    @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var loginTabButton: UIButton!
-    @IBOutlet weak var registerTabButton: UIButton!
-    @IBOutlet weak var cardView: UIView!
+    // MARK: - Outlets
+    @IBOutlet private weak var nameTF: UITextField!
+    @IBOutlet private weak var emailTF: UITextField!
+    @IBOutlet private weak var passTF: UITextField!
+    @IBOutlet private weak var confirmTF: UITextField!
+    @IBOutlet private weak var registerButton: UIButton!
+    @IBOutlet private weak var loginTabButton: UIButton!
+    @IBOutlet private weak var registerTabButton: UIButton!
+    @IBOutlet private weak var cardView: UIView!
 
+    // MARK: - Firebase
     private let db = Firestore.firestore()
 
-    // Default role (change later if you add role selection UI)
+    /// Default role for new accounts.
+    /// If you later add role selection UI, this will come from the selected option.
     private let role: UserRole = .donor
 
     // MARK: - Lifecycle
@@ -25,31 +38,38 @@ final class RegisterViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
 
+        // Safety: ensure the register button stays tappable above other views if needed.
         registerButton.isUserInteractionEnabled = true
         registerButton.superview?.bringSubviewToFront(registerButton)
     }
 
+    /// Hides the navigation bar because the screen uses a custom header layout.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
-    // MARK: - Setup UI
+    // MARK: - UI Setup
+    /// Applies styling to the card, text fields, and buttons.
     private func setupUI() {
+        // Card styling (rounded + shadow)
         cardView.layer.cornerRadius = 24
         cardView.layer.shadowColor = UIColor.black.cgColor
         cardView.layer.shadowOpacity = 0.1
         cardView.layer.shadowOffset = CGSize(width: 0, height: 4)
         cardView.layer.shadowRadius = 12
 
+        // Text fields (consistent look + icons)
         styleTextField(nameTF, placeholder: "Full Name", icon: "person.fill")
         styleTextField(emailTF, placeholder: "Email", icon: "envelope.fill")
         styleTextField(passTF, placeholder: "Password", icon: "lock.fill")
         styleTextField(confirmTF, placeholder: "Confirm Password", icon: "lock.shield.fill")
 
+        // Password fields should hide text
         passTF.isSecureTextEntry = true
         confirmTF.isSecureTextEntry = true
 
+        // Email/password inputs shouldn’t be auto-corrected or auto-capitalized
         emailTF.autocapitalizationType = .none
         emailTF.autocorrectionType = .no
         passTF.autocapitalizationType = .none
@@ -57,20 +77,28 @@ final class RegisterViewController: UIViewController {
         confirmTF.autocapitalizationType = .none
         confirmTF.autocorrectionType = .no
 
+        // Register button styling (rounded + subtle shadow)
         registerButton.layer.cornerRadius = 16
         registerButton.layer.shadowColor = UIColor(red: 0.69, green: 0.77, blue: 0.61, alpha: 1).cgColor
         registerButton.layer.shadowOpacity = 0.4
         registerButton.layer.shadowOffset = CGSize(width: 0, height: 4)
         registerButton.layer.shadowRadius = 8
 
+        // Tab buttons styling
         loginTabButton.layer.cornerRadius = 12
         registerTabButton.layer.cornerRadius = 12
 
+        // Tap outside to dismiss keyboard (do not block button touches)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
     }
 
+    /// Styles a text field with:
+    /// - border + corner radius
+    /// - placeholder color
+    /// - left icon
+    /// - right padding
     private func styleTextField(_ textField: UITextField, placeholder: String, icon: String) {
         textField.layer.cornerRadius = 14
         textField.layer.borderWidth = 1.5
@@ -94,16 +122,23 @@ final class RegisterViewController: UIViewController {
         textField.leftView = leftContainer
         textField.leftViewMode = .always
 
+        // Padding on the right so text doesn’t touch the edge
         textField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 20))
         textField.rightViewMode = .always
     }
 
+    /// Dismisses the keyboard when user taps outside inputs.
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
 
-    // MARK: - IBActions
-    @IBAction func registerTapped(_ sender: UIButton) {
+    // MARK: - Actions
+    /// Main registration flow:
+    /// 1) validate inputs
+    /// 2) create FirebaseAuth user
+    /// 3) save user profile to Firestore
+    /// 4) route using AuthRouter
+    @IBAction private func registerTapped(_ sender: UIButton) {
         animateButton(sender)
 
         let name = (nameTF.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
@@ -111,6 +146,7 @@ final class RegisterViewController: UIViewController {
         let pass  = (passTF.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         let conf  = (confirmTF.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
 
+        // Local validation (fast feedback before network calls)
         guard !name.isEmpty else { shakeRecognize(nameTF, "Please enter your name"); return }
         guard !email.isEmpty else { shakeRecognize(emailTF, "Please enter your email"); return }
         guard pass.count >= 6 else { shakeRecognize(passTF, "Password must be at least 6 characters"); return }
@@ -118,6 +154,7 @@ final class RegisterViewController: UIViewController {
 
         setLoading(true)
 
+        // Create account in Firebase Authentication
         Auth.auth().createUser(withEmail: email, password: pass) { [weak self] result, error in
             guard let self else { return }
 
@@ -135,11 +172,11 @@ final class RegisterViewController: UIViewController {
 
             let uid = firebaseUser.uid
 
-            // Match your User.swift parser expectations:
-            // - displayName OR name (we write both to be safe)
-            // - role must be lowercase: donor/ngo/admin
-            // - status checked in AuthRouter
-            // - createdAt used for joinDate formatting
+            // Save profile to Firestore using keys that the rest of the app expects.
+            // Notes:
+            // - role should be lowercase (donor/ngo/admin)
+            // - status is checked later inside AuthRouter (active/inactive)
+            // - createdAt helps with “join date” formatting and sorting
             let data: [String: Any] = [
                 "uid": uid,
                 "displayName": name,
@@ -159,6 +196,7 @@ final class RegisterViewController: UIViewController {
                     return
                 }
 
+                // After successful creation, route the user into the app.
                 self.showAlert(title: "Done", message: "Account created successfully!") { [weak self] in
                     guard let self else { return }
                     AuthRouter.shared.routeAfterLogin(from: self)
@@ -167,11 +205,13 @@ final class RegisterViewController: UIViewController {
         }
     }
 
-    @IBAction func backToLoginTapped(_ sender: UIButton) {
+    /// Returns to login screen (tab / back behavior).
+    @IBAction private func backToLoginTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
 
-    // MARK: - Loading
+    // MARK: - Loading State
+    /// Disables interactions while the registration network request is running.
     private func setLoading(_ isLoading: Bool) {
         DispatchQueue.main.async {
             self.registerButton.isEnabled = !isLoading
@@ -180,7 +220,8 @@ final class RegisterViewController: UIViewController {
         }
     }
 
-    // MARK: - Animations
+    // MARK: - Animations & Feedback
+    /// Simple press animation for nicer UI feedback.
     private func animateButton(_ button: UIButton) {
         UIView.animate(withDuration: 0.1, animations: {
             button.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
@@ -189,11 +230,13 @@ final class RegisterViewController: UIViewController {
         }
     }
 
+    /// Helper: shake the incorrect field and show a short message.
     private func shakeRecognize(_ tf: UITextField, _ msg: String) {
         shakeTextField(tf)
         showAlert(title: "Oops!", message: msg)
     }
 
+    /// Shakes a field and highlights its border red for a moment.
     private func shakeTextField(_ textField: UITextField) {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
         animation.timingFunction = CAMediaTimingFunction(name: .linear)
@@ -207,7 +250,8 @@ final class RegisterViewController: UIViewController {
         }
     }
 
-    // MARK: - Alert
+    // MARK: - Alerts
+    /// Displays an alert. Optional `onOk` lets us run an action after the user taps OK.
     private func showAlert(title: String, message: String, onOk: (() -> Void)? = nil) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
