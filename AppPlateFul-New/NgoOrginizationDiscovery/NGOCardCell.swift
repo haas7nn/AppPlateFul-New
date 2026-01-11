@@ -25,7 +25,7 @@ class NGOCardCell: UICollectionViewCell {
     }
 
     private func setupUI() {
-        // Card
+        // Card style/layout design
         contentView.layer.cornerRadius = 16
         contentView.layer.masksToBounds = true
 
@@ -36,18 +36,17 @@ class NGOCardCell: UICollectionViewCell {
         layer.shadowOpacity = 0.1
         layer.masksToBounds = false
 
-        // Logo (FIT inside the box)
+        
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.clipsToBounds = true
         logoImageView.backgroundColor = .white
-
-        // Optional: keeps logos from touching edges if your image view fills the whole area
         logoImageView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
-        // Button
+        
         learnMoreButton.addTarget(self, action: #selector(learnMoreTapped), for: .touchUpInside)
     }
 
+    //handled learn more btn with animation
     @objc private func learnMoreTapped() {
         UIView.animate(withDuration: 0.1, animations: {
             self.learnMoreButton.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
@@ -57,6 +56,7 @@ class NGOCardCell: UICollectionViewCell {
             }
         }
 
+        //notifies delegate that btn was tapped
         delegate?.didTapLearnMore(at: self)
     }
 
