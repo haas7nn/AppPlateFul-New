@@ -1,15 +1,20 @@
 import UIKit
 import FirebaseFirestore
 
+//displays the list of ngos saved as fav by the user
 final class FavoriteNGOsViewController: UIViewController,
                                        UICollectionViewDataSource,
                                        UICollectionViewDelegateFlowLayout {
 
     @IBOutlet private weak var collectionView: UICollectionView!
 
+    //firestore db ref
     private let db = Firestore.firestore()
+    
+    //list of fav ngos from firestore
     private var favorites: [FavoriteNGO] = []
 
+    //gets loggedin user id and stop execution if no user is logged in
     private var userId: String {
         guard let id = UserSession.shared.userId else {
             fatalError("userId accessed but no user is logged in")
@@ -20,15 +25,17 @@ final class FavoriteNGOsViewController: UIViewController,
     private let gridSpacing: CGFloat = 16
     private let columns: CGFloat = 2
 
+    //avoids unneccasry reloads
     private var didFetchOnce = false
     private var didReloadAfterGettingSize = false
 
+    //loads the screen
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("🔥 FavoriteNGOsViewController viewDidLoad")
-        print("✅ collectionView is nil?", collectionView == nil)
-        print("✅ frame:", collectionView.frame)
+        print("FavoriteNGOsViewController viewDidLoad")
+        print("collectionView is nil?", collectionView == nil)
+        print("frame:", collectionView.frame)
 
         title = "Favorite NGOs"
         setupNav()
@@ -43,6 +50,7 @@ final class FavoriteNGOsViewController: UIViewController,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        //fetchs fav only when screen first appears
         if didFetchOnce == false {
             didFetchOnce = true
             fetchFavorites()
@@ -52,15 +60,16 @@ final class FavoriteNGOsViewController: UIViewController,
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        // This ONLY helps after storyboard constraints are fixed.
+        // reloads collection view ehen valid layoout is avalaible
         if didReloadAfterGettingSize { return }
         if collectionView.bounds.height <= 1 { return }
 
         didReloadAfterGettingSize = true
-        print("✅ got size, reloading. bounds:", collectionView.bounds)
+        print("got size, reloading. bounds:", collectionView.bounds)
         collectionView.reloadData()
     }
 
+    //nav bar and back btn behavior
     private func setupNav() {
         navigationItem.hidesBackButton = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -71,6 +80,7 @@ final class FavoriteNGOsViewController: UIViewController,
         )
     }
 
+    //sets how the collection view looks and who controls it
     private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -91,6 +101,7 @@ final class FavoriteNGOsViewController: UIViewController,
         layout.estimatedItemSize = .zero
     }
 
+    //back to donor home
     @objc private func backToDonorHome() {
         guard let nav = navigationController else { return }
 
@@ -101,10 +112,8 @@ final class FavoriteNGOsViewController: UIViewController,
         }
     }
 
+    //fetchs user's fav ngo ids from firestore
     private func fetchFavorites() {
-        print("PATH: users/\(userId)/favorites")
-        print("✅ window nil?:", collectionView.window == nil)
-        print("✅ bounds:", collectionView.bounds)
 
         db.collection("users")
             .document(userId)
@@ -127,7 +136,7 @@ final class FavoriteNGOsViewController: UIViewController,
                     DispatchQueue.main.async {
                         self.collectionView.layoutIfNeeded()
                         self.collectionView.reloadData()
-                        print("✅ visibleCells:", self.collectionView.visibleCells.count)
+                        print("visibleCells:", self.collectionView.visibleCells.count)
                     }
                     return
                 }
@@ -136,6 +145,7 @@ final class FavoriteNGOsViewController: UIViewController,
             }
     }
 
+    //fetchs ngo details using stored fav id
     private func fetchNgoDocs(ids: [String]) {
         let chunks = stride(from: 0, to: ids.count, by: 10).map {
             Array(ids[$0..<min($0 + 10, ids.count)])
@@ -162,37 +172,40 @@ final class FavoriteNGOsViewController: UIViewController,
                 }
         }
 
+        //updates ui after firestore requuests
         group.notify(queue: .main) {
             let dict = Dictionary(uniqueKeysWithValues: all.map { ($0.id, $0) })
             self.favorites = ids.compactMap { dict[$0] }
 
             print("Favorites loaded:", self.favorites.count)
-            print("✅ bounds at reload:", self.collectionView.bounds)
-            print("✅ window nil?:", self.collectionView.window == nil)
+            print("bounds at reload:", self.collectionView.bounds)
+            print("window nil?:", self.collectionView.window == nil)
 
             self.collectionView.layoutIfNeeded()
             self.collectionView.reloadData()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                print("✅ visibleCells after reload:", self.collectionView.visibleCells.count)
+                print("visibleCells after reload:", self.collectionView.visibleCells.count)
             }
         }
     }
 
+    //shows no of fav ngos
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("✅ numberOfItemsInSection:", favorites.count)
+        print("numberOfItemsInSection:", favorites.count)
         return favorites.count
     }
 
+    //conf each ngo cell
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        print("✅ cellForItemAt:", indexPath.item)
+        print("cellForItemAt:", indexPath.item)
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteNGOCell", for: indexPath)
 
         guard let typed = cell as? FavoriteNGOCell else {
-            print("❌ Cell is not FavoriteNGOCell. Fix storyboard class/reuse id.")
+            print("Cell is not FavoriteNGOCell. Fix storyboard class/reuse id.")
             cell.contentView.backgroundColor = .systemRed
             return cell
         }
@@ -211,6 +224,7 @@ final class FavoriteNGOsViewController: UIViewController,
         return typed
     }
 
+    //opens detials screen of the selected ngo
     private func openDetails(for ngo: FavoriteNGO) {
         let sb = UIStoryboard(name: "FavoriteNGOs", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "FavoriteNGODetailsViewController") as! FavoriteNGODetailsViewController
