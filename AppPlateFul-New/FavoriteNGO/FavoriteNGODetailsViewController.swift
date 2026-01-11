@@ -1,6 +1,7 @@
 import UIKit
 import FirebaseFirestore
 
+//vc that shows the details of a selected ngo
 final class FavoriteNGODetailsViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
@@ -13,18 +14,27 @@ final class FavoriteNGODetailsViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
 
+    //ngo object from favoriteNGO
     var ngo: FavoriteNGO!
 
+    //firestore database reference
     private let db = Firestore.firestore()
+    
+    //gets logged in user id and if no user is logged in, stops the app
     private var userId: String {
         guard let id = UserSession.shared.userId else {
             fatalError("userId accessed but no user is logged in")
         }
         return id
     }
+    
+    //cancels image loading when leaving the screen
     private var imageToken: String?
+    
+    //tracks if ngo is marked as a fav
     private var isFavorite = false
 
+    //sets up screen when it loads
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Details"
@@ -38,6 +48,7 @@ final class FavoriteNGODetailsViewController: UIViewController {
         ImageLoader.shared.cancel(imageToken)
     }
 
+    //nav bar appearance
     private func configureNavigationBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -54,12 +65,14 @@ final class FavoriteNGODetailsViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .systemBlue
     }
 
+    //shows ngo info
     private func configureUI() {
         let ngo = self.ngo!
 
         imageView.backgroundColor = .clear
         imageView.contentMode = .scaleAspectFit
 
+        //checks if image path is a url, if not, it loads an asset
         let placeholder = UIImage(named: "ngo_placeholder") ?? UIImage(systemName: "photo")
         imageView.image = placeholder
 
@@ -83,6 +96,8 @@ final class FavoriteNGODetailsViewController: UIViewController {
     }
 
     // MARK: - Favorites (Firestore)
+    
+    //adds fav btn to nav bar
     private func setupFavoriteButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(systemName: "heart"),
@@ -92,11 +107,13 @@ final class FavoriteNGODetailsViewController: UIViewController {
         )
     }
 
+    //update the heart icon based on the favorite status
     private func updateFavoriteIcon() {
         let name = isFavorite ? "heart.fill" : "heart"
         navigationItem.rightBarButtonItem?.image = UIImage(systemName: name)
     }
 
+    //gets firestore reference for this ngo
     private func favoriteDocRef() -> DocumentReference {
         db.collection("users")
             .document(userId)
@@ -104,9 +121,10 @@ final class FavoriteNGODetailsViewController: UIViewController {
             .document(ngo.id) // IMPORTANT: uses ngo doc id from ngo_reviews
     }
 
+    //checks if ngo is saved as fav
     private func checkIfFavorite() {
         if ngo.id.isEmpty {
-            print("❌ ngo.id is empty (should be Firestore doc id).")
+            print("ngo.id is empty (should be Firestore doc id)")
             return
         }
 
@@ -114,19 +132,20 @@ final class FavoriteNGODetailsViewController: UIViewController {
             guard let self else { return }
 
             if let error = error {
-                print("❌ checkIfFavorite error:", error.localizedDescription)
+                print("checkIfFavorite error:", error.localizedDescription)
                 return
             }
 
             self.isFavorite = (doc?.exists == true)
             self.updateFavoriteIcon()
-            print("✅ isFavorite =", self.isFavorite, "for ngoId =", self.ngo.id)
+            print("isFavorite =", self.isFavorite, "for ngoId =", self.ngo.id)
         }
     }
 
+    //adds or removes ngo from fav
     @objc private func toggleFavorite() {
         if ngo.id.isEmpty {
-            print("❌ ngo.id is empty (cannot favorite).")
+            print("ngo.id is empty (cannot favorite).")
             return
         }
 
@@ -135,13 +154,13 @@ final class FavoriteNGODetailsViewController: UIViewController {
                 guard let self else { return }
 
                 if let error = error {
-                    print("❌ Remove favorite failed:", error.localizedDescription)
+                    print("Remove favorite failed:", error.localizedDescription)
                     return
                 }
 
                 self.isFavorite = false
                 self.updateFavoriteIcon()
-                print("✅ Removed from favorites:", self.ngo.id)
+                print("Removed from favorites:", self.ngo.id)
             }
         } else {
             favoriteDocRef().setData([
@@ -151,18 +170,20 @@ final class FavoriteNGODetailsViewController: UIViewController {
                 guard let self else { return }
 
                 if let error = error {
-                    print("❌ Add favorite failed:", error.localizedDescription)
+                    print("Add favorite failed:", error.localizedDescription)
                     return
                 }
 
                 self.isFavorite = true
                 self.updateFavoriteIcon()
-                print("✅ Added to favorites:", self.ngo.id)
+                print("Added to favorites:", self.ngo.id)
             }
         }
     }
 
     // MARK: - Actions
+    
+    //opens phone to call the ngo
     @IBAction func phoneTapped(_ sender: UIButton) {
         let cleanNumber = ngo.phone.filter { "0123456789+".contains($0) }
 
@@ -177,6 +198,7 @@ final class FavoriteNGODetailsViewController: UIViewController {
         present(alert, animated: true)
     }
 
+    //opens the message icon to message the ngo
     @IBAction func messageTapped(_ sender: UIButton) {
         let cleanNumber = ngo.phone.filter { "0123456789+".contains($0) }
 
