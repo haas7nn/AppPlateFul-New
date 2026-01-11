@@ -6,10 +6,13 @@
 import UIKit
 import FirebaseFirestore
 
+//delegate used to notify when a new review is added
+
 protocol AddReviewDelegate: AnyObject {
     func didAddReview(name: String, rating: Int, comment: String)
 }
 
+//screen that allows user to add a review of the ngo
 class AddReviewViewController: UIViewController {
 
     private let db = Firestore.firestore()
@@ -29,10 +32,13 @@ class AddReviewViewController: UIViewController {
     private let cancelButton = UIButton(type: .system)
     private let loadingIndicator = UIActivityIndicatorView(style: .medium)
 
+    //delegate , sends review back to the previous screen
     weak var delegate: AddReviewDelegate?
 
     var ngoName: String = ""
     var ngoId: String = ""
+    
+    //stores the star rating
     private var selectedRating: Int = 5
 
     override func viewDidLoad() {
