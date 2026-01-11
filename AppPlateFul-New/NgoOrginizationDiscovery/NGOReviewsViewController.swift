@@ -45,6 +45,8 @@ class NGOReviewsViewController: UIViewController,
         setupTableView()
         setupButtons()
         configureNavigationBar()
+        
+        //starts listening for any review changes in firestore
         startListeningForReviews()
     }
 
@@ -103,14 +105,14 @@ class NGOReviewsViewController: UIViewController,
         insightsButton.clipsToBounds = true
     }
 
-    // MARK: - Firestore (FIXED PATH + Real-time Listener)
+    // listens to firestore ans updates reviews
     private func startListeningForReviews() {
         guard !ngoId.isEmpty else {
-            print("❌ startListeningForReviews stopped: ngoId is empty")
+            print("startListeningForReviews stopped: ngoId is empty")
             return
         }
-
-        // ✅ FIXED: Changed from "ngos_reviews" to "ngo_reviews"
+        
+        //creates listener for ngo_reviews
         reviewsListener = db.collection("ngo_reviews")
             .document(ngoId)
             .collection("reviews")
@@ -119,12 +121,12 @@ class NGOReviewsViewController: UIViewController,
                 guard let self = self else { return }
 
                 if let error = error {
-                    print("❌ Firestore error:", error.localizedDescription)
+                    print("Firestore error:", error.localizedDescription)
                     return
                 }
 
                 let docs = snapshot?.documents ?? []
-                print("✅ Fetched reviews count:", docs.count, "for ngoId:", self.ngoId)
+                print("Fetched reviews count:", docs.count, "for ngoId:", self.ngoId)
 
                 self.reviews = docs.map { doc in
                     let data = doc.data()
@@ -202,6 +204,8 @@ class NGOReviewsViewController: UIViewController,
     }
 
     // MARK: - AddReviewDelegate
+    
+    //called after a review is added
     func didAddReview(name: String, rating: Int, comment: String) {
         // Real-time listener will automatically update
         showSuccessToast()
