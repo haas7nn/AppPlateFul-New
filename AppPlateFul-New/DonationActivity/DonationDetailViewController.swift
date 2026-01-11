@@ -7,22 +7,26 @@
 
 import UIKit
 
-class DonationDetailViewController: UIViewController {
-    
-    // MARK: - IBOutlets
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var detailLogoImageView: UIImageView!
-    @IBOutlet weak var detailNgoNameLabel: UILabel!
-    @IBOutlet weak var detailDateLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var itemsStackView: UIStackView!
-    @IBOutlet weak var currentStatusLabel: UILabel!
-    @IBOutlet weak var changeStatusButton: UIButton!
-    
-    // MARK: - Properties
+/// Displays full details for a single donation:
+/// NGO info, address, items list, and current status.
+/// Also allows the admin/user to change status (bottom sheet) or report the donation.
+final class DonationDetailViewController: UIViewController {
+
+    // MARK: - Outlets (Storyboard)
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var detailLogoImageView: UIImageView!
+    @IBOutlet private weak var detailNgoNameLabel: UILabel!
+    @IBOutlet private weak var detailDateLabel: UILabel!
+    @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var phoneLabel: UILabel!
+    @IBOutlet private weak var itemsStackView: UIStackView!
+    @IBOutlet private weak var currentStatusLabel: UILabel!
+    @IBOutlet private weak var changeStatusButton: UIButton!
+
+    // MARK: - Input
+    /// The selected donation passed in from the activity list screen.
     var donation: DonationActivityDonation?
-    
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,22 +34,25 @@ class DonationDetailViewController: UIViewController {
         configureContent()
         setupNotifications()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        // This screen uses a custom back button in the UI, so we hide the default nav bar.
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     // MARK: - Setup
     private func setupUI() {
         view.backgroundColor = DonationTheme.backgroundColor
     }
-    
+
     private func setupNotifications() {
+        // If status is updated elsewhere, we refresh the status UI for the current donation.
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(handleStatusUpdate),
@@ -53,37 +60,36 @@ class DonationDetailViewController: UIViewController {
             object: nil
         )
     }
-    
+
     // MARK: - Content
     private func configureContent() {
         guard let donation else { return }
-        
-        // Logo
+
+        // NGO logo (fallback icon if not available).
         detailLogoImageView.image = donation.ngoLogo ?? UIImage(systemName: "building.2.fill")
         detailLogoImageView.tintColor = DonationTheme.primaryBrown
-        
-        // NGO Info
+
+        // Basic donation info.
         detailNgoNameLabel.text = donation.ngoName
         detailDateLabel.text = donation.formattedCreatedDate
-        
-        // Address
+
+        // Address / contact.
         addressLabel.text = donation.address.formattedAddress
         phoneLabel.text = "📞 \(donation.address.mobileNumber)"
-        
-        // Items
+
+        // Items list is dynamic, so we build it programmatically inside the stack view.
         setupItemsStack()
-        
-        // Status
+
+        // Current status is shown with text + color for quick readability.
         updateStatusDisplay()
     }
-    
+
     private func setupItemsStack() {
         guard let donation else { return }
-        
-        // Clear existing items
+
+        // Prevent duplicates if the view reloads or updates.
         itemsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        
-        // Add item labels
+
         for item in donation.items {
             let itemLabel = UILabel()
             itemLabel.font = UIFont.systemFont(ofSize: 14)
@@ -92,45 +98,50 @@ class DonationDetailViewController: UIViewController {
             itemsStackView.addArrangedSubview(itemLabel)
         }
     }
-    
+
     private func updateStatusDisplay() {
         guard let donation else { return }
         currentStatusLabel.text = donation.status.rawValue
         currentStatusLabel.textColor = donation.status.color
     }
-    
+
     // MARK: - Actions
-    @IBAction func backButtonTapped(_ sender: Any) {
+    @IBAction private func backButtonTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
-    
-    @IBAction func changeStatusTapped(_ sender: Any) {
+
+    @IBAction private func changeStatusTapped(_ sender: Any) {
         guard let donation else { return }
-        
+
+        // Bottom sheet for picking a status; the result comes back through the delegate.
         let changeStatusVC = ChangeStatusViewController(currentStatus: donation.status)
         changeStatusVC.delegate = self
         changeStatusVC.modalPresentationStyle = .overCurrentContext
         changeStatusVC.modalTransitionStyle = .crossDissolve
         present(changeStatusVC, animated: true)
     }
-    
-    @IBAction func reportTapped(_ sender: Any) {
+
+    @IBAction private func reportTapped(_ sender: Any) {
         showReportConfirmation()
     }
-    
+
+    // MARK: - Report Flow
     private func showReportConfirmation() {
         guard let donation else { return }
-        
+
         let popup = ReportConfirmationPopup()
         popup.modalPresentationStyle = .overCurrentContext
         popup.modalTransitionStyle = .crossDissolve
+
         popup.onConfirm = { [weak self] in
+            // Provider handles the state update; this screen only triggers UI feedback.
             DonationDataProvider.shared.reportDonation(donationId: donation.id)
             self?.showReportedAlert()
         }
+
         present(popup, animated: true)
     }
-    
+
     private func showReportedAlert() {
         let alert = StatusUpdatedPopup(
             icon: UIImage(systemName: "exclamationmark.triangle.fill"),
@@ -139,21 +150,24 @@ class DonationDetailViewController: UIViewController {
         )
         alert.modalPresentationStyle = .overCurrentContext
         alert.modalTransitionStyle = .crossDissolve
+
+        // Auto dismiss so the user can keep moving without extra taps.
         present(alert, animated: true) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 alert.dismiss(animated: true)
             }
         }
     }
-    
-    // MARK: - Notification Handling
+
+    // MARK: - Notifications
+    /// Receives status updates and refreshes the UI only if the update is for the same donation.
     @objc private func handleStatusUpdate(_ notification: Notification) {
-        guard let updatedDonation = notification.object as? DonationActivityDonation,
-              let donation,
-              updatedDonation.id == donation.id else {
-            return
-        }
-        
+        guard
+            let updatedDonation = notification.object as? DonationActivityDonation,
+            let donation,
+            updatedDonation.id == donation.id
+        else { return }
+
         self.donation = updatedDonation
         updateStatusDisplay()
     }
@@ -161,23 +175,24 @@ class DonationDetailViewController: UIViewController {
 
 // MARK: - ChangeStatusDelegate
 extension DonationDetailViewController: ChangeStatusDelegate {
-    
+
     func didChangeStatus(to newStatus: DonationActivityStatus) {
         guard let donation else { return }
-        
+
+        // Central update happens in the provider; other screens can react via notification.
         DonationDataProvider.shared.updateDonationStatus(
             donationId: donation.id,
             newStatus: newStatus
         )
-        
+
         let successPopup = StatusUpdatedPopup(
             icon: UIImage(systemName: "checkmark.circle.fill"),
             message: "Status Updated",
             iconColor: DonationTheme.statusCompleted
         )
-        
         successPopup.modalPresentationStyle = .overCurrentContext
         successPopup.modalTransitionStyle = .crossDissolve
+
         present(successPopup, animated: true) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 successPopup.dismiss(animated: true)
@@ -185,3 +200,4 @@ extension DonationDetailViewController: ChangeStatusDelegate {
         }
     }
 }
+

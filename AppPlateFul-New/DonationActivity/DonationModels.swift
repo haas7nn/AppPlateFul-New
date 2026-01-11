@@ -7,30 +7,32 @@
 
 import UIKit
 
-// MARK: - Theme Constants
+/// Centralizes colors used across the donation activity screens.
+/// Keeping these in one place makes UI consistency easy to maintain.
 struct DonationTheme {
     static let backgroundColor = UIColor(red: 0.976, green: 0.965, blue: 0.941, alpha: 1)
     static let cardBackground = UIColor.white
     static let primaryBrown = UIColor(red: 0.776, green: 0.635, blue: 0.494, alpha: 1)
-    
+
     static let textPrimary = UIColor.black
     static let textSecondary = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 1)
     static let textTertiary = UIColor(red: 0.557, green: 0.557, blue: 0.576, alpha: 1)
-    
+
     static let statusCompleted = UIColor(red: 0.298, green: 0.686, blue: 0.314, alpha: 1)
     static let statusCancelled = UIColor(red: 0.898, green: 0.224, blue: 0.208, alpha: 1)
     static let statusOngoing = UIColor(red: 0.949, green: 0.6, blue: 0.29, alpha: 1)
     static let statusPending = UIColor(red: 1, green: 0.757, blue: 0.027, alpha: 1)
 }
 
-// MARK: - Donation Activity Status
+/// The main status values used by donation activity.
+/// Each status also provides a UI color to keep status styling consistent.
 enum DonationActivityStatus: String, CaseIterable {
     case pending = "Pending"
     case ongoing = "Ongoing"
     case completed = "Completed"
     case pickedUp = "Picked Up"
     case cancelled = "Cancelled"
-    
+
     var color: UIColor {
         switch self {
         case .pending:
@@ -45,7 +47,8 @@ enum DonationActivityStatus: String, CaseIterable {
     }
 }
 
-// MARK: - Filter Option
+/// Filter options shown in the UI.
+/// `all` maps to `nil` so the provider can return everything.
 enum FilterOption: String, CaseIterable {
     case all = "All"
     case pending = "Pending"
@@ -53,7 +56,9 @@ enum FilterOption: String, CaseIterable {
     case completed = "Completed"
     case pickedUp = "Picked Up"
     case cancelled = "Cancelled"
-    
+
+    /// Converts a UI filter into a model status for filtering.
+    /// `nil` means no filtering.
     var status: DonationActivityStatus? {
         switch self {
         case .all:
@@ -72,30 +77,33 @@ enum FilterOption: String, CaseIterable {
     }
 }
 
-// MARK: - Donation Item
+/// Represents one donated item and its quantity.
 struct DonationItem {
     let name: String
     let quantity: Int
-    
+
+    /// Compact text used in lists or summaries.
     var displayText: String {
         "\(name) (x\(quantity))"
     }
 }
 
-// MARK: - Delivery Address
+/// Delivery/contact details for donation pickup/drop-off.
 struct DeliveryAddress {
     let house: String
     let road: String
     let block: String
     let city: String
     let mobileNumber: String
-    
+
+    /// Multi-line format used in the details screen.
     var formattedAddress: String {
         "\(house), \(road), \(block)\n\(city)"
     }
 }
 
-// MARK: - Donation Activity Model
+/// Main model used across activity list + details.
+/// This is a class so changes (status/report) can be reflected without rebuilding all UI objects.
 final class DonationActivityDonation {
     let id: String
     let ngoName: String
@@ -106,7 +114,7 @@ final class DonationActivityDonation {
     let pickupDate: Date?
     let address: DeliveryAddress
     var isReported: Bool = false
-    
+
     init(
         id: String,
         ngoName: String,
@@ -126,28 +134,27 @@ final class DonationActivityDonation {
         self.pickupDate = pickupDate
         self.address = address
     }
-    
-    // Combined text for displaying items list
+
+    /// Combined item list used in the table cell.
     var itemsDisplayText: String {
         items.map { $0.displayText }.joined(separator: ", ")
     }
-    
-    // Formats creation date for UI display (full)
+
+    /// Full date format used in the details view.
     var formattedCreatedDate: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMMM yyyy HH:mm"
         return formatter.string(from: createdDate)
     }
-    
-    // Formats creation date for UI display (short - for cell)
-    // Add this property if it doesn't exist
+
+    /// Short date format used in the list cell.
     var formattedShortDate: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMM"
         return formatter.string(from: createdDate)
     }
-    
-    // Formats pickup date for UI display
+
+    /// Pickup date text when available (some donations may not have a pickup time yet).
     var formattedPickupDate: String? {
         guard let pickupDate else { return nil }
         let formatter = DateFormatter()
@@ -156,18 +163,18 @@ final class DonationActivityDonation {
     }
 }
 
-
-
-// MARK: - Data Provider
+/// Simple in-memory provider that supplies donation data for the UI.
+/// For the project demo, it loads mock data and broadcasts changes via NotificationCenter.
 final class DonationDataProvider {
     static let shared = DonationDataProvider()
-    
+
+    /// Source of truth for the activity screens.
     private(set) var donations: [DonationActivityDonation] = []
-    
+
     private init() {
         loadMockData()
     }
-    
+
     private func loadMockData() {
         let address1 = DeliveryAddress(
             house: "House 123",
@@ -176,7 +183,7 @@ final class DonationDataProvider {
             city: "Manama, Bahrain",
             mobileNumber: "+973 1234 5678"
         )
-        
+
         let address2 = DeliveryAddress(
             house: "Villa 78",
             road: "Street 12",
@@ -184,7 +191,8 @@ final class DonationDataProvider {
             city: "Riffa, Bahrain",
             mobileNumber: "+973 9876 5432"
         )
-        
+
+        // Demo-only sample data to populate the UI.
         donations = [
             DonationActivityDonation(
                 id: "DON001",
@@ -241,27 +249,33 @@ final class DonationDataProvider {
             )
         ]
     }
-    
+
+    /// Updates a donation’s status and notifies any listening screens to refresh.
     func updateDonationStatus(donationId: String, newStatus: DonationActivityStatus) {
         if let index = donations.firstIndex(where: { $0.id == donationId }) {
             donations[index].status = newStatus
+
             NotificationCenter.default.post(
                 name: .donationStatusUpdated,
                 object: donations[index]
             )
         }
     }
-    
+
+    /// Marks a donation as reported and broadcasts the update.
     func reportDonation(donationId: String) {
         if let index = donations.firstIndex(where: { $0.id == donationId }) {
             donations[index].isReported = true
+
             NotificationCenter.default.post(
                 name: .donationReported,
                 object: donations[index]
             )
         }
     }
-    
+
+    /// Returns donations filtered by UI filter selection.
+    /// If the filter is `.all`, it returns the full list.
     func filteredDonations(by filter: FilterOption) -> [DonationActivityDonation] {
         guard let status = filter.status else {
             return donations
@@ -270,7 +284,7 @@ final class DonationDataProvider {
     }
 }
 
-// MARK: - Notifications
+/// Notification names used to sync UI updates across screens.
 extension Notification.Name {
     static let donationStatusUpdated = Notification.Name("donationStatusUpdated")
     static let donationReported = Notification.Name("donationReported")

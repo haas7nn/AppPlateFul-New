@@ -7,21 +7,31 @@
 
 import UIKit
 
-// Custom table view cell used to display a user with actions (info, favorite)
-class UserTableViewCell: UITableViewCell {
+/// Custom table view cell that displays a user summary
+/// with quick actions (info and favorite).
+///
+/// The cell itself contains no navigation or business logic.
+/// All actions are reported to the parent view controller
+/// using the UserCellDelegate protocol.
+final class UserTableViewCell: UITableViewCell {
 
-    // MARK: - IBOutlets
-    @IBOutlet weak var avatarImageView: UIImageView?
-    @IBOutlet weak var nameLabel: UILabel?
-    @IBOutlet weak var statusLabel: UILabel?
-    @IBOutlet weak var starButton: UIButton?
-    @IBOutlet weak var infoButton: UIButton?
+    // MARK: - Outlets
+    @IBOutlet private weak var avatarImageView: UIImageView?
+    @IBOutlet private weak var nameLabel: UILabel?
+    @IBOutlet private weak var statusLabel: UILabel?
+    @IBOutlet private weak var starButton: UIButton?
+    @IBOutlet private weak var infoButton: UIButton?
 
-    // MARK: - Delegate / Index
+    // MARK: - Delegate & Index
+    /// Delegate used to notify the parent controller about button taps.
     weak var delegate: UserCellDelegate?
+
+    /// IndexPath of the cell, passed back to the controller when actions occur.
     var indexPath: IndexPath!
 
-    // Stores latest avatar URL to avoid wrong image during reuse
+    // MARK: - Reuse Safety
+    /// Stores the last avatar URL assigned to this cell.
+    /// This prevents incorrect images appearing when cells are reused.
     private var currentAvatarURL: String?
 
     // MARK: - Lifecycle
@@ -30,12 +40,17 @@ class UserTableViewCell: UITableViewCell {
         setupUI()
 
         // Attach button actions
-        starButton?.addTarget(self, action: #selector(starButtonTapped), for: .touchUpInside)
-        infoButton?.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+        starButton?.addTarget(self,
+                              action: #selector(starButtonTapped),
+                              for: .touchUpInside)
+
+        infoButton?.addTarget(self,
+                              action: #selector(infoButtonTapped),
+                              for: .touchUpInside)
     }
 
-    // MARK: - Setup
-    // Configures UI appearance for avatar
+    // MARK: - UI Setup
+    /// Applies basic styling for the avatar image.
     private func setupUI() {
         avatarImageView?.layer.cornerRadius = 25
         avatarImageView?.clipsToBounds = true
@@ -43,18 +58,24 @@ class UserTableViewCell: UITableViewCell {
     }
 
     // MARK: - Actions
-    // Notifies delegate when star button is tapped
+    /// Notifies the delegate that the favorite (star) button was tapped.
     @objc private func starButtonTapped() {
         delegate?.didTapStarButton(at: indexPath)
     }
 
-    // Notifies delegate when info button is tapped
+    /// Notifies the delegate that the info button was tapped.
     @objc private func infoButtonTapped() {
         delegate?.didTapInfoButton(at: indexPath)
     }
 
     // MARK: - Configuration
-    // Updates cell UI using provided user details
+    /// Configures the cell using user data provided by the view controller.
+    ///
+    /// - Parameters:
+    ///   - name: User display name
+    ///   - status: User status (Active, Pending, etc.)
+    ///   - isStarred: Whether the user is marked as favorite
+    ///   - avatarURL: Optional URL string for the user avatar
     func configure(
         name: String,
         status: String,
@@ -67,7 +88,7 @@ class UserTableViewCell: UITableViewCell {
         let cleanStatus = status.trimmingCharacters(in: .whitespacesAndNewlines)
         statusLabel?.text = cleanStatus.isEmpty ? "-" : cleanStatus
 
-        // Status color rules
+        // Status color rules for quick visual feedback
         switch cleanStatus.lowercased() {
         case "active":
             statusLabel?.textColor = .systemGreen
@@ -79,22 +100,25 @@ class UserTableViewCell: UITableViewCell {
             statusLabel?.textColor = .secondaryLabel
         }
 
-        // Favorite icon UI
-        let starImage = isStarred ? "star.fill" : "star"
-        starButton?.setImage(UIImage(systemName: starImage), for: .normal)
+        // Favorite (star) icon state
+        let starImageName = isStarred ? "star.fill" : "star"
+        starButton?.setImage(UIImage(systemName: starImageName), for: .normal)
         starButton?.tintColor = isStarred ? .systemYellow : .systemGray
 
-        // Default avatar icon
+        // Default avatar placeholder
         avatarImageView?.image = UIImage(systemName: "person.circle.fill")
         avatarImageView?.tintColor = .systemGray2
 
-        // Load avatar from URL if available
+        // Store avatar URL to protect against reuse issues
         currentAvatarURL = avatarURL
 
+        // Load avatar image asynchronously if available
         if let avatarURL, !avatarURL.isEmpty {
             ImageLoader.shared.load(avatarURL) { [weak self] image in
                 guard let self else { return }
+                // Ensure the image still belongs to this cell
                 guard self.currentAvatarURL == avatarURL else { return }
+
                 if let image {
                     self.avatarImageView?.image = image
                 }

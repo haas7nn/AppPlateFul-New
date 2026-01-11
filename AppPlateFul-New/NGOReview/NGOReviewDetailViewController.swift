@@ -8,32 +8,36 @@
 import UIKit
 import FirebaseFirestore
 
-// Displays detailed NGO information and allows admin approval or rejection
-class NGOReviewDetailViewController: UIViewController {
+/// Admin review screen for a single NGO submission.
+/// Shows NGO details and allows the admin to approve or reject the request.
+/// Decisions are persisted in Firestore and the previous screen is notified via a callback.
+final class NGOReviewDetailViewController: UIViewController {
 
-    // MARK: - IBOutlets
-    @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var areaValueLabel: UILabel!
-    @IBOutlet weak var hoursValueLabel: UILabel!
-    @IBOutlet weak var pickupTimeValueLabel: UILabel!
-    @IBOutlet weak var donationsValueLabel: UILabel!
-    @IBOutlet weak var reliabilityValueLabel: UILabel!
-    @IBOutlet weak var reviewsValueLabel: UILabel!
-    @IBOutlet weak var approveButton: UIButton!
-    @IBOutlet weak var rejectButton: UIButton!
+    // MARK: - Outlets (Storyboard)
+    @IBOutlet private weak var logoImageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var statusLabel: UILabel!
+    @IBOutlet private weak var areaValueLabel: UILabel!
+    @IBOutlet private weak var hoursValueLabel: UILabel!
+    @IBOutlet private weak var pickupTimeValueLabel: UILabel!
+    @IBOutlet private weak var donationsValueLabel: UILabel!
+    @IBOutlet private weak var reliabilityValueLabel: UILabel!
+    @IBOutlet private weak var reviewsValueLabel: UILabel!
+    @IBOutlet private weak var approveButton: UIButton!
+    @IBOutlet private weak var rejectButton: UIButton!
 
-    // Selected NGO item
+    // MARK: - Input
+    /// The NGO item selected from the review list screen.
     var ngo: NGOReviewItem?
 
-    // Callback triggered after approval or rejection
+    /// Called after a successful approve/reject so the list can refresh/remove the item.
     var onDecision: ((String) -> Void)?
 
-    // Firestore reference
+    // MARK: - Firestore
     private let db = Firestore.firestore()
 
-    // Prevents multiple save actions
+    // MARK: - UI Safety
+    /// Prevents duplicate writes when the user taps buttons quickly.
     private var isSaving = false
 
     // MARK: - Lifecycle
@@ -44,15 +48,17 @@ class NGOReviewDetailViewController: UIViewController {
         fillData()
     }
 
-    // MARK: - Setup
+    // MARK: - UI Setup
     private func setupUI() {
         logoImageView.layer.cornerRadius = 35
         logoImageView.clipsToBounds = true
+
         approveButton.layer.cornerRadius = 10
         rejectButton.layer.cornerRadius = 10
     }
 
-    // MARK: - Fill UI
+    // MARK: - Data Binding
+    /// Populates labels from the selected NGO model and loads the logo asynchronously.
     private func fillData() {
         guard let ngo = ngo else { return }
 
@@ -65,8 +71,10 @@ class NGOReviewDetailViewController: UIViewController {
         reliabilityValueLabel.text = ngo.pickupReliability
         reviewsValueLabel.text = ngo.communityReviews
 
+        // Fallback placeholder while the logo loads.
         logoImageView.image = UIImage(systemName: "photo")
 
+        // Load logo using shared ImageLoader (cached + async).
         ImageLoader.shared.load(ngo.logoURL) { [weak self] img in
             DispatchQueue.main.async {
                 self?.logoImageView.image = img ?? UIImage(systemName: "photo")
@@ -74,16 +82,16 @@ class NGOReviewDetailViewController: UIViewController {
         }
     }
 
-    // MARK: - IBActions
-    @IBAction func approveButtonTapped(_ sender: UIButton) {
+    // MARK: - Actions
+    @IBAction private func approveButtonTapped(_ sender: UIButton) {
         handleDecision(approved: true)
     }
 
-    @IBAction func rejectButtonTapped(_ sender: UIButton) {
+    @IBAction private func rejectButtonTapped(_ sender: UIButton) {
         handleDecision(approved: false)
     }
 
-    // MARK: - UI State
+    // MARK: - UI State Helpers
     private func setButtonsEnabled(_ enabled: Bool) {
         approveButton.isEnabled = enabled
         rejectButton.isEnabled = enabled
@@ -102,6 +110,9 @@ class NGOReviewDetailViewController: UIViewController {
     }
 
     // MARK: - Firestore Logic
+    /// Saves the admin decision to Firestore.
+    /// - Approve: updates the existing pending review document.
+    /// - Reject: moves the document to a rejected collection and removes it from pending.
     private func handleDecision(approved: Bool) {
         guard let ngo = ngo else { return }
         if isSaving { return }
@@ -111,13 +122,14 @@ class NGOReviewDetailViewController: UIViewController {
 
         let reviewRef = db.collection("ngo_reviews").document(ngo.id)
 
-        // APPROVE: update existing document only
+        // APPROVE: update existing review document only.
         if approved {
             reviewRef.updateData([
                 "approved": true,
                 "status": "Approved"
             ]) { [weak self] err in
                 guard let self = self else { return }
+
                 self.isSaving = false
                 self.setButtonsEnabled(true)
 
@@ -126,15 +138,17 @@ class NGOReviewDetailViewController: UIViewController {
                     return
                 }
 
+                // Notify previous screen and navigate back.
                 self.onDecision?(ngo.id)
                 self.navigationController?.popViewController(animated: true)
             }
             return
         }
 
-        // REJECT: copy to rejected collection, then delete from pending
+        // REJECT: copy to rejected collection, then delete from pending.
         let rejectedRef = db.collection("ngo_rejected").document(ngo.id)
 
+        // Batch keeps the operation consistent (both actions succeed or fail together).
         let batch = db.batch()
         batch.setData(
             ngo.toFirestoreData(approved: false, status: "Rejected"),
@@ -144,6 +158,7 @@ class NGOReviewDetailViewController: UIViewController {
 
         batch.commit { [weak self] err in
             guard let self = self else { return }
+
             self.isSaving = false
             self.setButtonsEnabled(true)
 
