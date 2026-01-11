@@ -5,25 +5,30 @@
 
 import UIKit
 
-// MARK: - Question Cell
-class TermsQuestionCell: UITableViewCell {
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var chevronImageView: UIImageView!
-    @IBOutlet weak var chevronBackground: UIView!
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var numberBackground: UIView!
-    
+// MARK: - Terms Question Cell
+/// Displays the title row for a terms section (number + title + expand/collapse chevron).
+final class TermsQuestionCell: UITableViewCell {
+
+    @IBOutlet private weak var cardView: UIView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var chevronImageView: UIImageView!
+    @IBOutlet private weak var chevronBackground: UIView!
+    @IBOutlet private weak var numberLabel: UILabel!
+    @IBOutlet private weak var numberBackground: UIView!
+
+    /// Configures the section header UI and updates chevron state based on expansion.
     func configure(number: Int, title: String, isOpen: Bool) {
         numberLabel.text = "\(number)"
         titleLabel.text = title
-        
-        let chevronImage = isOpen ? "chevron.up" : "chevron.down"
-        chevronImageView.image = UIImage(systemName: chevronImage)
-        
+
+        let chevronName = isOpen ? "chevron.up" : "chevron.down"
+        chevronImageView.image = UIImage(systemName: chevronName)
+
+        // Small animation for a nicer open/close feedback.
         UIView.animate(withDuration: 0.2) {
             if isOpen {
-                self.chevronBackground.backgroundColor = UIColor(red: 0.776, green: 0.635, blue: 0.494, alpha: 1.0)
+                self.chevronBackground.backgroundColor =
+                    UIColor(red: 0.776, green: 0.635, blue: 0.494, alpha: 1.0)
                 self.chevronImageView.tintColor = .white
             } else {
                 self.chevronBackground.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
@@ -33,22 +38,29 @@ class TermsQuestionCell: UITableViewCell {
     }
 }
 
-// MARK: - Answer Cell
-class TermsAnswerCell: UITableViewCell {
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var accentBar: UIView!
-    
+// MARK: - Terms Answer Cell
+/// Displays the expanded content for a terms section.
+final class TermsAnswerCell: UITableViewCell {
+
+    @IBOutlet private weak var cardView: UIView!
+    @IBOutlet private weak var contentLabel: UILabel!
+    @IBOutlet private weak var accentBar: UIView!
+
     func configure(content: String) {
         contentLabel.text = content
     }
 }
 
 // MARK: - Terms View Controller
+/// Accordion-style Terms & Conditions screen.
+/// Each section is a table view "section":
+/// - Row 0 = title row (tap to expand/collapse)
+/// - Row 1 = content row (shown only when expanded)
 final class TermsViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
 
+    /// One terms item becomes one table section.
     private struct TermsItem {
         let title: String
         let content: String
@@ -66,16 +78,19 @@ final class TermsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Hide the system nav bar because this screen uses a custom header/back button.
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        // Restore nav bar for the next screens.
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
+
     // MARK: - Setup
     private func setupData() {
+        // Static content (could be loaded from a CMS or remote config in a full production app).
         items = [
             TermsItem(
                 title: "Acceptance of Terms",
@@ -139,19 +154,20 @@ final class TermsViewController: UIViewController {
             )
         ]
     }
-    
+
     private func setupUI() {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
-        
+
         tableView.dataSource = self
         tableView.delegate = self
     }
-    
+
     // MARK: - Actions
-    @IBAction func backButtonTapped(_ sender: UIButton) {
+    /// Supports both navigation push and modal presentation.
+    @IBAction private func backButtonTapped(_ sender: UIButton) {
         if let navigationController = navigationController {
             navigationController.popViewController(animated: true)
         } else if presentingViewController != nil {
@@ -164,26 +180,37 @@ final class TermsViewController: UIViewController {
 extension TermsViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return items.count
+        items.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items[section].isOpen ? 2 : 1
+        // 1 row when collapsed, 2 rows when expanded (title + content).
+        items[section].isOpen ? 2 : 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.section]
 
         if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TermsQuestionCell", for: indexPath) as? TermsQuestionCell else {
+            // Title row
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "TermsQuestionCell",
+                for: indexPath
+            ) as? TermsQuestionCell else {
                 return UITableViewCell()
             }
+
             cell.configure(number: indexPath.section + 1, title: item.title, isOpen: item.isOpen)
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TermsAnswerCell", for: indexPath) as? TermsAnswerCell else {
+            // Content row
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: "TermsAnswerCell",
+                for: indexPath
+            ) as? TermsAnswerCell else {
                 return UITableViewCell()
             }
+
             cell.configure(content: item.content)
             return cell
         }
@@ -195,32 +222,30 @@ extension TermsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row != 0 { return }
+        if indexPath.row != 0 { return } // Only the title row toggles.
 
-        // Close other sections
-        for i in 0..<items.count {
-            if i != indexPath.section {
-                items[i].isOpen = false
-            }
+        // Accordion behavior: close all other sections.
+        for i in 0..<items.count where i != indexPath.section {
+            items[i].isOpen = false
         }
 
-        // Toggle current section
+        // Toggle the selected section.
         items[indexPath.section].isOpen.toggle()
-        
-        // Reload with animation
+
+        // Reload table to reflect expanded/collapsed state.
         tableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        UITableView.automaticDimension
     }
-    
+
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.row == 0 ? 76 : 100
+        indexPath.row == 0 ? 76 : 100
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 4
+        4
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
